@@ -259,3 +259,94 @@
 
     -----------------------------------------------------------------------------------------------------------------
     -- Publikacija
+
+    CREATE TABLE publikacija(
+        ID_P NUMBER(10) PRIMARY KEY,
+        ID_IR NUMBER(10) NOT NULL,
+
+        CONSTRAINT FK_PUBLIKACIJA_ID_IR FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
+    );
+
+        -- Citat atributi
+        CREATE TABLE citat(
+            ID_P1 NUMBER(10) NOT NULL,
+            ID_P2 NUMBER(10) NOT NULL,
+            CITIRAJUCA_PUBLIKACIJA VARCHAR2(100) NOT NULL,
+            CITIRANA_PUBLIKACIJA VARCHAR2(100) NOT NULL,
+            TIP_CITATA VARCHAR2(20) DEFAULT 'INDIREKTAN' NOT NULL,
+            MESTO_CITIRANJA VARCHAR2(100) NOT NULL,
+            KONTEKST_CITIRANJA VARCHAR2(500) NOT NULL,
+
+            CONSTRAINT PK_CITAT PRIMARY KEY (ID_P1, ID_P2),
+            CONSTRAINT FK_CITAT_ID_P1 FOREIGN KEY (ID_P1) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
+            CONSTRAINT FK_CITAT_ID_P2 FOREIGN KEY (ID_P2) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
+            CONSTRAINT CHK_TIP_CITATA CHECK (TIP_CITATA IN ('INDIREKTAN','DIREKTAN'))
+        );
+
+-------------------------------------------------------------------------------------------------------------------
+--Autorstvo
+
+    CREATE TABLE autorstvo(
+        ID_U NUMBER(10) NOT NULL,
+        ID_P NUMBER(10) NOT NULL,
+        REDNI_BROJ_AUTORA NUMBER(10) NOT NULL,
+        TIP_DOPRINOSA VARCHAR2(100) NOT NULL,
+        ULOGA_U_PUBLIKACIJI VARCHAR2(100) NOT NULL,
+
+        CONSTRAINT PK_AUTORSTVO PRIMARY KEY (ID_U, ID_P),
+        CONSTRAINT FK_AUTORSTVO_ID_U FOREIGN KEY (ID_U) REFERENCES uloga(ID_U) ON DELETE CASCADE,
+        CONSTRAINT FK_AUTORSTVO_ID_P FOREIGN KEY (ID_P) REFERENCES publikacija(ID_P) ON DELETE CASCADE
+    );
+------------------------------------------------------------------------------------------------------------------
+--Runda recenzije
+
+    CREATE TABLE runda_recenzije(
+        ID_P NUMBER(10) NOT NULL,
+        ID_UREDNIKA NUMBER(10) NOT NULL,
+        ID_RECENZENTA NUMBER(10) NOT NULL,
+        BROJ_RUNDE NUMBER(10) NOT NULL,
+        DATUM_ODLUKE DATE NOT NULL,
+        KONACNA_ODLUKA VARCHAR2(20) DEFAULT 'POTREBNA_REVIZIJA' NOT NULL,
+
+        CONSTRAINT PK_RR PRIMARY KEY (ID_P,ID_RECENZENTA,ID_UREDNIKA,BROJ_RUNDE),
+        --Angazovanje urednika i runde recenzije (1:N)
+        CONSTRAINT FK_RR_ID_UREDNIKA FOREIGN KEY (ID_UREDNIKA) REFERENCES urednik(ID_U) ON DELETE CASCADE,
+        CONSTRAINT FK_RR_ID_RECENZENTA FOREIGN KEY (ID_RECENZENTA) REFERENCES recenzent(ID_U) ON DELETE CASCADE,
+        CONSTRAINT FK_RR_ID_P FOREIGN KEY (ID_P) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
+        CONSTRAINT CHK_KONACNA_ODLUKA CHECK (KONACNA_ODLUKA IN ('POTREBNA_REVIZIJA','PRIHVACENA','ODBIJENA'))
+    );
+
+        --Angazovanje recenzenti
+        CREATE TABLE angazovanje_recenzent(
+            ID_P NUMBER(10) NOT NULL,
+            ID_RECENZENTA NUMBER(10) NOT NULL,
+            PREPORUKA VARCHAR2(10) DEFAULT 'NE' NOT NULL,
+
+            CONSTRAINT CHK_PREPORUKA CHECK (PREPORUKA IN ('DA','NE')),
+            CONSTRAINT PK_ANG_REC PRIMARY KEY (ID_P, ID_RECENZENTA),
+            CONSTRAINT FK_ANG_REC_ID_P FOREIGN KEY (ID_P) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
+            CONSTRAINT FK_ANG_REC_ID_REC FOREIGN KEY (ID_RECENZENTA) REFERENCES recenzent(ID_U) ON DELETE CASCADE
+        );
+        
+            --Ocena recenzenta atribut
+            CREATE TABLE ocena_recenzenta(
+                ID_P NUMBER(10) NOT NULL,
+                ID_RECENZENTA NUMBER(10) NOT NULL,
+                BROJ_RUNDE NUMBER(10) NOT NULL,
+                OCENA NUMBER(1) NOT NULL,
+
+                CONSTRAINT CHK_OCENA CHECK (OCENA BETWEEN 1 AND 5),
+                CONSTRAINT PK_OCENA PRIMARY KEY (ID_P, ID_RECENZENTA,BROJ_RUNDE,OCENA),
+                CONSTRAINT FK_OCENA_ID_P FOREIGN KEY (ID_P) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
+                CONSTRAINT FK_OCENA_ID_REC FOREIGN KEY (ID_RECENZENTA) REFERENCES recenzent(ID_U) ON DELETE CASCADE
+            );
+-------------------------------------------------------------------------------------------------------------------
+-- Ureduje
+    CREATE TABLE ureduje(
+        ID_IR NUMBER(10) NOT NULL,
+        ID_UREDNIKA NUMBER(10) NOT NULL,
+
+        CONSTRAINT PK_UREDI PRIMARY KEY (ID_IR, ID_UREDNIKA),
+        CONSTRAINT FK_UREDI_ID_IR FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE,
+        CONSTRAINT FK_UREDI_ID_UREDNIKA FOREIGN KEY (ID_UREDNIKA) REFERENCES urednik(ID_U) ON DELETE CASCADE
+    );
