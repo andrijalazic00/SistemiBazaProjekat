@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("databaseacesslib")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+410d2f1b33f737bcdc7dd20cb148ab8006a91e64")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3fed88f7187d647ace06d0cbe8736c1d67a0a0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("databaseacesslib")]
 [assembly: System.Reflection.AssemblyTitleAttribute("databaseacesslib")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
