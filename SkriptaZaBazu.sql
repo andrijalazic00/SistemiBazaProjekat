@@ -24,7 +24,7 @@
     DROP TABLE RUKOVODILAC_PROJEKTA CASCADE CONSTRAINTS;
     DROP TABLE ULOGA CASCADE CONSTRAINTS;
     DROP TABLE DATASET CASCADE CONSTRAINTS;
-    DROP TABLE PODRZANE_PLATFORMA CASCADE CONSTRAINTS;
+    DROP TABLE PODRZANE_PLATFORME CASCADE CONSTRAINTS;
     DROP TABLE SOFTVERSKI_ARTIFAKT CASCADE CONSTRAINTS;
     DROP TABLE TEHNICKI_IZVESTAJ CASCADE CONSTRAINTS;
     DROP TABLE KNJIGA_ILI_POGLAVLJA CASCADE CONSTRAINTS;
@@ -124,7 +124,7 @@
         CONSTRAINT FK_SA_ID_IR FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
     );
         --podrzane platforme
-        CREATE TABLE podrzane_platforma(
+        CREATE TABLE podrzane_platforme(
             ID_IR NUMBER(10) NOT NULL,
             PLATFORMA VARCHAR2(50) NOT NULL,
 
@@ -220,24 +220,26 @@
         STATUS_NAUCNIKA VARCHAR2(20) DEFAULT 'AKTIVAN' NOT NULL,
         ID_U NUMBER(10) NOT NULL,
 
-        CONSTRAINT FK_ID_U FOREIGN KEY (ID_U) REFERENCES uloga(ID_U),
+        CONSTRAINT FK_ID_U FOREIGN KEY (ID_U) REFERENCES uloga(ID_U) ON DELETE CASCADE,
         CONSTRAINT CHK_STATUS_NAUCNIKA CHECK (STATUS_NAUCNIKA IN ('AKTIVAN','NEAKTIVAN'))
     );
 
         -- Mail I Telefoni atributi
         CREATE TABLE mail(
-            ID_I NUMBER(10) PRIMARY KEY,
+            ID_I NUMBER(10) NOT NULL,
             MAIL VARCHAR2(100) NOT NULL,
 
             CONSTRAINT CHK_MAIL CHECK (REGEXP_LIKE(MAIL, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')),
+            CONSTRAINT PK_MAIL PRIMARY KEY (ID_I, MAIL),
             CONSTRAINT FK_MAIL_ID_I FOREIGN KEY (ID_I) REFERENCES istrazivac(ID_I) ON DELETE CASCADE
         );
 
         CREATE TABLE telefon(
-            ID_I NUMBER(10) PRIMARY KEY,
+            ID_I NUMBER(10) NOT NULL,
             TELEFON VARCHAR2(20) NOT NULL,
 
-            CONSTRAINT CHK_TELEFON CHECK (REGEXP_LIKE(TELEFON, '^\+?[0-9]{10,15}$')),
+            CONSTRAINT CHK_TELEFON CHECK (REGEXP_LIKE(TELEFON, '^\+?[0-9]{9,15}$')),
+            CONSTRAINT PK_TELEFON PRIMARY KEY (ID_I, TELEFON),
             CONSTRAINT FK_TELEFON_ID_I FOREIGN KEY (ID_I) REFERENCES istrazivac(ID_I) ON DELETE CASCADE
         );
 
@@ -253,25 +255,28 @@
         --Naucne Oblasti I Kontakti atributi
 
         CREATE TABLE naucna_oblast(
-            ID_NII NUMBER(10) PRIMARY KEY,
+            ID_NII NUMBER(10) NOT NULL,
             NAUCNA_OBLAST VARCHAR2(100) NOT NULL,
 
+            CONSTRAINT PK_NAUCNA_OBLAST_INSTITUCIJA PRIMARY KEY (ID_NII, NAUCNA_OBLAST),
             CONSTRAINT FK_NAUCNA_OBLAST_ID_NII FOREIGN KEY (ID_NII) REFERENCES ni_institucija(ID_NII) ON DELETE CASCADE
         );
 
         CREATE TABLE mail_institucija(
-            ID_NII NUMBER(10) PRIMARY KEY,
+            ID_NII NUMBER(10) NOT NULL,
             MAIL VARCHAR2(100) NOT NULL,
 
             CONSTRAINT CHK_MAIL_INSTITUCIJA CHECK (REGEXP_LIKE(MAIL, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')),
+            CONSTRAINT PK_MAIL_INSTITUCIJA PRIMARY KEY (ID_NII, MAIL),
             CONSTRAINT FK_MAIL_ID_NII FOREIGN KEY (ID_NII) REFERENCES ni_institucija(ID_NII) ON DELETE CASCADE
         );
 
         CREATE TABLE telefon_institucija(
-            ID_NII NUMBER(10) PRIMARY KEY,
+            ID_NII NUMBER(10) NOT NULL,
             TELEFON VARCHAR2(20) NOT NULL,
 
-            CONSTRAINT CHK_TELEFON_INSTITUCIJA CHECK (REGEXP_LIKE(TELEFON, '^\+?[0-9]{10,15}$')),
+            CONSTRAINT CHK_TELEFON_INSTITUCIJA CHECK (REGEXP_LIKE(TELEFON, '^\+?[0-9]{9,15}$')),
+            CONSTRAINT PK_TELEFON_INSTITUCIJA PRIMARY KEY (ID_NII, TELEFON),
             CONSTRAINT FK_TELEFON_ID_NII FOREIGN KEY (ID_NII) REFERENCES ni_institucija(ID_NII) ON DELETE CASCADE
         );
 
@@ -389,16 +394,12 @@
     );
 -------------------------------------------------------------------------------------------------------------------
 --Unos test podataka
-
-
---Insert into istrazivacki_rezultat(NASLOV,APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST) 
---values ('Negativni efekti duvanskig dima','Drugi istrazivacki rezultat u bazi',TO_DATE('2026-02-01', 'YYYY-MM-DD'),TO_DATE('2026-07-14', 'YYYY-MM-DD'),'U_PRIPREMI','1');
-
-
 DECLARE
     new_ID_IR istrazivacki_rezultat.ID_IR%TYPE;
     new_ID_P publikacija.ID_P%TYPE;
     new_ID_U uloga.ID_U%TYPE;
+    new_ID_I istrazivac.ID_I%TYPE;
+    new_ID_NII ni_institucija.ID_NII%TYPE;
 
 BEGIN
     -- Kreiranje entiteta roditelja i cuvanje njegovog automatski generisanog ID-ja
@@ -458,6 +459,73 @@ BEGIN
 
     INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA,TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
     VALUES(new_ID_U,new_ID_P, 1,'Istrazivao uticaj emisija stetnih gasova iz automobila na efekat staklene baste', '23-50 strana');
+    -----------------------------------------------------------------------------------------------------------------------------------------------------
+    Insert into istrazivacki_rezultat(NASLOV,APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST) 
+    values ('Negativni efekti duvanskig dima','Treci istrazivacki rezultat u bazi',TO_DATE('2016-02-01', 'YYYY-MM-DD'),TO_DATE('2021-07-14', 'YYYY-MM-DD'),'ARHIVIRAN','0')
+    RETURNING ID_IR INTO new_ID_IR;
+
+    INSERT INTO softverski_artifakt(ID_IR, PROGRAMSKI_JEZIK,REPO_LINK, NACIN_LICENCIRANJA, DOKUMENTACIJA)
+    VALUES (new_ID_IR, 'c++', 'www.github.com', 'SaaS', 'dokument.txt');
+
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA)
+    VALUES(new_ID_IR, 'WINDOWS');
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA)
+    VALUES (new_ID_IR, 'MACOS');
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA)
+    VALUES(new_ID_IR, 'LINUX');
+    -----------------------------------------------------------------------------------------------------------------------------------------------------
+    INSERT INTO uloga(ID_U) 
+    VALUES(DEFAULT) 
+    RETURNING ID_U INTO new_ID_U;
+
+    INSERT INTO recenzent(ID_U)
+    VALUES(new_ID_U);
+
+    INSERT INTO oblasti_ekspertize(ID_U,OBLAST_EKSPERTIZE)
+    VALUES(new_ID_U, 'Matematika');
+    INSERT INTO oblasti_ekspertize(ID_U,OBLAST_EKSPERTIZE)
+    VALUES(new_ID_U, 'Racunarske nauke');
+    INSERT INTO oblasti_ekspertize(ID_U,OBLAST_EKSPERTIZE)
+    VALUES(new_ID_U, 'Fizika');
+
+    INSERT INTO istrazivac(IME, DATUM_RODJENJA,DRZAVA,PREZIME, NAUCNA_OBLAST,NAUCNO_ZVANJE,STATUS_NAUCNIKA,ID_U)
+    VALUES('Petar', TO_DATE('1967-02-23', 'YYYY-MM-DD'), 'Srbija', 'Petrovic', 'Matematika','Doktor matematickih nauka', 'AKTIVAN', new_ID_U)
+    RETURNING ID_I into new_ID_I;
+
+    INSERT INTO mail(ID_I, MAIL)
+    VALUES(new_ID_I, 'PetarPetrovic@gmail.com');
+    INSERT INTO mail(ID_I, MAIL)
+    VALUES(new_ID_I, 'PeraZdera67@gmail.com');
+
+    INSERT INTO telefon(ID_I, TELEFON)
+    VALUES(new_ID_I, '+381632224444');
+    INSERT INTO telefon(ID_I, TELEFON)
+    VALUES(new_ID_I, '+38163555444');
+
+    INSERT INTO ni_institucija(NAZIV, ADRESA)
+    VALUES('Matematicki institut', 'Narodnih heroja BB')
+    RETURNING ID_NII INTO new_ID_NII;
+
+    INSERT INTO naucna_oblast(ID_NII, NAUCNA_OBLAST)
+    VALUES(new_ID_NII, 'Matematika');
+    
+    INSERT INTO naucna_oblast(ID_NII, NAUCNA_OBLAST)
+    VALUES(new_ID_NII, 'Fizika');
+    
+    INSERT INTO mail_institucija(ID_NII, MAIL)
+    VALUES(new_ID_NII, 'MatematickiInstitut@gmail.com');
+    INSERT INTO mail_institucija(ID_NII, MAIL)
+    VALUES(new_ID_NII, 'DepartmanZaMatematiku@gmail.com');
+
+    INSERT INTO telefon_institucija(ID_NII, TELEFON)
+    VALUES(new_ID_NII, '+38161234678');
+    INSERT INTO telefon_institucija(ID_NII, TELEFON)
+    VALUES(new_ID_NII, '+38160555432');
+
+    INSERT INTO angazovanje(ID_I, ID_NII, DATUM_ANGAZOVANJA, DATUM_ZAVRSETKA, ORGANIZACIONA_JEDINICA, NAZIV_POZICIJE, TIP_ANGAZOVANJA)
+    VALUES(new_ID_I,new_ID_NII, TO_DATE('2014-02-23', 'YYYY-MM-DD'),TO_DATE('2028-02-23', 'YYYY-MM-DD'), 'Matematicki fakultet', 'Profesor', 'PRIVREMEN');
+
+
 
     COMMIT;
 END;
