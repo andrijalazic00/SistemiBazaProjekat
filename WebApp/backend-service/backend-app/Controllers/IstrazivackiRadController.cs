@@ -6,5 +6,9 @@ namespace backend_app.Controllers;
 [Route("[controller]")]
 public class IstrazivackiRadController : ControllerBase
 {
-    
+    [HttpGet]
+    public IActionResult Get()
+    {
+        return Ok("Hello from IstrazivackiRadController!");
+    }
 }
