@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "kmET4dz23YA=",
+  "success": true,
+  "projectFilePath": "/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/backend-api/backend-api.csproj",
+  "expectedPackageFiles": [
+    "/home/andrija/.nuget/packages/antlr3.runtime/3.5.1/antlr3.runtime.3.5.1.nupkg.sha512",
+    "/home/andrija/.nuget/packages/fluentnhibernate/3.4.1/fluentnhibernate.3.4.1.nupkg.sha512",
+    "/home/andrija/.nuget/packages/iesi.collections/4.1.1/iesi.collections.4.1.1.nupkg.sha512",
+    "/home/andrija/.nuget/packages/microsoft.aspnetcore.openapi/10.0.11/microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",
+    "/home/andrija/.nuget/packages/microsoft.extensions.apidescription.server/10.0.0/microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/microsoft.netcore.platforms/1.0.1/microsoft.netcore.platforms.1.0.1.nupkg.sha512",
+    "/home/andrija/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512",
+    "/home/andrija/.nuget/packages/netstandard.library/1.6.0/netstandard.library.1.6.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/nhibernate/5.7.0/nhibernate.5.7.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/oracle.manageddataaccess.core/23.26.300/oracle.manageddataaccess.core.23.26.300.nupkg.sha512",
+    "/home/andrija/.nuget/packages/remotion.linq/2.2.0/remotion.linq.2.2.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/remotion.linq.eagerfetching/2.2.0/remotion.linq.eagerfetching.2.2.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/swashbuckle.aspnetcore/10.2.3/swashbuckle.aspnetcore.10.2.3.nupkg.sha512",
+    "/home/andrija/.nuget/packages/swashbuckle.aspnetcore.swagger/10.2.3/swashbuckle.aspnetcore.swagger.10.2.3.nupkg.sha512",
+    "/home/andrija/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.2.3/swashbuckle.aspnetcore.swaggergen.10.2.3.nupkg.sha512",
+    "/home/andrija/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.2.3/swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512",
+    "/home/andrija/.nuget/packages/system.configuration.configurationmanager/10.0.0/system.configuration.configurationmanager.10.0.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/system.diagnostics.performancecounter/8.0.0/system.diagnostics.performancecounter.8.0.0.nupkg.sha512",
+    "/home/andrija/.nuget/packages/system.directoryservices.protocols/8.0.2/system.directoryservices.protocols.8.0.2.nupkg.sha512",
+    "/home/andrija/.nuget/packages/system.security.cryptography.pkcs/8.0.1/system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
+    "/home/andrija/.nuget/packages/system.security.cryptography.protecteddata/10.0.0/system.security.cryptography.protecteddata.10.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
