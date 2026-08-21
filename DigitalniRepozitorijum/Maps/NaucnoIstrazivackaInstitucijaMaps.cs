@@ -19,11 +19,11 @@ namespace DigitalniRepozitorijum.Maps
             //Mapiranje tabele
             Table("NI_INSTITUCIJA");
             //Mapiranje PK
-            Id(x => x.ID_NII, "ID_NII").GeneratedBy.Native();
+            Id(x => x.ID_NII, "ID_NII").GeneratedBy.Sequence("SEQ_NI_INSTITUCIJA");
             //Mapiranje prostih entiteta
             Map(x => x.Naziv, "NAZIV");
             Map(x => x.Adresa, "ADRESA");
-            
+            HasMany(x=>x.Mailovi).KeyColumn("MAIL").Cascade.All();
         }
     }
 }

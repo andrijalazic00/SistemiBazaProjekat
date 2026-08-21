@@ -115,14 +115,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Entities\Istrazivac.cs" />
+    <Compile Include="Entities\MailInstitucija.cs" />
+    <Compile Include="Entities\NaucnaOblast.cs" />
     <Compile Include="Entities\NaucnoIstrazivackaInstitucija.cs" />
+    <Compile Include="Entities\TelefonInstitucija.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maps\IstrazivacMaps.cs" />
+    <Compile Include="Maps\MailInstitucijaMaps.cs" />
+    <Compile Include="Maps\NaucnaOblastMaps.cs" />
     <Compile Include="Maps\NaucnoIstrazivackaInstitucijaMaps.cs" />
+    <Compile Include="Maps\TelefonInstitucijaMaps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

@@ -24,6 +24,14 @@ namespace DigitalniRepozitorijum
             try 
             {
                 ISession s = DataLayer.GetSession();
+
+                NaucnoIstrazivackaInstitucija n2 = s.Load<NaucnoIstrazivackaInstitucija>(1);
+                NaucnoIstrazivackaInstitucija n = new NaucnoIstrazivackaInstitucija();
+                n.Naziv = "Institut Podvodnih Istrazivanja";
+                n.Adresa = "Nikole Tesle 32";
+                s.SaveOrUpdate(n);
+                s.Flush();
+
                 s.Close();
                 
             }

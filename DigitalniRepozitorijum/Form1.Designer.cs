@@ -33,9 +33,9 @@
             // 
             // DodajNII
             // 
-            this.DodajNII.Location = new System.Drawing.Point(255, 201);
+            this.DodajNII.Location = new System.Drawing.Point(66, 47);
             this.DodajNII.Name = "DodajNII";
-            this.DodajNII.Size = new System.Drawing.Size(75, 23);
+            this.DodajNII.Size = new System.Drawing.Size(210, 25);
             this.DodajNII.TabIndex = 0;
             this.DodajNII.Text = "DodajNII";
             this.DodajNII.UseVisualStyleBackColor = true;
