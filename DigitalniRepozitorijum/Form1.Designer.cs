@@ -28,25 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DodajNII = new System.Windows.Forms.Button();
+            this.btnDodajNII = new System.Windows.Forms.Button();
+            this.btnDodajIstrazivaca = new System.Windows.Forms.Button();
+            this.btnDodajUlogu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // DodajNII
+            // btnDodajNII
             // 
-            this.DodajNII.Location = new System.Drawing.Point(255, 201);
-            this.DodajNII.Name = "DodajNII";
-            this.DodajNII.Size = new System.Drawing.Size(75, 23);
-            this.DodajNII.TabIndex = 0;
-            this.DodajNII.Text = "DodajNII";
-            this.DodajNII.UseVisualStyleBackColor = true;
-            this.DodajNII.Click += new System.EventHandler(this.DodajNII_Click);
+            this.btnDodajNII.Location = new System.Drawing.Point(66, 47);
+            this.btnDodajNII.Name = "btnDodajNII";
+            this.btnDodajNII.Size = new System.Drawing.Size(210, 25);
+            this.btnDodajNII.TabIndex = 0;
+            this.btnDodajNII.Text = "DodajNII";
+            this.btnDodajNII.UseVisualStyleBackColor = true;
+            this.btnDodajNII.Click += new System.EventHandler(this.btnDodajNII_Click);
+            // 
+            // btnDodajIstrazivaca
+            // 
+            this.btnDodajIstrazivaca.Location = new System.Drawing.Point(72, 103);
+            this.btnDodajIstrazivaca.Name = "btnDodajIstrazivaca";
+            this.btnDodajIstrazivaca.Size = new System.Drawing.Size(203, 22);
+            this.btnDodajIstrazivaca.TabIndex = 1;
+            this.btnDodajIstrazivaca.Text = "Dodaj istrazivaca";
+            this.btnDodajIstrazivaca.UseVisualStyleBackColor = true;
+            this.btnDodajIstrazivaca.Click += new System.EventHandler(this.btnDodajIstrazivaca_Click);
+            // 
+            // btnDodajUlogu
+            // 
+            this.btnDodajUlogu.Location = new System.Drawing.Point(76, 155);
+            this.btnDodajUlogu.Name = "btnDodajUlogu";
+            this.btnDodajUlogu.Size = new System.Drawing.Size(199, 22);
+            this.btnDodajUlogu.TabIndex = 2;
+            this.btnDodajUlogu.Text = "Dodaj ulogu";
+            this.btnDodajUlogu.UseVisualStyleBackColor = true;
+            this.btnDodajUlogu.Click += new System.EventHandler(this.btnDodajUlogu_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DodajNII);
+            this.Controls.Add(this.btnDodajUlogu);
+            this.Controls.Add(this.btnDodajIstrazivaca);
+            this.Controls.Add(this.btnDodajNII);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,7 +79,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button DodajNII;
+        private System.Windows.Forms.Button btnDodajNII;
+        private System.Windows.Forms.Button btnDodajIstrazivaca;
+        private System.Windows.Forms.Button btnDodajUlogu;
     }
 }
 

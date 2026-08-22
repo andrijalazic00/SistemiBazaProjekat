@@ -1,4 +1,0 @@
-<Solution>
-  <Project Path="backend-app/backend-app.csproj" />
-  <Project Path="databaseacesslib/databaseacesslib.csproj" />
-</Solution>
