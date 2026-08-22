@@ -115,22 +115,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="Entities\AdministratorOvlascenja.cs" />
+    <Compile Include="Entities\AdministratorRepozitorijuma.cs" />
+    <Compile Include="Entities\Autor.cs" />
     <Compile Include="Entities\Istrazivac.cs" />
+    <Compile Include="Entities\Mail.cs" />
     <Compile Include="Entities\MailInstitucija.cs" />
     <Compile Include="Entities\NaucnaOblast.cs" />
     <Compile Include="Entities\NaucnoIstrazivackaInstitucija.cs" />
+    <Compile Include="Entities\OblastiEkspertize.cs" />
+    <Compile Include="Entities\Recezent.cs" />
+    <Compile Include="Entities\RukovodilacProjekta.cs" />
+    <Compile Include="Entities\Telefon.cs" />
     <Compile Include="Entities\TelefonInstitucija.cs" />
+    <Compile Include="Entities\Uloga.cs" />
+    <Compile Include="Entities\Urednik.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maps\AdministratorOvlascenjaMaps.cs" />
+    <Compile Include="Maps\AdministratorRepozitorijumaMaps.cs" />
+    <Compile Include="Maps\AutorMaps.cs" />
     <Compile Include="Maps\IstrazivacMaps.cs" />
     <Compile Include="Maps\MailInstitucijaMaps.cs" />
+    <Compile Include="Maps\MailMaps.cs" />
     <Compile Include="Maps\NaucnaOblastMaps.cs" />
     <Compile Include="Maps\NaucnoIstrazivackaInstitucijaMaps.cs" />
+    <Compile Include="Maps\OblastiEkspertizeMaps.cs" />
+    <Compile Include="Maps\RecezentMaps.cs" />
+    <Compile Include="Maps\RukovodilacProjektaMaps.cs" />
     <Compile Include="Maps\TelefonInstitucijaMaps.cs" />
+    <Compile Include="Maps\TelefonMaps.cs" />
+    <Compile Include="Maps\UlogaMaps.cs" />
+    <Compile Include="Maps\UrednikMaps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
