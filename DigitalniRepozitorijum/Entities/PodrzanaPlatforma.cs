@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace DigitalniRepozitorijum.Entities
 {
-    public class MailInstitucija
+    public class PodrzanaPlatforma
     {
-        
-        public virtual NaucnoIstrazivackaInstitucija ID_NII { get;  set; }
-        public virtual string MailAdresa { get;  set; }
-        
+        public virtual IstrazivackiRezultat ID_IR { get; set; }
+        public virtual string Platforma { get;  set; }
 
-        public MailInstitucija()
+        public PodrzanaPlatforma()
         {
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is MailInstitucija other)) return false;
+            if (!(obj is PodrzanaPlatforma other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return ID_NII.ID_NII == other.ID_NII.ID_NII && MailAdresa == other.MailAdresa;
+            return ID_IR.ID_IR == other.ID_IR.ID_IR && Platforma == other.Platforma;
         }
 
         public override int GetHashCode()

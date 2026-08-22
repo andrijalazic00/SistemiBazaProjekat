@@ -20,7 +20,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is Mail other)) return false;
-            return ID_I == other.ID_I && MailAdresa == other.MailAdresa;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_I.ID_I == other.ID_I.ID_I && MailAdresa == other.MailAdresa;
         }
 
         public override int GetHashCode()

@@ -14,12 +14,14 @@ namespace DigitalniRepozitorijum.Entities
         public virtual IList<MailInstitucija> Mailovi {  get; set; }
         public virtual IList<TelefonInstitucija> Telefoni {  get; set; }
         public virtual IList<NaucnaOblast> NaucneOblasti {  get; set; }
+        public virtual IList<Angazovanje> Istrazivaci {  get; set; }
 
         public NaucnoIstrazivackaInstitucija()
         {
             Mailovi = new List<MailInstitucija>();
             Telefoni = new List<TelefonInstitucija>();
             NaucneOblasti = new List<NaucnaOblast>();
+            Istrazivaci=new List<Angazovanje>();
         }
         
     }

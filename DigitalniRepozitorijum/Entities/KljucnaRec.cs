@@ -6,26 +6,24 @@ using System.Threading.Tasks;
 
 namespace DigitalniRepozitorijum.Entities
 {
-    public class TelefonInstitucija
+    public class KljucnaRec
     {
-        public virtual NaucnoIstrazivackaInstitucija ID_NII { get;  set; }
-        public virtual string Broj { get;  set; }
+        public virtual IstrazivackiRezultat ID_IR { get;  set; }
+        public virtual string Rec { get; set; }
 
-        public TelefonInstitucija()
+        public KljucnaRec()
         {
-
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is TelefonInstitucija other)) return false;
+            if (!(obj is KljucnaRec other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return ID_NII.ID_NII == other.ID_NII.ID_NII && Broj == other.Broj;
+            return ID_IR.ID_IR == other.ID_IR.ID_IR && Rec == other.Rec;
         }
-
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+               return base.GetHashCode();
         }
     }
 }
