@@ -19,7 +19,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is TelefonInstitucija other)) return false;
-            return ID_NII == other.ID_NII && Broj == other.Broj;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_NII.ID_NII == other.ID_NII.ID_NII && Broj == other.Broj;
         }
 
         public override int GetHashCode()

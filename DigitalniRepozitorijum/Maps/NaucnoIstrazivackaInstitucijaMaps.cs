@@ -27,6 +27,7 @@ namespace DigitalniRepozitorijum.Maps
             HasMany(x=>x.Mailovi).KeyColumn("ID_NII").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Telefoni).KeyColumn("ID_NII").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.NaucneOblasti).KeyColumn("ID_NII").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Istrazivaci).KeyColumn("ID_NII").LazyLoad().Cascade.All().Inverse();
         }
     }
 }

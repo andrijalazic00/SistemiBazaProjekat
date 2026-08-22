@@ -307,5 +307,32 @@ namespace DigitalniRepozitorijum
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        private void btnPoveziIstrazivacNII_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Istrazivac i = s.Load<Istrazivac>(5);
+                NaucnoIstrazivackaInstitucija n = s.Load<NaucnoIstrazivackaInstitucija>(1);
+                Angazovanje a = new Angazovanje();
+                a.ID_I = i;
+                a.ID_NII = n;
+                a.TipAngazovanja = "STALNI";
+                a.DatumAngazovanja = new DateTime(2005, 5, 5);
+                a.OrganizacionaJedinica = "Katedra za biologiju";
+                a.NazivPozicije = "Profesor";
+
+                s.Save(a);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+        }
     }
 }

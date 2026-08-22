@@ -18,7 +18,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is PodrzanaPlatforma other)) return false;
-            return ID_IR == other.ID_IR && Platforma == other.Platforma;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_IR.ID_IR == other.ID_IR.ID_IR && Platforma == other.Platforma;
         }
 
         public override int GetHashCode()

@@ -21,7 +21,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is Verzija other)) return false;
-            return ID_IR == other.ID_IR && BrojVerzije == other.BrojVerzije;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_IR.ID_IR == other.ID_IR.ID_IR && BrojVerzije == other.BrojVerzije;
         }
 
         public override int GetHashCode()

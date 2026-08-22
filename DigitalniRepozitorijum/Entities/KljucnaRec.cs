@@ -18,7 +18,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is KljucnaRec other)) return false;
-            return ID_IR == other.ID_IR && Rec == other.Rec;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_IR.ID_IR == other.ID_IR.ID_IR && Rec == other.Rec;
         }
         public override int GetHashCode()
         {

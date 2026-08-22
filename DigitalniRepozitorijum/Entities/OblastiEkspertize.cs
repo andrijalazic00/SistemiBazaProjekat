@@ -18,7 +18,8 @@ namespace DigitalniRepozitorijum.Entities
         public override bool Equals(object obj)
         {
             if (!(obj is OblastiEkspertize other)) return false;
-            return ID_U == other.ID_U && Oblast == other.Oblast;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_U.ID_U == other.ID_U.ID_U && Oblast == other.Oblast;
         }
 
         public override int GetHashCode()
