@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\datalayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|c:\\sistemigit\\sistemibazaprojekat\\digitalnirepozitorijum\\datalayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:datalayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|c:\\sistemigit\\sistemibazaprojekat\\digitalnirepozitorijum\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|c:\\sistemigit\\sistemibazaprojekat\\digitalnirepozitorijum\\entities\\verzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:entities\\verzija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|c:\\sistemigit\\sistemibazaprojekat\\digitalnirepozitorijum\\entities\\kljucnarec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:entities\\kljucnarec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|c:\\sistemigit\\sistemibazaprojekat\\digitalnirepozitorijum\\entities\\podrzanaplatforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:entities\\podrzanaplatforma.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,12 +81,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\entities\\telefoninstitucija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{931DFC80-1D7F-44AC-96C2-4B8B9DABA5CF}|DigitalniRepozitorijum.csproj|solutionrelative:entities\\telefoninstitucija.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfoInputs.cache||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -108,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 282,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -120,42 +102,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PodrzanaPlatforma.cs",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\PodrzanaPlatforma.cs",
-              "RelativeDocumentMoniker": "Entities\\PodrzanaPlatforma.cs",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\PodrzanaPlatforma.cs",
-              "RelativeToolTip": "Entities\\PodrzanaPlatforma.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "DataLayer.cs",
+              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\DataLayer.cs",
+              "RelativeDocumentMoniker": "DataLayer.cs",
+              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\DataLayer.cs",
+              "RelativeToolTip": "DataLayer.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCEAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T16:28:46.398Z",
+              "WhenOpened": "2026-08-21T23:49:28.845Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "KljucnaRec.cs",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\KljucnaRec.cs",
-              "RelativeDocumentMoniker": "Entities\\KljucnaRec.cs",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\KljucnaRec.cs",
-              "RelativeToolTip": "Entities\\KljucnaRec.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T16:12:36.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Verzija.cs",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\Verzija.cs",
-              "RelativeDocumentMoniker": "Entities\\Verzija.cs",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\Verzija.cs",
-              "RelativeToolTip": "Entities\\Verzija.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T16:08:05.681Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -167,37 +127,22 @@
               "RelativeToolTip": "Form1.cs",
               "ViewState": "AgIAALgAAAAAAAAAAAAAAM0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-17T17:57:46.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-17T17:57:46.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataLayer.cs",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\DataLayer.cs",
-              "RelativeDocumentMoniker": "DataLayer.cs",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\DataLayer.cs",
-              "RelativeToolTip": "DataLayer.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAYwCEAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-21T23:49:28.845Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-17T16:25:34.581Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-08-17T16:25:34.581Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 5,
               "Title": "OblastiEkspertizeMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\OblastiEkspertizeMaps.cs",
               "RelativeDocumentMoniker": "Maps\\OblastiEkspertizeMaps.cs",
@@ -209,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "OblastiEkspertize.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\OblastiEkspertize.cs",
               "RelativeDocumentMoniker": "Entities\\OblastiEkspertize.cs",
@@ -221,7 +166,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "MailMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\MailMaps.cs",
               "RelativeDocumentMoniker": "Maps\\MailMaps.cs",
@@ -233,7 +178,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 8,
               "Title": "NaucnaOblast.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\NaucnaOblast.cs",
               "RelativeDocumentMoniker": "Entities\\NaucnaOblast.cs",
@@ -245,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Mail.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\Mail.cs",
               "RelativeDocumentMoniker": "Entities\\Mail.cs",
@@ -253,12 +198,11 @@
               "RelativeToolTip": "Entities\\Mail.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-21T23:31:02.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-21T23:31:02.092Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -266,12 +210,11 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-18T19:22:29.542Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-18T19:22:29.542Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 9,
               "Title": "MailInstitucijaMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\MailInstitucijaMaps.cs",
               "RelativeDocumentMoniker": "Maps\\MailInstitucijaMaps.cs",
@@ -283,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 10,
               "Title": "NaucnaOblastMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\NaucnaOblastMaps.cs",
               "RelativeDocumentMoniker": "Maps\\NaucnaOblastMaps.cs",
@@ -295,7 +238,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 11,
               "Title": "NaucnoIstrazivackaInstitucija.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\NaucnoIstrazivackaInstitucija.cs",
               "RelativeDocumentMoniker": "Entities\\NaucnoIstrazivackaInstitucija.cs",
@@ -307,7 +250,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 12,
               "Title": "NaucnoIstrazivackaInstitucijaMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\NaucnoIstrazivackaInstitucijaMaps.cs",
               "RelativeDocumentMoniker": "Maps\\NaucnoIstrazivackaInstitucijaMaps.cs",
@@ -319,7 +262,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 13,
               "Title": "Recezent.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\Recezent.cs",
               "RelativeDocumentMoniker": "Entities\\Recezent.cs",
@@ -331,7 +274,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 14,
               "Title": "RecezentMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\RecezentMaps.cs",
               "RelativeDocumentMoniker": "Maps\\RecezentMaps.cs",
@@ -343,7 +286,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 15,
               "Title": "RukovodilacProjektaMaps.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Maps\\RukovodilacProjektaMaps.cs",
               "RelativeDocumentMoniker": "Maps\\RukovodilacProjektaMaps.cs",
@@ -355,7 +298,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 16,
               "Title": "Urednik.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\Urednik.cs",
               "RelativeDocumentMoniker": "Entities\\Urednik.cs",
@@ -367,7 +310,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 17,
               "Title": "RukovodilacProjekta.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\RukovodilacProjekta.cs",
               "RelativeDocumentMoniker": "Entities\\RukovodilacProjekta.cs",
@@ -379,7 +322,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 19,
               "Title": "TelefonInstitucija.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\TelefonInstitucija.cs",
               "RelativeDocumentMoniker": "Entities\\TelefonInstitucija.cs",
@@ -391,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 18,
               "Title": "MailInstitucija.cs",
               "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\DigitalniRepozitorijum\\Entities\\MailInstitucija.cs",
               "RelativeDocumentMoniker": "Entities\\MailInstitucija.cs",
@@ -400,30 +343,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-21T01:19:27.162Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "backend-app.AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "..\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfo.cs",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfo.cs",
-              "RelativeToolTip": "..\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-21T02:12:02.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "backend-app.AssemblyInfoInputs.cache",
-              "DocumentMoniker": "C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfoInputs.cache",
-              "RelativeDocumentMoniker": "..\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfoInputs.cache",
-              "ToolTip": "C:\\SistemiGIt\\SistemiBazaProjekat\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfoInputs.cache",
-              "RelativeToolTip": "..\\WebApp\\backend-service\\backend-app\\obj\\Debug\\net10.0\\backend-app.AssemblyInfoInputs.cache",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002368|",
-              "WhenOpened": "2026-08-21T02:13:25.389Z"
             }
           ]
         }
