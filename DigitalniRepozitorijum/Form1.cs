@@ -199,5 +199,113 @@ namespace DigitalniRepozitorijum
                 Console.WriteLine(ex.ToString() ); 
             }
         }
+
+        private void btnDodajIR_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Dataset ds = new Dataset();
+                ds.Naslov = "Neki dataset";
+                ds.Apstrakt = "Dataset za testiranje mapiranja";
+                ds.DatumKreiranja= new DateTime(2024, 2, 25);
+                ds.DatumObjavljivanja = new DateTime(2026, 5, 30);
+                ds.StatusIR = "OBJAVLJEN";
+                ds.Vidljivost = 1;
+                ds.Format = "Json";
+                ds.Velicina = 1000;
+                ds.BrojZapisa = 25000;
+                ds.OpisStrukture = "Neka struktura";
+                ds.PeriodObuhvataPodataka = "12.3.2010-12.3.2020";
+                ds.LicencaKoriscenja = "Neka licenca";
+                ds.OgranicenjaPristupa = "Neka ogranicenja pristupa";
+
+                Verzija v=new Verzija();
+                v.ID_IR = ds;
+                v.BrojVerzije = 1;
+                v.DatumPostavljanja = new DateTime(2024, 2, 3);
+                v.OpisIzmena = "Neke izmene";
+                v.OdgovornaOsoba = "Grof Drakula";
+
+                Verzija v2 = new Verzija();
+                v2.ID_IR = ds;
+                v2.BrojVerzije = 2;
+                v2.DatumPostavljanja = new DateTime(2024, 4, 3);
+                v2.OpisIzmena = "Neke izmene druga verzija";
+                v2.OdgovornaOsoba = "Grof Drakula";
+
+                KljucnaRec kr=new KljucnaRec();
+                kr.ID_IR = ds;
+                kr.Rec = "Zelenilo";
+                
+                KljucnaRec kr2 = new KljucnaRec();
+                kr2.ID_IR = ds;
+                kr2.Rec = "Drvo";
+
+                ds.KljucneReci.Add(kr);
+                ds.KljucneReci.Add(kr2);
+                ds.Verzije.Add(v);
+                ds.Verzije.Add(v2);
+                /////////////////////////////
+                
+                SoftverskiArtifakt sa=new SoftverskiArtifakt();
+                sa.Naslov = "Neki softverski artifakt";
+                sa.Apstrakt = "Softverski artifakt za testiranje mapiranja";
+                sa.DatumKreiranja = new DateTime(2022, 2, 25);
+                sa.DatumObjavljivanja = new DateTime(2023, 5, 30);
+                sa.StatusIR = "U_PRIPREMI";
+                sa.ProgramskiJezik = "C#";
+                sa.RepoLink = "www.neikrepo.com";
+                sa.NacinLicenciranja = "Perpetulal Licence";
+                sa.Dokumentacija = "Neka dokumentacija";
+
+                PodrzanaPlatforma pp=new PodrzanaPlatforma();
+                pp.ID_IR = sa;
+                pp.Platforma = "LINUX";
+
+                PodrzanaPlatforma pp2 = new PodrzanaPlatforma();
+                pp2.ID_IR = sa;
+                pp2.Platforma = "WINDOWS";
+
+                Verzija v3 = new Verzija();
+                v3.ID_IR = sa;
+                v3.BrojVerzije = 1;
+                v3.DatumPostavljanja = new DateTime(2024, 4, 3);
+                v3.OpisIzmena = "Neke izmene";
+                v3.OdgovornaOsoba = "Pavle Pavlovic";
+
+                Verzija v4 = new Verzija();
+                v4.ID_IR = sa;
+                v4.BrojVerzije = 2;
+                v4.DatumPostavljanja = new DateTime(2025, 4, 3);
+                v4.OpisIzmena = "Neke izmene druga verzija";
+                v4.OdgovornaOsoba = "Pavle Pavlovic";
+
+                KljucnaRec kr3 = new KljucnaRec();
+                kr3.ID_IR = sa;
+                kr3.Rec = "Trotoar";
+
+                KljucnaRec kr4 = new KljucnaRec();
+                kr4.ID_IR = sa;
+                kr4.Rec = "Pesak";
+
+                sa.PodrzanePlatforme.Add(pp);
+                sa.PodrzanePlatforme.Add(pp2);
+                sa.Verzije.Add(v3);
+                sa.Verzije.Add(v4);
+                sa.KljucneReci.Add(kr3);
+                sa.KljucneReci.Add(kr4);
+
+
+                s.Save(ds);
+                s.Save(sa);
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
     }
 }

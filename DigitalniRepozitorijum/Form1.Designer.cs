@@ -31,6 +31,7 @@
             this.btnDodajNII = new System.Windows.Forms.Button();
             this.btnDodajIstrazivaca = new System.Windows.Forms.Button();
             this.btnDodajUlogu = new System.Windows.Forms.Button();
+            this.btnDodajIR = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajNII
@@ -63,11 +64,22 @@
             this.btnDodajUlogu.UseVisualStyleBackColor = true;
             this.btnDodajUlogu.Click += new System.EventHandler(this.btnDodajUlogu_Click);
             // 
+            // btnDodajIR
+            // 
+            this.btnDodajIR.Location = new System.Drawing.Point(66, 197);
+            this.btnDodajIR.Name = "btnDodajIR";
+            this.btnDodajIR.Size = new System.Drawing.Size(208, 24);
+            this.btnDodajIR.TabIndex = 3;
+            this.btnDodajIR.Text = "Dodaj istrazivacki rezultat";
+            this.btnDodajIR.UseVisualStyleBackColor = true;
+            this.btnDodajIR.Click += new System.EventHandler(this.btnDodajIR_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDodajIR);
             this.Controls.Add(this.btnDodajUlogu);
             this.Controls.Add(this.btnDodajIstrazivaca);
             this.Controls.Add(this.btnDodajNII);
@@ -82,6 +94,7 @@
         private System.Windows.Forms.Button btnDodajNII;
         private System.Windows.Forms.Button btnDodajIstrazivaca;
         private System.Windows.Forms.Button btnDodajUlogu;
+        private System.Windows.Forms.Button btnDodajIR;
     }
 }
 
