@@ -13,6 +13,8 @@ namespace DigitalniRepozitorijum.Entities
         public virtual string RepoLink { get; set; }
         public virtual string NacinLicenciranja { get; set; }
         public virtual string Dokumentacija { get; set; }
+        
+        public virtual Publikacija Publikacija { get; set; }
 
         public virtual IList<PodrzanaPlatforma> PodrzanePlatforme {  get; set; }
         

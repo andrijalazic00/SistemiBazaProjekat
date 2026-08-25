@@ -33,6 +33,7 @@
             this.btnDodajUlogu = new System.Windows.Forms.Button();
             this.btnDodajIR = new System.Windows.Forms.Button();
             this.btnPoveziIstrazivacNII = new System.Windows.Forms.Button();
+            this.btnDodajPublikaciju = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajNII
@@ -85,11 +86,22 @@
             this.btnPoveziIstrazivacNII.UseVisualStyleBackColor = true;
             this.btnPoveziIstrazivacNII.Click += new System.EventHandler(this.btnPoveziIstrazivacNII_Click);
             // 
+            // btnDodajPublikaciju
+            // 
+            this.btnDodajPublikaciju.Location = new System.Drawing.Point(69, 290);
+            this.btnDodajPublikaciju.Name = "btnDodajPublikaciju";
+            this.btnDodajPublikaciju.Size = new System.Drawing.Size(203, 29);
+            this.btnDodajPublikaciju.TabIndex = 5;
+            this.btnDodajPublikaciju.Text = "Dodaj Publikaciju";
+            this.btnDodajPublikaciju.UseVisualStyleBackColor = true;
+            this.btnDodajPublikaciju.Click += new System.EventHandler(this.btnDodajPublikaciju_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDodajPublikaciju);
             this.Controls.Add(this.btnPoveziIstrazivacNII);
             this.Controls.Add(this.btnDodajIR);
             this.Controls.Add(this.btnDodajUlogu);
@@ -108,6 +120,7 @@
         private System.Windows.Forms.Button btnDodajUlogu;
         private System.Windows.Forms.Button btnDodajIR;
         private System.Windows.Forms.Button btnPoveziIstrazivacNII;
+        private System.Windows.Forms.Button btnDodajPublikaciju;
     }
 }
 

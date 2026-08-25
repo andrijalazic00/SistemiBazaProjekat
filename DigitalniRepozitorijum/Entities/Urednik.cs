@@ -10,9 +10,11 @@ namespace DigitalniRepozitorijum.Entities
     {
         //public virtual int ID_U { get; protected set; }
         public virtual string UredjivackaSekcija { get; set; }
+        public virtual IList<RundaRecenzije> RundeRecenzije {  get; set; }
 
         public Urednik()
         {
+            RundeRecenzije = new List<RundaRecenzije>();
         }
     }
 }

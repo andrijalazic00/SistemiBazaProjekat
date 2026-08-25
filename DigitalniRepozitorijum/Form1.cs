@@ -53,7 +53,7 @@ namespace DigitalniRepozitorijum
                 OblastiEkspertize oe2 = new OblastiEkspertize();
                 oe2.Oblast = "Vuklani";
 
-                Recezent recezent = new Recezent();
+                Recenzent recezent = new Recenzent();
                 recezent.ID_I = I;
                 recezent.OblastiEkspertize.Add(oe);
                 recezent.OblastiEkspertize.Add(oe2);
@@ -332,6 +332,36 @@ namespace DigitalniRepozitorijum
             {
                 Console.WriteLine(ex.ToString());
             }
+
+        }
+
+        private void btnDodajPublikaciju_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                Publikacija p = new Publikacija();
+                p.ID_IR = s.Load<Dataset>(2);
+                Publikacija p2 = new Publikacija();
+                p2.ID_IR = s.Load<SoftverskiArtifakt>(3);
+                s.Save(p);
+                s.Save(p2);
+
+                Citat c = new Citat(p, p2);
+                c.KontekstCitiranja = "Neki kontekst citiranja";
+                c.MestoCitiranja = "25 str. 5 paragraf";
+                c.TipCitata = "DIREKTAN";
+                
+                s.Save(c);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            
 
         }
     }

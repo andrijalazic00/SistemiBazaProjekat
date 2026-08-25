@@ -16,6 +16,8 @@ namespace DigitalniRepozitorijum.Entities
         public virtual string PeriodObuhvataPodataka { get; set; }
         public virtual string LicencaKoriscenja { get; set; }
         public virtual string OgranicenjaPristupa { get; set; }
+        
+        public virtual Publikacija Publikacija { get; set; }
 
         public Dataset()
         {

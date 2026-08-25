@@ -20,6 +20,8 @@ namespace DigitalniRepozitorijum.Maps
             Map(x => x.PeriodObuhvataPodataka, "PERIOD_OBUHVATA_PODATAKA").Not.Nullable();
             Map(x => x.LicencaKoriscenja, "LICENCA_KORISCENJA").Not.Nullable();
             Map(x => x.OgranicenjaPristupa, "OGRANICENJA_PRISTUPA").Not.Nullable();
+
+            HasOne(x => x.Publikacija).PropertyRef(x => x.ID_IR);
         }
     }
 }
