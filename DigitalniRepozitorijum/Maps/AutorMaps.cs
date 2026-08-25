@@ -15,7 +15,7 @@ namespace DigitalniRepozitorijum.Maps
             Table("AUTOR");
             KeyColumn("ID_U");
             Map(x => x.Orcid, "ORCID").Not.Nullable();
-
+            HasMany(x => x.Autorstva).KeyColumn("ID_U").LazyLoad().Cascade.All().Inverse();
             //HasOne(x => x.Uloga).Constrained().Cascade.All();
         }
     }

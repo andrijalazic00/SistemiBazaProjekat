@@ -16,6 +16,9 @@ namespace DigitalniRepozitorijum.Maps
             Table("UREDNIK");
             KeyColumn("ID_U");
             Map(x => x.UredjivackaSekcija, "UREDJIVACKA_SEKCIJA");
+
+            HasMany(x => x.RundeRecenzije).KeyColumn("ID_U").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Knjige).KeyColumn("ID_UREDNIKA").LazyLoad().Cascade.All();
         }
         
     }

@@ -33,6 +33,10 @@
             this.btnDodajUlogu = new System.Windows.Forms.Button();
             this.btnDodajIR = new System.Windows.Forms.Button();
             this.btnPoveziIstrazivacNII = new System.Windows.Forms.Button();
+            this.btnDodajPublikaciju = new System.Windows.Forms.Button();
+            this.btnAutorstvo = new System.Windows.Forms.Button();
+            this.btnUredjuje = new System.Windows.Forms.Button();
+            this.btnPublikacijaVeze = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajNII
@@ -85,11 +89,55 @@
             this.btnPoveziIstrazivacNII.UseVisualStyleBackColor = true;
             this.btnPoveziIstrazivacNII.Click += new System.EventHandler(this.btnPoveziIstrazivacNII_Click);
             // 
+            // btnDodajPublikaciju
+            // 
+            this.btnDodajPublikaciju.Location = new System.Drawing.Point(69, 290);
+            this.btnDodajPublikaciju.Name = "btnDodajPublikaciju";
+            this.btnDodajPublikaciju.Size = new System.Drawing.Size(203, 29);
+            this.btnDodajPublikaciju.TabIndex = 5;
+            this.btnDodajPublikaciju.Text = "Dodaj Publikaciju";
+            this.btnDodajPublikaciju.UseVisualStyleBackColor = true;
+            this.btnDodajPublikaciju.Click += new System.EventHandler(this.btnDodajPublikaciju_Click);
+            // 
+            // btnAutorstvo
+            // 
+            this.btnAutorstvo.Location = new System.Drawing.Point(66, 344);
+            this.btnAutorstvo.Name = "btnAutorstvo";
+            this.btnAutorstvo.Size = new System.Drawing.Size(205, 26);
+            this.btnAutorstvo.TabIndex = 6;
+            this.btnAutorstvo.Text = "Povezi autora i publikaciju";
+            this.btnAutorstvo.UseVisualStyleBackColor = true;
+            this.btnAutorstvo.Click += new System.EventHandler(this.btnAutorstvo_Click);
+            // 
+            // btnUredjuje
+            // 
+            this.btnUredjuje.Location = new System.Drawing.Point(326, 51);
+            this.btnUredjuje.Name = "btnUredjuje";
+            this.btnUredjuje.Size = new System.Drawing.Size(215, 20);
+            this.btnUredjuje.TabIndex = 7;
+            this.btnUredjuje.Text = "Dodaj knjigu i urednika";
+            this.btnUredjuje.UseVisualStyleBackColor = true;
+            this.btnUredjuje.Click += new System.EventHandler(this.btnUredjuje_Click);
+            // 
+            // btnPublikacijaVeze
+            // 
+            this.btnPublikacijaVeze.Location = new System.Drawing.Point(323, 102);
+            this.btnPublikacijaVeze.Name = "btnPublikacijaVeze";
+            this.btnPublikacijaVeze.Size = new System.Drawing.Size(217, 22);
+            this.btnPublikacijaVeze.TabIndex = 8;
+            this.btnPublikacijaVeze.Text = "Dodaj publikaciju i veze";
+            this.btnPublikacijaVeze.UseVisualStyleBackColor = true;
+            this.btnPublikacijaVeze.Click += new System.EventHandler(this.btnPublikacijaVeze_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnPublikacijaVeze);
+            this.Controls.Add(this.btnUredjuje);
+            this.Controls.Add(this.btnAutorstvo);
+            this.Controls.Add(this.btnDodajPublikaciju);
             this.Controls.Add(this.btnPoveziIstrazivacNII);
             this.Controls.Add(this.btnDodajIR);
             this.Controls.Add(this.btnDodajUlogu);
@@ -108,6 +156,10 @@
         private System.Windows.Forms.Button btnDodajUlogu;
         private System.Windows.Forms.Button btnDodajIR;
         private System.Windows.Forms.Button btnPoveziIstrazivacNII;
+        private System.Windows.Forms.Button btnDodajPublikaciju;
+        private System.Windows.Forms.Button btnAutorstvo;
+        private System.Windows.Forms.Button btnUredjuje;
+        private System.Windows.Forms.Button btnPublikacijaVeze;
     }
 }
 

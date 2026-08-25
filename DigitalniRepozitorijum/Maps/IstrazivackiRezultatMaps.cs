@@ -23,6 +23,8 @@ namespace DigitalniRepozitorijum.Maps
             Map(x => x.StatusIR, "STATUS_IR").Not.Nullable();
             Map(x => x.Vidljivost, "VIDLJIVOST").Not.Nullable();
 
+            ///HasOne(x => x.Publikacija).PropertyRef(x => x.ID_IR);
+
             HasMany(x => x.KljucneReci).KeyColumn("ID_IR").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Verzije).KeyColumn("ID_IR").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.PripadajuciFajlovi).KeyColumn("ID_IR").LazyLoad().Cascade.All().Inverse();

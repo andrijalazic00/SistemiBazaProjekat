@@ -8,7 +8,7 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class OblastiEkspertize
     {
-        public virtual Recezent ID_U { get;  set; }
+        public virtual Recenzent ID_U { get;  set; }
         public virtual string Oblast { get;  set; }
 
         public OblastiEkspertize()

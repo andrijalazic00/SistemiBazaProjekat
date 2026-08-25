@@ -16,6 +16,8 @@ namespace DigitalniRepozitorijum.Entities
         public virtual string StatusIR { get; set; }
         public virtual int Vidljivost { get; set; }
 
+        //public virtual Publikacija Publikacija { get; set; }
+
         public virtual IList<KljucnaRec> KljucneReci { get; set; }
         public virtual IList<Verzija> Verzije { get; set; }
         public virtual IList<PripadajuciFajl> PripadajuciFajlovi { get; set; }

@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace DigitalniRepozitorijum.Maps
 {
-    class TehnickiIzvestajMaps : SubclassMap<TehnickiIzvestaj>
+    class UredujeMaps : ClassMap<Uredjuje>
     {
-        public TehnickiIzvestajMaps()
+        public UredujeMaps()
         {
-            Table("TEHNICKI_IZVESTAJ");
-            KeyColumn("ID_IR");
-            HasOne(x => x.Publikacija).PropertyRef(x => x.ID_IR);
+            Table("UREDJUJE");
+            CompositeId()
+                .KeyReference (x => x.ID_IR, "ID_IR")
+                .KeyReference (x => x.ID_Urednika, "ID_UREDNIKA");
         }
     }
 }
