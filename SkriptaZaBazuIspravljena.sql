@@ -1,7 +1,7 @@
 
 -------------------------------------------------------------------------------------------
 -- Brisanje tabela
-DROP TABLE UREDUJE CASCADE CONSTRAINTS;
+DROP TABLE UREDJUJE CASCADE CONSTRAINTS;
 DROP TABLE OCENA_RECENZENTA CASCADE CONSTRAINTS;
 DROP TABLE ANGAZOVANJE_RECENZENT CASCADE CONSTRAINTS;
 DROP TABLE RUNDA_RECENZIJE CASCADE CONSTRAINTS;
@@ -405,7 +405,7 @@ CREATE TABLE runda_recenzije(
         );
 -------------------------------------------------------------------------------------------------------------------
 -- Ureduje
-CREATE TABLE ureduje(
+CREATE TABLE uredjuje(
     ID_IR NUMBER(10) NOT NULL,
     ID_UREDNIKA NUMBER(10) NOT NULL,
 
