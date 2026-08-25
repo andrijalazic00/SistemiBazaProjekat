@@ -12,8 +12,11 @@ namespace DigitalniRepozitorijum.Entities
         public virtual string Izdavac { get; set; }
         public virtual string MestoIzdavanja { get; set; }
 
+        public virtual IList<Uredjuje> Urednici {  get; set; }
+
         public KnjigaIliPoglavlja()
         {
+            Urednici = new List<Uredjuje>();
         }
     }
 

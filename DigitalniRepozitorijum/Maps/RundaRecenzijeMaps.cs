@@ -20,7 +20,7 @@ namespace DigitalniRepozitorijum.Maps
                 .KeyProperty(x => x.BrojRunde, "BROJ_RUNDE");
             Map(x => x.DatumOdluke, "DATUM_ODLUKE").Not.Nullable();
             Map(x => x.KonacnaOdluka, "KONACNA_ODLUKA").Not.Nullable();
-            References(x => x.ID_Urednika).Column("ID_U").LazyLoad();
+            References(x => x.ID_Urednika).Column("ID_UREDNIKA").LazyLoad();
 
             HasMany(x => x.Recenzenti).KeyColumns.Add("ID_P").KeyColumns.Add("BROJ_RUNDE").LazyLoad().Cascade.All().Inverse();
         }

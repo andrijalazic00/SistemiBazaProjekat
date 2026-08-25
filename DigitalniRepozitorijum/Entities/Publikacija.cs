@@ -11,16 +11,19 @@ namespace DigitalniRepozitorijum.Entities
         public virtual int ID_P { get; protected set; }
         public virtual IstrazivackiRezultat ID_IR { get; set; }
 
-        public virtual IList <Angazovanje> Publikacije {  get; set; }
+        public virtual IList <Citat> CitirajucePublikacije {  get; set; }
+        public virtual IList<Citat> CitiranePublikacije { get; set; }
         public virtual IList<RundaRecenzije> RundeRecenzije { get; set; }
+        public virtual IList<Autorstvo> Autorstva {  get; set; }
 
         //public virtual IList <Angazovanje> CitiranePublikacije { get; set; }
 
         public Publikacija()
         {
-            Publikacije=new List<Angazovanje>();
-           // CitiranePublikacije=new List<Angazovanje>();
-           RundeRecenzije=new List<RundaRecenzije>();
+            CitirajucePublikacije=new List<Citat>();
+            CitiranePublikacije=new List<Citat>();
+            RundeRecenzije=new List<RundaRecenzije>();
+            Autorstva=new List<Autorstvo>();    
         }
     }
 }

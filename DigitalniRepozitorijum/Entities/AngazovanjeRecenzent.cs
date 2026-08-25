@@ -9,9 +9,9 @@ namespace DigitalniRepozitorijum.Entities
 
         public class AngazovanjeRecenzent
         {
-            public virtual Publikacija ID_P { get; protected set; }
-            public virtual Recenzent ID_Recenzenta { get; protected set; }
-            public virtual int BrojRunde { get; protected set; }
+            public virtual Publikacija ID_P { get;  set; }
+            public virtual Recenzent ID_Recenzenta { get;  set; }
+            public virtual int BrojRunde { get;  set; }
             public virtual string Preporuka { get; set; }
             
             public virtual IList<OcenaRecenzenta> Ocene{get; set;}

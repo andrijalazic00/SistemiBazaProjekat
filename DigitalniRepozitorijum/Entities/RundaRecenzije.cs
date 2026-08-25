@@ -8,9 +8,9 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class RundaRecenzije
     {
-        public virtual int BrojRunde { get; protected set; }
-        public virtual Publikacija ID_P { get; protected set; }
-        public virtual Urednik ID_Urednika { get; protected set; }
+        public virtual int BrojRunde { get; set; }
+        public virtual Publikacija ID_P { get;  set; }
+        public virtual Urednik ID_Urednika { get;  set; }
         public virtual DateTime DatumOdluke { get; set; }
         public virtual string KonacnaOdluka { get; set; }
 

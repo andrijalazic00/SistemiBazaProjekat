@@ -120,6 +120,7 @@
     <Compile Include="Entities\AngazovanjeRecenzent.cs" />
     <Compile Include="Entities\Angazovanje.cs" />
     <Compile Include="Entities\Autor.cs" />
+    <Compile Include="Entities\Autorstvo.cs" />
     <Compile Include="Entities\Citat.cs" />
     <Compile Include="Entities\Dataset.cs" />
     <Compile Include="Entities\Istrazivac.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Entities\Telefon.cs" />
     <Compile Include="Entities\TelefonInstitucija.cs" />
     <Compile Include="Entities\Uloga.cs" />
+    <Compile Include="Entities\Uredjuje.cs" />
     <Compile Include="Entities\Urednik.cs" />
     <Compile Include="Entities\Verzija.cs" />
     <Compile Include="Form1.cs">
@@ -158,6 +160,7 @@
     <Compile Include="Maps\AngazovanjeMaps.cs" />
     <Compile Include="Maps\AngazovanjeRecenzentMaps.cs" />
     <Compile Include="Maps\AutorMaps.cs" />
+    <Compile Include="Maps\AutorstvoMaps.cs" />
     <Compile Include="Maps\CitatMaps.cs" />
     <Compile Include="Maps\DatasetMaps.cs" />
     <Compile Include="Maps\IstrazivackiRezultatMaps.cs" />
@@ -183,6 +186,7 @@
     <Compile Include="Maps\TelefonInstitucijaMaps.cs" />
     <Compile Include="Maps\TelefonMaps.cs" />
     <Compile Include="Maps\UlogaMaps.cs" />
+    <Compile Include="Maps\UredjujeMaps.cs" />
     <Compile Include="Maps\UrednikMaps.cs" />
     <Compile Include="Maps\VerzijaMaps.cs" />
     <Compile Include="Program.cs" />

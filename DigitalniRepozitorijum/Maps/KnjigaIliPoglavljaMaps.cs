@@ -16,6 +16,7 @@ namespace DigitalniRepozitorijum.Maps
             KeyColumn("ID_IR");
             Map(x => x.Izdavac, "IZDAVAC").Not.Nullable();
             Map(x => x.MestoIzdavanja, "MESTO_IZDAVANJA").Not.Nullable();
+            HasMany(x => x.Urednici).KeyColumn("ID_IR").LazyLoad().Cascade.All().Inverse();
         }
     }
 }
