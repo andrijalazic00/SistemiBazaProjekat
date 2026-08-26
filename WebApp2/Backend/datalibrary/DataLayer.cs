@@ -38,7 +38,7 @@ namespace datalibrary
                 
                 return Fluently.Configure()
                 .Database(cfg.ShowSql())
-                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<IstrazivackiRMapiranje>())
+                .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NaucnoIstrazivackaInstitucijaMaps>())
                 .BuildSessionFactory();
             }
             catch( Exception ex)
