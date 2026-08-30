@@ -18,7 +18,6 @@ namespace datalibrary.DTOs
             Telefoni = new List<TelefonInstitucijaView>();
             NaucneOblasti = new List<NaucnaOblastView>();
         }
-
         public NaucnoIstrazivackaInstitucijaView(NaucnoIstrazivackaInstitucija n)
         {
             ID_NII = n.ID_NII;

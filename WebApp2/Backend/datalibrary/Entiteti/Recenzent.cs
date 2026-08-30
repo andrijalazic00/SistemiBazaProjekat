@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace datalibrary.Entiteti
 {
-    public class Recezent:Uloga
+    public class Recenzent:Uloga
     {
         //public virtual int ID_U { get; protected set; }
         public virtual IList<OblastiEkspertize> OblastiEkspertize { get; set; }
-        public Recezent()
+        public virtual IList<AngazovanjeRecenzent> RundeRecenzije {  get; set; }
+        public Recenzent()
         {
             OblastiEkspertize =new List<OblastiEkspertize>();
+            RundeRecenzije=new List<AngazovanjeRecenzent>();
         }
     }
 }

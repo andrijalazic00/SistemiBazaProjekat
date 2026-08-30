@@ -77,5 +77,55 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("DodajMailInstituciji")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddMailToInstitution(int ID_NII, string mail)
+            {
+                try
+                {
+                    DataProvider.DodajMailInstituciji(ID_NII, mail);
+                    return Ok();
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
+        [HttpGet]
+        [Route("VratiMailInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetMailInstitution(int ID_NII)
+            {
+                try
+                {
+                    return new JsonResult(DataProvider.VratiMailInstitucije(ID_NII));
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
+        [HttpGet]
+        [Route("VratiTelefoneInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetPhonesInstitution(int ID_NII)
+            {
+                try
+                {
+                    return new JsonResult(DataProvider.VratiBrojeviInstitucije(ID_NII));
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
     }
+
 }

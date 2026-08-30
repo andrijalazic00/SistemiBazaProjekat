@@ -8,7 +8,7 @@ namespace datalibrary.Entiteti
 {
     public class OblastiEkspertize
     {
-        public virtual Recezent ID_U { get;  set; }
+        public virtual Recenzent ID_U { get;  set; }
         public virtual string Oblast { get;  set; }
 
         public OblastiEkspertize()
@@ -18,7 +18,8 @@ namespace datalibrary.Entiteti
         public override bool Equals(object obj)
         {
             if (!(obj is OblastiEkspertize other)) return false;
-            return ID_U == other.ID_U && Oblast == other.Oblast;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_U.ID_U == other.ID_U.ID_U && Oblast == other.Oblast;
         }
 
         public override int GetHashCode()

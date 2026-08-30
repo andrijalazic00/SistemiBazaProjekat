@@ -6,18 +6,18 @@ namespace datalibrary.DTOs
 {
     public class MailView
     {
-        public virtual Istrazivac ID_I { get; set; }
+        public virtual IstrazivacView ID_I { get; set; }
         public virtual string MailAdresa { get; set; }
 
         public MailView(Mail m)
         {
-            ID_I = m.ID_I;
+            ID_I = new IstrazivacView(m.ID_I);
             MailAdresa = m.MailAdresa;
         }
 
         public override bool Equals(object obj)
         {
-            if (!(obj is Mail other)) return false;
+            if (!(obj is MailView other)) return false;
             return ID_I == other.ID_I && MailAdresa == other.MailAdresa;
         }
 

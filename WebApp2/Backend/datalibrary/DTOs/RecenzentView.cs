@@ -5,11 +5,16 @@ namespace datalibrary.DTOs
 {
     public class RecenzentView: UlogaView
     {
-       public virtual IList<OblastiEkspertize> OblastiEkspertize { get; set; }
+       public virtual IList<OblastiEkspertizeView> OblastiEkspertize { get; set; }
 
           public RecenzentView():base()
         {
-            OblastiEkspertize = new List<OblastiEkspertize>();           
+            OblastiEkspertize = new List<OblastiEkspertizeView>();           
+        }
+
+        public RecenzentView(Recenzent r): base(r)
+        {
+            
         }
     }
 }

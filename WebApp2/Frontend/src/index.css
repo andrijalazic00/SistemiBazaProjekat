@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+th
+{
+
+    border-width: 2px;
+    padding: 1vw;
+}
+
+td
+{
+    border-width: 2px; 
+}
+
+.small-button
+{
+    padding: 3px;
+    margin: 5px;
+    background-color: cyan;
+    border-width: 2px;
+    border-radius: 5px;
+}
+
+.small-button:hover
+{
+    padding: 3px;
+    margin: 5px;
+    background-color: rgb(7, 68, 111);
+    border-width: 2px;
+    border-radius: 5px;  
+}
+
+.control-panel
+{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(9, 180, 189, 0.296);
+    margin: 10px;
+    padding: 14px;
+    border-width: 3px;
+    border-radius: 5px;
+}

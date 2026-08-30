@@ -21,12 +21,14 @@ namespace datalibrary.Entiteti
         public virtual IList<Mail> Mailovi { get; set; }
         public virtual IList<Telefon> Telefoni { get; set; }
         public virtual IList<Uloga> Uloge {  get; set; }
+        public virtual IList<Angazovanje> Institucije { get; set; }
 
         public Istrazivac()
         {
             Mailovi = new List<Mail>();
             Telefoni = new List<Telefon>();
             Uloge=new List<Uloga>();
+            Institucije = new List<Angazovanje>();
 
         }
     }
