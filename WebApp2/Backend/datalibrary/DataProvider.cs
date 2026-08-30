@@ -179,7 +179,7 @@ namespace databaseacesslib
                 ISession s = DataLayer.GetSession();
 
                 NaucnoIstrazivackaInstitucija o = s.Load<NaucnoIstrazivackaInstitucija>(n.ID_NII);
-            
+                
                 o.Naziv = n.Naziv;
                 o.Adresa = n.Adresa;
             
@@ -238,6 +238,112 @@ namespace databaseacesslib
             {
                 Console.WriteLine("Error at DataProvider DodajMailIstituciji: "+ex);
                 throw;
+            }
+        }
+
+        public static void ObrisiMailIstituciji(int ID_NII, string mail)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                var mailinstitucije = (from o in s.Query<MailInstitucija>()
+                                        where  o.ID_NII.ID_NII == ID_NII && o.MailAdresa == mail select o).SingleOrDefault();
+
+                if(mailinstitucije == null)
+                {
+                    Console.WriteLine("No mail");
+                    return;
+                }
+                s.Delete(mailinstitucije);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider ObrisiMailIstituciji: "+ex);
+                throw;               
+            }
+        }
+
+        public static void AnzurirajMailInstituciji(int ID_NII, string starimail,string novimail)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObrisiMailIstituciji(ID_NII, starimail);
+                DodajMailInstituciji(ID_NII, novimail);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider AnzurirajMailInstituciji: "+ex);
+                throw;               
+            }
+        }
+
+        public static void DodajTelefonInstituciji(int ID_NII, string telefon)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                NaucnoIstrazivackaInstitucija n = s.Load<NaucnoIstrazivackaInstitucija>(ID_NII);
+
+                TelefonInstitucija o = new TelefonInstitucija
+                {
+                    ID_NII = n,
+                    Broj = telefon
+                };
+                s.SaveOrUpdate(o);
+                s.Flush();
+                s.Close();
+            }
+            catch( Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajTelefonInstituciji: "+ex);
+                throw;
+            }
+        }
+
+        public static void ObrisiTelefonIstituciji(int ID_NII, string broj)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                var brojeviinstitucje = (from o in s.Query<TelefonInstitucija>()
+                                        where  o.ID_NII.ID_NII == ID_NII && o.Broj == broj select o).SingleOrDefault();
+
+                if( brojeviinstitucje == null)
+                {
+                    Console.WriteLine("No Phone numbers");
+                    return;
+                }
+                s.Delete(brojeviinstitucje);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider ObrisiTelefonIstituciji: "+ex);
+                throw;               
+            }
+        }
+
+        public static void AnzurirajTelefonInstituciji(int ID_NII, string straibroj,string novibroj)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObrisiTelefonIstituciji(ID_NII,straibroj);
+                DodajTelefonInstituciji(ID_NII, novibroj);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider AnzurirajTelefonInstituciji: "+ex);
+                throw;               
             }
         }
 

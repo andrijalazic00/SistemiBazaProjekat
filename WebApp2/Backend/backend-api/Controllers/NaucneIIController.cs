@@ -95,6 +95,23 @@ namespace WebApp2.Controllers
                 }
             }
 
+        [HttpPost]
+        [Route("DodajTelefonInstituciji")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddPhoneToInstitution(int ID_NII, string mail)
+            {
+                try
+                {
+                    DataProvider.DodajTelefonInstituciji(ID_NII, mail);
+                    return Ok();
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
         [HttpGet]
         [Route("VratiMailInstitucije")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -111,6 +128,40 @@ namespace WebApp2.Controllers
                 }
             }
 
+        [HttpDelete]
+        [Route("ObrisiMailInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult DeleteMailInstitution(int ID_NII, string mail)
+        {
+            try
+            {
+                DataProvider.ObrisiMailIstituciji(ID_NII, mail);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPut]
+        [Route("AnzurirajMailInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateMailInstitution(int ID_NII, string oldmail, string newmail)
+        {
+            try
+            {
+                DataProvider.AnzurirajMailInstituciji(ID_NII, oldmail,newmail);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpGet]
         [Route("VratiTelefoneInstitucije")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -126,6 +177,40 @@ namespace WebApp2.Controllers
                     return BadRequest(ex.ToString());
                 }
             }
+
+        [HttpDelete]
+        [Route("ObrisiTelefonInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult DeletePhoneInstitution(int ID_NII, string broj)
+        {
+            try
+            {
+                DataProvider.ObrisiTelefonIstituciji(ID_NII, broj);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPut]
+        [Route("AnzurirajTelefonInstitucije")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdatePhoneInstitution(int ID_NII, string oldphone, string newphone)
+        {
+            try
+            {
+                DataProvider.AnzurirajTelefonInstituciji(ID_NII, oldphone,newphone);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
     }
 
 }
