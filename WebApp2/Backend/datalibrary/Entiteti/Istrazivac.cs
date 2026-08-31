@@ -18,10 +18,10 @@ namespace datalibrary.Entiteti
         public virtual string NaucnoZvanje { get; set; }
         public virtual string StatusNaucnika { get; set; }
 
-        public virtual IList<Mail> Mailovi { get; set; }
-        public virtual IList<Telefon> Telefoni { get; set; }
-        public virtual IList<Uloga> Uloge {  get; set; }
-        public virtual IList<Angazovanje> Institucije { get; set; }
+        public virtual IList<Mail>? Mailovi { get; set; }
+        public virtual IList<Telefon>? Telefoni { get; set; }
+        public virtual IList<Uloga>? Uloge {  get; set; }
+        public virtual IList<Angazovanje>? Institucije { get; set; }
 
         public Istrazivac()
         {

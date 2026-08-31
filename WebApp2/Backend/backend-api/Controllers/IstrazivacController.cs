@@ -6,86 +6,50 @@ using NHibernate.Engine;
 
 namespace WebApp2.Controllers
 {
-    
     [ApiController]
     [Route("[controller]")]
-    public class NaucneIIController: ControllerBase
+    public class IstrazivacController: ControllerBase
     {
         [HttpGet]
-        [Route("PreuzmiInstitucije")]
+        [Route("PreuzmiSveIstrazivace")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetInstitucije()
+        public IActionResult GetIstrazivaci()
         {
             try
             {
-                return new JsonResult(DataProvider.VratiInstitucije());
+                return new JsonResult(DataProvider.VratiSveIstrazivace());
             }
-            catch( Exception ex)
+            catch(Exception ex)
             {
-                return BadRequest( ex.ToString());
+                return BadRequest(ex.ToString());
             }
         }
+
+        [HttpGet]
+        [Route("PreuzmiIstrazivaca")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetIstrazivaca(int ID_I)
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiIstrazivaca(ID_I));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
 
         [HttpPost]
-        [Route("DodajNaucnoIstrazivackuInstituciju")]
+        [Route("DodajMailIstrazivacu/{ID_I}/{mail}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddNaucnoIstrazivackaInstitucija([FromBody]NaucnoIstrazivackaInstitucijaView n)
-        {
-            try
-            {
-                DataProvider.DodajNaucnoIstrazivackuIstituciju(n);
-                return Ok();
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-        [HttpPut]
-        [Route("PromeniNaucnoIstrazivackuInstituciju")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult ChangeNaucnoIstrazivackuInstituciju([FromBody] NaucnoIstrazivackaInstitucijaView n)
-        {
-            try
-            {
-                DataProvider.AnzurirajNaucnoIstrazivackuInstituciju(n);
-                return Ok();
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-        
-        [HttpDelete]
-        [Route("ObrisiNaucnoIstrazivackuInstituciju/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeleteNaucnoIstrazivackuInstituciju( int id)
-        {
-            try
-            {
-                DataProvider.ObrisiNaucnoIstrazivackuInstituciju(id);
-                return Ok();
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-        [HttpPost]
-        [Route("DodajMailInstituciji/{ID_NII}/{mail}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddMailToInstitution(int ID_NII, string mail)
+        public IActionResult AddMailToIstrazivac(int ID_I, string mail)
             {
                 try
                 {
-                    DataProvider.DodajMailInstituciji(ID_NII, mail);
+                    DataProvider.DodajMailIstrazivacu(ID_I, mail);
                     return Ok();
                 }
                 catch(Exception ex)
@@ -95,14 +59,14 @@ namespace WebApp2.Controllers
             }
 
         [HttpPost]
-        [Route("DodajTelefonInstituciji/{ID_NII}/{phone}")]
+        [Route("DodajTelefonIstrazivacu/{ID_I}/{phone}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddPhoneToInstitution(int ID_NII, string phone)
+        public IActionResult AddPhoneToIstrazivac(int ID_I, string phone)
             {
                 try
                 {
-                    DataProvider.DodajTelefonInstituciji(ID_NII, phone);
+                    DataProvider.DodajTelefonIstrazivacu(ID_I, phone);
                     return Ok();
                 }
                 catch(Exception ex)
@@ -112,14 +76,14 @@ namespace WebApp2.Controllers
             }
 
         [HttpGet]
-        [Route("VratiMailInstitucije/{ID_NII}")]
+        [Route("VratiMailIstrazivaca/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetMailInstitution(int ID_NII)
+        public IActionResult GetMailIstrazivac(int ID_I)
             {
                 try
                 {
-                    return new JsonResult(DataProvider.VratiMailInstitucije(ID_NII));
+                    return new JsonResult(DataProvider.VratiMailoveIstrazivaca(ID_I));
                 }
                 catch(Exception ex)
                 {
@@ -128,14 +92,14 @@ namespace WebApp2.Controllers
             }
 
         [HttpDelete]
-        [Route("ObrisiMailInstitucije/{ID_NII},{mail}")]
+        [Route("ObrisiMailIstrazivaca/{ID_NII},{mail}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeleteMailInstitution(int ID_NII, string mail)
+        public IActionResult DeleteMailIstrazivac(int ID_I, string mail)
         {
             try
             {
-                DataProvider.ObrisiMailIstituciji(ID_NII, mail);
+                DataProvider.ObrisiMailIstrazivacu(ID_I, mail);
                 return Ok();
             }
             catch(Exception ex)
@@ -145,14 +109,14 @@ namespace WebApp2.Controllers
         }
 
         [HttpPut]
-        [Route("AnzurirajMailInstitucije/{ID_NII}/{oldmail}/{newmail}")]
+        [Route("AnzurirajMailIstrazivaca/{ID_I}/{oldmail}/{newmail}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdateMailInstitution(int ID_NII, string oldmail, string newmail)
+        public IActionResult UpdateMailIstrazivac(int ID_I, string oldmail, string newmail)
         {
             try
             {
-                DataProvider.AnzurirajMailInstituciji(ID_NII, oldmail,newmail);
+                DataProvider.AnzurirajMailIstrazivacu(ID_I, oldmail,newmail);
                 return Ok();
             }
             catch(Exception ex)
@@ -162,14 +126,14 @@ namespace WebApp2.Controllers
         }
 
         [HttpGet]
-        [Route("VratiTelefoneInstitucije/{ID_NII}")]
+        [Route("VratiTelefoneIstrazivac/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetPhonesInstitution(int ID_NII)
+        public IActionResult GetPhonesIstrazivac(int ID_I)
             {
                 try
                 {
-                    return new JsonResult(DataProvider.VratiBrojeviInstitucije(ID_NII));
+                    return new JsonResult(DataProvider.VratiTelefoneIstrazivaca(ID_I));
                 }
                 catch(Exception ex)
                 {
@@ -178,14 +142,14 @@ namespace WebApp2.Controllers
             }
 
         [HttpDelete]
-        [Route("ObrisiTelefonInstitucije/{ID_NII}")]
+        [Route("ObrisiTelefonIstrazivac/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeletePhoneInstitution(int ID_NII, string broj)
+        public IActionResult DeletePhoneIstrazivac(int ID_I, string broj)
         {
             try
             {
-                DataProvider.ObrisiTelefonIstituciji(ID_NII, broj);
+                DataProvider.ObrisiTelefonIstrazivacu(ID_I, broj);
                 return Ok();
             }
             catch(Exception ex)
@@ -195,14 +159,30 @@ namespace WebApp2.Controllers
         }
 
         [HttpPut]
-        [Route("AnzurirajTelefonInstitucije/{ID}/{oldphone}/{newphone}")]
+        [Route("AnzurirajTelefonIstrazivac/{ID_I}/{oldphone}/{newphone}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult UpdatePhoneInstitution(int ID_NII, string oldphone, string newphone)
+        public IActionResult UpdatePhoneIstrazivac(int ID_I, string oldphone, string newphone)
         {
             try
             {
-                DataProvider.AnzurirajTelefonInstituciji(ID_NII, oldphone,newphone);
+                DataProvider.AnzurirajTelefonIstrazivacu(ID_I, oldphone,newphone);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost]
+        [Route("AngazujIstrazivacaUInstitut")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult SetIstrazivacUInstituciju([FromBody] AngazovanjeView angazovanje)
+        {
+            try
+            {
+                DataProvider.AngazujIstrazivacaUInstituciju(angazovanje);
                 return Ok();
             }
             catch(Exception ex)
@@ -211,5 +191,4 @@ namespace WebApp2.Controllers
             }
         }
     }
-
 }

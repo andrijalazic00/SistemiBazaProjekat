@@ -10,8 +10,9 @@ using FluentNHibernate.Conventions.AcceptanceCriteria;
 using NHibernate.Linq;
 using Microsoft.VisualBasic;
 using System.Globalization;
+using FluentNHibernate.Utils;
 
-namespace databaseacesslib
+namespace datalibrary
 {
     public class DataProvider
     {
@@ -103,6 +104,44 @@ namespace databaseacesslib
             return sveoblastiinstitucije;
         }   
 
+        public static NaucnoIstrazivackaInstitucijaView VratiNIInstituciju( int ID_NII)
+        {
+            NaucnoIstrazivackaInstitucijaView institucija;
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                
+                NaucnoIstrazivackaInstitucija i = s.Load<NaucnoIstrazivackaInstitucija>(ID_NII);
+
+                List<MailInstitucijaView> mails = VratiMailInstitucije(i.ID_NII);
+
+                List<TelefonInstitucijaView> telefons = VratiBrojeviInstitucije(i.ID_NII);
+
+                List<NaucnaOblastView> oblasti = VratiOblastiInstitucije(i.ID_NII);
+
+                 List<AngazovanjeView> angazovanji = VratiAngazovaneUInstituciji(i.ID_NII);              
+                
+                institucija = new NaucnoIstrazivackaInstitucijaView
+                {
+                    ID_NII = i.ID_NII,
+                    Naziv = i.Naziv,
+                    Adresa = i.Adresa,
+                    Mailovi = mails,
+                    Telefoni = telefons,
+                    NaucneOblasti = oblasti,
+                    Angazovani = angazovanji
+                };
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiNIInstituciju: "+ex);
+                throw;
+            }
+            return institucija;
+        }
+
         public static List<NaucnoIstrazivackaInstitucijaView> VratiInstitucije()
         {
             List<NaucnoIstrazivackaInstitucijaView> naucneinstitucije = new List<NaucnoIstrazivackaInstitucijaView>();
@@ -116,24 +155,7 @@ namespace databaseacesslib
                 
                 foreach( NaucnoIstrazivackaInstitucija n in institucije)
                 {
-                    List<MailInstitucijaView> mails = VratiMailInstitucije(n.ID_NII);
-
-
-                    List<TelefonInstitucijaView> telefons = VratiBrojeviInstitucije(n.ID_NII);
-
-                    List<NaucnaOblastView> oblasti = VratiOblastiInstitucije(n.ID_NII);
-
-
-                    NaucnoIstrazivackaInstitucijaView tmp = new NaucnoIstrazivackaInstitucijaView
-                    {
-                        ID_NII = n.ID_NII,
-                        Naziv = n.Naziv,
-                        Adresa = n.Adresa,
-                        Mailovi = mails,
-                        Telefoni = telefons,
-                        NaucneOblasti = oblasti,
-                    };
-
+                   NaucnoIstrazivackaInstitucijaView tmp = VratiNIInstituciju( n.ID_NII);
                     naucneinstitucije.Add(tmp);
                 }
 
@@ -147,6 +169,7 @@ namespace databaseacesslib
 
             return naucneinstitucije;
         }
+
 
 
         public static void DodajNaucnoIstrazivackuIstituciju( NaucnoIstrazivackaInstitucijaView n)
@@ -345,6 +368,403 @@ namespace databaseacesslib
                 Console.WriteLine("Error at DataProvider AnzurirajTelefonInstituciji: "+ex);
                 throw;               
             }
+        }
+
+        #endregion
+        #region  Istrazivaci
+
+        public static List<MailView> VratiMailoveIstrazivaca(int ID_I)
+        {
+
+            List<MailView> svimailovi = new List<MailView>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Mail> mailovi = from o in s.Query<Mail>()
+                                            where o.ID_I.ID_I == ID_I select o;
+
+                foreach( Mail m in mailovi)
+                {
+                    svimailovi.Add( new MailView(m));
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiMailoveIstrazivaca" +ex);
+            }
+
+            return svimailovi;
+        }
+
+
+
+        public static List<TelefonView> VratiTelefoneIstrazivaca(int ID_I)
+        {
+
+            List<TelefonView> svitelefoni = new List<TelefonView>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Telefon> telefoni = from o in s.Query<Telefon>()
+                                                    where o.ID_I.ID_I == ID_I select o;
+
+                foreach( Telefon t in telefoni)
+                {
+                    svitelefoni.Add(new TelefonView(t));
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiTelefoneIstrazivaca" +ex);
+            }
+
+            return svitelefoni;
+        }
+
+
+        
+        public static List<IstrazivacView> VratiSveIstrazivace()
+        {
+            
+            List<IstrazivacView> sviistrazivaci = new List<IstrazivacView>();
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Istrazivac> istrazivaci = from o in s.Query<Istrazivac>()
+                                                        select o;
+
+                foreach( Istrazivac i in istrazivaci)
+                {
+
+
+
+                    IstrazivacView istrazivac  = VratiIstrazivaca( i.ID_I);
+                    sviistrazivaci.Add(istrazivac);
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivace: "+ ex);
+                throw;
+            }
+
+            return sviistrazivaci;
+        }
+
+        public static IstrazivacView VratiIstrazivaca(int Id)
+        {
+            IstrazivacView istrazivacView;
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Istrazivac i = s.Load<Istrazivac>(Id);
+                istrazivacView = new IstrazivacView(i);
+
+                List<MailView> m = VratiMailoveIstrazivaca(i.ID_I);
+                List<TelefonView> t = VratiTelefoneIstrazivaca( i.ID_I);
+                List<AngazovanjeView> a = VratiAngazovanjeIstrazivaca( i.ID_I);
+                istrazivacView.Mailovi = m;
+                istrazivacView.Telefoni = t;
+                istrazivacView.Institucije = a;
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiIstrazivaca: "+ ex);
+                throw;
+            }
+
+            return istrazivacView;
+        }
+
+                public static void DodajMailIstrazivacu(int ID_I, string mail)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Mail n = s.Load<Mail>(ID_I);
+
+                Mail o = new Mail
+                {
+                    ID_I = n.ID_I,
+                    MailAdresa = mail
+                };
+                s.SaveOrUpdate(o);
+                s.Flush();
+                s.Close();
+            }
+            catch( Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajMailIstrazivacu: "+ex);
+                throw;
+            }
+        }
+
+        public static void ObrisiMailIstrazivacu(int ID_I, string mail)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                var mailistrazivaca = (from o in s.Query<Mail>()
+                                        where  o.ID_I.ID_I == ID_I && o.MailAdresa == mail select o).SingleOrDefault();
+
+                if(mailistrazivaca == null)
+                {
+                    Console.WriteLine("No mail");
+                    return;
+                }
+                s.Delete(mailistrazivaca);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider ObrisiMailIstituciji: "+ex);
+                throw;               
+            }
+        }
+
+        public static void AnzurirajMailIstrazivacu(int ID_I, string starimail,string novimail)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObrisiMailIstrazivacu(ID_I, starimail);
+                DodajMailIstrazivacu(ID_I, novimail);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider AnzurirajMailInstituciji: "+ex);
+                throw;               
+            }
+        }
+
+        public static void DodajTelefonIstrazivacu(int ID_I, string telefon)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Istrazivac n = s.Load<Istrazivac>(ID_I);
+
+                Telefon o = new Telefon
+                {
+                    ID_I = n,
+                    Broj = telefon
+                };
+                s.SaveOrUpdate(o);
+                s.Flush();
+                s.Close();
+            }
+            catch( Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajTelefonIstrazivacu: "+ex);
+                throw;
+            }
+        }
+
+        public static void ObrisiTelefonIstrazivacu(int ID_I, string broj)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                var brojeviistrazivaca = (from o in s.Query<Telefon>()
+                                        where  o.ID_I.ID_I == ID_I && o.Broj == broj select o).SingleOrDefault();
+
+                if( brojeviistrazivaca == null)
+                {
+                    Console.WriteLine("No Phone numbers");
+                    return;
+                }
+                s.Delete(brojeviistrazivaca);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider ObrisiTelefonIstrazivacu: "+ex);
+                throw;               
+            }
+        }
+
+        public static void AnzurirajTelefonIstrazivacu(int ID_I, string straibroj,string novibroj)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                ObrisiTelefonIstrazivacu(ID_I,straibroj);
+                DodajTelefonIstrazivacu(ID_I, novibroj);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider AnzurirajTelefonInstituciji: "+ex);
+                throw;               
+            }
+        }
+                
+        #endregion
+
+        #region  Angazovanja
+
+        public static List<AngazovanjeView> VratiAngazovanjeIstrazivaca(int ID_I)
+        {   
+            List<AngazovanjeView> svaAngazovanja = new List<AngazovanjeView>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Angazovanje> angazovanja = from o in s.Query<Angazovanje>()
+                                                        where o.ID_I.ID_I == ID_I select o;
+                
+                foreach ( Angazovanje a in angazovanja )
+                {
+                    AngazovanjeView v = new AngazovanjeView(a);
+                    svaAngazovanja.Add(v);
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiAngazovanjeIstrazivaca: "+ ex);
+            }
+
+            return svaAngazovanja;
+        }
+
+        public static List<AngazovanjeView> VratiAngazovaneUInstituciji(int ID_NII)
+        {   
+            List<AngazovanjeView> sviAngazovani = new List<AngazovanjeView>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Angazovanje> angazovani = from o in s.Query<Angazovanje>()
+                                                    where o.ID_NII.ID_NII == ID_NII select o;
+                
+                foreach(Angazovanje a in angazovani)
+                {
+                    AngazovanjeView v = new AngazovanjeView(a);
+                    sviAngazovani.Add(v);
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiAngazovanjeIstrazivaca: "+ ex);
+            }
+
+            return sviAngazovani;
+        }
+
+
+        public static void AngazujIstrazivacaUInstituciju( AngazovanjeView angazovano)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                List<AngazovanjeView> angazovanja = VratiAngazovanjeIstrazivaca(angazovano.ID_I.ID_I);
+                foreach( AngazovanjeView a in angazovanja)
+                {
+                    if( a.ID_NII.ID_NII == angazovano.ID_NII.ID_NII)
+                    {
+                        Console.WriteLine("Istrazivac je vec Angazovan u ovoj Instituciji");
+                        s.Close();
+                        return;
+                    }
+                }
+
+                Istrazivac istrazivac = s.Load<Istrazivac>(angazovano.ID_I);
+                NaucnoIstrazivackaInstitucija institucija = s.Load<NaucnoIstrazivackaInstitucija>(angazovano.ID_NII);
+
+                Angazovanje angazovanje = new Angazovanje
+                {
+                    ID_I = istrazivac,
+                    ID_NII = institucija,
+                    DatumAngazovanja = angazovano.DatumAngazovanja,
+                    DatumZavrsetka = angazovano.DatumZavrsetka,
+                    OrganizacionaJedinica = angazovano.OrganizacionaJedinica,
+                    NazivPozicije = angazovano.NazivPozicije,
+                    TipAngazovanja = angazovano.TipAngazovanja,
+
+                };
+
+
+                s.SaveOrUpdate(angazovanja);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider AngazujIstrazivacaUInstituciju: "+ex);
+                throw;
+            }
+        }
+
+
+
+        #endregion
+        #region  Uloge
+        
+        public static List<UlogaView> VratiSveUloge()
+        {
+            List<UlogaView> sveuloge = new List<UlogaView>();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Uloga> uloge = from o in s.Query<Uloga>()
+                                                select o;
+
+                foreach(Uloga u in uloge)
+                { 
+                    UlogaView uloga = VratiUlogu( u.ID_U);
+                    sveuloge.Add(uloga);
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider SveUloge: "+ ex);
+            }
+            return sveuloge;
+        }
+
+        public static UlogaView VratiUlogu(int ID_U)
+        {
+            UlogaView uloga = new UlogaView();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Uloga u = s.Load<Uloga>(ID_U);
+
+                uloga = new UlogaView(u);
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiUlogu: "+ ex);
+            }
+            return uloga;
         }
 
         #endregion

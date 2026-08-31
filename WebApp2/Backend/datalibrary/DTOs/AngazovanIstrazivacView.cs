@@ -4,7 +4,7 @@ using datalibrary.Mapiranja;
 
 namespace datalibrary.DTOs
 {
-    public class IstrazivacView
+    public class AngazovanIstrazivacView
     {
         public virtual int ID_I { get; protected set; }
         public virtual string Ime { get; set; }
@@ -17,18 +17,16 @@ namespace datalibrary.DTOs
 
         public virtual IList<MailView>? Mailovi { get; set; }
         public virtual IList<TelefonView>? Telefoni { get; set; }
-        public virtual IList<UlogaView>? Uloge {  get; set; }
-        public virtual IList<AngazovanjeView>? Institucije { get; set; }   
+        public virtual IList<UlogaView>? Uloge {  get; set; } 
 
-        public IstrazivacView()
+        public AngazovanIstrazivacView()
         {
             Mailovi = new List<MailView>();
             Telefoni = new List<TelefonView>();
             Uloge = new List<UlogaView>();
-            Institucije = new List<AngazovanjeView>();
         }    
 
-        public IstrazivacView(Istrazivac i)
+        public AngazovanIstrazivacView(Istrazivac i)
         {
             ID_I = i.ID_I;
             Ime = i.Ime;
@@ -39,6 +37,19 @@ namespace datalibrary.DTOs
             NaucnoZvanje = i.NaucnoZvanje;
             StatusNaucnika = i.StatusNaucnika;
 
+        }
+
+        public AngazovanIstrazivacView( IstrazivacView i)
+        {
+            ID_I = i.ID_I;
+            Ime = i.Ime;
+            DatumRodjenja = i.DatumRodjenja;
+            Drzava = i.Drzava;
+            Prezime = i.Prezime;
+            NaucnaOblast = i.NaucnaOblast;
+            NaucnoZvanje = i.NaucnoZvanje;
+            StatusNaucnika = i.StatusNaucnika;
+  
         }
     }
 }

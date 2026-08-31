@@ -4,8 +4,8 @@ namespace datalibrary.DTOs
 {
     public class AngazovanjeView
     {
-        public virtual IstrazivacView ID_I { get; set; }
-        public virtual NaucnoIstrazivackaInstitucijaView ID_NII { get; set; }
+        public virtual AngazovanIstrazivacView ID_I { get; set; }
+        public virtual AngazovanNIIInstitucijiView ID_NII { get; set; }
         public virtual DateTime DatumAngazovanja { get; set; }
         public virtual DateTime? DatumZavrsetka { get; set; }
         public virtual string OrganizacionaJedinica { get; set; }
@@ -14,8 +14,8 @@ namespace datalibrary.DTOs
 
         public AngazovanjeView(Angazovanje a)
         {
-            ID_I = new IstrazivacView( a.ID_I);
-            ID_NII = new NaucnoIstrazivackaInstitucijaView( a.ID_NII);
+            ID_I = new AngazovanIstrazivacView( a.ID_I);
+            ID_NII = new AngazovanNIIInstitucijiView( a.ID_NII);
             DatumAngazovanja = a.DatumAngazovanja;
             DatumZavrsetka = a.DatumZavrsetka;
             OrganizacionaJedinica = a.OrganizacionaJedinica;
