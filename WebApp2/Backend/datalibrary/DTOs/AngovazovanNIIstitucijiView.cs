@@ -3,7 +3,7 @@ using datalibrary.Mapiranja;
 
 namespace datalibrary.DTOs
 {
-    public class NaucnoIstrazivackaInstitucijaView
+    public class AngazovanNIIInstitucijiView
     {
         public virtual int ID_NII { get; set; }
         public virtual string Naziv { get; set; }
@@ -11,16 +11,21 @@ namespace datalibrary.DTOs
         public virtual IList<MailInstitucijaView>? Mailovi {  get; set; }
         public virtual IList<TelefonInstitucijaView>? Telefoni {  get; set; }
         public virtual IList<NaucnaOblastView>? NaucneOblasti {  get; set; }
-        public virtual IList<AngazovanjeView>? Angazovani {get; set;}
 
-        public NaucnoIstrazivackaInstitucijaView()
+        public AngazovanNIIInstitucijiView()
         {
             Mailovi = new List<MailInstitucijaView>();
             Telefoni = new List<TelefonInstitucijaView>();
             NaucneOblasti = new List<NaucnaOblastView>();
-            Angazovani = new List<AngazovanjeView>();
         }
-        public NaucnoIstrazivackaInstitucijaView(NaucnoIstrazivackaInstitucija n)
+        public AngazovanNIIInstitucijiView(NaucnoIstrazivackaInstitucija n)
+        {
+            ID_NII = n.ID_NII;
+            Naziv = n.Naziv;
+            Adresa = n.Adresa;
+        }
+
+        public AngazovanNIIInstitucijiView(NaucnoIstrazivackaInstitucijaView n)
         {
             ID_NII = n.ID_NII;
             Naziv = n.Naziv;

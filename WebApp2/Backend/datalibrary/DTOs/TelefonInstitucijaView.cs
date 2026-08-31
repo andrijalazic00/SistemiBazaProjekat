@@ -5,12 +5,12 @@ namespace datalibrary.DTOs
 {
     public class TelefonInstitucijaView
     {
-        public virtual NaucnoIstrazivackaInstitucijaView ID_NII { get;  set; }
+        // public virtual NaucnoIstrazivackaInstitucijaView ID_NII { get;  set; }
         public virtual string Broj { get;  set; } 
 
         public TelefonInstitucijaView(TelefonInstitucija t)
         {
-            ID_NII = new NaucnoIstrazivackaInstitucijaView( t.ID_NII);
+            // ID_NII = new NaucnoIstrazivackaInstitucijaView( t.ID_NII);
             Broj = t.Broj;
         }
 
@@ -19,11 +19,11 @@ namespace datalibrary.DTOs
             
         }
 
-        public override bool Equals(object obj)
-        {
-            if (!(obj is TelefonInstitucijaView other)) return false;
-            return ID_NII == other.ID_NII && Broj == other.Broj;
-        }
+        // public override bool Equals(object obj)
+        // {
+        //     if (!(obj is TelefonInstitucijaView other)) return false;
+        //     return ID_NII == other.ID_NII && Broj == other.Broj;
+        // }
 
         public override int GetHashCode()
         {
