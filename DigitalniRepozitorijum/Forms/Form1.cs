@@ -24,7 +24,9 @@ namespace DigitalniRepozitorijum
             try
             {
 
-
+                Form form = new FormDodajIstrazivaca();
+                form.ShowDialog();
+                /*
                 ISession s = DataLayer.GetSession();
 
                 Istrazivac I = new Istrazivac();
@@ -108,6 +110,7 @@ namespace DigitalniRepozitorijum
                 s.SaveOrUpdate(I);
 
                 s.Flush();
+                */
             }
             catch(Exception ex)
             {
@@ -120,13 +123,16 @@ namespace DigitalniRepozitorijum
         {
             try
             {
-                ISession s = DataLayer.GetSession();
 
-                /*NaucnoIstrazivackaInstitucija n2 = s.Load<NaucnoIstrazivackaInstitucija>(1);
+                Form form = new FormDodajNII();
+                form.ShowDialog();
+                /*ISession s = DataLayer.GetSession();
+
+                NaucnoIstrazivackaInstitucija n2 = s.Load<NaucnoIstrazivackaInstitucija>(1);
                 NaucnoIstrazivackaInstitucija n = new NaucnoIstrazivackaInstitucija();
                 n.Naziv = "Institut Podvodnih Istrazivanja";
                 n.Adresa = "Nikole Tesle 32";
-                s.SaveOrUpdate(n);*/
+                s.SaveOrUpdate(n);
 
 
                 NaucnoIstrazivackaInstitucija n = new NaucnoIstrazivackaInstitucija();
@@ -172,7 +178,7 @@ namespace DigitalniRepozitorijum
 
 
 
-                s.Close();
+                s.Close();*/
             }
             catch (Exception ex)
             {

@@ -149,11 +149,65 @@
     <Compile Include="Entities\Uredjuje.cs" />
     <Compile Include="Entities\Urednik.cs" />
     <Compile Include="Entities\Verzija.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\DodajIstrazivackiRezultat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\DodajIstrazivackiRezultat.Designer.cs">
+      <DependentUpon>DodajIstrazivackiRezultat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DodajNII.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DodajNII.Designer.cs">
+      <DependentUpon>DodajNII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAngazovanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAngazovanje.Designer.cs">
+      <DependentUpon>FormAngazovanje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajAutora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajAutora.Designer.cs">
+      <DependentUpon>FormDodajAutora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajNII.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajNII.Designer.cs">
+      <DependentUpon>FormDodajNII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajIstrazivaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajIstrazivaca.Designer.cs">
+      <DependentUpon>FormDodajIstrazivaca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajAdministratora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajAdministratora.Designer.cs">
+      <DependentUpon>FormDodajAdministratora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajRecezenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajRecezenta.Designer.cs">
+      <DependentUpon>FormDodajRecezenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajUrednika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajUrednika.Designer.cs">
+      <DependentUpon>FormDodajUrednika.cs</DependentUpon>
     </Compile>
     <Compile Include="Maps\AdministratorOvlascenjaMaps.cs" />
     <Compile Include="Maps\AdministratorRepozitorijumaMaps.cs" />
@@ -191,8 +245,32 @@
     <Compile Include="Maps\VerzijaMaps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\DodajIstrazivackiRezultat.resx">
+      <DependentUpon>DodajIstrazivackiRezultat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAngazovanje.resx">
+      <DependentUpon>FormAngazovanje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajAdministratora.resx">
+      <DependentUpon>FormDodajAdministratora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajAutora.resx">
+      <DependentUpon>FormDodajAutora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajIstrazivaca.resx">
+      <DependentUpon>FormDodajIstrazivaca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajNII.resx">
+      <DependentUpon>FormDodajNII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajRecezenta.resx">
+      <DependentUpon>FormDodajRecezenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajUrednika.resx">
+      <DependentUpon>FormDodajUrednika.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
