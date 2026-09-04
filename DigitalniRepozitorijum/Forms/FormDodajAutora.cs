@@ -32,6 +32,7 @@ namespace DigitalniRepozitorijum
                 if (tbORCID.Text.Length == 19)
                 {
                     _autor.Orcid = tbORCID.Text;
+                    this.Close();
                 }
                 else
                 {
@@ -42,7 +43,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
     }

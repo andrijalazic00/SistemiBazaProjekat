@@ -47,7 +47,8 @@ namespace DigitalniRepozitorijum
                 s.Close();
             }
             catch (Exception ex) { 
-                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                this.Close();
             }
            
             
@@ -74,6 +75,10 @@ namespace DigitalniRepozitorijum
 
                 s.Flush();
                 s.Close();
+
+                PoveziAngazovanje();
+               
+                
                 this.Close();
             }
             
@@ -82,7 +87,27 @@ namespace DigitalniRepozitorijum
             {
                 Console.WriteLine(ex.ToString());
             }
-}
+        }
+        private async void PoveziAngazovanje()
+        {
+            Form f;
+            if (cBoxInstitucija.Text.Length > 0)
+            {
+
+                //Angazovanje a=new Angazovanje();
+                NaucnoIstrazivackaInstitucija nii = _institucije.First(i => i.Naziv == cBoxInstitucija.Text);
+
+                f = new FormAngazovanje(_istrazivac, nii);
+                f.ShowDialog();
+                //a..Add(_institucije.First(i=>i.Naziv==cBoxInstitucija.Text));
+            }
+            /*else
+            {
+                cBoxInstitucija.Text = "Izaberite instituciju";
+                await Task.Delay(1000);
+                cBoxInstitucija.ResetText();
+            }*/
+        }
 
         private async void btnDodajMail_Click(object sender, EventArgs e)
         {
@@ -200,24 +225,5 @@ namespace DigitalniRepozitorijum
             }
         }
 
-        private async void btnDodajAngazovanje_Click(object sender, EventArgs e)
-        {
-            Form f;
-            if (cBoxInstitucija != null)
-            {
-                //Angazovanje a=new Angazovanje();
-                NaucnoIstrazivackaInstitucija nii=_institucije.First(i=>i.Naziv == cBoxInstitucija.Text);
-
-                f = new FormAngazovanje(_istrazivac,nii);
-                f.ShowDialog();
-                //a..Add(_institucije.First(i=>i.Naziv==cBoxInstitucija.Text));
-            }
-            else
-            {
-                cBoxInstitucija.Text = "Izaberite instituciju";
-                await Task.Delay(1000);
-                cBoxInstitucija.ResetText();
-            }
-        }
     }
 }

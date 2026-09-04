@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
 using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Forms;
 
 namespace DigitalniRepozitorijum
 {
@@ -378,6 +379,7 @@ namespace DigitalniRepozitorijum
         {
             try
             {
+                /*
                 ISession s = DataLayer.GetSession();
                
                 Autor autor =s.Load<Autor>(8);
@@ -391,7 +393,9 @@ namespace DigitalniRepozitorijum
 
                 s.Save(a);
                 s.Flush();
-                s.Close();
+                s.Close();*/
+                Form angazovanje = new FormAngazovanje();
+                angazovanje.ShowDialog();
             }
             catch(Exception ex) 
             { 

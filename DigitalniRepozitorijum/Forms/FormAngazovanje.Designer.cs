@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tbNazivPozicije = new System.Windows.Forms.TextBox();
-            this.lbTip = new System.Windows.Forms.ListBox();
             this.dtpDatumPocetka = new System.Windows.Forms.DateTimePicker();
             this.dtpDatumZavrsetka = new System.Windows.Forms.DateTimePicker();
             this.tbOrganizacionaJedinica = new System.Windows.Forms.TextBox();
@@ -43,6 +42,7 @@
             this.comboBIstrazivac = new System.Windows.Forms.ComboBox();
             this.lblInstitucija = new System.Windows.Forms.Label();
             this.lblIstrazivac = new System.Windows.Forms.Label();
+            this.comboBTip = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -97,14 +97,6 @@
             this.tbNazivPozicije.Size = new System.Drawing.Size(101, 20);
             this.tbNazivPozicije.TabIndex = 5;
             // 
-            // lbTip
-            // 
-            this.lbTip.FormattingEnabled = true;
-            this.lbTip.Location = new System.Drawing.Point(179, 75);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(97, 17);
-            this.lbTip.TabIndex = 6;
-            // 
             // dtpDatumPocetka
             // 
             this.dtpDatumPocetka.Location = new System.Drawing.Point(174, 121);
@@ -141,7 +133,7 @@
             this.comboBInstitucija.FormattingEnabled = true;
             this.comboBInstitucija.Location = new System.Drawing.Point(488, 33);
             this.comboBInstitucija.Name = "comboBInstitucija";
-            this.comboBInstitucija.Size = new System.Drawing.Size(114, 21);
+            this.comboBInstitucija.Size = new System.Drawing.Size(196, 21);
             this.comboBInstitucija.TabIndex = 11;
             // 
             // comboBIstrazivac
@@ -149,7 +141,7 @@
             this.comboBIstrazivac.FormattingEnabled = true;
             this.comboBIstrazivac.Location = new System.Drawing.Point(488, 81);
             this.comboBIstrazivac.Name = "comboBIstrazivac";
-            this.comboBIstrazivac.Size = new System.Drawing.Size(113, 21);
+            this.comboBIstrazivac.Size = new System.Drawing.Size(196, 21);
             this.comboBIstrazivac.TabIndex = 12;
             // 
             // lblInstitucija
@@ -170,11 +162,20 @@
             this.lblIstrazivac.TabIndex = 14;
             this.lblIstrazivac.Text = "Istrazivac";
             // 
+            // comboBTip
+            // 
+            this.comboBTip.FormattingEnabled = true;
+            this.comboBTip.Location = new System.Drawing.Point(174, 74);
+            this.comboBTip.Name = "comboBTip";
+            this.comboBTip.Size = new System.Drawing.Size(103, 21);
+            this.comboBTip.TabIndex = 15;
+            // 
             // FormAngazovanje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBTip);
             this.Controls.Add(this.lblIstrazivac);
             this.Controls.Add(this.lblInstitucija);
             this.Controls.Add(this.comboBIstrazivac);
@@ -183,7 +184,6 @@
             this.Controls.Add(this.tbOrganizacionaJedinica);
             this.Controls.Add(this.dtpDatumZavrsetka);
             this.Controls.Add(this.dtpDatumPocetka);
-            this.Controls.Add(this.lbTip);
             this.Controls.Add(this.tbNazivPozicije);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -205,7 +205,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbNazivPozicije;
-        private System.Windows.Forms.ListBox lbTip;
         private System.Windows.Forms.DateTimePicker dtpDatumPocetka;
         private System.Windows.Forms.DateTimePicker dtpDatumZavrsetka;
         private System.Windows.Forms.TextBox tbOrganizacionaJedinica;
@@ -214,5 +213,6 @@
         private System.Windows.Forms.ComboBox comboBIstrazivac;
         private System.Windows.Forms.Label lblInstitucija;
         private System.Windows.Forms.Label lblIstrazivac;
+        private System.Windows.Forms.ComboBox comboBTip;
     }
 }

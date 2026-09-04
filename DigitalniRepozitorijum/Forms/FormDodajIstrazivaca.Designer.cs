@@ -54,7 +54,6 @@
             this.btnDodajMail = new System.Windows.Forms.Button();
             this.btnDodajTelefon = new System.Windows.Forms.Button();
             this.btnDodajUlogu = new System.Windows.Forms.Button();
-            this.btnDodajAngazovanje = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajIstrazivaca
@@ -278,22 +277,11 @@
             this.btnDodajUlogu.UseVisualStyleBackColor = true;
             this.btnDodajUlogu.Click += new System.EventHandler(this.btnDodajUlogu_Click);
             // 
-            // btnDodajAngazovanje
-            // 
-            this.btnDodajAngazovanje.Location = new System.Drawing.Point(634, 163);
-            this.btnDodajAngazovanje.Name = "btnDodajAngazovanje";
-            this.btnDodajAngazovanje.Size = new System.Drawing.Size(140, 21);
-            this.btnDodajAngazovanje.TabIndex = 27;
-            this.btnDodajAngazovanje.Text = "Dodaj angazovanje";
-            this.btnDodajAngazovanje.UseVisualStyleBackColor = true;
-            this.btnDodajAngazovanje.Click += new System.EventHandler(this.btnDodajAngazovanje_Click);
-            // 
             // FormDodajIstrazivaca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnDodajAngazovanje);
             this.Controls.Add(this.btnDodajUlogu);
             this.Controls.Add(this.btnDodajTelefon);
             this.Controls.Add(this.btnDodajMail);
@@ -355,6 +343,5 @@
         private System.Windows.Forms.Button btnDodajMail;
         private System.Windows.Forms.Button btnDodajTelefon;
         private System.Windows.Forms.Button btnDodajUlogu;
-        private System.Windows.Forms.Button btnDodajAngazovanje;
     }
 }
