@@ -26,8 +26,9 @@ namespace DigitalniRepozitorijum
             _istrazivac = new Istrazivac();
 
             string[] opcije = { "Rukovodilac projekta", "Administrator repozitorijuma", "Urednik", "Recezent", "Autor" };
-            foreach(string o in opcije)
-                cBoxUloga.Items.Add(o);
+            cBoxUloga.Items.AddRange(opcije);
+            /*foreach(string o in opcije)
+                cBoxUloga.Items.Add(o);*/
             PopuniComboBox();
             
           
@@ -68,17 +69,18 @@ namespace DigitalniRepozitorijum
                 _istrazivac.NaucnoZvanje = tbNaucnoZvanje.Text;
                 _istrazivac.StatusNaucnika = cbAktivan.Checked?"AKTIVAN":"NEAKTIVAN";
 
-                
 
+               
 
                 s.SaveOrUpdate(_istrazivac);
+                
 
                 s.Flush();
                 s.Close();
 
+
                 PoveziAngazovanje();
-               
-                
+
                 this.Close();
             }
             
@@ -88,25 +90,16 @@ namespace DigitalniRepozitorijum
                 Console.WriteLine(ex.ToString());
             }
         }
-        private async void PoveziAngazovanje()
+        private void PoveziAngazovanje()
         {
             Form f;
             if (cBoxInstitucija.Text.Length > 0)
             {
-
-                //Angazovanje a=new Angazovanje();
                 NaucnoIstrazivackaInstitucija nii = _institucije.First(i => i.Naziv == cBoxInstitucija.Text);
 
                 f = new FormAngazovanje(_istrazivac, nii);
                 f.ShowDialog();
-                //a..Add(_institucije.First(i=>i.Naziv==cBoxInstitucija.Text));
             }
-            /*else
-            {
-                cBoxInstitucija.Text = "Izaberite instituciju";
-                await Task.Delay(1000);
-                cBoxInstitucija.ResetText();
-            }*/
         }
 
         private async void btnDodajMail_Click(object sender, EventArgs e)

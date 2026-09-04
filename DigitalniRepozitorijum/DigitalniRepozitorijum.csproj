@@ -173,6 +173,12 @@
     <Compile Include="Forms\FormAngazovanje.Designer.cs">
       <DependentUpon>FormAngazovanje.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormDataset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDataset.Designer.cs">
+      <DependentUpon>FormDataset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDodajAutora.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,30 @@
     </Compile>
     <Compile Include="Forms\FormDodajUrednika.Designer.cs">
       <DependentUpon>FormDodajUrednika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormKnjigaIliPoglavlje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormKnjigaIliPoglavlje.Designer.cs">
+      <DependentUpon>FormKnjigaIliPoglavlje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormNaucniRad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormNaucniRad.Designer.cs">
+      <DependentUpon>FormNaucniRad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSoftverskiArtifakt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSoftverskiArtifakt.Designer.cs">
+      <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormVerzija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormVerzija.Designer.cs">
+      <DependentUpon>FormVerzija.cs</DependentUpon>
     </Compile>
     <Compile Include="Maps\AdministratorOvlascenjaMaps.cs" />
     <Compile Include="Maps\AdministratorRepozitorijumaMaps.cs" />
@@ -271,6 +301,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajUrednika.resx">
       <DependentUpon>FormDodajUrednika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormVerzija.resx">
+      <DependentUpon>FormVerzija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

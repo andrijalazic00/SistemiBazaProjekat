@@ -98,7 +98,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(341, 18);
+            this.label6.Location = new System.Drawing.Point(337, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 5;
@@ -135,14 +135,14 @@
             // 
             this.tbNaslov.Location = new System.Drawing.Point(109, 28);
             this.tbNaslov.Name = "tbNaslov";
-            this.tbNaslov.Size = new System.Drawing.Size(104, 20);
+            this.tbNaslov.Size = new System.Drawing.Size(177, 20);
             this.tbNaslov.TabIndex = 10;
             // 
             // tbApstrakt
             // 
-            this.tbApstrakt.Location = new System.Drawing.Point(112, 74);
+            this.tbApstrakt.Location = new System.Drawing.Point(109, 74);
             this.tbApstrakt.Name = "tbApstrakt";
-            this.tbApstrakt.Size = new System.Drawing.Size(100, 20);
+            this.tbApstrakt.Size = new System.Drawing.Size(177, 20);
             this.tbApstrakt.TabIndex = 11;
             // 
             // dtpDatumKreiranja
@@ -201,6 +201,7 @@
             this.btnDodajKljucnuRec.TabIndex = 18;
             this.btnDodajKljucnuRec.Text = "Dodaj kljucnu rec";
             this.btnDodajKljucnuRec.UseVisualStyleBackColor = true;
+            this.btnDodajKljucnuRec.Click += new System.EventHandler(this.btnDodajKljucnuRec_Click);
             // 
             // btnDodajVerziju
             // 
@@ -210,6 +211,7 @@
             this.btnDodajVerziju.TabIndex = 19;
             this.btnDodajVerziju.Text = "Dodaj verziju";
             this.btnDodajVerziju.UseVisualStyleBackColor = true;
+            this.btnDodajVerziju.Click += new System.EventHandler(this.btnDodajVerziju_Click);
             // 
             // btnPredjiNaPodklasu
             // 
@@ -219,6 +221,7 @@
             this.btnPredjiNaPodklasu.TabIndex = 20;
             this.btnPredjiNaPodklasu.Text = "Predji na atribute vezane za tip";
             this.btnPredjiNaPodklasu.UseVisualStyleBackColor = true;
+            this.btnPredjiNaPodklasu.Click += new System.EventHandler(this.btnPredjiNaPodklasu_Click);
             // 
             // DodajIstrazivackiRezultat
             // 

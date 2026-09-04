@@ -137,6 +137,8 @@ namespace DigitalniRepozitorijum.Forms
                 s.Close();
                 if (_fromIstrazivac)
                     this.Close();
+                else
+                    MessageBox.Show("Angazovanje dodato");
             }
             catch (Exception ex)
             {

@@ -8,9 +8,9 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class PripadajuciFajl
     {
-        public virtual IstrazivackiRezultat ID_IR { get; protected set; }
-        public virtual int BrojVerzije { get; protected set; }
-        public virtual string NazivFajla { get; protected set; }
+        public virtual IstrazivackiRezultat ID_IR { get;  set; }
+        public virtual int BrojVerzije { get;  set; }
+        public virtual string NazivFajla { get; set; }
 
         public PripadajuciFajl()
         {
