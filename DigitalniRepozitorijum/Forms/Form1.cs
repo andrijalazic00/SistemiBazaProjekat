@@ -17,7 +17,22 @@ namespace DigitalniRepozitorijum
     {
         public Form1()
         {
+
             InitializeComponent();
+            PoveziMapiranja();
+        }
+
+        private void PoveziMapiranja()
+        {
+            try 
+            {
+                ISession s=DataLayer.GetSession();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Neuspesno povezivanje mapiranja\n" + ex.Message.ToString() + ex.InnerException.ToString());
+            }
         }
 
         private void btnDodajIstrazivaca_Click(object sender, EventArgs e)

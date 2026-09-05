@@ -284,6 +284,9 @@
     <EmbeddedResource Include="Forms\FormAngazovanje.resx">
       <DependentUpon>FormAngazovanje.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDataset.resx">
+      <DependentUpon>FormDataset.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajAdministratora.resx">
       <DependentUpon>FormDodajAdministratora.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +304,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajUrednika.resx">
       <DependentUpon>FormDodajUrednika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormKnjigaIliPoglavlje.resx">
+      <DependentUpon>FormKnjigaIliPoglavlje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormNaucniRad.resx">
+      <DependentUpon>FormNaucniRad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSoftverskiArtifakt.resx">
+      <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVerzija.resx">
       <DependentUpon>FormVerzija.cs</DependentUpon>

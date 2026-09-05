@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+using NHibernate.Impl;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -18,7 +19,7 @@ namespace DigitalniRepozitorijum.Forms
         //private List<KljucnaRec> _kljucneReci;
         private static readonly string[] _opcijeTip ={ "Obrazovni materijal", "Prezentacija","Doktorska disertacija", "Softverski artifakt",
                                     "Dataset", "Tehnicki izvestaj","Knjiga ili poglavlje", "Naucni rad" };
-        private static readonly string[]  _opcije = { "U_PRIPREMI", "POSLAT_NA_RECENZIJU", "U_REVIZIJI", "PRIHVACEN", "ODBIJEN", "OBJAVLJEN", "ARHIVIRAN" };
+        private static readonly string[]  _opcijeStatus = { "U_PRIPREMI", "POSLAT_NA_RECENZIJU", "U_REVIZIJI", "PRIHVACEN", "ODBIJEN", "OBJAVLJEN", "ARHIVIRAN" };
         
         private IstrazivackiRezultat _istrazivackiRezultat;
         
@@ -27,7 +28,7 @@ namespace DigitalniRepozitorijum.Forms
             InitializeComponent();
             _istrazivackiRezultat=new IstrazivackiRezultat();
             
-            comboBStatus.Items.AddRange(_opcije);
+            comboBStatus.Items.AddRange(_opcijeStatus);
             comboBTipIstrazivackogRezultata.Items.AddRange(_opcijeTip);
             comboBStatus.SelectedIndex = 0;
             comboBTipIstrazivackogRezultata.SelectedIndex = 0;
@@ -80,26 +81,35 @@ namespace DigitalniRepozitorijum.Forms
 
                     OstaliDokumenti doc = new OstaliDokumenti();
                     Form f;
-                    ISession session = DataLayer.GetSession();
+                    
                     
                     switch (comboBTipIstrazivackogRezultata.Text)
                     {
                         case "Obrazovni materijal":
                             doc.Opcije = "OBRAZOVNI_MATERIJAL";
                             PreuzmiAtribute(doc, _istrazivackiRezultat);
+                            ISession session = DataLayer.GetSession();
                             session.Save(doc);
+                            session.Flush();
+                            session.Close();
                             break;   
 
                         case "Prezentacija":
                             doc.Opcije = "PREZENTACIJA";
                             PreuzmiAtribute(doc, _istrazivackiRezultat);
-                            session.Save(doc);
+                            ISession session2 = DataLayer.GetSession();
+                            session2.Save(doc);
+                            session2.Flush();
+                            session2.Close();
                             break;
 
                         case "Doktorska disertacija":
                             doc.Opcije = "DOKTORSKA_DISERTACIJA";
                             PreuzmiAtribute(doc, _istrazivackiRezultat);
-                            session.Save(doc);
+                            ISession session3 = DataLayer.GetSession();
+                            session3.Save(doc);
+                            session3.Flush();
+                            session3.Close();
                             break;
 
                         case "Softverski artifakt":
@@ -119,7 +129,10 @@ namespace DigitalniRepozitorijum.Forms
                         case "Tehnicki izvestaj":
                             TehnickiIzvestaj t=new TehnickiIzvestaj();
                             PreuzmiAtribute(t, _istrazivackiRezultat);
-                            session.Save(t);
+                            ISession session4 = DataLayer.GetSession();
+                            session4.Save(t);
+                            session4 .Flush();
+                            session4.Close();
                             break;
 
                         case "Knjiga ili poglavlje":
@@ -137,12 +150,14 @@ namespace DigitalniRepozitorijum.Forms
                             break;
                     }
                     //Verzija v=new Verzija();
-
+                    
                 }
                 else 
                 {
                     MessageBox.Show("Popunite polja:status, tip, naslov i apstrakt");
                 }
+
+                
             }
             catch(Exception ex)
 
