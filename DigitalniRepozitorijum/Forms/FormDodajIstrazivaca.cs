@@ -29,6 +29,9 @@ namespace DigitalniRepozitorijum
             cBoxUloga.Items.AddRange(opcije);
             /*foreach(string o in opcije)
                 cBoxUloga.Items.Add(o);*/
+            cBoxInstitucija.DropDownStyle = ComboBoxStyle.DropDownList;
+            cBoxUloga.DropDownStyle = ComboBoxStyle.DropDownList;
+            
             PopuniComboBox();
             
           

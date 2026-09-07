@@ -24,6 +24,12 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             _naucniRad = n;
+            comboBTipRada.Items.Add("CASOPIS");
+            comboBTipRada.Items.Add("KONFERENCIJA");
+            nudBrojIzdanja.Maximum = int.MaxValue;      
+            nudBrojStranice.Maximum = int.MaxValue;
+            nudBrojSveske.Maximum = int.MaxValue;
+            comboBTipRada.DropDownStyle=ComboBoxStyle.DropDownList;
         }
 
         private void btnSacuvajKnjigu_Click(object sender, EventArgs e)
@@ -41,7 +47,7 @@ namespace DigitalniRepozitorijum.Forms
                     _naucniRad.BrojIzdanja=(int)nudBrojIzdanja.Value;
                     _naucniRad.BrojStranice=(int)nudBrojStranice.Value;
                     session.Save(_naucniRad);
-
+                    this.Close();
 
                 }
                 else
@@ -50,12 +56,12 @@ namespace DigitalniRepozitorijum.Forms
                 }
                 session.Flush();
                 session.Close();
-                this.Close();
+               
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString() + ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

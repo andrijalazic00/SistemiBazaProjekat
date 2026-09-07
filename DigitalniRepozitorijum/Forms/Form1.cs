@@ -323,6 +323,8 @@ namespace DigitalniRepozitorijum
                 s.Save(sa);
                 s.Flush();
                 s.Close();
+                Form f = new FormDodajIstrazivackiRezultat();
+                f.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -66,7 +66,9 @@ namespace DigitalniRepozitorijum.Forms
                 comboBIstrazivac.DisplayMember= "Value";
                 comboBIstrazivac.ValueMember = "Key";
 
-               
+                comboBInstitucija.DropDownStyle=ComboBoxStyle.DropDownList;
+                comboBIstrazivac.DropDownStyle=ComboBoxStyle.DropDownList;
+                comboBTip.DropDownStyle=ComboBoxStyle.DropDownList;
 
                 s.Close();
             }
@@ -142,7 +144,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString()+ex.InnerException.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
     }

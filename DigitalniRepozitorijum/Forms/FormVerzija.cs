@@ -25,7 +25,7 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             _istrazivackiRezultat = istrazivackiRezultat;
-            _verzija = new Verzija();
+           
             //_istrazivackiRezultat.PripadajuciFajlovi.Add(new PripadajuciFajl());
 
         }
@@ -40,6 +40,7 @@ namespace DigitalniRepozitorijum.Forms
                     f.NazivFajla=tbNazivFajla.Text;
                     f.BrojVerzije = (int)nudBrojVerzije.Value;
                     f.ID_IR = _istrazivackiRezultat;
+                    _istrazivackiRezultat.PripadajuciFajlovi.Add(f);
                     
                     tbNazivFajla.Clear();
                     tbNazivFajla.Text = "Fajl dodat";
@@ -57,7 +58,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message.ToString() + ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
 
         }
@@ -66,7 +67,8 @@ namespace DigitalniRepozitorijum.Forms
         {
             try
             {
-                if(tbOdgovornaOsoba.Text.Length>0 && tbOpisIzmena.Text.Length>0)
+                _verzija = new Verzija();
+                if (tbOdgovornaOsoba.Text.Length>0 && tbOpisIzmena.Text.Length>0)
                 {
                     _verzija.BrojVerzije = (int)nudBrojVerzije.Value;
                     _verzija.DatumPostavljanja=dtpDatumPostavljanja.Value;
@@ -74,6 +76,8 @@ namespace DigitalniRepozitorijum.Forms
                     _verzija.OpisIzmena = tbOpisIzmena.Text;
                     _verzija.ID_IR = _istrazivackiRezultat;
                     _istrazivackiRezultat.Verzije.Add(_verzija);
+                    MessageBox.Show("Verzija dodata");
+                    //this.Close();
 
                 }
                 else
@@ -88,7 +92,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch(Exception ex)
             {  
-                MessageBox.Show(ex.Message.ToString()+ex.InnerException.ToString()); 
+                MessageBox.Show(ex.Message.ToString()); 
             }
         }
     }

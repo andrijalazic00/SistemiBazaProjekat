@@ -1,6 +1,6 @@
 ﻿namespace DigitalniRepozitorijum.Forms
 {
-    partial class DodajIstrazivackiRezultat
+    partial class FormDodajIstrazivackiRezultat
     {
         /// <summary>
         /// Required designer variable.

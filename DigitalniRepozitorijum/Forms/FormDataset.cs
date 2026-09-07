@@ -26,6 +26,9 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             _dataset = set;
+            nudBrojZapisa.Maximum=int.MaxValue;
+            nudVelicina.Maximum=int.MaxValue;
+            
         }
 
         private void btnSacuvajDataset_Click(object sender, EventArgs e)
@@ -57,7 +60,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch (Exception ex) 
             { 
-                MessageBox.Show(ex.Message.ToString() + ex.InnerException.Message.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

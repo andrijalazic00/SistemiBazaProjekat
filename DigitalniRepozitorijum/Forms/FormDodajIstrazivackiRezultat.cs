@@ -14,7 +14,7 @@ using NHibernate.Impl;
 
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class DodajIstrazivackiRezultat : Form
+    public partial class FormDodajIstrazivackiRezultat : Form
     {
         //private List<KljucnaRec> _kljucneReci;
         private static readonly string[] _opcijeTip ={ "Obrazovni materijal", "Prezentacija","Doktorska disertacija", "Softverski artifakt",
@@ -23,7 +23,7 @@ namespace DigitalniRepozitorijum.Forms
         
         private IstrazivackiRezultat _istrazivackiRezultat;
         
-        public DodajIstrazivackiRezultat()
+        public FormDodajIstrazivackiRezultat()
         {
             InitializeComponent();
             _istrazivackiRezultat=new IstrazivackiRezultat();
@@ -32,6 +32,8 @@ namespace DigitalniRepozitorijum.Forms
             comboBTipIstrazivackogRezultata.Items.AddRange(_opcijeTip);
             comboBStatus.SelectedIndex = 0;
             comboBTipIstrazivackogRezultata.SelectedIndex = 0;
+            comboBTipIstrazivackogRezultata.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBStatus.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
 
@@ -61,7 +63,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString() + ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -92,6 +94,7 @@ namespace DigitalniRepozitorijum.Forms
                             session.Save(doc);
                             session.Flush();
                             session.Close();
+                            MessageBox.Show("Obrazovni materjal dodat");
                             break;   
 
                         case "Prezentacija":
@@ -101,6 +104,7 @@ namespace DigitalniRepozitorijum.Forms
                             session2.Save(doc);
                             session2.Flush();
                             session2.Close();
+                            MessageBox.Show("Prezentacija dodata");
                             break;
 
                         case "Doktorska disertacija":
@@ -110,6 +114,7 @@ namespace DigitalniRepozitorijum.Forms
                             session3.Save(doc);
                             session3.Flush();
                             session3.Close();
+                            MessageBox.Show("Doktorska disertacija dodata");
                             break;
 
                         case "Softverski artifakt":
@@ -133,6 +138,7 @@ namespace DigitalniRepozitorijum.Forms
                             session4.Save(t);
                             session4 .Flush();
                             session4.Close();
+                            MessageBox.Show("Tehnicki izvestaj dodat");
                             break;
 
                         case "Knjiga ili poglavlje":
@@ -150,6 +156,7 @@ namespace DigitalniRepozitorijum.Forms
                             break;
                     }
                     //Verzija v=new Verzija();
+                    this.Close();
                     
                 }
                 else 
@@ -162,7 +169,7 @@ namespace DigitalniRepozitorijum.Forms
             catch(Exception ex)
 
             { 
-                MessageBox.Show(ex.ToString()+ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -174,12 +181,23 @@ namespace DigitalniRepozitorijum.Forms
             primalac.DatumObjavljivanja=davalac.DatumObjavljivanja;
             primalac.DatumKreiranja=davalac. DatumKreiranja;
             primalac.Naslov=davalac.Naslov;
-            primalac.KljucneReci=davalac.KljucneReci;
-            primalac.Verzije=davalac.Verzije;
+
+            primalac.PripadajuciFajlovi = davalac.PripadajuciFajlovi;
+            foreach (var f in primalac.PripadajuciFajlovi)
+                f.ID_IR = primalac;   // Prevezivanje pokazivaca da pokazuje na novi objekat
+
+            primalac.KljucneReci = davalac.KljucneReci;
+            foreach (var k in primalac.KljucneReci)
+                k.ID_IR = primalac;      
+
+            primalac.Verzije = davalac.Verzije;
+            foreach (var v in primalac.Verzije)
+                v.ID_IR = primalac;      
         }
         private void btnDodajVerziju_Click(object sender, EventArgs e)
         {
             Form f = new FormVerzija(_istrazivackiRezultat);
+            f.ShowDialog();
         }
     }
 }

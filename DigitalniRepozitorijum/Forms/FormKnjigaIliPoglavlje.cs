@@ -37,6 +37,7 @@ namespace DigitalniRepozitorijum.Forms
                     _knjiga.Izdavac = tbIzdavac.Text;
                     _knjiga.MestoIzdavanja = tbMestoIzdavanja.Text;
                     session.Save( _knjiga );
+                    this.Close();
 
                 }
                 else
@@ -63,7 +64,7 @@ namespace DigitalniRepozitorijum.Forms
 
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message.ToString() + ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

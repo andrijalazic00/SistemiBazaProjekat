@@ -149,11 +149,11 @@
     <Compile Include="Entities\Uredjuje.cs" />
     <Compile Include="Entities\Urednik.cs" />
     <Compile Include="Entities\Verzija.cs" />
-    <Compile Include="Forms\DodajIstrazivackiRezultat.cs">
+    <Compile Include="Forms\FormDodajIstrazivackiRezultat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DodajIstrazivackiRezultat.Designer.cs">
-      <DependentUpon>DodajIstrazivackiRezultat.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajIstrazivackiRezultat.Designer.cs">
+      <DependentUpon>FormDodajIstrazivackiRezultat.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DodajNII.cs">
       <SubType>Form</SubType>
@@ -275,8 +275,8 @@
     <Compile Include="Maps\VerzijaMaps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\DodajIstrazivackiRezultat.resx">
-      <DependentUpon>DodajIstrazivackiRezultat.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajIstrazivackiRezultat.resx">
+      <DependentUpon>FormDodajIstrazivackiRezultat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

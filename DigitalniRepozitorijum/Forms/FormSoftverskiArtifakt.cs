@@ -29,6 +29,8 @@ namespace DigitalniRepozitorijum.Forms
             InitializeComponent();
             _softverskiArtifakt = sa;
             comboBPodrzanePlatforme.Items.AddRange(_opcijePodrzanePlatforme);
+            comboBPodrzanePlatforme.DropDownStyle=ComboBoxStyle.DropDownList;
+            
         }
 
         private async void btnDodajPlatformu_Click(object sender, EventArgs e)
@@ -56,7 +58,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch(Exception ex) 
             {
-                MessageBox.Show(ex.Message.ToString() + ex.InnerException.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
