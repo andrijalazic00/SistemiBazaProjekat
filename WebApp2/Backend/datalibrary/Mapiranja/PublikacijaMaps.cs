@@ -14,7 +14,9 @@ namespace datalibrary.Mapiranja
         {
             Table("PUBLIKACIJA");
             Id(x => x.ID_P, "ID_P").GeneratedBy.Sequence("SEQ_PUBLIKACIJA");
-            References(x => x.ID_IR, "ID_IR").Nullable().Unique();
+            References( x => x.ID_D, "ID_ID").Nullable().Unique();
+            References( x => x.ID_TI, "ID_TI").Nullable().Unique();
+            References( x => x.ID_SA, "ID_SA").Nullable().Unique();   
 
             HasMany(x => x.CitiranePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.CitirajucePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();

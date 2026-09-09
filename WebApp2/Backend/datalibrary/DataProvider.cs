@@ -1330,7 +1330,7 @@ namespace datalibrary
             }
         }
 
-        public static void ObrsisPodrzanuPlatformu(int ID_IR, string platfoma)
+        public static void ObrisiPodrzanuPlatformu(int ID_IR, string platfoma)
         {
             try
             {
@@ -1384,7 +1384,7 @@ namespace datalibrary
             }
         }
 
-        public static void ObrsisDataset(int ID_IR, string platfoma)
+        public static void ObrisiDataset(int ID_IR, string platfoma)
         {
             try
             {
@@ -1431,7 +1431,7 @@ namespace datalibrary
             }
         }
 
-        public static void ObrsisTehnickiIzvestaj(int ID_IR)
+        public static void ObrisiTehnickiIzvestaj(int ID_IR)
         {
             try
             {
@@ -1479,7 +1479,7 @@ namespace datalibrary
             }
         }
 
-        public static void ObrsisKnjigeIliPoglavlja(int ID_IR)
+        public static void ObrsiKnjigeIliPoglavlja(int ID_IR)
         {
             try
             {
@@ -1554,6 +1554,21 @@ namespace datalibrary
         #endregion
         #region  Publikacija
 
+        public static void DodajPublikaciju()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajPublikaciju: "+ ex);
+                throw;
+            }
+        }
 
         #endregion
     }

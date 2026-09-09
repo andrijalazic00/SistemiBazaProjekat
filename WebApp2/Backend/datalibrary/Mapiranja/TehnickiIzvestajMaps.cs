@@ -14,7 +14,7 @@ namespace datalibrary.Mapiranja
         {
             Table("TEHNICKI_IZVESTAJ");
             KeyColumn("ID_IR");
-            HasOne(x => x.Publikacija).PropertyRef(x => x.ID_IR);
+            HasOne(x => x.Publikacija).PropertyRef(x => x.ID_TI);
         }
     }
 }
