@@ -19,7 +19,7 @@ namespace DigitalniRepozitorijum.Maps
             Map(x => x.NacinLicenciranja, "NACIN_LICENCIRANJA").Not.Nullable();
             Map(x => x.Dokumentacija, "DOKUMENTACIJA").Not.Nullable();
 
-            HasOne(x => x.Publikacija).PropertyRef(x => x.ID_IR);
+            HasOne(x => x.Publikacija).PropertyRef(x => x.SoftverskiArtifaktID);
 
             HasMany(x => x.PodrzanePlatforme).KeyColumn("ID_IR").LazyLoad().Cascade.All().Inverse();
         }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
 using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Forms;
 
 namespace DigitalniRepozitorijum
 {
@@ -16,7 +17,22 @@ namespace DigitalniRepozitorijum
     {
         public Form1()
         {
+
             InitializeComponent();
+            PoveziMapiranja();
+        }
+
+        private void PoveziMapiranja()
+        {
+            try 
+            {
+                ISession s=DataLayer.GetSession();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Neuspesno povezivanje mapiranja\n" + ex.Message.ToString() + ex.InnerException.ToString());
+            }
         }
 
         private void btnDodajIstrazivaca_Click(object sender, EventArgs e)
@@ -24,7 +40,9 @@ namespace DigitalniRepozitorijum
             try
             {
 
-
+                Form form = new FormDodajIstrazivaca();
+                form.ShowDialog();
+                /*
                 ISession s = DataLayer.GetSession();
 
                 Istrazivac I = new Istrazivac();
@@ -108,6 +126,7 @@ namespace DigitalniRepozitorijum
                 s.SaveOrUpdate(I);
 
                 s.Flush();
+                */
             }
             catch(Exception ex)
             {
@@ -120,13 +139,16 @@ namespace DigitalniRepozitorijum
         {
             try
             {
-                ISession s = DataLayer.GetSession();
 
-                /*NaucnoIstrazivackaInstitucija n2 = s.Load<NaucnoIstrazivackaInstitucija>(1);
+                Form form = new FormDodajNII();
+                form.ShowDialog();
+                /*ISession s = DataLayer.GetSession();
+
+                NaucnoIstrazivackaInstitucija n2 = s.Load<NaucnoIstrazivackaInstitucija>(1);
                 NaucnoIstrazivackaInstitucija n = new NaucnoIstrazivackaInstitucija();
                 n.Naziv = "Institut Podvodnih Istrazivanja";
                 n.Adresa = "Nikole Tesle 32";
-                s.SaveOrUpdate(n);*/
+                s.SaveOrUpdate(n);
 
 
                 NaucnoIstrazivackaInstitucija n = new NaucnoIstrazivackaInstitucija();
@@ -172,7 +194,7 @@ namespace DigitalniRepozitorijum
 
 
 
-                s.Close();
+                s.Close();*/
             }
             catch (Exception ex)
             {
@@ -203,7 +225,7 @@ namespace DigitalniRepozitorijum
         private void btnDodajIR_Click(object sender, EventArgs e)
         {
             try
-            {
+            {/*
                 ISession s = DataLayer.GetSession();
                 Dataset ds = new Dataset();
                 ds.Naslov = "Neki dataset";
@@ -300,7 +322,9 @@ namespace DigitalniRepozitorijum
                 s.Save(ds);
                 s.Save(sa);
                 s.Flush();
-                s.Close();
+                s.Close();*/
+                Form f = new FormDodajIstrazivackiRezultat();
+                f.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -338,7 +362,7 @@ namespace DigitalniRepozitorijum
         private void btnDodajPublikaciju_Click(object sender, EventArgs e)
         {
             try
-            {
+            {/*
                 ISession s = DataLayer.GetSession();
                 Publikacija p = new Publikacija();
                 p.ID_IR = s.Load<Dataset>(2);
@@ -357,7 +381,7 @@ namespace DigitalniRepozitorijum
 
                 s.Save(c);
                 s.Flush();
-                s.Close();
+                s.Close();*/
             }
             catch(Exception ex)
             {
@@ -372,6 +396,7 @@ namespace DigitalniRepozitorijum
         {
             try
             {
+                /*
                 ISession s = DataLayer.GetSession();
                
                 Autor autor =s.Load<Autor>(8);
@@ -385,7 +410,9 @@ namespace DigitalniRepozitorijum
 
                 s.Save(a);
                 s.Flush();
-                s.Close();
+                s.Close();*/
+                Form angazovanje = new FormAngazovanje();
+                angazovanje.ShowDialog();
             }
             catch(Exception ex) 
             { 
@@ -422,6 +449,9 @@ namespace DigitalniRepozitorijum
 
         private void btnPublikacijaVeze_Click(object sender, EventArgs e)
         {
+            Form publikacija = new FormDodajPublikaciju();
+            publikacija.ShowDialog();
+            /*
             ISession s=DataLayer.GetSession();
             Publikacija p=new Publikacija();
             s.Save(p);
@@ -489,7 +519,7 @@ namespace DigitalniRepozitorijum
             s.Save(o4);
 
             s.Flush();
-            s.Close();
+            s.Close();*/
         }
     }
 }

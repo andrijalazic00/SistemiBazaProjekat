@@ -323,9 +323,13 @@ CREATE TABLE angazovanje(
 
 CREATE TABLE publikacija(
     ID_P NUMBER(10) PRIMARY KEY,
-    ID_IR NUMBER(10),
+    ID_D NUMBER(10),
+    ID_TI NUMBER(10),
+    ID_SA NUMBER(10),
 
-    CONSTRAINT FK_PUBLIKACIJA_ID_IR FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
+    CONSTRAINT FK_PUBLIKACIJA_ID_D FOREIGN KEY (ID_D) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE,
+    CONSTRAINT FK_PUBLIKACIJA_ID_TI FOREIGN KEY (ID_TI) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE,
+    CONSTRAINT FK_PUBLIKACIJA_ID_SA FOREIGN KEY (ID_SA) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
 );
 
     -- Citat atributi
@@ -481,9 +485,9 @@ BEGIN
     INSERT INTO kljucne_reci (ID_IR,KLJUCNA_REC)
     VALUES (new_ID_IR, 'Ekologija');
 
-    INSERT INTO publikacija (ID_P, ID_IR)
+    /*INSERT INTO publikacija (ID_P, ID_IR)
     VALUES (SEQ_PUBLIKACIJA.NEXTVAL, new_ID_IR)
-    RETURNING ID_P INTO new_ID_P;
+    RETURNING ID_P INTO new_ID_P;*/
 
     INSERT INTO uloga(ID_U, ID_I)
     VALUES(SEQ_ULOGA.NEXTVAL, new_ID_I) 
@@ -492,8 +496,8 @@ BEGIN
     INSERT INTO autor(ID_U, ORCID)
     VALUES(new_ID_U, '1234-0002-1825-009X');
 
-    INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA,TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
-    VALUES(new_ID_U,new_ID_P, 1,'Istrazivao uticaj emisija stetnih gasova iz automobila na efekat staklene baste', '23-50 strana');
+    --INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA,TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
+    --VALUES(new_ID_U,new_ID_P, 1,'Istrazivao uticaj emisija stetnih gasova iz automobila na efekat staklene baste', '23-50 strana');
     -----------------------------------------------------------------------------------------------------------------------------------------------------
     Insert into istrazivacki_rezultat(ID_IR, NASLOV,APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
     values (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Negativni efekti duvanskig dima','Treci istrazivacki rezultat u bazi',TO_DATE('2016-02-01', 'YYYY-MM-DD'),TO_DATE('2021-07-14', 'YYYY-MM-DD'),'ARHIVIRAN','0')
