@@ -8,7 +8,7 @@ namespace datalibrary.Entiteti
 {
     public class Uloga
     {
-        public virtual int ID_U { get; protected set; }
+        public virtual int ID_U { get; set; }
         //public virtual int? ID_I { get; set; }
         public virtual Istrazivac ID_I { get; set; }
 

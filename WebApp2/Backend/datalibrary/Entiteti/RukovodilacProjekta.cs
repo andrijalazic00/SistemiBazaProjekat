@@ -10,7 +10,7 @@ namespace datalibrary.Entiteti
     {
         //public virtual int ID_U { get; protected set; }
 
-        public RukovodilacProjekta()
+        public RukovodilacProjekta():base()
         {
         }
     }
