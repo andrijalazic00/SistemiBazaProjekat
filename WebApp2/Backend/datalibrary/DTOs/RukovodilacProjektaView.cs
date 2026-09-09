@@ -7,6 +7,10 @@ namespace datalibrary.DTOs
     {
         public RukovodilacProjektaView():base()
         {
+        }
+
+        public RukovodilacProjektaView( RukovodilacProjekta r):base(r)
+        {
             
         }
     }
