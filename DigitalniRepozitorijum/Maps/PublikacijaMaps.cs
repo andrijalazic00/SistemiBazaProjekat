@@ -14,7 +14,9 @@ namespace DigitalniRepozitorijum.Maps
         {
             Table("PUBLIKACIJA");
             Id(x => x.ID_P, "ID_P").GeneratedBy.Sequence("SEQ_PUBLIKACIJA");
-            References(x => x.ID_IR, "ID_IR").Nullable().Unique();
+            References(x => x.TehnickiIzvestajID, "ID_TI").Nullable().Unique();
+            References(x => x.DatasetID, "ID_D").Nullable().Unique();
+            References(x => x.SoftverskiArtifaktID, "ID_SA").Nullable().Unique();
 
             HasMany(x => x.CitiranePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.CitirajucePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();

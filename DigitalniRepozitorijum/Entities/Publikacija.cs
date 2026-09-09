@@ -9,7 +9,9 @@ namespace DigitalniRepozitorijum.Entities
     public class Publikacija
     {
         public virtual int ID_P { get; protected set; }
-        public virtual IstrazivackiRezultat ID_IR { get; set; }
+        public virtual Dataset DatasetID { get; set; }
+        public virtual TehnickiIzvestaj TehnickiIzvestajID { get; set; }
+        public virtual SoftverskiArtifakt SoftverskiArtifaktID { get; set; }
 
         public virtual IList <Citat> CitirajucePublikacije {  get; set; }
         public virtual IList<Citat> CitiranePublikacije { get; set; }

@@ -203,6 +203,12 @@
     <Compile Include="Forms\FormDodajAdministratora.Designer.cs">
       <DependentUpon>FormDodajAdministratora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormDodajPublikaciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajPublikaciju.Designer.cs">
+      <DependentUpon>FormDodajPublikaciju.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDodajRecezenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajNII.resx">
       <DependentUpon>FormDodajNII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajPublikaciju.resx">
+      <DependentUpon>FormDodajPublikaciju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajRecezenta.resx">
       <DependentUpon>FormDodajRecezenta.cs</DependentUpon>

@@ -225,7 +225,7 @@ namespace DigitalniRepozitorijum
         private void btnDodajIR_Click(object sender, EventArgs e)
         {
             try
-            {
+            {/*
                 ISession s = DataLayer.GetSession();
                 Dataset ds = new Dataset();
                 ds.Naslov = "Neki dataset";
@@ -322,7 +322,7 @@ namespace DigitalniRepozitorijum
                 s.Save(ds);
                 s.Save(sa);
                 s.Flush();
-                s.Close();
+                s.Close();*/
                 Form f = new FormDodajIstrazivackiRezultat();
                 f.ShowDialog();
             }
@@ -362,7 +362,7 @@ namespace DigitalniRepozitorijum
         private void btnDodajPublikaciju_Click(object sender, EventArgs e)
         {
             try
-            {
+            {/*
                 ISession s = DataLayer.GetSession();
                 Publikacija p = new Publikacija();
                 p.ID_IR = s.Load<Dataset>(2);
@@ -381,7 +381,7 @@ namespace DigitalniRepozitorijum
 
                 s.Save(c);
                 s.Flush();
-                s.Close();
+                s.Close();*/
             }
             catch(Exception ex)
             {
@@ -449,6 +449,9 @@ namespace DigitalniRepozitorijum
 
         private void btnPublikacijaVeze_Click(object sender, EventArgs e)
         {
+            Form publikacija = new FormDodajPublikaciju();
+            publikacija.ShowDialog();
+            /*
             ISession s=DataLayer.GetSession();
             Publikacija p=new Publikacija();
             s.Save(p);
@@ -516,7 +519,7 @@ namespace DigitalniRepozitorijum
             s.Save(o4);
 
             s.Flush();
-            s.Close();
+            s.Close();*/
         }
     }
 }
