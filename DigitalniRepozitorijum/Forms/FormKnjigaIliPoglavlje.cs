@@ -9,12 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NHibernate;
+//using System.ServiceModel.Channels;
+
 
 namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormKnjigaIliPoglavlje : Form
     {
+        private ISession _session;
         private KnjigaIliPoglavlja _knjiga;
+        private Dictionary<int, Urednik> _uredniciDict;
+        private List<Urednik> _uredniciList;
 
         public FormKnjigaIliPoglavlje()
         {
@@ -24,20 +29,57 @@ namespace DigitalniRepozitorijum.Forms
         public FormKnjigaIliPoglavlje(KnjigaIliPoglavlja k)
         {
             InitializeComponent();
+            PopuniComboBox();
             _knjiga = k;
+        }
+
+        public void PopuniComboBox()
+        {
+            _session = DataLayer.GetSession();
+            _uredniciList = _session.Query<Urednik>().ToList();
+            _uredniciDict = _uredniciList.ToDictionary(i => i.ID_U);
+            Dictionary<int, string> uredniciDictKeyName = _uredniciList.ToDictionary(i=>i.ID_U, i=>i.ID_I.Ime+" "+i.ID_I.Prezime);
+            if(uredniciDictKeyName.Count==0)
+            {
+                
+                MessageBox.Show("Nema urednika u bazi, kreirajte bar jednog urednika pre kreiranja knjige");
+                _session.Close();
+                this.Close();
+                
+            }
+            comboBUrednici.DataSource = new BindingSource(uredniciDictKeyName, null);
+            comboBUrednici.DisplayMember = "Value";
+            comboBUrednici.ValueMember = "Key";
+            comboBUrednici.DropDownStyle=ComboBoxStyle.DropDownList;
+            
+
         }
 
         private async void btnSacuvajKnjigu_Click(object sender, EventArgs e)
         {
             try
             {
-                ISession session = DataLayer.GetSession();
-                if (tbIzdavac.Text.Length > 0 && tbMestoIzdavanja.Text.Length > 0)
+                //ISession session = DataLayer.GetSession();
+                
+                if (tbIzdavac.Text.Length > 0 && tbMestoIzdavanja.Text.Length > 0 && comboBUrednici.SelectedValue!=null)
                 {
                     _knjiga.Izdavac = tbIzdavac.Text;
                     _knjiga.MestoIzdavanja = tbMestoIzdavanja.Text;
-                    session.Save( _knjiga );
+                    
+                    int id_u =(int)comboBUrednici.SelectedValue;
+                    Urednik urednik = _uredniciDict[id_u];
+                    Uredjuje uredjuje=new Uredjuje(_knjiga,urednik);
+                    _knjiga.Urednici.Add(uredjuje);
+                    urednik.Knjige.Add(uredjuje);
+
+                    _session.Save(_knjiga);
+                    _session.SaveOrUpdate(urednik);
+                    
+                    
                     this.Close();
+                    _session.Flush();
+                    _session.Close();
+                    MessageBox.Show("Knjiga sacuvana");
 
                 }
                 else
@@ -49,22 +91,29 @@ namespace DigitalniRepozitorijum.Forms
                         await Task.Delay(1000);
                         tbIzdavac.Clear();
                     }
-                    else 
+                    else if(tbMestoIzdavanja.Text.Length==0)
                     {
                         tbMestoIzdavanja.Clear();
                         tbMestoIzdavanja.Text = "Unesite mesto izdavanja";
                         await Task.Delay(1000);
                         tbMestoIzdavanja.Clear();
                     }
+                    else
+                    {
+                        MessageBox.Show("Unesite urednika ako postoji u listi. U suprotnom kreirajte novog urednika");
+                    }
+                    
                 }
-                session.Flush();
-                session.Close();
+               
 
             }
 
             catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message.ToString());
+                _session.Close();
+                this.Close();
+                //session.Close();
             }
         }
     }

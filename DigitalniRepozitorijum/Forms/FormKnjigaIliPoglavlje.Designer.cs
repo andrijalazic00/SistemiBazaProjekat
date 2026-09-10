@@ -33,6 +33,8 @@
             this.tbIzdavac = new System.Windows.Forms.TextBox();
             this.tbMestoIzdavanja = new System.Windows.Forms.TextBox();
             this.btnSacuvajKnjigu = new System.Windows.Forms.Button();
+            this.comboBUrednici = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +71,7 @@
             // 
             // btnSacuvajKnjigu
             // 
-            this.btnSacuvajKnjigu.Location = new System.Drawing.Point(24, 144);
+            this.btnSacuvajKnjigu.Location = new System.Drawing.Point(25, 207);
             this.btnSacuvajKnjigu.Name = "btnSacuvajKnjigu";
             this.btnSacuvajKnjigu.Size = new System.Drawing.Size(187, 37);
             this.btnSacuvajKnjigu.TabIndex = 4;
@@ -77,11 +79,30 @@
             this.btnSacuvajKnjigu.UseVisualStyleBackColor = true;
             this.btnSacuvajKnjigu.Click += new System.EventHandler(this.btnSacuvajKnjigu_Click);
             // 
+            // comboBUrednici
+            // 
+            this.comboBUrednici.FormattingEnabled = true;
+            this.comboBUrednici.Location = new System.Drawing.Point(127, 138);
+            this.comboBUrednici.Name = "comboBUrednici";
+            this.comboBUrednici.Size = new System.Drawing.Size(175, 21);
+            this.comboBUrednici.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(47, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Urednik";
+            // 
             // FormKnjigaIliPoglavlje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBUrednici);
             this.Controls.Add(this.btnSacuvajKnjigu);
             this.Controls.Add(this.tbMestoIzdavanja);
             this.Controls.Add(this.tbIzdavac);
@@ -101,5 +122,7 @@
         private System.Windows.Forms.TextBox tbIzdavac;
         private System.Windows.Forms.TextBox tbMestoIzdavanja;
         private System.Windows.Forms.Button btnSacuvajKnjigu;
+        private System.Windows.Forms.ComboBox comboBUrednici;
+        private System.Windows.Forms.Label label3;
     }
 }

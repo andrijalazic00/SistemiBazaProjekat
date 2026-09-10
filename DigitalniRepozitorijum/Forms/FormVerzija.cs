@@ -39,6 +39,7 @@ namespace DigitalniRepozitorijum.Forms
                     PripadajuciFajl f=new PripadajuciFajl();
                     f.NazivFajla=tbNazivFajla.Text;
                     f.BrojVerzije = (int)nudBrojVerzije.Value;
+                    nudBrojVerzije.Enabled = false;
                     f.ID_IR = _istrazivackiRezultat;
                     _istrazivackiRezultat.PripadajuciFajlovi.Add(f);
                     
@@ -77,6 +78,7 @@ namespace DigitalniRepozitorijum.Forms
                     _verzija.ID_IR = _istrazivackiRezultat;
                     _istrazivackiRezultat.Verzije.Add(_verzija);
                     MessageBox.Show("Verzija dodata");
+                    nudBrojVerzije.Enabled = true;
                     //this.Close();
 
                 }

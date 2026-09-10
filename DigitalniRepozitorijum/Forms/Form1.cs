@@ -336,6 +336,16 @@ namespace DigitalniRepozitorijum
         {
             try
             {
+                ISession s=DataLayer.GetSession();
+                List<Urednik> urednikList=s.Query<Urednik>().ToList();
+                foreach(Urednik u in urednikList)
+                {
+                    foreach (RundaRecenzije rr in u.RundeRecenzije)
+                    {
+                        MessageBox.Show(rr.BrojRunde.ToString() + rr.DatumOdluke.ToString() + rr.KonacnaOdluka);
+                    }
+                }
+                /*
                 ISession s = DataLayer.GetSession();
 
                 Istrazivac i = s.Load<Istrazivac>(5);
@@ -350,7 +360,7 @@ namespace DigitalniRepozitorijum
 
                 s.Save(a);
                 s.Flush();
-                s.Close();
+                s.Close();*/
             }
             catch (Exception ex)
             {
@@ -422,6 +432,7 @@ namespace DigitalniRepozitorijum
 
         private void btnUredjuje_Click(object sender, EventArgs e)
         {
+            /*
             ISession s= DataLayer.GetSession();
             KnjigaIliPoglavlja k = new KnjigaIliPoglavlja();
             k.Apstrakt = "neka knjiga";
@@ -444,7 +455,9 @@ namespace DigitalniRepozitorijum
 
             s.Save(uredjuje);
             s.Flush();
-            s.Close();
+            s.Close();*/
+            Form rundaRecenzije = new FormDodajRunduRecenzije();
+            rundaRecenzije.ShowDialog();
         }
 
         private void btnPublikacijaVeze_Click(object sender, EventArgs e)

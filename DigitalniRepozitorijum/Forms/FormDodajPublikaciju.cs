@@ -17,7 +17,9 @@ namespace DigitalniRepozitorijum.Forms
         //private Publikacija _publikacija;
         private ISession _session;
         private Dictionary<int, Autor> _autorDict;
-        private Dictionary<int, IstrazivackiRezultat> _istrazivackiRezultatDict;
+        private Dictionary<int, Dataset> _datasetDict;
+        private Dictionary<int, TehnickiIzvestaj> _tehnickiIzvestajDict;
+        private Dictionary<int, SoftverskiArtifakt> _softverskiArtifaktDict;
 
         public FormDodajPublikaciju()
         {
@@ -42,28 +44,51 @@ namespace DigitalniRepozitorijum.Forms
                 comboBAutor.DropDownStyle = ComboBoxStyle.DropDownList;
 
                 List<Dataset> datasetList;
-                datasetList =_session.Query<Dataset>().ToList();
                 List<SoftverskiArtifakt> softverskiArtifaktList;
-                softverskiArtifaktList = _session.Query<SoftverskiArtifakt>().ToList();
                 List<TehnickiIzvestaj> tehnickiIzvestajList;
+
+                datasetList =_session.Query<Dataset>().ToList();
+                softverskiArtifaktList = _session.Query<SoftverskiArtifakt>().ToList();               
                 tehnickiIzvestajList = _session.Query<TehnickiIzvestaj>().ToList();
 
-                List<IstrazivackiRezultat> _istrazivackiRezultatList=new List<IstrazivackiRezultat>();
-                _istrazivackiRezultatList.AddRange(datasetList);
-                _istrazivackiRezultatList.AddRange(softverskiArtifaktList);
-                _istrazivackiRezultatList.AddRange(tehnickiIzvestajList);
+                _datasetDict = datasetList.ToDictionary(i => i.ID_IR);
+                _softverskiArtifaktDict = softverskiArtifaktList.ToDictionary(i => i.ID_IR);
+                _tehnickiIzvestajDict = tehnickiIzvestajList.ToDictionary(i => i.ID_IR);
 
+                Dictionary<int, string> DatasetKeyNameDict = datasetList.ToDictionary(i => i.ID_IR, i => i.Naslov + " " + i.DatumKreiranja);
+                Dictionary<int, string> SAKeyNameDict = softverskiArtifaktList.ToDictionary(i => i.ID_IR, i => i.Naslov + " " + i.DatumKreiranja);
+                Dictionary<int, string> TIKeyNameDict = tehnickiIzvestajList.ToDictionary(i => i.ID_IR, i => i.Naslov + " " + i.DatumKreiranja);
 
-                _istrazivackiRezultatDict = _istrazivackiRezultatList.ToDictionary(i => i.ID_IR);
-                Dictionary<int, string> IRKeyNameDict = _istrazivackiRezultatList.ToDictionary(i => i.ID_IR, i => i.Naslov + " " + i.DatumKreiranja);
-                comboBZasnivaSeNa.DataSource = new BindingSource(IRKeyNameDict, null);
-                comboBZasnivaSeNa.DisplayMember = "Value";
-                comboBZasnivaSeNa.ValueMember = "Key";
-                comboBZasnivaSeNa.DropDownStyle = ComboBoxStyle.DropDownList;
-                comboBZasnivaSeNa.SelectedIndex = -1;
-
-
+                if(DatasetKeyNameDict.Count>0)
+                {
+                    comboBZasnivaSeNa.DataSource = new BindingSource(DatasetKeyNameDict, null);
+                    comboBZasnivaSeNa.DisplayMember = "Value";
+                    comboBZasnivaSeNa.ValueMember = "Key";
+                    comboBZasnivaSeNa.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBZasnivaSeNa.SelectedIndex = -1;
+                }
                 
+                if (SAKeyNameDict.Count > 0)
+                {
+                    comboBKoriscen.DataSource = new BindingSource(SAKeyNameDict, null);
+                    comboBKoriscen.DisplayMember = "Value";
+                    comboBKoriscen.ValueMember = "Key";
+                    comboBKoriscen.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBKoriscen.SelectedIndex = -1;
+                }
+                
+                if (TIKeyNameDict.Count > 0)
+                {
+                    comboBNastalaIz.DataSource = new BindingSource(TIKeyNameDict, null);
+                    comboBNastalaIz.DisplayMember = "Value";
+                    comboBNastalaIz.ValueMember = "Key";
+                    comboBNastalaIz.DropDownStyle = ComboBoxStyle.DropDownList;
+                    comboBNastalaIz.SelectedIndex = -1;
+                }
+                
+
+
+
             }
             catch (Exception ex)
             {
@@ -87,8 +112,14 @@ namespace DigitalniRepozitorijum.Forms
                     autrostvo.TipDoprinosa=tbTipDoprinosa.Text;
                     autrostvo.RedniBrojAutora = (int)nudRedniBrojAutora.Value;
                     autrostvo.UlogaUPublikaciji = tbUlogaUPublikaciji.Text;
-                    /*if (comboBZasnivaSeNa.SelectedValue != null)
-                        publikacija.ID_IR = _istrazivackiRezultatDict[(int)comboBZasnivaSeNa.SelectedValue];*/
+
+                    if (comboBZasnivaSeNa.SelectedValue != null)
+                        publikacija.DatasetID = _datasetDict[(int)comboBZasnivaSeNa.SelectedValue];
+                    if (comboBKoriscen.SelectedValue != null)
+                        publikacija.SoftverskiArtifaktID = _softverskiArtifaktDict[(int)comboBKoriscen.SelectedValue];
+                    if (comboBNastalaIz.SelectedValue != null)
+                        publikacija.TehnickiIzvestajID = _tehnickiIzvestajDict[(int)comboBNastalaIz.SelectedValue];
+
                     publikacija.Autorstva.Add(autrostvo);
                     autor.Autorstva.Add(autrostvo);
 
@@ -103,12 +134,15 @@ namespace DigitalniRepozitorijum.Forms
                 else
                 {
                     MessageBox.Show("Popunite prazna polja");
+                    
 
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+        
+                _session.Close();
             }
                 
         }

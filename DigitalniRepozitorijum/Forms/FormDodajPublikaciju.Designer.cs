@@ -41,8 +41,8 @@
             this.btnSacuvajPublikaciju = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBKoriscen = new System.Windows.Forms.ComboBox();
+            this.comboBNastalaIz = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudRedniBrojAutora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,29 +156,29 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Nastala iz";
             // 
-            // comboBox1
+            // comboBKoriscen
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(173, 219);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(153, 21);
-            this.comboBox1.TabIndex = 13;
+            this.comboBKoriscen.FormattingEnabled = true;
+            this.comboBKoriscen.Location = new System.Drawing.Point(173, 219);
+            this.comboBKoriscen.Name = "comboBKoriscen";
+            this.comboBKoriscen.Size = new System.Drawing.Size(153, 21);
+            this.comboBKoriscen.TabIndex = 13;
             // 
-            // comboBox2
+            // comboBNastalaIz
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(173, 252);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(152, 21);
-            this.comboBox2.TabIndex = 14;
+            this.comboBNastalaIz.FormattingEnabled = true;
+            this.comboBNastalaIz.Location = new System.Drawing.Point(173, 252);
+            this.comboBNastalaIz.Name = "comboBNastalaIz";
+            this.comboBNastalaIz.Size = new System.Drawing.Size(152, 21);
+            this.comboBNastalaIz.TabIndex = 14;
             // 
             // FormDodajPublikaciju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBNastalaIz);
+            this.Controls.Add(this.comboBKoriscen);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnSacuvajPublikaciju);
@@ -215,7 +215,7 @@
         private System.Windows.Forms.Button btnSacuvajPublikaciju;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBKoriscen;
+        private System.Windows.Forms.ComboBox comboBNastalaIz;
     }
 }

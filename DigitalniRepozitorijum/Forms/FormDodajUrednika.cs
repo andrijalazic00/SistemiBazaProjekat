@@ -34,6 +34,7 @@ namespace DigitalniRepozitorijum
                 if (tbUredjivackaSekcija.Text.Length > 0)
                 {
                     _urednik.UredjivackaSekcija = tbUredjivackaSekcija.Text;
+                    this.Close();
                 }
                 else
                 {
