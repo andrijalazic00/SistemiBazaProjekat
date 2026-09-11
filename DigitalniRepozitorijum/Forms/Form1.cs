@@ -372,7 +372,10 @@ namespace DigitalniRepozitorijum
         private void btnDodajPublikaciju_Click(object sender, EventArgs e)
         {
             try
-            {/*
+            {
+                Form dodajICitat =new FormDodajCitat();
+                dodajICitat.ShowDialog();
+                /*
                 ISession s = DataLayer.GetSession();
                 Publikacija p = new Publikacija();
                 p.ID_IR = s.Load<Dataset>(2);

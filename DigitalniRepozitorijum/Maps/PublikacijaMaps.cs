@@ -18,8 +18,8 @@ namespace DigitalniRepozitorijum.Maps
             References(x => x.DatasetID, "ID_D").Nullable().Unique();
             References(x => x.SoftverskiArtifaktID, "ID_SA").Nullable().Unique();
 
-            HasMany(x => x.CitiranePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
-            HasMany(x => x.CitirajucePublikacije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.CitiranePublikacije).KeyColumn("ID_P2").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.CitirajucePublikacije).KeyColumn("ID_P1").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.RundeRecenzije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
             HasMany(x => x.Autorstva).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
            
