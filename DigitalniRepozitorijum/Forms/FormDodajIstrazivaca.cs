@@ -18,6 +18,8 @@ namespace DigitalniRepozitorijum
     {
         private Istrazivac _istrazivac;
         private IList<NaucnoIstrazivackaInstitucija> _institucije;
+
+        private static readonly string[] _opcije = { "Rukovodilac projekta", "Administrator repozitorijuma", "Urednik", "Recezent", "Autor" };
         //private List<Mail> _mailovi;
         //private List<Telefon> _telefoni;
         public FormDodajIstrazivaca()
@@ -25,10 +27,9 @@ namespace DigitalniRepozitorijum
             InitializeComponent();
             _istrazivac = new Istrazivac();
 
-            string[] opcije = { "Rukovodilac projekta", "Administrator repozitorijuma", "Urednik", "Recezent", "Autor" };
-            cBoxUloga.Items.AddRange(opcije);
-            /*foreach(string o in opcije)
-                cBoxUloga.Items.Add(o);*/
+            
+            cBoxUloga.Items.AddRange(_opcije);
+            
             cBoxInstitucija.DropDownStyle = ComboBoxStyle.DropDownList;
             cBoxUloga.DropDownStyle = ComboBoxStyle.DropDownList;
             
@@ -164,7 +165,7 @@ namespace DigitalniRepozitorijum
 
         }
 
-        private async void btnDodajUlogu_Click(object sender, EventArgs e)
+        private void btnDodajUlogu_Click(object sender, EventArgs e)
         {
             if (cBoxUloga.Text.Length > 0)
             {
@@ -178,6 +179,8 @@ namespace DigitalniRepozitorijum
                         a.ID_I = _istrazivac;
                         f = new FormDodajAdministratora(a);
                         f.ShowDialog();
+                        MessageBox.Show("Uloga dodata");
+
                         break;
                     case "Urednik":
                         Urednik u = new Urednik();
@@ -185,6 +188,7 @@ namespace DigitalniRepozitorijum
                         u.ID_I = _istrazivac;
                         f = new FormDodajUrednika(u);
                         f.ShowDialog();
+                        MessageBox.Show("Uloga dodata");
                         break;
 
                     case "Recezent":
@@ -193,6 +197,7 @@ namespace DigitalniRepozitorijum
                         r.ID_I = _istrazivac;
                         f = new FormDodajRecezenta(r);
                         f.ShowDialog();
+                        MessageBox.Show("Uloga dodata");
                         break;
                     case "Autor":
                         Autor autor = new Autor();
@@ -200,24 +205,21 @@ namespace DigitalniRepozitorijum
                         autor.ID_I = _istrazivac;
                         f = new FormDodajAutora(autor);
                         f.ShowDialog();
+                        MessageBox.Show("Uloga dodata");
                         break;
                     case "Rukovodilac projekta":
 
                         RukovodilacProjekta rukovodilac = new RukovodilacProjekta();
                         _istrazivac.Uloge.Add(rukovodilac);
                         rukovodilac.ID_I = _istrazivac;
-                        cBoxUloga.Text="Uloga dodata";
-                        await Task.Delay(1000);
-                        cBoxUloga.Text="";
+                        MessageBox.Show("Uloga dodata");
                         break;
 
                 }
             }
             else
             {
-                cBoxUloga.Text = "Izaberite ulogu";
-                await Task.Delay(1000);
-                cBoxUloga.ResetText();
+                MessageBox.Show("Izaberite ulogu");
             }
         }
 

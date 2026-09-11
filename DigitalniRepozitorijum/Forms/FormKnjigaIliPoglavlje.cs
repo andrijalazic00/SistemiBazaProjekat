@@ -18,7 +18,7 @@ namespace DigitalniRepozitorijum.Forms
     {
         private ISession _session;
         private KnjigaIliPoglavlja _knjiga;
-        private Dictionary<int, Urednik> _uredniciDict;
+        private Dictionary<string, Urednik> _uredniciDict;
         private List<Urednik> _uredniciList;
 
         public FormKnjigaIliPoglavlje()
@@ -37,9 +37,8 @@ namespace DigitalniRepozitorijum.Forms
         {
             _session = DataLayer.GetSession();
             _uredniciList = _session.Query<Urednik>().ToList();
-            _uredniciDict = _uredniciList.ToDictionary(i => i.ID_U);
-            Dictionary<int, string> uredniciDictKeyName = _uredniciList.ToDictionary(i=>i.ID_U, i=>i.ID_I.Ime+" "+i.ID_I.Prezime);
-            if(uredniciDictKeyName.Count==0)
+            _uredniciDict = _uredniciList.ToDictionary(i => i.ID_I != null ? i.ID_I.Ime + " " + i.ID_I.Prezime + " " + i.ID_U : i.ID_U.ToString());
+            if(_uredniciDict.Count==0)
             {
                 
                 MessageBox.Show("Nema urednika u bazi, kreirajte bar jednog urednika pre kreiranja knjige");
@@ -47,9 +46,9 @@ namespace DigitalniRepozitorijum.Forms
                 this.Close();
                 
             }
-            comboBUrednici.DataSource = new BindingSource(uredniciDictKeyName, null);
-            comboBUrednici.DisplayMember = "Value";
-            comboBUrednici.ValueMember = "Key";
+            comboBUrednici.DataSource = new BindingSource(_uredniciDict, null);
+            comboBUrednici.DisplayMember = "Key";
+            comboBUrednici.ValueMember = "Value";
             comboBUrednici.DropDownStyle=ComboBoxStyle.DropDownList;
             
 
@@ -65,9 +64,9 @@ namespace DigitalniRepozitorijum.Forms
                 {
                     _knjiga.Izdavac = tbIzdavac.Text;
                     _knjiga.MestoIzdavanja = tbMestoIzdavanja.Text;
+
                     
-                    int id_u =(int)comboBUrednici.SelectedValue;
-                    Urednik urednik = _uredniciDict[id_u];
+                    Urednik urednik = (Urednik)comboBUrednici.SelectedValue;
                     Uredjuje uredjuje=new Uredjuje(_knjiga,urednik);
                     _knjiga.Urednici.Add(uredjuje);
                     urednik.Knjige.Add(uredjuje);

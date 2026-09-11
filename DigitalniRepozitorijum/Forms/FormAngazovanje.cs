@@ -62,6 +62,13 @@ namespace DigitalniRepozitorijum.Forms
                 List<Istrazivac> istrazivaciList= s.Query<Istrazivac>().ToList();
                 _istrazivacDict = istrazivaciList.ToDictionary(i => i.ID_I);
                 Dictionary<int, String> istrazivacDictKeyName = istrazivaciList.ToDictionary(i => i.ID_I, i=>i.Ime+" "+i.Prezime+" "+i.DatumRodjenja.ToString());
+                if(istrazivacDictKeyName.Count==0)
+                {
+                    
+                    s.Close();
+                    MessageBox.Show("Nema istrazivaca u bazi");
+                    this.Close();
+                }
                 comboBIstrazivac.DataSource = new BindingSource(istrazivacDictKeyName, null);
                 comboBIstrazivac.DisplayMember= "Value";
                 comboBIstrazivac.ValueMember = "Key";

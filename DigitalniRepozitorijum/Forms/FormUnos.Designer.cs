@@ -1,6 +1,6 @@
 ﻿namespace DigitalniRepozitorijum
 {
-    partial class Form1
+    partial class FormUnos
     {
         /// <summary>
         /// Required designer variable.

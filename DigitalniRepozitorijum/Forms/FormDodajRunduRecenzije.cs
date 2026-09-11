@@ -52,12 +52,12 @@ namespace DigitalniRepozitorijum.Forms
                 _publikacijaList=_session.Query<Publikacija>().ToList();
                 List<Urednik> urednikList=_session.Query<Urednik>().ToList();
                 List<Recenzent> recenzentList=_session.Query<Recenzent>().ToList();
-                
-               
-                
+
+
+
                 //_publikacijaDict = publikacijaList.ToDictionary(i => i.ID_P);
-                _urednikDict = urednikList.ToDictionary(i => i.ID_U + " " + i.ID_I.Ime + " " + i.ID_I.Prezime);
-                _recenzentDict=recenzentList.ToDictionary(i => i.ID_U + " " + i.ID_I.Ime + " " + i.ID_I.Prezime);
+                _urednikDict = urednikList.ToDictionary( i => i.ID_I != null ? i.ID_I.Ime + " " + i.ID_I.Prezime+" "+i.ID_U : i.ID_U.ToString());
+                _recenzentDict=recenzentList.ToDictionary(i => i.ID_I != null ? i.ID_I.Ime + " " + i.ID_I.Prezime + " " + i.ID_U : i.ID_U.ToString());
 
                 //Dictionary<int,string> urednikKeyDict = urednikList.ToDictionary(i => i.ID_U,i=>i.ID_U+" "+i.ID_I.Ime+" "+i.ID_I.Prezime);
                 //Dictionary<int, string> recenzentKeyDict = recenzentList.ToDictionary(i => i.ID_U, i => i.ID_U + " " + i.ID_I.Ime + " " + i.ID_I.Prezime);
