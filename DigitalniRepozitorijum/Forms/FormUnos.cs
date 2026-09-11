@@ -203,6 +203,7 @@ namespace DigitalniRepozitorijum
         {
             try
             {
+                /*
                 ISession s=DataLayer.GetSession();
                 List<Urednik> urednikList=s.Query<Urednik>().ToList();
                 foreach(Urednik u in urednikList)
@@ -211,7 +212,10 @@ namespace DigitalniRepozitorijum
                     {
                         MessageBox.Show(rr.BrojRunde.ToString() + rr.DatumOdluke.ToString() + rr.KonacnaOdluka);
                     }
-                }
+                }*/
+
+                Form angazovanje = new FormAngazovanje();
+                angazovanje.ShowDialog();
                 /*
                 ISession s = DataLayer.GetSession();
 
@@ -240,8 +244,10 @@ namespace DigitalniRepozitorijum
         {
             try
             {
-                Form dodajICitat =new FormDodajCitat();
-                dodajICitat.ShowDialog();
+                Form publikacija = new FormDodajPublikaciju();
+                publikacija.ShowDialog();
+
+               
                 /*
                 ISession s = DataLayer.GetSession();
                 Publikacija p = new Publikacija();
@@ -272,137 +278,42 @@ namespace DigitalniRepozitorijum
 
         }
 
-        private void btnAutorstvo_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                /*
-                ISession s = DataLayer.GetSession();
-               
-                Autor autor =s.Load<Autor>(8);
-                Publikacija p=s.Load<Publikacija>(1);
-                Autorstvo a = new Autorstvo(autor,p);
-                a.UlogaUPublikaciji = "Glavni autor";
-                a.TipDoprinosa = "Izvrsio  istrazivanje i napisa prvi draft";
-                a.RedniBrojAutora = 1;
-                autor.Autorstva.Add(a);
-                p.Autorstva.Add(a);
+       
 
-                s.Save(a);
-                s.Flush();
-                s.Close();*/
-                Form angazovanje = new FormAngazovanje();
-                angazovanje.ShowDialog();
-            }
-            catch(Exception ex) 
-            { 
-                Console.WriteLine(ex.Message); 
-            }
+        
+
+        private void btnDodajCitat_Click(object sender, EventArgs e)
+        {
+            Form dodajICitat = new FormDodajCitat();
+            dodajICitat.ShowDialog();
         }
 
-        private void btnUredjuje_Click(object sender, EventArgs e)
+        private void btnDodajRundu_Click(object sender, EventArgs e)
         {
-            /*
-            ISession s= DataLayer.GetSession();
-            KnjigaIliPoglavlja k = new KnjigaIliPoglavlja();
-            k.Apstrakt = "neka knjiga";
-            k.DatumObjavljivanja = new DateTime(2000, 2, 23);
-            k.DatumKreiranja = new DateTime(1992, 2, 22);
-            k.Naslov = "Naslov prve knjige";
-            k.StatusIR = "OBJAVLJEN";
-            k.Vidljivost = 1;
-            k.Izdavac = "Laguna";
-            k.MestoIzdavanja = "Nis";
-
-            s.Save(k);
-            Urednik u = s.Load<Urednik>(5);
-
-            Uredjuje uredjuje = new Uredjuje(k, u);
-
-            k.Urednici.Add(uredjuje);
-            u.Knjige.Add(uredjuje);
-
-
-            s.Save(uredjuje);
-            s.Flush();
-            s.Close();*/
             Form rundaRecenzije = new FormDodajRunduRecenzije();
             rundaRecenzije.ShowDialog();
         }
 
-        private void btnPublikacijaVeze_Click(object sender, EventArgs e)
+        private void btnTest_Click(object sender, EventArgs e)
         {
-            Form publikacija = new FormDodajPublikaciju();
-            publikacija.ShowDialog();
-            /*
-            ISession s=DataLayer.GetSession();
-            Publikacija p=new Publikacija();
-            s.Save(p);
-            RundaRecenzije rr=new RundaRecenzije();
-            Urednik u = s.Load<Urednik>(5);
-            Recenzent r=s.Load<Recenzent>(2);
-            Recenzent r2 = s.Load<Recenzent>(4);
-            AngazovanjeRecenzent ar=new AngazovanjeRecenzent();
-            AngazovanjeRecenzent ar2 = new AngazovanjeRecenzent();
-            OcenaRecenzenta o=new OcenaRecenzenta();
-            OcenaRecenzenta o2 = new OcenaRecenzenta();
-            OcenaRecenzenta o3 = new OcenaRecenzenta();
-            OcenaRecenzenta o4 = new OcenaRecenzenta();
+            try
+            {
+                ISession s=DataLayer.GetSession();
+                List<Recenzent> rec = s.Query<Recenzent>().ToList();
+                foreach(Recenzent r in rec)
+                {
+                    Console.WriteLine(r.ToString());
+                }
+                List<Urednik> ur = s.Query<Urednik>().ToList();
+                foreach (Urednik u in ur)
+                {
+                    Console.WriteLine(u.ToString());
+                }
 
-            u.RundeRecenzije.Add(rr);
-            p.RundeRecenzije.Add(rr);
-            r.RundeRecenzije.Add(ar);
-            r2.RundeRecenzije.Add(ar2);
-            rr.Recenzenti.Add(ar);
-            rr.Recenzenti.Add(ar2);
-            ar.Ocene.Add(o);
-            ar.Ocene.Add(o2);
-            ar2.Ocene.Add(o3);
-            ar2.Ocene.Add(o4);
-            
-
-            ar.Preporuka = "DA";
-            ar.BrojRunde = 1;
-            ar.ID_P = p;
-            ar.ID_Recenzenta = r;
-
-
-            ar2.Preporuka = "NE";
-            ar2.BrojRunde = 1;
-            ar2.ID_P = p;
-            ar2.ID_Recenzenta = r2;
-            
-
-            rr.KonacnaOdluka = "POTREBNA_REVIZIJA";
-            rr.DatumOdluke = new DateTime(2022, 2, 2);
-            rr.BrojRunde = 1;
-            rr.ID_P = p;
-            rr.ID_Urednika = u;
-            
-
-            o.Ocena = 5;
-            o.AngazovanjeRecenzent = ar;
-            o2.Ocena = 3;
-            o2.AngazovanjeRecenzent = ar;
-           
-
-            o3.Ocena = 1;
-            o3.AngazovanjeRecenzent = ar2;
-            o4.Ocena = 4;
-            o4.AngazovanjeRecenzent = ar2;
-            
-            
-            
-            s.Save(rr);
-            s.Save(ar);
-            s.Save(ar2);
-            s.Save(o);
-            s.Save(o2);
-            s.Save(o3);
-            s.Save(o4);
-
-            s.Flush();
-            s.Close();*/
+            }
+            catch(Exception ex) {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

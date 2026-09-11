@@ -149,6 +149,12 @@
     <Compile Include="Entities\Uredjuje.cs" />
     <Compile Include="Entities\Urednik.cs" />
     <Compile Include="Entities\Verzija.cs" />
+    <Compile Include="Forms\FormBrisanjeIAzuriranje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormBrisanjeIAzuriranje.Designer.cs">
+      <DependentUpon>FormBrisanjeIAzuriranje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDodajCitat.cs">
       <SubType>Form</SubType>
     </Compile>

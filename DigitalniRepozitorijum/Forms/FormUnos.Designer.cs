@@ -34,9 +34,9 @@
             this.btnDodajIR = new System.Windows.Forms.Button();
             this.btnPoveziIstrazivacNII = new System.Windows.Forms.Button();
             this.btnDodajPublikaciju = new System.Windows.Forms.Button();
-            this.btnAutorstvo = new System.Windows.Forms.Button();
-            this.btnUredjuje = new System.Windows.Forms.Button();
-            this.btnPublikacijaVeze = new System.Windows.Forms.Button();
+            this.btnDodajCitat = new System.Windows.Forms.Button();
+            this.btnDodajRundu = new System.Windows.Forms.Button();
+            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajNII
@@ -99,51 +99,51 @@
             this.btnDodajPublikaciju.UseVisualStyleBackColor = true;
             this.btnDodajPublikaciju.Click += new System.EventHandler(this.btnDodajPublikaciju_Click);
             // 
-            // btnAutorstvo
+            // btnDodajCitat
             // 
-            this.btnAutorstvo.Location = new System.Drawing.Point(66, 344);
-            this.btnAutorstvo.Name = "btnAutorstvo";
-            this.btnAutorstvo.Size = new System.Drawing.Size(205, 26);
-            this.btnAutorstvo.TabIndex = 6;
-            this.btnAutorstvo.Text = "Povezi autora i publikaciju";
-            this.btnAutorstvo.UseVisualStyleBackColor = true;
-            this.btnAutorstvo.Click += new System.EventHandler(this.btnAutorstvo_Click);
+            this.btnDodajCitat.Location = new System.Drawing.Point(66, 344);
+            this.btnDodajCitat.Name = "btnDodajCitat";
+            this.btnDodajCitat.Size = new System.Drawing.Size(205, 26);
+            this.btnDodajCitat.TabIndex = 6;
+            this.btnDodajCitat.Text = "Dodaj citat";
+            this.btnDodajCitat.UseVisualStyleBackColor = true;
+            this.btnDodajCitat.Click += new System.EventHandler(this.btnDodajCitat_Click);
             // 
-            // btnUredjuje
+            // btnDodajRundu
             // 
-            this.btnUredjuje.Location = new System.Drawing.Point(326, 51);
-            this.btnUredjuje.Name = "btnUredjuje";
-            this.btnUredjuje.Size = new System.Drawing.Size(215, 20);
-            this.btnUredjuje.TabIndex = 7;
-            this.btnUredjuje.Text = "Dodaj knjigu i urednika";
-            this.btnUredjuje.UseVisualStyleBackColor = true;
-            this.btnUredjuje.Click += new System.EventHandler(this.btnUredjuje_Click);
+            this.btnDodajRundu.Location = new System.Drawing.Point(69, 392);
+            this.btnDodajRundu.Name = "btnDodajRundu";
+            this.btnDodajRundu.Size = new System.Drawing.Size(202, 26);
+            this.btnDodajRundu.TabIndex = 7;
+            this.btnDodajRundu.Text = "Dodaj rundu recenzije";
+            this.btnDodajRundu.UseVisualStyleBackColor = true;
+            this.btnDodajRundu.Click += new System.EventHandler(this.btnDodajRundu_Click);
             // 
-            // btnPublikacijaVeze
+            // btnTest
             // 
-            this.btnPublikacijaVeze.Location = new System.Drawing.Point(323, 102);
-            this.btnPublikacijaVeze.Name = "btnPublikacijaVeze";
-            this.btnPublikacijaVeze.Size = new System.Drawing.Size(217, 22);
-            this.btnPublikacijaVeze.TabIndex = 8;
-            this.btnPublikacijaVeze.Text = "Dodaj publikaciju i veze";
-            this.btnPublikacijaVeze.UseVisualStyleBackColor = true;
-            this.btnPublikacijaVeze.Click += new System.EventHandler(this.btnPublikacijaVeze_Click);
+            this.btnTest.Location = new System.Drawing.Point(496, 115);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(96, 82);
+            this.btnTest.TabIndex = 8;
+            this.btnTest.Text = "Test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // Form1
+            // FormUnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnPublikacijaVeze);
-            this.Controls.Add(this.btnUredjuje);
-            this.Controls.Add(this.btnAutorstvo);
+            this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnDodajRundu);
+            this.Controls.Add(this.btnDodajCitat);
             this.Controls.Add(this.btnDodajPublikaciju);
             this.Controls.Add(this.btnPoveziIstrazivacNII);
             this.Controls.Add(this.btnDodajIR);
             this.Controls.Add(this.btnDodajUlogu);
             this.Controls.Add(this.btnDodajIstrazivaca);
             this.Controls.Add(this.btnDodajNII);
-            this.Name = "Form1";
+            this.Name = "FormUnos";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -157,9 +157,9 @@
         private System.Windows.Forms.Button btnDodajIR;
         private System.Windows.Forms.Button btnPoveziIstrazivacNII;
         private System.Windows.Forms.Button btnDodajPublikaciju;
-        private System.Windows.Forms.Button btnAutorstvo;
-        private System.Windows.Forms.Button btnUredjuje;
-        private System.Windows.Forms.Button btnPublikacijaVeze;
+        private System.Windows.Forms.Button btnDodajCitat;
+        private System.Windows.Forms.Button btnDodajRundu;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

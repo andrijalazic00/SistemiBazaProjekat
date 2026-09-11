@@ -121,6 +121,7 @@ namespace DigitalniRepozitorijum.Forms
             _angazovanjeRecenzent.Ocene.Add(ocena);
 
             btnDodajRecenzenta.Enabled = true;
+            MessageBox.Show("Ocena dodata");
 
         }
 
@@ -140,6 +141,11 @@ namespace DigitalniRepozitorijum.Forms
 
             comboBAngazovanRecenzent.Enabled = true;
             btnSacuvajRunduRecenzije.Enabled = true;
+
+            _angazovanjeRecenzent = new AngazovanjeRecenzent();
+            _recenzent = null;
+
+            MessageBox.Show("Recenzent dodat");
         }
 
         private void btnSacuvajRunduRecenzije_Click(object sender, EventArgs e)
@@ -156,8 +162,7 @@ namespace DigitalniRepozitorijum.Forms
                 _publikacija.RundeRecenzije.Add(_rundaRecenzije);
                 _urednik.RundeRecenzije.Add(_rundaRecenzije);
 
-                _session.SaveOrUpdate(_urednik);
-                _session.SaveOrUpdate(_recenzent);
+                
                 _session.Save(_rundaRecenzije);
                 _session.Flush();
                 _session.Close();
