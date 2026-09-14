@@ -116,7 +116,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajMailIstrazivacu(ID_I, oldmail,newmail);
+                DataProvider.AzurirajMailIstrazivacu(ID_I, oldmail,newmail);
                 return Ok();
             }
             catch(Exception ex)
@@ -166,7 +166,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajTelefonIstrazivacu(ID_I, oldphone,newphone);
+                DataProvider.AzurirajTelefonIstrazivacu(ID_I, oldphone,newphone);
                 return Ok();
             }
             catch(Exception ex)

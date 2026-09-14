@@ -1014,7 +1014,7 @@ namespace datalibrary
             }        
         }
 
-       public static void ObrisiAdministratoruOvlascenje(AdministratorOvlascenja admin)
+       public static void ObrisiAdministratoruOvlascenje(AdministratorOvlascenjaView admin)
         {
             try
             {
@@ -1165,7 +1165,7 @@ namespace datalibrary
 
             return recenzentView;
         }
-        public static void DodajOblastiEkspertize(int ID_U, string oblast)
+        public static void DodajOblastiEkspertize(int ID_U, string oblastEkspertize)
         {
             try
             {
@@ -1176,7 +1176,7 @@ namespace datalibrary
                 OblastiEkspertize o = new ()
                 {   
                     ID_U = r,
-                    Oblast = oblast
+                    Oblast = oblastEkspertize
                 };
 
                 s.SaveOrUpdate(o);
