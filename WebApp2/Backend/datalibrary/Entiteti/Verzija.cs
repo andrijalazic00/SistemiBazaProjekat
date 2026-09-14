@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using datalibrary.DTOs;
 
 namespace datalibrary.Entiteti
 {
@@ -14,9 +15,11 @@ namespace datalibrary.Entiteti
         public virtual DateTime DatumPostavljanja { get; set; }
         public virtual string OpisIzmena { get; set; }
         public virtual string OdgovornaOsoba { get; set; }
+        public virtual IList<PripadajuciFajl> PripadajuciFajlovi { get; set; }
 
         public Verzija()
         {
+            PripadajuciFajlovi = new List<PripadajuciFajl>();
         }
         public override bool Equals(object obj)
         {

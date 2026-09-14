@@ -11,6 +11,7 @@ namespace datalibrary.DTOs
         public virtual DateTime DatumPostavljanja { get; set; }
         public virtual string OpisIzmena { get; set; }
         public virtual string OdgovornaOsoba { get; set; }
+        public virtual IList<PripadajuciFajlView> PripadajuciFajlovi { get; set; }
 
         public VerzijaView( Verzija v)
         {
@@ -19,6 +20,11 @@ namespace datalibrary.DTOs
             DatumPostavljanja = v.DatumPostavljanja;
             OpisIzmena = v.OpisIzmena;
             OdgovornaOsoba = v.OdgovornaOsoba;
+        }
+
+        public VerzijaView()
+        {
+            PripadajuciFajlovi = new List<PripadajuciFajlView>();
         }
 
         public override bool Equals(object obj)

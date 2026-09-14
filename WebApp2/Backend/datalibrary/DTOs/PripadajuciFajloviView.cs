@@ -9,6 +9,7 @@ namespace datalibrary.DTOs
         public virtual IstrazivackiRezultatView ID_IR { get; protected set; }
         public virtual int BrojVerzije { get; protected set; }
         public virtual string NazivFajla { get; protected set; }
+        public virtual VerzijaView Verzija { get; set; }
 
         public PripadajuciFajlView()
         {

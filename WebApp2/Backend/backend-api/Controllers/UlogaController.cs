@@ -13,11 +13,11 @@ namespace WebApp2.Controllers
         [HttpGet]
         [Route("VratiUloge")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetUloge()
+        public IActionResult GetUloge(int ID_I)
         {
             try
             {
-                return new JsonResult(DataProvider.VratiSveUloge());
+                return new JsonResult(DataProvider.VratiSveUlogeIstrazivaca(ID_I));
             }
             catch(Exception ex)
             {

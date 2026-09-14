@@ -6,6 +6,7 @@ namespace datalibrary.DTOs
     {
         public virtual PublikacijaView ID_P { get; set; }
         public virtual RecenzentView ID_Recenzenta { get; set; }
+        public virtual RundaRecenzijeView ID_RR {get; set;}
         public virtual int BrojRunde { get; set; }
         public virtual string Preporuka { get; set; }
         public virtual IList<OcenaRecenzentaView> Ocene { get; set; }

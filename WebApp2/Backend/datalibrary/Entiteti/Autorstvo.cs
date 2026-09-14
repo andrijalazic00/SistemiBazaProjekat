@@ -18,10 +18,13 @@ namespace datalibrary.Entiteti
         {
         }
 
-        public Autorstvo(Autor a, Publikacija p)
+        public Autorstvo(Autor a, Publikacija p, int redniBrojAutora, string tipDoprinosa,string ulogaUPublikaciji)
         {
             ID_U = a;
             ID_P = p;
+            RedniBrojAutora = redniBrojAutora;
+            TipDoprinosa = tipDoprinosa;
+            UlogaUPublikaciji = ulogaUPublikaciji;
         }
 
         public override bool Equals(object obj)

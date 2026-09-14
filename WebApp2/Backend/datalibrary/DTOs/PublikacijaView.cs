@@ -6,7 +6,9 @@ namespace datalibrary.DTOs
     public class PublikacijaView
     {
         public virtual int ID_P { get; protected set; }
-        public virtual IstrazivackiRezultatView ID_IR { get; set; }
+        public virtual DatasetView ID_D { get; set; }
+        public virtual TehnickiIzvestajView ID_TI { get; set; }
+        public virtual SoftverskiArtifaktView ID_SA { get; set; }
         public virtual IList<CitatView> CitirajucePublikacije { get; set; }
         public virtual IList<CitatView> CitiranePublikacije { get; set; }
         public virtual IList<RundaRecenzijeView> RundeRecenzije { get; set; }
@@ -15,7 +17,9 @@ namespace datalibrary.DTOs
         public PublikacijaView(Publikacija p)
         {
             ID_P = p.ID_P;
-            ID_IR = new IstrazivackiRezultatView( p.ID_IR);
+            ID_D = new DatasetView( p.ID_D);
+            ID_TI = new TehnickiIzvestajView( p.ID_TI);
+            ID_SA = new SoftverskiArtifaktView( p.ID_SA);
         }
 
         public PublikacijaView()
@@ -24,6 +28,11 @@ namespace datalibrary.DTOs
             CitiranePublikacije = new List<CitatView>();
             RundeRecenzije = new List<RundaRecenzijeView>();
             Autorstva = new List<AutorstvoView>();
+        }
+
+        public static implicit operator PublikacijaView(Publikacija v)
+        {
+            throw new NotImplementedException();
         }
     }
 }
