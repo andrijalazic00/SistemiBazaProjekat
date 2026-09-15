@@ -1,6 +1,6 @@
 ﻿namespace DigitalniRepozitorijum.Forms
 {
-    partial class FormVerzija
+    partial class FormDodajVerziju
     {
         /// <summary>
         /// Required designer variable.

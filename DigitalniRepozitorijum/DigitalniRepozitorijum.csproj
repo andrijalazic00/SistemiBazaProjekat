@@ -179,6 +179,42 @@
     <Compile Include="Forms\FormDodajUlogu.Designer.cs">
       <DependentUpon>FormDodajUlogu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIzmeniIstrazivaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniIstrazivaca.Designer.cs">
+      <DependentUpon>FormIzmeniIstrazivaca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniNII.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniNII.Designer.cs">
+      <DependentUpon>FormIzmeniNII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiMail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiMail.Designer.cs">
+      <DependentUpon>FormObrisiMail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiNaucnuOblast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiNaucnuOblast.Designer.cs">
+      <DependentUpon>FormObrisiNaucnuOblast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiTelefon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiTelefon.Designer.cs">
+      <DependentUpon>FormObrisiTelefon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiUlogu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiUlogu.Designer.cs">
+      <DependentUpon>FormObrisiUlogu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormUnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,11 +299,11 @@
     <Compile Include="Forms\FormSoftverskiArtifakt.Designer.cs">
       <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormVerzija.cs">
+    <Compile Include="Forms\FormDodajVerziju.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormVerzija.Designer.cs">
-      <DependentUpon>FormVerzija.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajVerziju.Designer.cs">
+      <DependentUpon>FormDodajVerziju.cs</DependentUpon>
     </Compile>
     <Compile Include="Maps\AdministratorOvlascenjaMaps.cs" />
     <Compile Include="Maps\AdministratorRepozitorijumaMaps.cs" />
@@ -305,6 +341,9 @@
     <Compile Include="Maps\VerzijaMaps.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FormBrisanjeIAzuriranje.resx">
+      <DependentUpon>FormBrisanjeIAzuriranje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajCitat.resx">
       <DependentUpon>FormDodajCitat.cs</DependentUpon>
     </EmbeddedResource>
@@ -319,6 +358,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormGlavnaForma.resx">
       <DependentUpon>FormGlavnaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniIstrazivaca.resx">
+      <DependentUpon>FormIzmeniIstrazivaca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniNII.resx">
+      <DependentUpon>FormIzmeniNII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiMail.resx">
+      <DependentUpon>FormObrisiMail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiNaucnuOblast.resx">
+      <DependentUpon>FormObrisiNaucnuOblast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiTelefon.resx">
+      <DependentUpon>FormObrisiTelefon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiUlogu.resx">
+      <DependentUpon>FormObrisiUlogu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUnos.resx">
       <DependentUpon>FormUnos.cs</DependentUpon>
@@ -359,8 +416,8 @@
     <EmbeddedResource Include="Forms\FormSoftverskiArtifakt.resx">
       <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormVerzija.resx">
-      <DependentUpon>FormVerzija.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajVerziju.resx">
+      <DependentUpon>FormDodajVerziju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

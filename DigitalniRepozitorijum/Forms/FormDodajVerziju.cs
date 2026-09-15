@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class FormVerzija : Form
+    public partial class FormDodajVerziju : Form
     {
         private IstrazivackiRezultat _istrazivackiRezultat;
         private Verzija _verzija;
 
-        public FormVerzija()
+        public FormDodajVerziju()
         {
             InitializeComponent();
         }
 
-        public FormVerzija(IstrazivackiRezultat istrazivackiRezultat)
+        public FormDodajVerziju(IstrazivackiRezultat istrazivackiRezultat)
         {
             InitializeComponent();
             _istrazivackiRezultat = istrazivackiRezultat;

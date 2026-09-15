@@ -196,7 +196,7 @@ namespace DigitalniRepozitorijum.Forms
         }
         private void btnDodajVerziju_Click(object sender, EventArgs e)
         {
-            Form f = new FormVerzija(_istrazivackiRezultat);
+            Form f = new FormDodajVerziju(_istrazivackiRezultat);
             f.ShowDialog();
         }
     }

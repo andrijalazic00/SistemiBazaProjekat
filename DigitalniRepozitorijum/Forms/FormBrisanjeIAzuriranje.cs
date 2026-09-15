@@ -16,5 +16,17 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
         }
+
+        private void btnIzmeniIstrazivaca_Click(object sender, EventArgs e)
+        {
+            Form form =new FormIzmeniIstrazivaca();
+            form.ShowDialog();
+        }
+
+        private void btnIzmeniNII_Click(object sender, EventArgs e)
+        {
+            Form form = new FormIzmeniNII();
+            form.ShowDialog();
+        }
     }
 }
