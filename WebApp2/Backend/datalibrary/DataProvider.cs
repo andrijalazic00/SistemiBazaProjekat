@@ -504,9 +504,9 @@ namespace datalibrary
                 Istrazivac i = new ()
                 {
                     Ime = istrazivac.Ime,
+                    Prezime = istrazivac.Prezime,
                     DatumRodjenja = istrazivac.DatumRodjenja,
                     Drzava = istrazivac.Drzava,
-                    Prezime = istrazivac.Prezime,
                     NaucnaOblast = istrazivac.NaucnaOblast,
                     NaucnoZvanje = istrazivac.NaucnoZvanje,
                     StatusNaucnika = istrazivac.StatusNaucnika,

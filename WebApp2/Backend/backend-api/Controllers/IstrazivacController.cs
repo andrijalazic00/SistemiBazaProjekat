@@ -40,6 +40,23 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("DodajIstrazivaca")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddIstrazivac(IstrazivacView istrazivacView)
+            {
+                try
+                {
+                    DataProvider.DodajIstrazivaca(istrazivacView);
+                    return Ok($"Dodat je istrazivac {istrazivacView.Ime} {istrazivacView.Prezime}");
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
 
         [HttpPost]
         [Route("DodajMailIstrazivacu/{ID_I}/{mail}")]
