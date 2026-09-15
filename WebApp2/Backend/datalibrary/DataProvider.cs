@@ -1449,6 +1449,7 @@ namespace datalibrary
                     DatumObjavljivanja = ostaliDokument.DatumObjavljivanja,
                     StatusIR = ostaliDokument.StatusIR,
                     Vidljivost = ostaliDokument.Vidljivost,
+                    Opcije = ostaliDokument.Opcije
                 };
 
                 s.SaveOrUpdate(o);
@@ -1599,7 +1600,7 @@ namespace datalibrary
             }
             return softverskiArtifaktView;
         }
-        public static void AzurirajSoftverskiArtifakt(SoftverskiArtifakt softverskiArtifakt)
+        public static void AzurirajSoftverskiArtifakt(SoftverskiArtifaktView softverskiArtifakt)
         {
             try
             {
@@ -1781,7 +1782,7 @@ namespace datalibrary
         }
         #endregion
         #region  IR- TehnickiIzvestaj
-        public static void DodajTehnickiIzvestaj(TehnickiIzvestaj tehnickiIzvestaj)
+        public static void DodajTehnickiIzvestaj(TehnickiIzvestajView tehnickiIzvestaj)
         {
             try
             {
@@ -1928,7 +1929,7 @@ namespace datalibrary
             }
         }
 
-        public static void ObrsiKnjigeIliPoglavlja(int ID_IR)
+        public static void ObrisiKnjigeIliPoglavlja(int ID_IR)
         {
             try
             {
@@ -1965,7 +1966,7 @@ namespace datalibrary
             return knjigaIliPoglavljaView;
         }
 
-        public static void AzurirajKnjigeIliPoglavlje(KnjigaIliPoglavlja knjigaIliPoglavlja)
+        public static void AzurirajKnjigeIliPoglavlje(KnjigaIliPoglavljaView knjigaIliPoglavlja)
         {
             try
             {
@@ -2155,7 +2156,7 @@ namespace datalibrary
             }
         }
 
-        public static void DodajCitat(Citat citat)
+        public static void DodajCitat(CitatView citat)
         {
             try
             {

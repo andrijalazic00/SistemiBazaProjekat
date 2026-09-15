@@ -26,7 +26,7 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }
-
+        #region  Rukovodilac
         [HttpPost]
         [Route("DodajUloguRukovodilacProjekta/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -75,8 +75,9 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }      
+        #endregion
 
-
+        #region  Administrator
         [HttpPost]
         [Route("DodajUloguAdministratorRepozitorijuma/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -158,7 +159,9 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }   
+        #endregion
 
+        #region  Urednik
         [HttpPost]
         [Route("DodajUrednika/{ID_I}/{uredivackaSekcija}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -205,7 +208,9 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }  
+        #endregion
 
+        #region  Recenzent
         [HttpPost]
         [Route("DodajRecenzenta/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -288,7 +293,9 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+        #endregion
 
+        #region  Autor
         [HttpPost]
         [Route("DodajAutora/{ID_I}/{ORDCID}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -337,5 +344,6 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         } 
+        #endregion
     }
 }
