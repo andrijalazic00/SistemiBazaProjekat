@@ -35,6 +35,7 @@
             this.btnSacuvajKnjigu = new System.Windows.Forms.Button();
             this.comboBUrednici = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnDodajUrednika = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -96,11 +97,22 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Urednik";
             // 
+            // btnDodajUrednika
+            // 
+            this.btnDodajUrednika.Location = new System.Drawing.Point(336, 136);
+            this.btnDodajUrednika.Name = "btnDodajUrednika";
+            this.btnDodajUrednika.Size = new System.Drawing.Size(143, 22);
+            this.btnDodajUrednika.TabIndex = 7;
+            this.btnDodajUrednika.Text = "Dodaj urednika";
+            this.btnDodajUrednika.UseVisualStyleBackColor = true;
+            this.btnDodajUrednika.Click += new System.EventHandler(this.btnDodajUrednika_Click);
+            // 
             // FormKnjigaIliPoglavlje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDodajUrednika);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBUrednici);
             this.Controls.Add(this.btnSacuvajKnjigu);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.Button btnSacuvajKnjigu;
         private System.Windows.Forms.ComboBox comboBUrednici;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnDodajUrednika;
     }
 }

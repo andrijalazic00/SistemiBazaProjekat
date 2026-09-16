@@ -42,7 +42,7 @@
             this.nudBrojSveske = new System.Windows.Forms.NumericUpDown();
             this.nudBrojIzdanja = new System.Windows.Forms.NumericUpDown();
             this.nudBrojStranice = new System.Windows.Forms.NumericUpDown();
-            this.btnSacuvajKnjigu = new System.Windows.Forms.Button();
+            this.btnSacuvajNaucniRad = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudBrojSveske)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBrojIzdanja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudBrojStranice)).BeginInit();
@@ -161,22 +161,22 @@
             this.nudBrojStranice.Size = new System.Drawing.Size(191, 20);
             this.nudBrojStranice.TabIndex = 13;
             // 
-            // btnSacuvajKnjigu
+            // btnSacuvajNaucniRad
             // 
-            this.btnSacuvajKnjigu.Location = new System.Drawing.Point(44, 294);
-            this.btnSacuvajKnjigu.Name = "btnSacuvajKnjigu";
-            this.btnSacuvajKnjigu.Size = new System.Drawing.Size(274, 32);
-            this.btnSacuvajKnjigu.TabIndex = 14;
-            this.btnSacuvajKnjigu.Text = "Sacuvaj knjigu ili poglavlje";
-            this.btnSacuvajKnjigu.UseVisualStyleBackColor = true;
-            this.btnSacuvajKnjigu.Click += new System.EventHandler(this.btnSacuvajKnjigu_Click);
+            this.btnSacuvajNaucniRad.Location = new System.Drawing.Point(44, 294);
+            this.btnSacuvajNaucniRad.Name = "btnSacuvajNaucniRad";
+            this.btnSacuvajNaucniRad.Size = new System.Drawing.Size(274, 32);
+            this.btnSacuvajNaucniRad.TabIndex = 14;
+            this.btnSacuvajNaucniRad.Text = "Sacuvaj naucni rad";
+            this.btnSacuvajNaucniRad.UseVisualStyleBackColor = true;
+            this.btnSacuvajNaucniRad.Click += new System.EventHandler(this.btnSacuvajNaucniRad_Click);
             // 
             // FormNaucniRad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSacuvajKnjigu);
+            this.Controls.Add(this.btnSacuvajNaucniRad);
             this.Controls.Add(this.nudBrojStranice);
             this.Controls.Add(this.nudBrojIzdanja);
             this.Controls.Add(this.nudBrojSveske);
@@ -217,6 +217,6 @@
         private System.Windows.Forms.NumericUpDown nudBrojSveske;
         private System.Windows.Forms.NumericUpDown nudBrojIzdanja;
         private System.Windows.Forms.NumericUpDown nudBrojStranice;
-        private System.Windows.Forms.Button btnSacuvajKnjigu;
+        private System.Windows.Forms.Button btnSacuvajNaucniRad;
     }
 }

@@ -40,6 +40,7 @@
             this.tbDokumentacija = new System.Windows.Forms.TextBox();
             this.btnDodajPlatformu = new System.Windows.Forms.Button();
             this.btnSacuvajSoftverskiArtifakt = new System.Windows.Forms.Button();
+            this.btnObrisiPlatformu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,11 +144,22 @@
             this.btnSacuvajSoftverskiArtifakt.UseVisualStyleBackColor = true;
             this.btnSacuvajSoftverskiArtifakt.Click += new System.EventHandler(this.btnSacuvajSoftverskiArtifakt_Click);
             // 
+            // btnObrisiPlatformu
+            // 
+            this.btnObrisiPlatformu.Location = new System.Drawing.Point(453, 173);
+            this.btnObrisiPlatformu.Name = "btnObrisiPlatformu";
+            this.btnObrisiPlatformu.Size = new System.Drawing.Size(112, 19);
+            this.btnObrisiPlatformu.TabIndex = 12;
+            this.btnObrisiPlatformu.Text = "Obrisi platformu";
+            this.btnObrisiPlatformu.UseVisualStyleBackColor = true;
+            this.btnObrisiPlatformu.Click += new System.EventHandler(this.btnObrisiPlatformu_Click);
+            // 
             // FormSoftverskiArtifakt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnObrisiPlatformu);
             this.Controls.Add(this.btnSacuvajSoftverskiArtifakt);
             this.Controls.Add(this.btnDodajPlatformu);
             this.Controls.Add(this.tbDokumentacija);
@@ -181,5 +193,6 @@
         private System.Windows.Forms.TextBox tbDokumentacija;
         private System.Windows.Forms.Button btnDodajPlatformu;
         private System.Windows.Forms.Button btnSacuvajSoftverskiArtifakt;
+        private System.Windows.Forms.Button btnObrisiPlatformu;
     }
 }

@@ -51,6 +51,7 @@
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Broj verzije";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -60,6 +61,7 @@
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Datum postavljanja";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -69,6 +71,7 @@
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Opis izmena";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -78,6 +81,7 @@
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Odgovorna osoba";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -87,6 +91,7 @@
             this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 4;
             this.label5.Text = "Naziv fajla";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // nudBrojVerzije
             // 
@@ -94,6 +99,7 @@
             this.nudBrojVerzije.Name = "nudBrojVerzije";
             this.nudBrojVerzije.Size = new System.Drawing.Size(123, 20);
             this.nudBrojVerzije.TabIndex = 5;
+            this.nudBrojVerzije.ValueChanged += new System.EventHandler(this.nudBrojVerzije_ValueChanged);
             // 
             // dtpDatumPostavljanja
             // 
@@ -101,6 +107,7 @@
             this.dtpDatumPostavljanja.Name = "dtpDatumPostavljanja";
             this.dtpDatumPostavljanja.Size = new System.Drawing.Size(231, 20);
             this.dtpDatumPostavljanja.TabIndex = 6;
+            this.dtpDatumPostavljanja.ValueChanged += new System.EventHandler(this.dtpDatumPostavljanja_ValueChanged);
             // 
             // tbOpisIzmena
             // 
@@ -108,6 +115,7 @@
             this.tbOpisIzmena.Name = "tbOpisIzmena";
             this.tbOpisIzmena.Size = new System.Drawing.Size(236, 20);
             this.tbOpisIzmena.TabIndex = 7;
+            this.tbOpisIzmena.TextChanged += new System.EventHandler(this.tbOpisIzmena_TextChanged);
             // 
             // tbOdgovornaOsoba
             // 
@@ -115,6 +123,7 @@
             this.tbOdgovornaOsoba.Name = "tbOdgovornaOsoba";
             this.tbOdgovornaOsoba.Size = new System.Drawing.Size(236, 20);
             this.tbOdgovornaOsoba.TabIndex = 8;
+            this.tbOdgovornaOsoba.TextChanged += new System.EventHandler(this.tbOdgovornaOsoba_TextChanged);
             // 
             // tbNazivFajla
             // 
@@ -122,6 +131,7 @@
             this.tbNazivFajla.Name = "tbNazivFajla";
             this.tbNazivFajla.Size = new System.Drawing.Size(236, 20);
             this.tbNazivFajla.TabIndex = 9;
+            this.tbNazivFajla.TextChanged += new System.EventHandler(this.tbNazivFajla_TextChanged);
             // 
             // btnDodajFajl
             // 
@@ -143,7 +153,7 @@
             this.btnSacuvajVerziju.UseVisualStyleBackColor = true;
             this.btnSacuvajVerziju.Click += new System.EventHandler(this.btnSacuvajVerziju_Click);
             // 
-            // FormVerzija
+            // FormDodajVerziju
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -160,7 +170,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "FormVerzija";
+            this.Name = "FormDodajVerziju";
             this.Text = "FormVerzija";
             ((System.ComponentModel.ISupportInitialize)(this.nudBrojVerzije)).EndInit();
             this.ResumeLayout(false);

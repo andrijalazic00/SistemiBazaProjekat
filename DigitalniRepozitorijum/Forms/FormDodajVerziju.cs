@@ -97,5 +97,55 @@ namespace DigitalniRepozitorijum.Forms
                 MessageBox.Show(ex.Message.ToString()); 
             }
         }
+
+        private void tbNazivFajla_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbOdgovornaOsoba_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbOpisIzmena_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDatumPostavljanja_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudBrojVerzije_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -179,6 +179,12 @@
     <Compile Include="Forms\FormDodajUlogu.Designer.cs">
       <DependentUpon>FormDodajUlogu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIzmeniIR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniIR.Designer.cs">
+      <DependentUpon>FormIzmeniIR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIzmeniIstrazivaca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,24 @@
     </Compile>
     <Compile Include="Forms\FormIzmeniNII.Designer.cs">
       <DependentUpon>FormIzmeniNII.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniVerziju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniVerziju.Designer.cs">
+      <DependentUpon>FormIzmeniVerziju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiFajl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiFajl.Designer.cs">
+      <DependentUpon>FormObrisiFajl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiKljucnuRec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiKljucnuRec.Designer.cs">
+      <DependentUpon>FormObrisiKljucnuRec.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormObrisiMail.cs">
       <SubType>Form</SubType>
@@ -214,6 +238,12 @@
     </Compile>
     <Compile Include="Forms\FormObrisiUlogu.Designer.cs">
       <DependentUpon>FormObrisiUlogu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormObrisiVerziju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormObrisiVerziju.Designer.cs">
+      <DependentUpon>FormObrisiVerziju.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormUnos.cs">
       <SubType>Form</SubType>
@@ -359,11 +389,23 @@
     <EmbeddedResource Include="Forms\FormGlavnaForma.resx">
       <DependentUpon>FormGlavnaForma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniIR.resx">
+      <DependentUpon>FormIzmeniIR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniIstrazivaca.resx">
       <DependentUpon>FormIzmeniIstrazivaca.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniNII.resx">
       <DependentUpon>FormIzmeniNII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniVerziju.resx">
+      <DependentUpon>FormIzmeniVerziju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiFajl.resx">
+      <DependentUpon>FormObrisiFajl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiKljucnuRec.resx">
+      <DependentUpon>FormObrisiKljucnuRec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormObrisiMail.resx">
       <DependentUpon>FormObrisiMail.cs</DependentUpon>
@@ -376,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormObrisiUlogu.resx">
       <DependentUpon>FormObrisiUlogu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormObrisiVerziju.resx">
+      <DependentUpon>FormObrisiVerziju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUnos.resx">
       <DependentUpon>FormUnos.cs</DependentUpon>

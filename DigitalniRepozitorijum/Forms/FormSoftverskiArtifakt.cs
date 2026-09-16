@@ -16,8 +16,9 @@ namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormSoftverskiArtifakt : Form
     {
+        private ISession _session;
         private SoftverskiArtifakt _softverskiArtifakt;
-        private static string[] _opcijePodrzanePlatforme = {"Windows","Linux","MACOS","WEB","ANDROID","IOS" };
+        private static string[] _opcijePodrzanePlatforme = {"WINDOWS","LINUX","MACOS","WEB","ANDROID","IOS" };
 
         public FormSoftverskiArtifakt()
         {
@@ -30,7 +31,24 @@ namespace DigitalniRepozitorijum.Forms
             _softverskiArtifakt = sa;
             comboBPodrzanePlatforme.Items.AddRange(_opcijePodrzanePlatforme);
             comboBPodrzanePlatforme.DropDownStyle=ComboBoxStyle.DropDownList;
+            _session = null; 
             
+        }
+
+        public FormSoftverskiArtifakt(SoftverskiArtifakt sa, ISession s)//b postoji samo da bi se konstruktor razlikovao od prethodnog 
+        {
+            InitializeComponent();
+            _softverskiArtifakt = sa;
+            _session = s;
+
+            comboBPodrzanePlatforme.Items.AddRange(_opcijePodrzanePlatforme);
+            comboBPodrzanePlatforme.DropDownStyle = ComboBoxStyle.DropDownList;
+            tbDokumentacija.Text = sa.Dokumentacija;
+            tbNacinLicenciranja.Text = sa.NacinLicenciranja;
+            tbProgramskiJezik.Text= sa.ProgramskiJezik;
+            tbRepoLink.Text = sa.RepoLink;
+            
+
         }
 
         private async void btnDodajPlatformu_Click(object sender, EventArgs e)
@@ -42,6 +60,7 @@ namespace DigitalniRepozitorijum.Forms
                     PodrzanaPlatforma p = new PodrzanaPlatforma();
                     p.Platforma = comboBPodrzanePlatforme.Text;
                     p.ID_IR = _softverskiArtifakt;
+                  
                     _softverskiArtifakt.PodrzanePlatforme.Add(p);
                     comboBPodrzanePlatforme.ResetText();
                     comboBPodrzanePlatforme.Text = "Platforma dodata";
@@ -66,7 +85,8 @@ namespace DigitalniRepozitorijum.Forms
         {
             try
             {
-                ISession session=DataLayer.GetSession();
+                if(_session==null)
+                    _session=DataLayer.GetSession();
 
                 if (tbRepoLink.Text.Length > 0 && tbProgramskiJezik.Text.Length > 0 &&
                     tbNacinLicenciranja.Text.Length > 0 && tbDokumentacija.Text.Length > 0)
@@ -75,20 +95,48 @@ namespace DigitalniRepozitorijum.Forms
                     _softverskiArtifakt.RepoLink = tbRepoLink.Text;
                     _softverskiArtifakt.NacinLicenciranja = tbNacinLicenciranja.Text;
                     _softverskiArtifakt.Dokumentacija = tbDokumentacija.Text;
-                    session.SaveOrUpdate(_softverskiArtifakt);
+                    _session.SaveOrUpdate(_softverskiArtifakt);
+                    _session.Flush();
+                    _session.Close();
+                    MessageBox.Show("Softverski artifakt sacuvan");
                     this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Popunite sva polja");
                 }
-                session.Flush();
-                session.Close();
+                
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString()+ex.InnerException.ToString());
             }
+        }
+
+        private void btnObrisiPlatformu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PodrzanaPlatforma p= _softverskiArtifakt.PodrzanePlatforme.FirstOrDefault(i => i.Platforma == comboBPodrzanePlatforme.Text);
+                if (p!=null)
+                {
+                    _softverskiArtifakt.PodrzanePlatforme.Remove(p);
+                    ISession session=DataLayer.GetSession();
+                    session.Delete(p);
+                    session.Flush();
+                    session.Close();
+                }
+                else 
+                {
+                    MessageBox.Show("Entitet nema platformu cije brisanje zahtevate");
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+           
         }
     }
 }

@@ -31,6 +31,22 @@ namespace DigitalniRepozitorijum.Forms
             
         }
 
+        public FormDataset(Dataset set, bool b) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
+        {
+            InitializeComponent();
+            _dataset = set;
+            nudBrojZapisa.Maximum = int.MaxValue;
+            nudVelicina.Maximum = int.MaxValue;
+            tbFormat.Text=_dataset.Format;
+            tbLicencaKoriscenja.Text=_dataset.LicencaKoriscenja;
+            tbOgranicanjaPristupa.Text = _dataset.OgranicenjaPristupa;
+            tbOpisStrukture.Text= _dataset.OpisStrukture;
+            tbPeriodObuhvatanja.Text = _dataset.PeriodObuhvataPodataka;
+            nudBrojZapisa.Value= _dataset.BrojZapisa;
+            nudVelicina.Value= _dataset.Velicina;
+
+        }
+
         private void btnSacuvajDataset_Click(object sender, EventArgs e)
         {
             try 
@@ -47,16 +63,18 @@ namespace DigitalniRepozitorijum.Forms
                     _dataset.PeriodObuhvataPodataka = tbPeriodObuhvatanja.Text;
                     _dataset.LicencaKoriscenja = tbLicencaKoriscenja.Text;
                     _dataset.OgranicenjaPristupa=tbOgranicanjaPristupa.Text;
-                    session.Save(_dataset);
+                    session.SaveOrUpdate(_dataset);
+                    session.Flush();
+                    session.Close();
+                    this.Close();
+                    MessageBox.Show("Dataset sacuvan");
 
                 }
                 else
                 {
                     MessageBox.Show("Popunite sva polja");
                 }
-                session.Flush();
-                session.Close();
-                this.Close();
+               
             }
             catch (Exception ex) 
             { 

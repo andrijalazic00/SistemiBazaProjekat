@@ -19,6 +19,9 @@ namespace DigitalniRepozitorijum.Forms
         private Dictionary<string, NaucnoIstrazivackaInstitucija> _institucijaDict;
 
         private ISession _session;
+
+        
+
         public FormIzmeniNII()
         {
             InitializeComponent();

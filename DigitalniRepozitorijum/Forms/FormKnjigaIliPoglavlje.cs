@@ -29,27 +29,53 @@ namespace DigitalniRepozitorijum.Forms
         public FormKnjigaIliPoglavlje(KnjigaIliPoglavlja k)
         {
             InitializeComponent();
-            PopuniComboBox();
+            _session = null;
             _knjiga = k;
+            PopuniComboBox();
+            
+            
+        }
+
+        public FormKnjigaIliPoglavlje(KnjigaIliPoglavlja k, ISession s) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
+        {
+            InitializeComponent();
+            _knjiga = k;
+            _session = s;
+            tbIzdavac.Text = k.Izdavac;
+            tbMestoIzdavanja.Text = k.MestoIzdavanja;
+            PopuniComboBox();
+            
+            
         }
 
         public void PopuniComboBox()
         {
-            _session = DataLayer.GetSession();
-            _uredniciList = _session.Query<Urednik>().ToList();
-            _uredniciDict = _uredniciList.ToDictionary(i => i.ID_I != null ? i.ID_I.Ime + " " + i.ID_I.Prezime + " " + i.ID_U : i.ID_U.ToString());
-            if(_uredniciDict.Count==0)
-            {
-                
-                MessageBox.Show("Nema urednika u bazi, kreirajte bar jednog urednika pre kreiranja knjige");
-                _session.Close();
-                this.Close();
-                
+            try {
+                if (_session == null)
+                { 
+                    _session = DataLayer.GetSession(); 
+                }
+                    
+                _uredniciList = _session.Query<Urednik>().ToList();
+                _uredniciDict = _uredniciList.ToDictionary(i => i.ID_I != null ? i.ID_I.Ime + " " + i.ID_I.Prezime + " " + i.ID_U : i.ID_U.ToString());
+                if (_uredniciDict.Count == 0)
+                {
+
+                    MessageBox.Show("Nema urednika u bazi, kreirajte bar jednog urednika pre kreiranja knjige");
+                    _session.Close();
+                    this.Close();
+
+                }
+                comboBUrednici.DataSource = new BindingSource(_uredniciDict, null);
+                comboBUrednici.DisplayMember = "Key";
+                comboBUrednici.ValueMember = "Value";
+                comboBUrednici.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            comboBUrednici.DataSource = new BindingSource(_uredniciDict, null);
-            comboBUrednici.DisplayMember = "Key";
-            comboBUrednici.ValueMember = "Value";
-            comboBUrednici.DropDownStyle=ComboBoxStyle.DropDownList;
+            catch (Exception ex)
+            { 
+                MessageBox.Show(ex.Message.ToString()); 
+            }
+            
             
 
         }
@@ -66,13 +92,10 @@ namespace DigitalniRepozitorijum.Forms
                     _knjiga.MestoIzdavanja = tbMestoIzdavanja.Text;
 
                     
-                    Urednik urednik = (Urednik)comboBUrednici.SelectedValue;
-                    Uredjuje uredjuje=new Uredjuje(_knjiga,urednik);
-                    _knjiga.Urednici.Add(uredjuje);
-                    urednik.Knjige.Add(uredjuje);
+                    
 
-                    _session.Save(_knjiga);
-                    _session.SaveOrUpdate(urednik);
+                    _session.SaveOrUpdate(_knjiga);
+                   
                     
                     
                     this.Close();
@@ -114,6 +137,24 @@ namespace DigitalniRepozitorijum.Forms
                 this.Close();
                 //session.Close();
             }
+        }
+
+        private void btnDodajUrednika_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                Urednik urednik = new Urednik();
+                urednik = (Urednik)comboBUrednici.SelectedValue;
+                Uredjuje uredjuje = new Uredjuje(_knjiga, urednik);
+                _knjiga.Urednici.Add(uredjuje);
+                urednik.Knjige.Add(uredjuje);
+                _session.SaveOrUpdate(urednik);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+            
         }
     }
 }
