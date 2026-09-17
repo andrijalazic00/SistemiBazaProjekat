@@ -22,7 +22,7 @@ namespace datalibrary.DTOs
             PeriodObuhvataPodataka = d.PeriodObuhvataPodataka;
             LicencaKoriscenja = d.LicencaKoriscenja;
             OgranicenjaPristupa = d.OgranicenjaPristupa;
-            Publikacija = new PublikacijaView( d.Publikacija);
+            Publikacija = d.Publikacija == null ? null : new PublikacijaView(d.Publikacija);
         }
     }
 }

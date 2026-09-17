@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Data;
 using NHibernate.Linq.Expressions;
 using System.Security.Cryptography;
+using FluentNHibernate.Mapping;
 
 namespace datalibrary
 {
@@ -1470,7 +1471,7 @@ namespace datalibrary
 
         #endregion
 
-        #region  Istrazivacki Radovi
+        #region  Istrazivacki Rezultati
 
 
         public static IstrazivackiRezultatView VratiIstrazivackiRezultat(int ID_IR)
@@ -1697,9 +1698,13 @@ namespace datalibrary
             {
                 ISession s = DataLayer.GetSession();
                 
-                OstaliDokumenti o = s.Load<OstaliDokumenti>(ID_IR);
+                IstrazivackiRezultatView i = VratiIstrazivackiRezultat(ID_IR);
 
-                ostaliDokumentiView = new (o);
+                ostaliDokumentiView = new (s.Load<OstaliDokumenti>(ID_IR))
+                {
+                    KljucneReci = i.KljucneReci,
+                    Verzije = i.Verzije
+                };
                 s.Close();
             }
             catch(Exception ex)
@@ -1710,6 +1715,28 @@ namespace datalibrary
             return ostaliDokumentiView;
         }
 
+        public static List<OstaliDokumentiView> VratiSviOstaliDokument()
+        {
+
+            List<OstaliDokumentiView> ostaliDokumentiView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                
+                IEnumerable<OstaliDokumenti> ostaliDokumenti = from o in s.Query<OstaliDokumenti>()
+                                                                        select o;
+                
+                foreach( OstaliDokumenti d in ostaliDokumenti)
+                                        ostaliDokumentiView.Add(VratiOstaliDokument(d.ID_IR));
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSviOstaliDokument: "+ ex);    
+                throw;
+            }
+            return ostaliDokumentiView;
+        }
         public static void AzurirajOstaliDokument(OstaliDokumentiView ostaliDokumentiView)
         {
             try
@@ -1796,14 +1823,41 @@ namespace datalibrary
             {
                 ISession s = DataLayer.GetSession();
                 
-                SoftverskiArtifakt sa = s.Load<SoftverskiArtifakt>(ID_IR);
+                IstrazivackiRezultatView i = VratiIstrazivackiRezultat(ID_IR);
 
-                softverskiArtifaktView = new (sa);
+                softverskiArtifaktView = new (s.Load<SoftverskiArtifakt>(ID_IR))
+                {
+                    KljucneReci = i.KljucneReci,
+                    Verzije = i.Verzije
+                };
                 s.Close();
             }
             catch(Exception ex)
             {
                 Console.WriteLine("Error at DataProvider VratiSoftverskiArtifakt: "+ ex);    
+                throw;
+            }
+            return softverskiArtifaktView;
+        }
+
+        public static List<SoftverskiArtifaktView> VratiSveSoftverskeArtifakte()
+        {
+            List<SoftverskiArtifaktView> softverskiArtifaktView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                
+                IEnumerable<SoftverskiArtifakt> softverskiArtifakt = from o in s.Query<SoftverskiArtifakt>()
+                                                                        select o;
+
+                foreach( SoftverskiArtifakt sa in softverskiArtifakt)
+                                        softverskiArtifaktView.Add(VratiSoftverskiArtifakt(sa.ID_IR));
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveSoftverskiArtifakte: "+ ex);    
                 throw;
             }
             return softverskiArtifaktView;
@@ -1945,7 +1999,15 @@ namespace datalibrary
             {
                 ISession s = DataLayer.GetSession();
 
-                datasetView = new (s.Load<Dataset>(ID_IR));
+                IstrazivackiRezultatView ir = VratiIstrazivackiRezultat(ID_IR);
+
+                DatasetView d = new(s.Load<Dataset>(ID_IR))
+                {
+                    KljucneReci = ir.KljucneReci,
+                    Verzije = ir.Verzije,
+                };
+
+                datasetView = d;
                 s.Close();
             }
             catch(Exception ex)
@@ -1956,6 +2018,28 @@ namespace datalibrary
             return  datasetView;
         }     
 
+        public static List<DatasetView> VratiSveDataset()
+        {
+            List<DatasetView> datasetView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Dataset> sviDatasetovi = from o in s.Query<Dataset>()
+                                                        select o;
+                
+                foreach( Dataset d in sviDatasetovi)
+                            datasetView.Add(VratiDataset(d.ID_IR));
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveDataset: "+ ex);
+                throw;
+            }
+            return  datasetView; 
+        }
         public static void AzurirajDataset(DatasetView datasetView)
         {
             try
@@ -2042,8 +2126,12 @@ namespace datalibrary
             try
             {
                 ISession s = DataLayer.GetSession();
-
-                tehnickiIzvestajView = new(s.Load<TehnickiIzvestaj>(ID_IR));
+                IstrazivackiRezultatView i = VratiIstrazivackiRezultat(ID_IR);
+                tehnickiIzvestajView = new(s.Load<TehnickiIzvestaj>(ID_IR))
+                {
+                    KljucneReci = i.KljucneReci,
+                    Verzije = i.Verzije,
+                };
 
                 s.Close();
             }
@@ -2055,6 +2143,26 @@ namespace datalibrary
             return tehnickiIzvestajView;
         }   
 
+        public static List<TehnickiIzvestajView> VratiSveTehnickiIzvestaje()
+        {
+
+            List<TehnickiIzvestajView> tehnickiIzvestajView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<TehnickiIzvestaj> tehnickiIzvestaji = from o in s.Query<TehnickiIzvestaj>()
+                                                                    select o;
+                foreach( TehnickiIzvestaj t in tehnickiIzvestaji)
+                                                tehnickiIzvestajView.Add( VratiTehnickiIzvestaj(t.ID_IR));
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveTehnickiIzvestaje: "+ ex);
+                throw;
+            }
+            return tehnickiIzvestajView;
+        }  
         public static void AzurirajTehnickiIzvestaj(TehnickiIzvestajView tehnickiIzvestajView)
         {
             try
@@ -2312,8 +2420,14 @@ namespace datalibrary
             try
             {
                 ISession s = DataLayer.GetSession();
+                
+                IstrazivackiRezultatView i = VratiIstrazivackiRezultat(ID_IR);
 
-                naucniRadView = new (s.Load<NaucniRad>(ID_IR));
+                naucniRadView = new (s.Load<NaucniRad>(ID_IR))
+                {
+                    KljucneReci = i.KljucneReci,
+                    Verzije = i.Verzije
+                };
                 s.Close();
             }
             catch(Exception ex)
@@ -2323,7 +2437,26 @@ namespace datalibrary
             }
             return naucniRadView;
         } 
-
+        public static List<NaucniRadView> VratiSveNaucniRadove()
+        {
+            List<NaucniRadView> naucniRadView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                
+                IEnumerable<NaucniRad> sviNaucniRadovi = from o in s.Query<NaucniRad>()
+                                                select o;
+                foreach( NaucniRad n in sviNaucniRadovi)
+                            naucniRadView.Add(VratiNaucniRad(n.ID_IR));
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiNaucniRad: "+ ex);
+                throw;
+            }
+            return naucniRadView;
+        } 
         public static void AzurirajNaucniRad(NaucniRadView naucniRadView)
         {
             try

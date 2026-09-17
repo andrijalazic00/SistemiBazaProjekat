@@ -61,6 +61,22 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("VratiSveSoftverskeArtifakte")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllSoftverskiArtifakt()
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveSoftverskeArtifakte());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpPut]
         [Route("AzurirajSoftverskiArtifakt")]
         [ProducesResponseType(StatusCodes.Status200OK)]

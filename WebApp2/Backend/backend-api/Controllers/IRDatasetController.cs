@@ -61,6 +61,22 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("VratiSveDataset")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllDataset()
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveDataset());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpPut]
         [Route("AzurirajDataset")]
         [ProducesResponseType(StatusCodes.Status200OK)]

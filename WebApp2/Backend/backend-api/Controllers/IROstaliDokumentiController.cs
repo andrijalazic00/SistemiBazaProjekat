@@ -60,6 +60,21 @@ namespace WebApp2.Controllers
                 }
             }
 
+            [HttpGet]
+            [Route("VratiSveOstaliDokument")]
+            [ProducesResponseType(StatusCodes.Status200OK)]
+            [ProducesResponseType(StatusCodes.Status400BadRequest)]
+            public IActionResult GetAllOstaliDokument()
+            {
+                try
+                {
+                    return new JsonResult(DataProvider.VratiSviOstaliDokument());
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
             [HttpPut]
             [Route("AzurirajOstaliDokument")]
             [ProducesResponseType(StatusCodes.Status200OK)]

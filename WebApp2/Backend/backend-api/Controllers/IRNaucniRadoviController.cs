@@ -62,6 +62,22 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("VratiSveNaucniRadove")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllNaucniRad()
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveNaucniRadove());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpPut]
         [Route("AzurirajNaucniRad")]
         [ProducesResponseType(StatusCodes.Status200OK)]

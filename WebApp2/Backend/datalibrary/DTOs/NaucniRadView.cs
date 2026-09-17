@@ -12,6 +12,10 @@ namespace datalibrary.DTOs
         public virtual int BrojIzdanja { get; set; }
         public virtual int BrojStranice { get; set; }
 
+        public NaucniRadView() : base()
+        {
+        }
+
         public NaucniRadView(NaucniRad n) : base(n)
         {
             TipRada = n.TipRada;

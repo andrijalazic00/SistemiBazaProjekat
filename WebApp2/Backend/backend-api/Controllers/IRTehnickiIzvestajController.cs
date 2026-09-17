@@ -63,6 +63,22 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("VratiSveTehnickiIzvestaje")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllTehnickiIzvestaj()
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveTehnickiIzvestaje());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
         [HttpPut]
         [Route("AzurirajTehnickiIzvestaj")]
         [ProducesResponseType(StatusCodes.Status200OK)]
