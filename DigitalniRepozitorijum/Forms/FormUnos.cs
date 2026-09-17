@@ -284,14 +284,30 @@ namespace DigitalniRepozitorijum
 
         private void btnDodajCitat_Click(object sender, EventArgs e)
         {
-            Form dodajICitat = new FormDodajCitat();
-            dodajICitat.ShowDialog();
+            try
+            {
+                Form dodajICitat = new FormDodajCitat();
+                dodajICitat.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
 
         private void btnDodajRundu_Click(object sender, EventArgs e)
         {
-            Form rundaRecenzije = new FormDodajRunduRecenzije();
-            rundaRecenzije.ShowDialog();
+            try 
+            {
+                Form rundaRecenzije = new FormDodajRunduRecenzije();
+                rundaRecenzije.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            
         }
 
         private void btnTest_Click(object sender, EventArgs e)

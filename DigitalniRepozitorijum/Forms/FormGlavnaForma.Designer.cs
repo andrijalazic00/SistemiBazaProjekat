@@ -30,13 +30,14 @@
         {
             this.btnUnos = new System.Windows.Forms.Button();
             this.btnBrisanjeAzuriranje = new System.Windows.Forms.Button();
+            this.btnPrikaz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnUnos
             // 
-            this.btnUnos.Location = new System.Drawing.Point(45, 31);
+            this.btnUnos.Location = new System.Drawing.Point(43, 36);
             this.btnUnos.Name = "btnUnos";
-            this.btnUnos.Size = new System.Drawing.Size(128, 32);
+            this.btnUnos.Size = new System.Drawing.Size(144, 32);
             this.btnUnos.TabIndex = 0;
             this.btnUnos.Text = "Unos";
             this.btnUnos.UseVisualStyleBackColor = true;
@@ -44,19 +45,30 @@
             // 
             // btnBrisanjeAzuriranje
             // 
-            this.btnBrisanjeAzuriranje.Location = new System.Drawing.Point(211, 35);
+            this.btnBrisanjeAzuriranje.Location = new System.Drawing.Point(43, 94);
             this.btnBrisanjeAzuriranje.Name = "btnBrisanjeAzuriranje";
-            this.btnBrisanjeAzuriranje.Size = new System.Drawing.Size(144, 27);
+            this.btnBrisanjeAzuriranje.Size = new System.Drawing.Size(144, 32);
             this.btnBrisanjeAzuriranje.TabIndex = 1;
             this.btnBrisanjeAzuriranje.Text = "Brisanje i azuriranje";
             this.btnBrisanjeAzuriranje.UseVisualStyleBackColor = true;
             this.btnBrisanjeAzuriranje.Click += new System.EventHandler(this.btnBrisanjeAzuriranje_Click);
             // 
+            // btnPrikaz
+            // 
+            this.btnPrikaz.Location = new System.Drawing.Point(43, 159);
+            this.btnPrikaz.Name = "btnPrikaz";
+            this.btnPrikaz.Size = new System.Drawing.Size(144, 32);
+            this.btnPrikaz.TabIndex = 2;
+            this.btnPrikaz.Text = "Prikaz";
+            this.btnPrikaz.UseVisualStyleBackColor = true;
+            this.btnPrikaz.Click += new System.EventHandler(this.btnPrikaz_Click);
+            // 
             // FormGlavnaForma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(247, 258);
+            this.Controls.Add(this.btnPrikaz);
             this.Controls.Add(this.btnBrisanjeAzuriranje);
             this.Controls.Add(this.btnUnos);
             this.Name = "FormGlavnaForma";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Button btnUnos;
         private System.Windows.Forms.Button btnBrisanjeAzuriranje;
+        private System.Windows.Forms.Button btnPrikaz;
     }
 }

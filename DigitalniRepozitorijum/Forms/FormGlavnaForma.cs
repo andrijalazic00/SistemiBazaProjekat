@@ -29,5 +29,11 @@ namespace DigitalniRepozitorijum.Forms
             Form form = new FormBrisanjeIAzuriranje();
             form.ShowDialog();
         }
+
+        private void btnPrikaz_Click(object sender, EventArgs e)
+        {
+            Form form = new FormPrikaz();
+            form.ShowDialog();
+        }
     }
 }

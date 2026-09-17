@@ -75,6 +75,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.11, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.10.0.11\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Formats.Asn1, Version=10.0.0.11, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Formats.Asn1.10.0.11\lib\net462\System.Formats.Asn1.dll</HintPath>
     </Reference>
@@ -244,6 +245,18 @@
     </Compile>
     <Compile Include="Forms\FormObrisiVerziju.Designer.cs">
       <DependentUpon>FormObrisiVerziju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPrikaz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPrikaz.Designer.cs">
+      <DependentUpon>FormPrikaz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormPrikaziPublikacije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPrikaziPublikacije.Designer.cs">
+      <DependentUpon>FormPrikaziPublikacije.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormUnos.cs">
       <SubType>Form</SubType>
@@ -421,6 +434,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormObrisiVerziju.resx">
       <DependentUpon>FormObrisiVerziju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPrikaz.resx">
+      <DependentUpon>FormPrikaz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPrikaziPublikacije.resx">
+      <DependentUpon>FormPrikaziPublikacije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUnos.resx">
       <DependentUpon>FormUnos.cs</DependentUpon>

@@ -142,6 +142,7 @@ namespace DigitalniRepozitorijum.Forms
             comboBAngazovanRecenzent.Enabled = true;
             btnSacuvajRunduRecenzije.Enabled = true;
 
+            //_session.Save(_angazovanjeRecenzent);
             _angazovanjeRecenzent = new AngazovanjeRecenzent();
             _recenzent = null;
 
@@ -164,6 +165,7 @@ namespace DigitalniRepozitorijum.Forms
 
                 
                 _session.Save(_rundaRecenzije);
+                //_session.SaveOrUpdate(_publikacija);
                 _session.Flush();
                 _session.Close();
                 this.Close();

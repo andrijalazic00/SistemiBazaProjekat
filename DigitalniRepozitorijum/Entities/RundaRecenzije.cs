@@ -23,14 +23,24 @@ namespace DigitalniRepozitorijum.Entities
 
         public override bool Equals(object obj)
         {
+            /*if (!(obj is RundaRecenzije other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return ID_P.ID_P == other.ID_P.ID_P && BrojRunde == other.BrojRunde;*/
             if (!(obj is RundaRecenzije other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return ID_P.ID_P == other.ID_P.ID_P && BrojRunde == other.BrojRunde;
+            return ID_P?.ID_P == other.ID_P?.ID_P && BrojRunde == other.BrojRunde;
         }
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            //return base.GetHashCode();
+            unchecked
+            {
+                int hash = 17;
+                hash = hash * 23 + (ID_P?.ID_P.GetHashCode() ?? 0);
+                hash = hash * 23 + BrojRunde.GetHashCode();
+                return hash;
+            }
         }
     }
 }
