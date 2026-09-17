@@ -210,6 +210,24 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("DodajNaucnuOblastNaucnojInstituciji/{ID_NII}/{oblast}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddNaucnuOblast(int ID_NII, string oblast)
+        {
+            try
+            {
+                DataProvider.DodajNaucnuOblast(ID_NII, oblast);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
     }
 
 }

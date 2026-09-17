@@ -2,24 +2,25 @@ using Microsoft.AspNetCore.Mvc;
 using datalibrary;
 using datalibrary.DTOs;
 using Microsoft.AspNetCore.Http.HttpResults;
-using datalibrary.Entiteti;
 
 namespace WebApp2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PublikacijaController: ControllerBase
+    public class IRDatasetController: ControllerBase
     {
+
+        #region  Dataset
         [HttpPost]
-        [Route("DodajPublikaciju")]
+        [Route("DodajDataset")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddPublikacija(int ID_U, int redni_broj, string doprinos, string uloga)
+        public IActionResult PostDataset(DatasetView datasetView)
         {
             try
             {
-                DataProvider.DodajPublikaciju(ID_U, redni_broj, doprinos, uloga);
-                return Ok($"Dodata je Publikacija sa Autorstvom {redni_broj}");
+                DataProvider.DodajDataset(datasetView);
+                return Ok($"Dodat je Dataset ID: {datasetView.ID_IR}");
             }
             catch(Exception ex)
             {
@@ -27,34 +28,16 @@ namespace WebApp2.Controllers
             }
         }
 
-
-        [HttpPost]
-        [Route("DodajCitat")]
+        [HttpDelete]
+        [Route("ObrisiDataset/{ID_IR}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddCitat(int ID_P1, int ID_P2, string tip, string mesto, string kontekst)
+        public IActionResult DeleteDataset(int ID_IR)
         {
             try
             {
-                DataProvider.DodajCitat(ID_P1,ID_P2,tip,mesto,kontekst);
-                return Ok($"Dodata je Citat citirajuci publikaciju {ID_P1} i citirana publikacija {ID_P2} ");
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-
-        [HttpGet]
-        [Route("VratiPublikaciju/{ID_P}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetPublikacija(int ID_P)
-        {
-            try
-            {
-              return new JsonResult(DataProvider.VratiPublikaciju(ID_P));
+                DataProvider.ObrisiDataset(ID_IR);
+                return Ok($"Obrisan je Dataset ID: {ID_IR}");
             }
             catch(Exception ex)
             {
@@ -63,20 +46,38 @@ namespace WebApp2.Controllers
         }
 
         [HttpGet]
-        [Route("VratiSvePublikacije")]
+        [Route("VratiDataset/{ID_IR}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetAllPublikacija()
+        public IActionResult GetDataset(int ID_IR)
         {
             try
             {
-              return new JsonResult(DataProvider.VratiSvePublikacije());
+                return new JsonResult(DataProvider.VratiDataset(ID_IR));
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPut]
+        [Route("AzurirajDataset")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateDataset(DatasetView datasetView)
+        {
+            try
+            {
+                DataProvider.AzurirajDataset(datasetView);
+                return Ok($"Dataset ID: {datasetView.ID_IR} je Azuriran");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+        #endregion
         
     }
 }

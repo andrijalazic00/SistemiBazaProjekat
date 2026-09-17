@@ -7,6 +7,7 @@ namespace datalibrary.DTOs
         public virtual IstrazivackiRezultatView ID_IR { get; set; }
         public virtual string Rec { get; set; }
 
+
         public KljucnaRecView(KljucnaRec k)
         {
             ID_IR = new IstrazivackiRezultatView(k.ID_IR);

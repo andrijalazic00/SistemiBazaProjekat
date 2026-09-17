@@ -2,24 +2,26 @@ using Microsoft.AspNetCore.Mvc;
 using datalibrary;
 using datalibrary.DTOs;
 using Microsoft.AspNetCore.Http.HttpResults;
-using datalibrary.Entiteti;
 
 namespace WebApp2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PublikacijaController: ControllerBase
+    public class IRNaucniRadoviController: ControllerBase
     {
+
+        #region  Naucni Rad
+
         [HttpPost]
-        [Route("DodajPublikaciju")]
+        [Route("DodajNaucniRad")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddPublikacija(int ID_U, int redni_broj, string doprinos, string uloga)
+        public IActionResult PostNaucniRad(NaucniRadView naucniRadView)
         {
             try
             {
-                DataProvider.DodajPublikaciju(ID_U, redni_broj, doprinos, uloga);
-                return Ok($"Dodata je Publikacija sa Autorstvom {redni_broj}");
+                DataProvider.DodajNaucniRad(naucniRadView);
+                return Ok($"Dodat je Naucni Rad ID: {naucniRadView.ID_IR}");
             }
             catch(Exception ex)
             {
@@ -27,34 +29,16 @@ namespace WebApp2.Controllers
             }
         }
 
-
-        [HttpPost]
-        [Route("DodajCitat")]
+        [HttpDelete]
+        [Route("ObrisiNaucniRad/{ID_IR}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddCitat(int ID_P1, int ID_P2, string tip, string mesto, string kontekst)
+        public IActionResult DeleteNaucniRad(int ID_IR)
         {
             try
             {
-                DataProvider.DodajCitat(ID_P1,ID_P2,tip,mesto,kontekst);
-                return Ok($"Dodata je Citat citirajuci publikaciju {ID_P1} i citirana publikacija {ID_P2} ");
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-
-        [HttpGet]
-        [Route("VratiPublikaciju/{ID_P}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetPublikacija(int ID_P)
-        {
-            try
-            {
-              return new JsonResult(DataProvider.VratiPublikaciju(ID_P));
+                DataProvider.ObrisiNaucniRad(ID_IR);
+                return Ok($"Obrisan je Naucni Rad ID: {ID_IR}");
             }
             catch(Exception ex)
             {
@@ -63,20 +47,39 @@ namespace WebApp2.Controllers
         }
 
         [HttpGet]
-        [Route("VratiSvePublikacije")]
+        [Route("VratiNaucniRad/{ID_IR}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetAllPublikacija()
+        public IActionResult GetNaucniRad(int ID_IR)
         {
             try
             {
-              return new JsonResult(DataProvider.VratiSvePublikacije());
+                return new JsonResult(DataProvider.VratiNaucniRad(ID_IR));
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
         }
-        
+
+        [HttpPut]
+        [Route("AzurirajNaucniRad")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateNaucniRad(NaucniRadView naucniRadView)
+        {
+            try
+            {
+                DataProvider.AzurirajNaucniRad(naucniRadView);
+                return Ok($"Naucni Rad ID: {naucniRadView.ID_IR} je Azurirana");
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        #endregion
+     
     }
 }

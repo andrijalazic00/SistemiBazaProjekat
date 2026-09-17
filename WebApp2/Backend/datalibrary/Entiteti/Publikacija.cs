@@ -23,10 +23,10 @@ namespace datalibrary.Entiteti
 
         public Publikacija()
         {
-            CitirajucePublikacije=new List<Citat>();
-            CitiranePublikacije=new List<Citat>();
-            RundeRecenzije=new List<RundaRecenzije>();
-            Autorstva=new List<Autorstvo>();    
+            CitirajucePublikacije=[];
+            CitiranePublikacije=[];
+            RundeRecenzije=[];
+            Autorstva=[];    
         }
     }
 }

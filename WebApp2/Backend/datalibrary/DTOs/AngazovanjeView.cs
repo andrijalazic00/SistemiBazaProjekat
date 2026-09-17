@@ -12,6 +12,10 @@ namespace datalibrary.DTOs
         public virtual string NazivPozicije { get; set; }
         public virtual string TipAngazovanja { get; set; }
 
+        public AngazovanjeView()
+        {
+        }
+
         public AngazovanjeView(Angazovanje a)
         {
             ID_I = new AngazovanIstrazivacView( a.ID_I);

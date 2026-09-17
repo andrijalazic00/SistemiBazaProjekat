@@ -57,6 +57,24 @@ namespace WebApp2.Controllers
                 }
             }
 
+        [HttpPut]
+        [Route("AzurirajIstrazivaca")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateIstrazivac(IstrazivacView istrazivacView)
+            {
+                try
+                {
+                    DataProvider.AzurirajIstrazivaca(istrazivacView);
+                    return Ok($"Azuriran je istrazivac {istrazivacView.Ime} {istrazivacView.Prezime}");
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
+
 
         [HttpPost]
         [Route("DodajMailIstrazivacu/{ID_I}/{mail}")]

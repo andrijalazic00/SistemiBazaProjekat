@@ -6,7 +6,7 @@ namespace datalibrary.DTOs
 {
     public class AngazovanIstrazivacView
     {
-        public virtual int ID_I { get; protected set; }
+        public virtual int ID_I { get; set; }
         public virtual string Ime { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual string Drzava { get; set; }

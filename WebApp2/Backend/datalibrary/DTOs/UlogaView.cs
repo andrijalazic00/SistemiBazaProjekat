@@ -8,7 +8,7 @@ namespace datalibrary.DTOs
     public class UlogaView
     {
         public virtual int ID_U {get; set;}
-        // public virtual IstrazivacView ID_I { get; set; }
+         public virtual IstrazivacView ID_I { get; set; }
 
         public UlogaView()
         {
@@ -19,7 +19,7 @@ namespace datalibrary.DTOs
         {
 
                 ID_U = u.ID_U;
-                // ID_I = new IstrazivacView(u.ID_I);
+                ID_I = new IstrazivacView(u.ID_I);
         }
 
     }

@@ -26,6 +26,9 @@ namespace datalibrary.Entiteti
             ID_P2= p2;
             CitirajucaPublikacija = p1.ID_P.ToString();
             CitiranaPublikacija =p2.ID_P.ToString();
+            TipCitata = tipCitata;
+            MestoCitiranja = mestoCitiranja;
+            KontekstCitiranja = kontekstCitiranja;
         }
         public override bool Equals(object obj)
         {

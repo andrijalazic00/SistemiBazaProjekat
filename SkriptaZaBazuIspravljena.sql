@@ -89,18 +89,18 @@ CREATE TABLE istrazivacki_rezultat(
 
         CONSTRAINT PK_VERZIJA PRIMARY KEY (ID_IR, BROJ_VERZIJE),
         --Ima--
-        CONSTRAINT FK_ID_IR FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
+        CONSTRAINT FK_ID_IR_FAJL FOREIGN KEY (ID_IR) REFERENCES istrazivacki_rezultat(ID_IR) ON DELETE CASCADE
     );
 
         --Pripadajuci fajlovi atributi
         CREATE TABLE pripadajuci_fajlovi(
 
-            ID_R NUMBER(10) NOT NULL,
+            ID_IR NUMBER(10) NOT NULL,
             BROJ_VERZIJE NUMBER(10) NOT NULL,
             NAZIV_FAJLA VARCHAR2(100) NOT NULL,
 
-            CONSTRAINT PK_PRIPADAJUCI_FAJLOVI PRIMARY KEY (ID_R, BROJ_VERZIJE, NAZIV_FAJLA),
-            CONSTRAINT FK_ID_R FOREIGN KEY (ID_R, BROJ_VERZIJE) REFERENCES verzija(ID_IR, BROJ_VERZIJE) ON DELETE CASCADE
+            CONSTRAINT PK_PRIPADAJUCI_FAJLOVI PRIMARY KEY (ID_IR, BROJ_VERZIJE, NAZIV_FAJLA),
+            CONSTRAINT FK_ID_IR FOREIGN KEY (ID_IR, BROJ_VERZIJE) REFERENCES verzija(ID_IR, BROJ_VERZIJE) ON DELETE CASCADE
         );
 
 --podklase istrazivackih rezultata
@@ -445,16 +445,16 @@ BEGIN
 
     INSERT INTO  verzija(ID_IR,BROJ_VERZIJE,DATUM_POSTAVLJANJA,OPIS_IZMENA,ODGOVORNA_OSOBA)
     VALUES (new_ID_IR, 1, TO_DATE('2024-02-14', 'YYYY-MM-DD'), 'Dodatna pojasnjenja neprecizno definisanih pojmova', 'Marko Nikolic');
-    INSERT INTO  pripadajuci_fajlovi(ID_R,BROJ_VERZIJE, NAZIV_FAJLA)
+    INSERT INTO  pripadajuci_fajlovi(ID_IR,BROJ_VERZIJE, NAZIV_FAJLA)
     VALUES (new_ID_IR, 1, 'Fajl br. 1');
-    INSERT INTO  pripadajuci_fajlovi(ID_R,BROJ_VERZIJE, NAZIV_FAJLA)
+    INSERT INTO  pripadajuci_fajlovi(ID_IR,BROJ_VERZIJE, NAZIV_FAJLA)
     VALUES (new_ID_IR, 1, 'Fajl br. 2');
 
     INSERT INTO  verzija(ID_IR,BROJ_VERZIJE,DATUM_POSTAVLJANJA,OPIS_IZMENA,ODGOVORNA_OSOBA)
     VALUES (new_ID_IR, 2, TO_DATE('2025-02-11', 'YYYY-MM-DD'), 'Ispravke gresaka u kucanju', 'Pera Peric');
-    INSERT INTO  pripadajuci_fajlovi(ID_R,BROJ_VERZIJE, NAZIV_FAJLA)
+    INSERT INTO  pripadajuci_fajlovi(ID_IR,BROJ_VERZIJE, NAZIV_FAJLA)
     VALUES (new_ID_IR, 2, 'Fajl br. 1');
-    INSERT INTO  pripadajuci_fajlovi(ID_R,BROJ_VERZIJE, NAZIV_FAJLA)
+    INSERT INTO  pripadajuci_fajlovi(ID_IR,BROJ_VERZIJE, NAZIV_FAJLA)
     VALUES (new_ID_IR, 2, 'Fajl br. 2');
     --------------------------------------------------------------------------------------------------------------------------------------------------
     INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV,APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)

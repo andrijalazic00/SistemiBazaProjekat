@@ -18,5 +18,10 @@ namespace datalibrary.DTOs
             TipDoprinosa = a.TipDoprinosa;
             UlogaUPublikaciji = a.UlogaUPublikaciji;
         }
+
+        public AutorstvoView()
+        {
+            
+        }
     }
 }

@@ -12,12 +12,17 @@ namespace datalibrary.DTOs
         public virtual DateTime DatumKreiranja { get; set; }
         public virtual DateTime DatumObjavljivanja { get; set; }
         public virtual string StatusIR { get; set; }
-        public virtual int Vidljivost { get; set; }  
+        public virtual int Vidljivost { get; set; }
+        public virtual IList<KljucnaRecView> KljucneReci { get; set; }
+        public virtual IList<VerzijaView> Verzije {get; set; }
+        public virtual IList<PripadajuciFajlView> PripadajuciFajlovi { get; set; }
 
 
         public IstrazivackiRezultatView()
         {
-            
+            KljucneReci = [];
+            Verzije = [];
+            PripadajuciFajlovi = [];
         }
         public IstrazivackiRezultatView( IstrazivackiRezultat i)
         {

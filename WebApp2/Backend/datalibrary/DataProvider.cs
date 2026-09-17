@@ -16,6 +16,7 @@ using NHibernate.SqlCommand;
 using System.Diagnostics;
 using System.Data;
 using NHibernate.Linq.Expressions;
+using System.Security.Cryptography;
 
 namespace datalibrary
 {
@@ -375,6 +376,29 @@ namespace datalibrary
             }
         }
 
+
+        public static void DodajNaucnuOblast(int ID_NII, string oblast)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                NaucnoIstrazivackaInstitucija n = s.Load<NaucnoIstrazivackaInstitucija>(ID_NII);
+                NaucnaOblast novaOblast = new ()
+                {
+                    ID_NII = n,
+                    Oblast = oblast
+                };
+                s.SaveOrUpdate(novaOblast);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajNaucnuOblast: "+ex);
+                throw;               
+            } 
+        }
+
         #endregion
         #region  Istrazivaci
 
@@ -575,11 +599,11 @@ namespace datalibrary
             {
                 ISession s = DataLayer.GetSession();
 
-                Mail n = s.Load<Mail>(ID_I);
+                Istrazivac n = s.Load<Istrazivac>(ID_I);
 
                 Mail o = new Mail
                 {
-                    ID_I = n.ID_I,
+                    ID_I = n,
                     MailAdresa = mail
                 };
                 s.SaveOrUpdate(o);
@@ -775,8 +799,8 @@ namespace datalibrary
                     }
                 }
 
-                Istrazivac istrazivac = s.Load<Istrazivac>(angazovano.ID_I);
-                NaucnoIstrazivackaInstitucija institucija = s.Load<NaucnoIstrazivackaInstitucija>(angazovano.ID_NII);
+                Istrazivac istrazivac = s.Load<Istrazivac>(angazovano.ID_I.ID_I);
+                NaucnoIstrazivackaInstitucija institucija = s.Load<NaucnoIstrazivackaInstitucija>(angazovano.ID_NII.ID_NII);
 
                 Angazovanje angazovanje = new ()
                 {
@@ -787,11 +811,10 @@ namespace datalibrary
                     OrganizacionaJedinica = angazovano.OrganizacionaJedinica,
                     NazivPozicije = angazovano.NazivPozicije,
                     TipAngazovanja = angazovano.TipAngazovanja,
-
                 };
 
 
-                s.SaveOrUpdate(angazovanja);
+                s.SaveOrUpdate(angazovanje);
                 s.Flush();
                 s.Close();
             }
@@ -919,6 +942,34 @@ namespace datalibrary
 
             return rukovodilacProjektaView;
         }
+
+        public static List<RukovodilacProjektaView> VratiSveIstrazivaceRukovodioce()
+        {
+            List<RukovodilacProjektaView> rukovodioci = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<RukovodilacProjekta> svirukovodioci = from o in s.Query<RukovodilacProjekta>()
+                                                        select o;
+                
+                foreach( RukovodilacProjekta r in svirukovodioci)
+                {
+                    RukovodilacProjektaView noviRukovodilac = new (r);
+                    noviRukovodilac.ID_I.Mailovi = VratiMailoveIstrazivaca(noviRukovodilac.ID_I.ID_I);
+                    noviRukovodilac.ID_I.Telefoni = VratiTelefoneIstrazivaca(noviRukovodilac.ID_I.ID_I);
+                    rukovodioci.Add( noviRukovodilac );
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivaceRukovodioce: "+ ex);    
+                throw;
+            }
+
+            return rukovodioci;
+        }
         #endregion
 
 
@@ -1032,6 +1083,33 @@ namespace datalibrary
             }
         }
 
+        public static List<AdministratorRepozitorijumaView> VratiSveIstrazivaceAdministratore()
+        {
+            List<AdministratorRepozitorijumaView> administratori = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<AdministratorRepozitorijuma> sviadministratori = from o in s.Query<AdministratorRepozitorijuma>()
+                                                        select o;
+                
+                foreach( AdministratorRepozitorijuma r in sviadministratori)
+                {
+                    AdministratorRepozitorijumaView noviAdministrator = new (r);
+                    noviAdministrator.ID_I.Mailovi = VratiMailoveIstrazivaca(noviAdministrator.ID_I.ID_I);
+                    noviAdministrator.ID_I.Telefoni = VratiTelefoneIstrazivaca(noviAdministrator.ID_I.ID_I);
+                    administratori.Add( noviAdministrator );
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivaceAdministratore: "+ ex);    
+                throw;
+            }
+
+            return administratori;
+        }
 
         #region  Uloga- Urednik
         public static void DodajUrednika(int ID_I, string uredjivacaSekcija)
@@ -1098,6 +1176,36 @@ namespace datalibrary
 
             return urednikView;
         }
+
+        public static List<UrednikView> VratiSveIstrazivaceUrednike()
+        {
+            List<UrednikView> urednici = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Urednik> sviurednici = from o in s.Query<Urednik>()
+                                                        select o;
+                
+                foreach( Urednik r in sviurednici)
+                {
+                    UrednikView noviUrednik = new (r);
+                    noviUrednik.ID_I.Mailovi = VratiMailoveIstrazivaca(noviUrednik.ID_I.ID_I);
+                    noviUrednik.ID_I.Telefoni = VratiTelefoneIstrazivaca(noviUrednik.ID_I.ID_I);
+                    urednici.Add( noviUrednik );
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivaceUrednike: "+ ex);    
+                throw;
+            }
+
+            return urednici;
+        }
+
+        
         #endregion
 
         #region  Uloga- Recenzent
@@ -1190,6 +1298,29 @@ namespace datalibrary
             }        
         }
 
+        public static List<OblastiEkspertizeView> VratiOblastiEkspertize(int ID_U)
+        {
+            List<OblastiEkspertizeView> oblastiEkspertiza = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<OblastiEkspertize> sveOblasti = from o in s.Query<OblastiEkspertize>()
+                                                             where o.ID_U.ID_U == ID_U select o;
+
+                foreach( OblastiEkspertize oblast in sveOblasti)
+                                oblastiEkspertiza.Add( new OblastiEkspertizeView(oblast));
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiOblastiEkspertize: "+ ex);    
+                throw;
+            }
+            return oblastiEkspertiza;
+        }
+
         public static void ObrisiOblastiEkspertize(int ID_U, string oblastEkspertize)
         {
             try
@@ -1212,6 +1343,34 @@ namespace datalibrary
             }
         }  
 
+        public static List<RecenzentView> VratiSveIstrazivaceRecenzente()
+        {
+            List<RecenzentView> recenzenti = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Recenzent> svirecenzenti = from o in s.Query<Recenzent>()
+                                                        select o;
+                
+                foreach( Recenzent r in svirecenzenti)
+                {
+                    RecenzentView noviRecenzent = new (r);
+                    noviRecenzent.ID_I.Mailovi = VratiMailoveIstrazivaca(noviRecenzent.ID_I.ID_I);
+                    noviRecenzent.ID_I.Telefoni = VratiTelefoneIstrazivaca(noviRecenzent.ID_I.ID_I);
+                    noviRecenzent.OblastiEkspertize = VratiOblastiEkspertize( noviRecenzent.ID_U );
+                    recenzenti.Add( noviRecenzent );
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivaceRecenzente: "+ ex);    
+                throw;
+            }
+
+            return recenzenti;
+        }
         #endregion
 
         #region  Uloga- Autor
@@ -1279,6 +1438,34 @@ namespace datalibrary
 
             return autorView;
         }
+
+        public static List<AutorView> VratiSveIstrazivaceAutore()
+        {
+            List<AutorView> autori = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                IEnumerable<Autor> sviautori = from o in s.Query<Autor>()
+                                                        select o;
+                
+                foreach( Autor r in sviautori)
+                {
+                    AutorView noviAutor = new (r);
+                    noviAutor.ID_I.Mailovi = VratiMailoveIstrazivaca(noviAutor.ID_I.ID_I);
+                    noviAutor.ID_I.Telefoni = VratiTelefoneIstrazivaca(noviAutor.ID_I.ID_I);
+                    autori.Add( noviAutor );
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiSveIstrazivaceAutore: "+ ex);    
+                throw;
+            }
+
+            return autori;
+        }
         #endregion
 
         #endregion
@@ -1295,7 +1482,28 @@ namespace datalibrary
 
                 IstrazivackiRezultat i = s.Load<IstrazivackiRezultat>(ID_IR);
 
-                istrazivackiRezultat = new IstrazivackiRezultatView(i);
+                IEnumerable<KljucnaRec> kLista = from o in s.Query<KljucnaRec>()
+                                            where o.ID_IR.ID_IR == ID_IR select o;
+                
+                List<KljucnaRecView> kljucnereci = [];
+
+                foreach( KljucnaRec k in kLista)
+                                kljucnereci.Add( new KljucnaRecView(k));
+
+                IEnumerable<Verzija> vLista = from u in s.Query<Verzija>()
+                                                    where u.ID_IR.ID_IR == ID_IR select u;
+
+                List<VerzijaView> verzije = [];
+
+                foreach( Verzija v in vLista)
+                                verzije.Add( new VerzijaView(v));
+
+
+                istrazivackiRezultat = new IstrazivackiRezultatView(i)
+                {
+                    KljucneReci = kljucnereci,
+                    Verzije = verzije
+                };
 
                 s.Close();
             }
@@ -1956,6 +2164,29 @@ namespace datalibrary
                 ISession s = DataLayer.GetSession();
 
                 knjigaIliPoglavljaView = new (s.Load<KnjigaIliPoglavlja>(ID_IR));
+
+                IEnumerable <Uredjuje> urednici = from o in s.Query<Uredjuje>()
+                                                    where o.ID_IR.ID_IR == ID_IR select o;
+
+                List<UredjujeView> uredjuju = [];
+                foreach( Uredjuje u in urednici)
+                            uredjuju.Add( new UredjujeView(u));
+                knjigaIliPoglavljaView.Urednici = uredjuju;
+
+                IEnumerable<KljucnaRec> sveKljucnaReci = from kr in s.Query<KljucnaRec>()
+                                                        where kr.ID_IR.ID_IR == ID_IR select kr;
+
+                List<KljucnaRecView> kljucnaReci = [];
+                foreach(KljucnaRec k in sveKljucnaReci )
+                            kljucnaReci.Add( new KljucnaRecView(k));
+                knjigaIliPoglavljaView.KljucneReci = kljucnaReci;
+
+                List<VerzijaView> verzije = [];
+                IEnumerable<Verzija> sveVerzije = from vr in s.Query<Verzija>()
+                                                    where vr.ID_IR.ID_IR == ID_IR select vr;
+                foreach(Verzija v in sveVerzije )
+                                verzije.Add( new (v));
+                knjigaIliPoglavljaView.Verzije = verzije;
                 s.Close();
             }
             catch(Exception ex)
@@ -1965,6 +2196,31 @@ namespace datalibrary
             }
             return knjigaIliPoglavljaView;
         }
+
+        public static List<KnjigaIliPoglavljaView> VratiSveKnjigeIliPoglavlja()
+        {   
+            List<KnjigaIliPoglavljaView> knjigaIliPoglavljaView = [];
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<KnjigaIliPoglavlja> kip = from o in s.Query<KnjigaIliPoglavlja>()
+                                                            select o;
+                
+                foreach( KnjigaIliPoglavlja k in kip)
+                {
+                    knjigaIliPoglavljaView.Add(VratiKnjigeIliPoglavlja(k.ID_IR));
+                }
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiKnjigeIliPoglavlja: "+ ex);
+                throw;
+            }
+            return knjigaIliPoglavljaView;
+        }
+
 
         public static void AzurirajKnjigeIliPoglavlje(KnjigaIliPoglavljaView knjigaIliPoglavlja)
         {
@@ -2105,18 +2361,25 @@ namespace datalibrary
 
         #region  Publikacija
 
-        public static void DodajPublikaciju(AutorstvoView autorstvoView)
+        public static void DodajPublikaciju(int ID_U,int redni_broj, string doprinos, string uloga )
         {
             try
             {
                 ISession s = DataLayer.GetSession();
-
-
+                Autor autor = s.Load<Autor>(ID_U);
+                AutorView a = new (autor);
+                AutorstvoView autorstvoView = new ()
+                {
+                    ID_U = a,
+                    RedniBrojAutora = redni_broj,
+                    TipDoprinosa = doprinos,
+                    UlogaUPublikaciji = uloga
+                };
                 Publikacija p = new ();
-                PublikacijaView publikacijaView = new (p);
 
                 s.SaveOrUpdate(p);
                 s.Flush();
+                PublikacijaView publikacijaView = new (p);
                 s.Close();
                 autorstvoView.ID_P = publikacijaView;
                 DodajAutorstvo(autorstvoView);
@@ -2156,16 +2419,16 @@ namespace datalibrary
             }
         }
 
-        public static void DodajCitat(CitatView citat)
+        public static void DodajCitat(int ID_P1, int ID_P2, string tip, string mesto, string kontekst)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Publikacija citirajuca = s.Load<Publikacija>(citat.ID_P1.ID_P);
-                Publikacija citirana = s.Load<Publikacija>(citat.ID_P2.ID_P);
+                Publikacija citirajuca = s.Load<Publikacija>(ID_P1);
+                Publikacija citirana = s.Load<Publikacija>(ID_P2);
 
-                Citat c = new(citirajuca, citirana, citat.TipCitata,citat.MestoCitiranja,citat.KontekstCitiranja);
+                Citat c = new(citirajuca, citirana, tip,mesto,kontekst);
 
                 s.SaveOrUpdate(c);
                 s.Flush();
@@ -2188,7 +2451,38 @@ namespace datalibrary
 
                 Publikacija publikacija = s.Load<Publikacija>(ID_P);
 
-                p = new PublikacijaView(publikacija);
+                IEnumerable<Citat> p1 = from i in s.Query<Citat>()
+                                                        where i.ID_P1.ID_P == publikacija.ID_P select i;
+                    List<CitatView> citirajuce = [];
+                        foreach( Citat c in p1)
+                                    citirajuce.Add(new CitatView(c));
+
+                    IEnumerable<Citat> p2 = from i in s.Query<Citat>()
+                                                        where i.ID_P2.ID_P == publikacija.ID_P select i;
+                    List<CitatView> citirane = [];
+                        foreach( Citat c in p2)
+                                    citirane.Add(new CitatView(c));
+
+                    IEnumerable<RundaRecenzije> runda = from u in s.Query<RundaRecenzije>()
+                                                        where u.ID_P.ID_P == publikacija.ID_P select u;
+                    List<RundaRecenzijeView> runde = [];
+                        foreach( RundaRecenzije r in runda)
+                                    runde.Add(new RundaRecenzijeView(r));
+
+                    IEnumerable<Autorstvo> autorstva = from y in s.Query<Autorstvo>()
+                                                        where y.ID_P.ID_P == publikacija.ID_P select y;
+
+                    List<AutorstvoView> autorstvo = [];
+                        foreach( Autorstvo a in autorstva)
+                                    autorstvo.Add(new AutorstvoView(a));
+
+                p = new (publikacija)
+                {
+                    CitirajucePublikacije = citirajuce,
+                    CitiranePublikacije = citirane,
+                    RundeRecenzije = runde,
+                    Autorstva = autorstvo       
+                };
 
                 s.Close();
             }
@@ -2200,6 +2494,67 @@ namespace datalibrary
 
             return p;
         }
+
+        public static List<PublikacijaView> VratiSvePublikacije()
+        {
+            List<PublikacijaView> publikacije = [];
+
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                IEnumerable<Publikacija> svePublikacije = from o in s.Query<Publikacija>()
+                                                            select o;
+
+                foreach( Publikacija p in svePublikacije)
+                {
+                    IEnumerable<Citat> p1 = from i in s.Query<Citat>()
+                                                        where i.ID_P1.ID_P == p.ID_P select i;
+                    List<CitatView> citirajuce = [];
+                        foreach( Citat c in p1)
+                                    citirajuce.Add(new CitatView(c));
+
+                    IEnumerable<Citat> p2 = from i in s.Query<Citat>()
+                                                        where i.ID_P2.ID_P == p.ID_P select i;
+                    List<CitatView> citirane = [];
+                        foreach( Citat c in p2)
+                                    citirane.Add(new CitatView(c));
+
+                    IEnumerable<RundaRecenzije> runda = from u in s.Query<RundaRecenzije>()
+                                                        where u.ID_P.ID_P == p.ID_P select u;
+                    List<RundaRecenzijeView> runde = [];
+                        foreach( RundaRecenzije r in runda)
+                                    runde.Add(new RundaRecenzijeView(r));
+
+                    IEnumerable<Autorstvo> autorstva = from y in s.Query<Autorstvo>()
+                                                        where y.ID_P.ID_P == p.ID_P select y;
+
+                    List<AutorstvoView> autorstvo = [];
+                        foreach( Autorstvo a in autorstva)
+                                    autorstvo.Add(new AutorstvoView(a));
+
+
+                    PublikacijaView publikacijaView = new(p)
+                    {
+                        CitirajucePublikacije = citirajuce,
+                        CitiranePublikacije = citirane,
+                        RundeRecenzije = runde,
+                        Autorstva = autorstvo
+                    };
+
+                    publikacije.Add(publikacijaView);
+                }
+
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider VratiPublikaciju: "+ ex);
+                throw;
+            }
+
+            return publikacije;
+        }  
         #endregion
         #region  Runda Recenzije
 

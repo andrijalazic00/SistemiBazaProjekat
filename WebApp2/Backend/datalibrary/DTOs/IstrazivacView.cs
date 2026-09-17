@@ -6,7 +6,7 @@ namespace datalibrary.DTOs
 {
     public class IstrazivacView
     {
-        public virtual int ID_I { get; protected set; }
+        public virtual int ID_I { get; set; }
         public virtual string Ime { get; set; }
         public virtual DateTime DatumRodjenja { get; set; }
         public virtual string Drzava { get; set; }
@@ -38,7 +38,6 @@ namespace datalibrary.DTOs
             NaucnaOblast = i.NaucnaOblast;
             NaucnoZvanje = i.NaucnoZvanje;
             StatusNaucnika = i.StatusNaucnika;
-
         }
     }
 }

@@ -1,25 +1,28 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using datalibrary;
 using datalibrary.DTOs;
-using Microsoft.AspNetCore.Http.HttpResults;
-using datalibrary.Entiteti;
+using NHibernate.Engine;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Net.Sockets;
 
 namespace WebApp2.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PublikacijaController: ControllerBase
+    public class UlogaRukovodilacController: ControllerBase
     {
+        #region  Rukovodilac
         [HttpPost]
-        [Route("DodajPublikaciju")]
+        [Route("DodajUloguRukovodilacProjekta/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddPublikacija(int ID_U, int redni_broj, string doprinos, string uloga)
+        public IActionResult PostUlogaRukovodilacProjekta(int ID_I)
         {
             try
             {
-                DataProvider.DodajPublikaciju(ID_U, redni_broj, doprinos, uloga);
-                return Ok($"Dodata je Publikacija sa Autorstvom {redni_broj}");
+                DataProvider.DodajRukovodioca(ID_I);
+                return Ok($"Dodata je uloga Rukovodilac Projekta, Istrazivacu sa ID: {ID_I}");
             }
             catch(Exception ex)
             {
@@ -27,34 +30,16 @@ namespace WebApp2.Controllers
             }
         }
 
-
-        [HttpPost]
-        [Route("DodajCitat")]
+        [HttpDelete]
+        [Route("ObrisiUloguRukovodilacProjekta/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddCitat(int ID_P1, int ID_P2, string tip, string mesto, string kontekst)
+        public IActionResult DeleteRukovodilacProjekta(int ID_I)
         {
             try
             {
-                DataProvider.DodajCitat(ID_P1,ID_P2,tip,mesto,kontekst);
-                return Ok($"Dodata je Citat citirajuci publikaciju {ID_P1} i citirana publikacija {ID_P2} ");
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-        }
-
-
-        [HttpGet]
-        [Route("VratiPublikaciju/{ID_P}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetPublikacija(int ID_P)
-        {
-            try
-            {
-              return new JsonResult(DataProvider.VratiPublikaciju(ID_P));
+                DataProvider.ObrisiRukovodioca(ID_I);
+                return Ok($"Obrisana je uloga Rukovodilac Projekta, Istrazivacu sa ID: {ID_I}");
             }
             catch(Exception ex)
             {
@@ -63,20 +48,36 @@ namespace WebApp2.Controllers
         }
 
         [HttpGet]
-        [Route("VratiSvePublikacije")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [Route("VratiUloguRukovodilacProjekta/{ID_I}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetAllPublikacija()
+        public IActionResult GetRukovodilacProjekta(int ID_I)
         {
             try
             {
-              return new JsonResult(DataProvider.VratiSvePublikacije());
+                return new JsonResult(DataProvider.VratiRukovodioca(ID_I));
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
-        }
-        
+        }   
+
+
+        [HttpGet]
+        [Route("VratiSveIstrazivaceRukovodioce")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetAllRukovodioci()
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveIstrazivaceRukovodioce());
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }   
+
+        #endregion
     }
 }
