@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnObrisiIR = new System.Windows.Forms.Button();
-            this.btnObrsisiAngazovanje = new System.Windows.Forms.Button();
-            this.btnObrisiPublikaciju = new System.Windows.Forms.Button();
+            this.btnIzmeniPublikaciju = new System.Windows.Forms.Button();
             this.btnObrisiUlogu = new System.Windows.Forms.Button();
             this.btnIzmeniIstrazivaca = new System.Windows.Forms.Button();
             this.btnIzmeniNII = new System.Windows.Forms.Button();
@@ -40,38 +38,21 @@
             this.button8 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnObrisiIR
+            // btnIzmeniPublikaciju
             // 
-            this.btnObrisiIR.Location = new System.Drawing.Point(43, 106);
-            this.btnObrisiIR.Name = "btnObrisiIR";
-            this.btnObrisiIR.Size = new System.Drawing.Size(147, 33);
-            this.btnObrisiIR.TabIndex = 2;
-            this.btnObrisiIR.Text = "Obrisi Istrazivacki rezultat";
-            this.btnObrisiIR.UseVisualStyleBackColor = true;
-            // 
-            // btnObrsisiAngazovanje
-            // 
-            this.btnObrsisiAngazovanje.Location = new System.Drawing.Point(543, 110);
-            this.btnObrsisiAngazovanje.Name = "btnObrsisiAngazovanje";
-            this.btnObrsisiAngazovanje.Size = new System.Drawing.Size(118, 35);
-            this.btnObrsisiAngazovanje.TabIndex = 3;
-            this.btnObrsisiAngazovanje.Text = "Obrisi angazovanje";
-            this.btnObrsisiAngazovanje.UseVisualStyleBackColor = true;
-            // 
-            // btnObrisiPublikaciju
-            // 
-            this.btnObrisiPublikaciju.Location = new System.Drawing.Point(216, 114);
-            this.btnObrisiPublikaciju.Name = "btnObrisiPublikaciju";
-            this.btnObrisiPublikaciju.Size = new System.Drawing.Size(133, 23);
-            this.btnObrisiPublikaciju.TabIndex = 4;
-            this.btnObrisiPublikaciju.Text = "Obrisi publikaciju";
-            this.btnObrisiPublikaciju.UseVisualStyleBackColor = true;
+            this.btnIzmeniPublikaciju.Location = new System.Drawing.Point(624, 29);
+            this.btnIzmeniPublikaciju.Name = "btnIzmeniPublikaciju";
+            this.btnIzmeniPublikaciju.Size = new System.Drawing.Size(144, 37);
+            this.btnIzmeniPublikaciju.TabIndex = 4;
+            this.btnIzmeniPublikaciju.Text = "Izmeni/obrisi publikaciju";
+            this.btnIzmeniPublikaciju.UseVisualStyleBackColor = true;
+            this.btnIzmeniPublikaciju.Click += new System.EventHandler(this.btnIzmeniPublikaciju_Click);
             // 
             // btnObrisiUlogu
             // 
-            this.btnObrisiUlogu.Location = new System.Drawing.Point(361, 106);
+            this.btnObrisiUlogu.Location = new System.Drawing.Point(624, 97);
             this.btnObrisiUlogu.Name = "btnObrisiUlogu";
-            this.btnObrisiUlogu.Size = new System.Drawing.Size(129, 39);
+            this.btnObrisiUlogu.Size = new System.Drawing.Size(144, 42);
             this.btnObrisiUlogu.TabIndex = 5;
             this.btnObrisiUlogu.Text = "Obrisi ulogu";
             this.btnObrisiUlogu.UseVisualStyleBackColor = true;
@@ -108,36 +89,36 @@
             // 
             // btnIzmeniAngazovanje
             // 
-            this.btnIzmeniAngazovanje.Location = new System.Drawing.Point(212, 166);
+            this.btnIzmeniAngazovanje.Location = new System.Drawing.Point(57, 97);
             this.btnIzmeniAngazovanje.Name = "btnIzmeniAngazovanje";
-            this.btnIzmeniAngazovanje.Size = new System.Drawing.Size(133, 42);
+            this.btnIzmeniAngazovanje.Size = new System.Drawing.Size(144, 42);
             this.btnIzmeniAngazovanje.TabIndex = 9;
-            this.btnIzmeniAngazovanje.Text = "Izmeni angazovanje";
+            this.btnIzmeniAngazovanje.Text = "Izmeni/Obrisi angazovanje";
             this.btnIzmeniAngazovanje.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(391, 164);
+            this.button7.Location = new System.Drawing.Point(257, 97);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(95, 44);
+            this.button7.Size = new System.Drawing.Size(144, 42);
             this.button7.TabIndex = 10;
-            this.button7.Text = "button7";
+            this.button7.Text = "Izmeni/obrisi citat";
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(533, 168);
+            this.button8.Location = new System.Drawing.Point(447, 97);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(156, 39);
+            this.button8.Size = new System.Drawing.Size(144, 42);
             this.button8.TabIndex = 11;
-            this.button8.Text = "button8";
+            this.button8.Text = "Izmeni/obrisi rundu recenzije";
             this.button8.UseVisualStyleBackColor = true;
             // 
             // FormBrisanjeIAzuriranje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 183);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnIzmeniAngazovanje);
@@ -145,9 +126,7 @@
             this.Controls.Add(this.btnIzmeniNII);
             this.Controls.Add(this.btnIzmeniIstrazivaca);
             this.Controls.Add(this.btnObrisiUlogu);
-            this.Controls.Add(this.btnObrisiPublikaciju);
-            this.Controls.Add(this.btnObrsisiAngazovanje);
-            this.Controls.Add(this.btnObrisiIR);
+            this.Controls.Add(this.btnIzmeniPublikaciju);
             this.Name = "FormBrisanjeIAzuriranje";
             this.Text = "FormBrisanjeIAzuriranje";
             this.ResumeLayout(false);
@@ -155,9 +134,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnObrisiIR;
-        private System.Windows.Forms.Button btnObrsisiAngazovanje;
-        private System.Windows.Forms.Button btnObrisiPublikaciju;
+        private System.Windows.Forms.Button btnIzmeniPublikaciju;
         private System.Windows.Forms.Button btnObrisiUlogu;
         private System.Windows.Forms.Button btnIzmeniIstrazivaca;
         private System.Windows.Forms.Button btnIzmeniNII;

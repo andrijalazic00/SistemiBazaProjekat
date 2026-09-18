@@ -47,5 +47,15 @@ namespace DigitalniRepozitorijum.Forms
             catch (Exception ex) { }
             
         }
+
+        private void btnIzmeniPublikaciju_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form form = new FormIzmeniPublikaciju();
+                form.ShowDialog();
+            }
+            catch (Exception ex) { }
+        }
     }
 }

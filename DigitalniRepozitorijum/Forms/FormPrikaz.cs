@@ -281,8 +281,8 @@ namespace DigitalniRepozitorijum.Forms
                     break;
 
                 case OstaliDokumenti od:
-                    lblTipRezultata.Text = "Tip: Ostali dokumenti";
-                    svojstva.Add(new KeyValuePair<string, string>("Opcije", od.Opcije));
+                    lblTipRezultata.Text = "Tip: Ostali dokumenti("+od.Opcije+")";
+                    svojstva.Add(new KeyValuePair<string, string>("Tip:", od.Opcije));
                     break;
 
                 case TehnickiIzvestaj ti:

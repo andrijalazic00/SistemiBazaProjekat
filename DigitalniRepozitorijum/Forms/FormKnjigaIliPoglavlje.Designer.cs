@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 41);
+            this.label1.Location = new System.Drawing.Point(61, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 97);
+            this.label2.Location = new System.Drawing.Point(22, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 1;
@@ -60,19 +60,19 @@
             // 
             this.tbIzdavac.Location = new System.Drawing.Point(130, 38);
             this.tbIzdavac.Name = "tbIzdavac";
-            this.tbIzdavac.Size = new System.Drawing.Size(83, 20);
+            this.tbIzdavac.Size = new System.Drawing.Size(172, 20);
             this.tbIzdavac.TabIndex = 2;
             // 
             // tbMestoIzdavanja
             // 
             this.tbMestoIzdavanja.Location = new System.Drawing.Point(127, 90);
             this.tbMestoIzdavanja.Name = "tbMestoIzdavanja";
-            this.tbMestoIzdavanja.Size = new System.Drawing.Size(85, 20);
+            this.tbMestoIzdavanja.Size = new System.Drawing.Size(175, 20);
             this.tbMestoIzdavanja.TabIndex = 3;
             // 
             // btnSacuvajKnjigu
             // 
-            this.btnSacuvajKnjigu.Location = new System.Drawing.Point(25, 207);
+            this.btnSacuvajKnjigu.Location = new System.Drawing.Point(115, 198);
             this.btnSacuvajKnjigu.Name = "btnSacuvajKnjigu";
             this.btnSacuvajKnjigu.Size = new System.Drawing.Size(187, 37);
             this.btnSacuvajKnjigu.TabIndex = 4;
@@ -91,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 146);
+            this.label3.Location = new System.Drawing.Point(62, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 6;
@@ -111,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(568, 299);
             this.Controls.Add(this.btnDodajUrednika);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBUrednici);

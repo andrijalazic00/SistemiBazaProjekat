@@ -198,6 +198,12 @@
     <Compile Include="Forms\FormIzmeniNII.Designer.cs">
       <DependentUpon>FormIzmeniNII.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIzmeniPublikaciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniPublikaciju.Designer.cs">
+      <DependentUpon>FormIzmeniPublikaciju.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIzmeniVerziju.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniNII.resx">
       <DependentUpon>FormIzmeniNII.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniPublikaciju.resx">
+      <DependentUpon>FormIzmeniPublikaciju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniVerziju.resx">
       <DependentUpon>FormIzmeniVerziju.cs</DependentUpon>
