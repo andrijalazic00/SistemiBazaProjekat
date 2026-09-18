@@ -14,12 +14,12 @@ namespace WebApp2.Controllers
         [Route("DodajRunduRecenzije")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult AddRundaRecenzije(RundaRecenzijeView rundaRecenzijeView)
+        public IActionResult AddRundaRecenzije(DodavanjeRundeRecenzijeDTO dodavanjeRundeRecenzijeDTO)
         {
             try
             {
-                DataProvider.DodajRunduRecenzije(rundaRecenzijeView);
-                return Ok($"Dodata je Runda Recenzije za publikaciju {rundaRecenzijeView.ID_P.ID_P}, Broj Runde {rundaRecenzijeView.BrojRunde}");
+                DataProvider.DodajRunduRecenzije(dodavanjeRundeRecenzijeDTO);
+                return Ok($"Dodata je Runda Recenzije za publikaciju {dodavanjeRundeRecenzijeDTO.ID_Publikacija}, Broj Runde {dodavanjeRundeRecenzijeDTO.BrojRunde}");
             }
             catch(Exception ex)
             {

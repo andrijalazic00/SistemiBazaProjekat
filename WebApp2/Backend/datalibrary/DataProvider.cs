@@ -1,23 +1,7 @@
 using NHibernate;
 using datalibrary.Entiteti;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using datalibrary.DTOs;
-using datalibrary;
-using System.Data.Common;
-using FluentNHibernate.Conventions.AcceptanceCriteria;
-using NHibernate.Linq;
-using Microsoft.VisualBasic;
-using System.Globalization;
-using FluentNHibernate.Utils;
-using NHibernate.Event;
-using NHibernate.SqlCommand;
-using System.Diagnostics;
 using System.Data;
-using NHibernate.Linq.Expressions;
-using System.Security.Cryptography;
-using FluentNHibernate.Mapping;
 
 namespace datalibrary
 {
@@ -2691,25 +2675,38 @@ namespace datalibrary
         #endregion
         #region  Runda Recenzije
 
-        public static void DodajRunduRecenzije(RundaRecenzijeView rundaRecenzijeView)
+        public static void DodajRunduRecenzije(DodavanjeRundeRecenzijeDTO dodavanjeRunde)
         {
             try
             {
                ISession s = DataLayer.GetSession();
 
-               Publikacija publikacija = s.Load<Publikacija>(rundaRecenzijeView.ID_P.ID_P);
-               Urednik urednik = s.Load<Urednik>(rundaRecenzijeView.ID_Urednika.ID_U);
+               Publikacija publikacija = s.Load<Publikacija>(dodavanjeRunde.ID_Publikacija);
+               Urednik urednik = s.Load<Urednik>(dodavanjeRunde.ID_Urednika);
+               Recenzent recenzent = s.Load<Recenzent>(dodavanjeRunde.ID_Recenzenta);
+
 
                RundaRecenzije r = new()
                {
-                   BrojRunde = rundaRecenzijeView.BrojRunde,
+                   BrojRunde = dodavanjeRunde.BrojRunde,
                    ID_P = publikacija,
                    ID_Urednika = urednik,
-                   DatumOdluke = rundaRecenzijeView.DatumOdluke,
-                   KonacnaOdluka = rundaRecenzijeView.KonacnaOdluka
+                   DatumOdluke = dodavanjeRunde.DatumOdluke,
+                   KonacnaOdluka = dodavanjeRunde.KonacnaOdluka
+               };
+
+
+               AngazovanjeRecenzent angazovanjeRecenzent = new ()
+               {
+                    ID_P = publikacija,
+                    Preporuka = dodavanjeRunde.Preporuka,
+                    BrojRunde = dodavanjeRunde.BrojRunde,
+                    ID_Recenzenta = recenzent,
+                    ID_RR = r   
                };
 
                s.SaveOrUpdate(r);
+               s.SaveOrUpdate(angazovanjeRecenzent);
                s.Flush();
                s.Close(); 
             }
