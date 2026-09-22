@@ -17,10 +17,41 @@ namespace DigitalniRepozitorijum.Forms
     public partial class FormDodajCitat : Form
     {
         private ISession _session;
+        private Citat _citat;
         public FormDodajCitat()
         {
             InitializeComponent();
+            _citat = null;
             PopuniComboBox();
+        }
+
+        public FormDodajCitat(Citat c)
+        {
+            InitializeComponent();
+            _citat= c;
+            PopuniPolja();
+            //PopuniComboBox();
+        }
+        private void PopuniPolja()
+        {
+            try 
+            {
+                _session = DataLayer.GetSession();
+
+                comboBCitirajucaPublikacija.Visible = false;
+                comboBCitiranaPublikacija.Visible = false;
+                lblCitirajucaPublikacija.Visible = false;
+                lblCitiranaPublikacija.Visible=false;
+
+                tbKontekstCitiranja.Text = _citat.KontekstCitiranja;
+                tbMestoCitiranja.Text = _citat.MestoCitiranja;
+                cbTipCitata.Checked = _citat.TipCitata == "DIREKTAN" ? true : false;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void PopuniComboBox()
@@ -62,7 +93,7 @@ namespace DigitalniRepozitorijum.Forms
         {
             try
             {
-                if(comboBCitirajucaPublikacija.SelectedValue==comboBCitiranaPublikacija.SelectedValue)
+                if(comboBCitirajucaPublikacija.SelectedValue==comboBCitiranaPublikacija.SelectedValue&&_citat==null)
                 {
                     MessageBox.Show("Izaberite dve razlicite publikacije");
                     return;
@@ -72,24 +103,29 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Popunite polja kontekst citiranja i mesto citiranja");
                     return;
                 }
+                if (_citat == null)
+                {
+                    Publikacija citirana = (Publikacija)comboBCitiranaPublikacija.SelectedValue;
+                    Publikacija citirajuca = (Publikacija)comboBCitirajucaPublikacija.SelectedValue;
+                    _citat = new Citat(citirajuca, citirana);
+                    citirana.CitirajucePublikacije.Add(_citat);
+                    citirajuca.CitiranePublikacije.Add(_citat);
+                }
 
-                Publikacija citirana = (Publikacija)comboBCitiranaPublikacija.SelectedValue;
-                Publikacija citirajuca= (Publikacija)comboBCitirajucaPublikacija .SelectedValue;
+               
+                _citat.TipCitata = cbTipCitata.Checked ? "DIREKTAN" : "INDIREKTAN";
+                _citat.MestoCitiranja = tbMestoCitiranja.Text;
+                _citat.KontekstCitiranja=tbKontekstCitiranja.Text;
 
-                Citat citat= new Citat(citirajuca,citirana);
-                citat.TipCitata = cbTipCitata.Checked ? "DIREKTAN" : "INDIREKTAN";
-                citat.MestoCitiranja = tbMestoCitiranja.Text;
-                citat.KontekstCitiranja=tbKontekstCitiranja.Text;
-                
-                citirana.CitirajucePublikacije.Add(citat);
-                citirajuca.CitiranePublikacije.Add(citat);
 
-                _session.SaveOrUpdate(citirana);
-                _session.SaveOrUpdate(citirajuca);
+
+                //_session.SaveOrUpdate(citirana);
+                //_session.SaveOrUpdate(citirajuca);
+                _session.SaveOrUpdate(_citat);
                 _session.Flush();
                 _session.Close();
                 this.Close();
-                MessageBox.Show("Uspesan upis");
+                MessageBox.Show("Citat sacuvan");
 
 
 

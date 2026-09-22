@@ -22,6 +22,7 @@ namespace DigitalniRepozitorijum.Forms
     public partial class FormPrikaz : Form
     {
         private List<IstrazivackiRezultat> _rezultatList;
+        private List<Angazovanje> _angazovanjeList;
         private ISession _session;
 
         public FormPrikaz()
@@ -65,6 +66,18 @@ namespace DigitalniRepozitorijum.Forms
             public string KljucneReci { get; set; }
             public string Verzije { get; set; }
         }
+
+        private class AngazovanjeRow
+        {
+            public string Istrazivac { get; set; }
+            public string Institucija { get; set; }
+            public DateTime DatumAngazovanja { get; set; }
+            public DateTime? DatumZavrsetka { get; set; }
+            public string OrganizacionaJedinica { get; set; }
+            public string NazivPozicije { get; set; }
+            public string TipAngazovanja { get; set; }
+        }
+
 
         private void btnPrikaziNII_Click(object sender, EventArgs e)
         {
@@ -315,6 +328,51 @@ namespace DigitalniRepozitorijum.Forms
                 _session.Close();
             Form f = new FormPrikaziPublikacije();
             f.ShowDialog();
+        }
+
+        private void btnPrikazi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                _session = DataLayer.GetSession();
+                _angazovanjeList = _session.Query<Angazovanje>().ToList();
+
+                var prikaz = _angazovanjeList.Select(a => new AngazovanjeRow
+                {
+                    Istrazivac = a.ID_I != null ? a.ID_I.Ime + " " + a.ID_I.Prezime : "-",
+                    Institucija = a.ID_NII != null ? a.ID_NII.Naziv : "-",
+                    DatumAngazovanja = a.DatumAngazovanja,
+                    DatumZavrsetka = a.DatumZavrsetka,
+                    OrganizacionaJedinica = a.OrganizacionaJedinica,
+                    NazivPozicije = a.NazivPozicije,
+                    TipAngazovanja = a.TipAngazovanja
+                }).ToList();
+
+                dgvPodaci.AutoGenerateColumns = true;
+                dgvPodaci.DataSource = prikaz;
+                /*
+                dgvPodaci.ReadOnly = true;
+                dgvPodaci.AllowUserToAddRows = false;
+                dgvPodaci.AllowUserToDeleteRows = false;*/
+
+               
+                dgvPodaci.Columns["DatumAngazovanja"].HeaderText = "Datum angažovanja";
+                dgvPodaci.Columns["DatumZavrsetka"].HeaderText = "Datum završetka";
+                dgvPodaci.Columns["OrganizacionaJedinica"].HeaderText = "Organizaciona jedinica";
+                dgvPodaci.Columns["NazivPozicije"].HeaderText = "Pozicija";
+                dgvPodaci.Columns["TipAngazovanja"].HeaderText = "Tip angažovanja";
+
+                dgvPodaci.Columns["DatumAngazovanja"].DefaultCellStyle.Format = "dd.MM.yyyy.";
+                dgvPodaci.Columns["DatumZavrsetka"].DefaultCellStyle.Format = "dd.MM.yyyy.";
+                dgvPodaci.Columns["DatumZavrsetka"].DefaultCellStyle.NullValue = "u toku";
+
+                dgvPodaci.AutoResizeColumns();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " Neuspešno popunjavanje tabele angažovanja");
+            }
+
         }
     }
     

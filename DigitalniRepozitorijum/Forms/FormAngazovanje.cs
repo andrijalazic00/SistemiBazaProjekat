@@ -15,6 +15,7 @@ namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormAngazovanje : Form
     {
+        private Angazovanje _angazovanje;
         private NaucnoIstrazivackaInstitucija _institucija;
         private Istrazivac _istrazivac;
         //private List<Istrazivac> _istrazivaciList;
@@ -24,6 +25,7 @@ namespace DigitalniRepozitorijum.Forms
         public FormAngazovanje()
         {
             InitializeComponent();
+            _angazovanje = null;
             _fromIstrazivac = false;
             comboBTip.Items.Add("STALNI");
             comboBTip.Items.Add("PRIVREMEN");
@@ -36,6 +38,7 @@ namespace DigitalniRepozitorijum.Forms
             InitializeComponent();
             _istrazivac = i;
             _institucija = nii;
+            _angazovanje = null;
             _fromIstrazivac = true;
             comboBInstitucija.Hide();
             comboBIstrazivac.Hide();
@@ -43,6 +46,38 @@ namespace DigitalniRepozitorijum.Forms
             lblInstitucija.Hide();
             comboBTip.Items.Add("STALNI");
             comboBTip.Items.Add("PRIVREMEN");
+        }
+
+        public FormAngazovanje(Angazovanje a)
+        {
+            InitializeComponent();
+            _angazovanje = a;
+            _fromIstrazivac = true;
+            comboBInstitucija.Hide();
+            comboBIstrazivac.Hide();
+            lblIstrazivac.Hide();
+            lblInstitucija.Hide();
+            comboBTip.Items.Add("STALNI");
+            comboBTip.Items.Add("PRIVREMEN");
+            comboBTip.DropDownStyle = ComboBoxStyle.DropDownList;
+            PopuniPolja();
+        }
+
+        public void PopuniPolja()
+        {
+            try 
+            {
+                tbNazivPozicije.Text = _angazovanje.NazivPozicije;
+                tbOrganizacionaJedinica.Text = _angazovanje.TipAngazovanja;
+                comboBTip.Text = _angazovanje.TipAngazovanja;
+                dtpDatumPocetka.Value = _angazovanje.DatumAngazovanja;
+                dtpDatumZavrsetka.Value=(DateTime)_angazovanje.DatumZavrsetka;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void PopuniComboBoxove()
@@ -92,6 +127,8 @@ namespace DigitalniRepozitorijum.Forms
             {
                 ISession s = DataLayer.GetSession();
                 Angazovanje a =new Angazovanje();
+                if (_angazovanje != null)
+                    a = _angazovanje;
                 if(tbNazivPozicije.Text.Length >0
                     &&tbOrganizacionaJedinica.Text.Length>0
                     &&comboBTip.Text.Length>0)
@@ -126,7 +163,7 @@ namespace DigitalniRepozitorijum.Forms
                             MessageBox.Show("Nije izabran istrazivac ili institucija");
                         }
                     }
-                    else
+                    else if(_angazovanje==null)
                     {
                         a.ID_I = _istrazivac;
                         a.ID_NII = _institucija;
@@ -141,13 +178,13 @@ namespace DigitalniRepozitorijum.Forms
 
                 }
                 
-                s.Save(a);
+                s.SaveOrUpdate(a);
                 s.Flush();
                 s.Close();
                 if (_fromIstrazivac)
                     this.Close();
-                else
-                    MessageBox.Show("Angazovanje dodato");
+                
+                MessageBox.Show("Angazovanje sacuvano");
             }
             catch (Exception ex)
             {

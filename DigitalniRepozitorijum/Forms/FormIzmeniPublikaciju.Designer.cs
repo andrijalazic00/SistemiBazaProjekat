@@ -48,14 +48,14 @@
             this.comboBPublikacija.FormattingEnabled = true;
             this.comboBPublikacija.Location = new System.Drawing.Point(215, 24);
             this.comboBPublikacija.Name = "comboBPublikacija";
-            this.comboBPublikacija.Size = new System.Drawing.Size(241, 21);
+            this.comboBPublikacija.Size = new System.Drawing.Size(270, 21);
             this.comboBPublikacija.TabIndex = 1;
             // 
             // btnIzmeniPublikaciju
             // 
-            this.btnIzmeniPublikaciju.Location = new System.Drawing.Point(53, 75);
+            this.btnIzmeniPublikaciju.Location = new System.Drawing.Point(52, 65);
             this.btnIzmeniPublikaciju.Name = "btnIzmeniPublikaciju";
-            this.btnIzmeniPublikaciju.Size = new System.Drawing.Size(175, 25);
+            this.btnIzmeniPublikaciju.Size = new System.Drawing.Size(209, 27);
             this.btnIzmeniPublikaciju.TabIndex = 2;
             this.btnIzmeniPublikaciju.Text = "Izmeni";
             this.btnIzmeniPublikaciju.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             // 
             // btnObrisiPublikaciju
             // 
-            this.btnObrisiPublikaciju.Location = new System.Drawing.Point(246, 72);
+            this.btnObrisiPublikaciju.Location = new System.Drawing.Point(276, 65);
             this.btnObrisiPublikaciju.Name = "btnObrisiPublikaciju";
             this.btnObrisiPublikaciju.Size = new System.Drawing.Size(209, 27);
             this.btnObrisiPublikaciju.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(537, 125);
             this.Controls.Add(this.btnObrisiPublikaciju);
             this.Controls.Add(this.btnIzmeniPublikaciju);
             this.Controls.Add(this.comboBPublikacija);

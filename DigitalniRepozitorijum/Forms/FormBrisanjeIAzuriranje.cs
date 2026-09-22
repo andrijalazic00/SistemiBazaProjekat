@@ -23,7 +23,7 @@ namespace DigitalniRepozitorijum.Forms
                 Form form = new FormIzmeniIstrazivaca();
                 form.ShowDialog();
             }
-            catch(Exception ex) { }
+            catch(Exception ex) { Console.WriteLine(ex.Message.ToString()); }
             
         }
 
@@ -34,7 +34,7 @@ namespace DigitalniRepozitorijum.Forms
                 Form form = new FormIzmeniNII();
                 form.ShowDialog();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
            
         }
 
@@ -44,7 +44,7 @@ namespace DigitalniRepozitorijum.Forms
                 Form form = new FormIzmeniIR();
                 form.ShowDialog();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
             
         }
 
@@ -55,7 +55,49 @@ namespace DigitalniRepozitorijum.Forms
                 Form form = new FormIzmeniPublikaciju();
                 form.ShowDialog();
             }
-            catch (Exception ex) { }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
+        }
+
+        private void btnIzmeniAngazovanje_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form form = new FormIzmeniAngazovanje();
+                form.ShowDialog();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
+            
+
+        }
+
+        private void btnObrisiUlogu_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form form = new FormObrisiUlogu();
+                form.ShowDialog();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
+        }
+
+        private void btnIzmeniCitat_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form form = new FormIzmeniCitat();
+                form.ShowDialog();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
+        }
+
+        private void btnIzmeniRunduRecenzije_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Form form = new FormIzmeniRunduRecenzije();
+                form.ShowDialog();
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message.ToString()); }
         }
     }
 }

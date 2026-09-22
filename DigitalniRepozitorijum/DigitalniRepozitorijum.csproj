@@ -180,6 +180,18 @@
     <Compile Include="Forms\FormDodajUlogu.Designer.cs">
       <DependentUpon>FormDodajUlogu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormIzmeniAngazovanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniAngazovanje.Designer.cs">
+      <DependentUpon>FormIzmeniAngazovanje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniCitat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniCitat.Designer.cs">
+      <DependentUpon>FormIzmeniCitat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormIzmeniIR.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +215,12 @@
     </Compile>
     <Compile Include="Forms\FormIzmeniPublikaciju.Designer.cs">
       <DependentUpon>FormIzmeniPublikaciju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniRunduRecenzije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormIzmeniRunduRecenzije.Designer.cs">
+      <DependentUpon>FormIzmeniRunduRecenzije.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormIzmeniVerziju.cs">
       <SubType>Form</SubType>
@@ -408,6 +426,12 @@
     <EmbeddedResource Include="Forms\FormGlavnaForma.resx">
       <DependentUpon>FormGlavnaForma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniAngazovanje.resx">
+      <DependentUpon>FormIzmeniAngazovanje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniCitat.resx">
+      <DependentUpon>FormIzmeniCitat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniIR.resx">
       <DependentUpon>FormIzmeniIR.cs</DependentUpon>
     </EmbeddedResource>
@@ -419,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniPublikaciju.resx">
       <DependentUpon>FormIzmeniPublikaciju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormIzmeniRunduRecenzije.resx">
+      <DependentUpon>FormIzmeniRunduRecenzije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormIzmeniVerziju.resx">
       <DependentUpon>FormIzmeniVerziju.cs</DependentUpon>

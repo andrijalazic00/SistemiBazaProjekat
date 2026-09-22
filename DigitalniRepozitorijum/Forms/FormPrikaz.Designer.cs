@@ -36,6 +36,7 @@
             this.dgvDodatnaSvojstva = new System.Windows.Forms.DataGridView();
             this.lblTipRezultata = new System.Windows.Forms.Label();
             this.btnPrikaziPublikacije = new System.Windows.Forms.Button();
+            this.btnPrikazi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPodaci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDodatnaSvojstva)).BeginInit();
             this.SuspendLayout();
@@ -115,11 +116,22 @@
             this.btnPrikaziPublikacije.UseVisualStyleBackColor = true;
             this.btnPrikaziPublikacije.Click += new System.EventHandler(this.btnPrikaziPublikacije_Click);
             // 
+            // btnPrikazi
+            // 
+            this.btnPrikazi.Location = new System.Drawing.Point(107, 91);
+            this.btnPrikazi.Name = "btnPrikazi";
+            this.btnPrikazi.Size = new System.Drawing.Size(134, 22);
+            this.btnPrikazi.TabIndex = 8;
+            this.btnPrikazi.Text = "Prikazi angazovanja";
+            this.btnPrikazi.UseVisualStyleBackColor = true;
+            this.btnPrikazi.Click += new System.EventHandler(this.btnPrikazi_Click);
+            // 
             // FormPrikaz
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 497);
+            this.Controls.Add(this.btnPrikazi);
             this.Controls.Add(this.btnPrikaziPublikacije);
             this.Controls.Add(this.lblTipRezultata);
             this.Controls.Add(this.dgvDodatnaSvojstva);
@@ -147,5 +159,6 @@
         private System.Windows.Forms.DataGridView dgvDodatnaSvojstva;
         private System.Windows.Forms.Label lblTipRezultata;
         private System.Windows.Forms.Button btnPrikaziPublikacije;
+        private System.Windows.Forms.Button btnPrikazi;
     }
 }

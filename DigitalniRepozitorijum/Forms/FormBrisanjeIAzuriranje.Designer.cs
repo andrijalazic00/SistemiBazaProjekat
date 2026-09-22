@@ -34,8 +34,8 @@
             this.btnIzmeniNII = new System.Windows.Forms.Button();
             this.btnIzmeniIstrazivackiRezultat = new System.Windows.Forms.Button();
             this.btnIzmeniAngazovanje = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnIzmeniCitat = new System.Windows.Forms.Button();
+            this.btnIzmeniRunduRecenzije = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIzmeniPublikaciju
@@ -56,6 +56,7 @@
             this.btnObrisiUlogu.TabIndex = 5;
             this.btnObrisiUlogu.Text = "Obrisi ulogu";
             this.btnObrisiUlogu.UseVisualStyleBackColor = true;
+            this.btnObrisiUlogu.Click += new System.EventHandler(this.btnObrisiUlogu_Click);
             // 
             // btnIzmeniIstrazivaca
             // 
@@ -95,32 +96,35 @@
             this.btnIzmeniAngazovanje.TabIndex = 9;
             this.btnIzmeniAngazovanje.Text = "Izmeni/Obrisi angazovanje";
             this.btnIzmeniAngazovanje.UseVisualStyleBackColor = true;
+            this.btnIzmeniAngazovanje.Click += new System.EventHandler(this.btnIzmeniAngazovanje_Click);
             // 
-            // button7
+            // btnIzmeniCitat
             // 
-            this.button7.Location = new System.Drawing.Point(257, 97);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(144, 42);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "Izmeni/obrisi citat";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnIzmeniCitat.Location = new System.Drawing.Point(257, 97);
+            this.btnIzmeniCitat.Name = "btnIzmeniCitat";
+            this.btnIzmeniCitat.Size = new System.Drawing.Size(144, 42);
+            this.btnIzmeniCitat.TabIndex = 10;
+            this.btnIzmeniCitat.Text = "Izmeni/obrisi citat";
+            this.btnIzmeniCitat.UseVisualStyleBackColor = true;
+            this.btnIzmeniCitat.Click += new System.EventHandler(this.btnIzmeniCitat_Click);
             // 
-            // button8
+            // btnIzmeniRunduRecenzije
             // 
-            this.button8.Location = new System.Drawing.Point(447, 97);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(144, 42);
-            this.button8.TabIndex = 11;
-            this.button8.Text = "Izmeni/obrisi rundu recenzije";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnIzmeniRunduRecenzije.Location = new System.Drawing.Point(447, 97);
+            this.btnIzmeniRunduRecenzije.Name = "btnIzmeniRunduRecenzije";
+            this.btnIzmeniRunduRecenzije.Size = new System.Drawing.Size(144, 42);
+            this.btnIzmeniRunduRecenzije.TabIndex = 11;
+            this.btnIzmeniRunduRecenzije.Text = "Izmeni/obrisi rundu recenzije";
+            this.btnIzmeniRunduRecenzije.UseVisualStyleBackColor = true;
+            this.btnIzmeniRunduRecenzije.Click += new System.EventHandler(this.btnIzmeniRunduRecenzije_Click);
             // 
             // FormBrisanjeIAzuriranje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 183);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.btnIzmeniRunduRecenzije);
+            this.Controls.Add(this.btnIzmeniCitat);
             this.Controls.Add(this.btnIzmeniAngazovanje);
             this.Controls.Add(this.btnIzmeniIstrazivackiRezultat);
             this.Controls.Add(this.btnIzmeniNII);
@@ -140,7 +144,7 @@
         private System.Windows.Forms.Button btnIzmeniNII;
         private System.Windows.Forms.Button btnIzmeniIstrazivackiRezultat;
         private System.Windows.Forms.Button btnIzmeniAngazovanje;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnIzmeniCitat;
+        private System.Windows.Forms.Button btnIzmeniRunduRecenzije;
     }
 }

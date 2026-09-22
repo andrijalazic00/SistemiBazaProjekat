@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblCitirajucaPublikacija = new System.Windows.Forms.Label();
+            this.lblCitiranaPublikacija = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,23 +41,23 @@
             this.btnSacuvajCitat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // lblCitirajucaPublikacija
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Citirajuca publikacija";
+            this.lblCitirajucaPublikacija.AutoSize = true;
+            this.lblCitirajucaPublikacija.Location = new System.Drawing.Point(12, 22);
+            this.lblCitirajucaPublikacija.Name = "lblCitirajucaPublikacija";
+            this.lblCitirajucaPublikacija.Size = new System.Drawing.Size(103, 13);
+            this.lblCitirajucaPublikacija.TabIndex = 0;
+            this.lblCitirajucaPublikacija.Text = "Citirajuca publikacija";
             // 
-            // label2
+            // lblCitiranaPublikacija
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Citirana publikacija";
+            this.lblCitiranaPublikacija.AutoSize = true;
+            this.lblCitiranaPublikacija.Location = new System.Drawing.Point(20, 61);
+            this.lblCitiranaPublikacija.Name = "lblCitiranaPublikacija";
+            this.lblCitiranaPublikacija.Size = new System.Drawing.Size(95, 13);
+            this.lblCitiranaPublikacija.TabIndex = 1;
+            this.lblCitiranaPublikacija.Text = "Citirana publikacija";
             // 
             // label3
             // 
@@ -150,8 +150,8 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCitiranaPublikacija);
+            this.Controls.Add(this.lblCitirajucaPublikacija);
             this.Name = "FormDodajCitat";
             this.Text = "Form2";
             this.ResumeLayout(false);
@@ -161,8 +161,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblCitirajucaPublikacija;
+        private System.Windows.Forms.Label lblCitiranaPublikacija;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
