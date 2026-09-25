@@ -1,0 +1,31 @@
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using datalibrary;
+using datalibrary.DTOs;
+using NHibernate.Engine;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Net.Sockets;
+
+namespace WebApp2.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class UlogaController: ControllerBase
+    {
+        [HttpGet]
+        [Route("VratiUloge")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetUloge(int ID_I)
+        {
+            try
+            {
+                return new JsonResult(DataProvider.VratiSveUlogeIstrazivaca(ID_I));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+    }
+}
