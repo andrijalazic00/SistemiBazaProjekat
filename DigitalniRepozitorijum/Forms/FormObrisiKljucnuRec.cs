@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormObrisiKljucnuRec : Form
@@ -26,6 +27,12 @@ namespace DigitalniRepozitorijum.Forms
             InitializeComponent();
             _rezultat = i;
             PopuniComboBox();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje kljucne reci";
         }
 
         private void PopuniComboBox()
@@ -34,7 +41,6 @@ namespace DigitalniRepozitorijum.Forms
             {
                 _session = DataLayer.GetSession();
                 List<KljucnaRec> reci = new List<KljucnaRec>();
-                //mailovi = _istrazivac.Mailovi;
                 reci = _session.Query<KljucnaRec>().Where(i => i.ID_IR == _rezultat).ToList();
                 if (reci.Count == 0)
                 {
@@ -49,7 +55,6 @@ namespace DigitalniRepozitorijum.Forms
                 comboBoxKljucnaRec.ValueMember = "Value";
 
                 comboBoxKljucnaRec.DropDownStyle = ComboBoxStyle.DropDownList;
-                //comboBoxMail.Items.AddRange(mailovi);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }

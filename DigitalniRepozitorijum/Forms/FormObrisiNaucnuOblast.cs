@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -27,7 +28,12 @@ namespace DigitalniRepozitorijum.Forms
             InitializeComponent();
             _institucija = i;
             PopuniComboBox();
-
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje naucne oblasti";
 
         }
         private void PopuniComboBox()

@@ -27,6 +27,7 @@ namespace DigitalniRepozitorijum.Entities
             CitirajucaPublikacija = p1.ID_P.ToString();
             CitiranaPublikacija =p2.ID_P.ToString();
         }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Citat other)) return false;

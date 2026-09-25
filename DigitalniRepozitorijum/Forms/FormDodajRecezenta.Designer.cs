@@ -35,9 +35,10 @@
             // 
             // btnOblastEkspertize
             // 
-            this.btnOblastEkspertize.Location = new System.Drawing.Point(89, 134);
+            this.btnOblastEkspertize.Location = new System.Drawing.Point(195, 79);
+            this.btnOblastEkspertize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOblastEkspertize.Name = "btnOblastEkspertize";
-            this.btnOblastEkspertize.Size = new System.Drawing.Size(148, 32);
+            this.btnOblastEkspertize.Size = new System.Drawing.Size(197, 39);
             this.btnOblastEkspertize.TabIndex = 0;
             this.btnOblastEkspertize.Text = "Dodaj oblast ekspertize";
             this.btnOblastEkspertize.UseVisualStyleBackColor = true;
@@ -45,30 +46,37 @@
             // 
             // tbOblastEkspertize
             // 
-            this.tbOblastEkspertize.Location = new System.Drawing.Point(147, 94);
+            this.tbOblastEkspertize.Location = new System.Drawing.Point(195, 36);
+            this.tbOblastEkspertize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbOblastEkspertize.Name = "tbOblastEkspertize";
-            this.tbOblastEkspertize.Size = new System.Drawing.Size(205, 20);
+            this.tbOblastEkspertize.Size = new System.Drawing.Size(299, 22);
             this.tbOblastEkspertize.TabIndex = 1;
             // 
             // lblOblatEkspertize
             // 
             this.lblOblatEkspertize.AutoSize = true;
-            this.lblOblatEkspertize.Location = new System.Drawing.Point(20, 98);
+            this.lblOblatEkspertize.Location = new System.Drawing.Point(55, 39);
+            this.lblOblatEkspertize.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOblatEkspertize.Name = "lblOblatEkspertize";
-            this.lblOblatEkspertize.Size = new System.Drawing.Size(88, 13);
+            this.lblOblatEkspertize.Size = new System.Drawing.Size(111, 16);
             this.lblOblatEkspertize.TabIndex = 2;
             this.lblOblatEkspertize.Text = "Oblast ekspertize";
             // 
             // FormDodajRecezenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(442, 243);
+            this.ClientSize = new System.Drawing.Size(574, 154);
             this.Controls.Add(this.lblOblatEkspertize);
             this.Controls.Add(this.tbOblastEkspertize);
             this.Controls.Add(this.btnOblastEkspertize);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDodajRecezenta";
-            this.Text = "FormDodajRecezenta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje recenzenta";
             this.ResumeLayout(false);
             this.PerformLayout();
 

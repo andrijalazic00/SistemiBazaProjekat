@@ -36,17 +36,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 28);
+            this.label1.Location = new System.Drawing.Point(32, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(112, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Uloga za brisanje";
             // 
             // btnObrisiUlogu
             // 
-            this.btnObrisiUlogu.Location = new System.Drawing.Point(58, 65);
+            this.btnObrisiUlogu.Location = new System.Drawing.Point(120, 63);
+            this.btnObrisiUlogu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnObrisiUlogu.Name = "btnObrisiUlogu";
-            this.btnObrisiUlogu.Size = new System.Drawing.Size(219, 28);
+            this.btnObrisiUlogu.Size = new System.Drawing.Size(267, 31);
             this.btnObrisiUlogu.TabIndex = 1;
             this.btnObrisiUlogu.Text = "Obrisi";
             this.btnObrisiUlogu.UseVisualStyleBackColor = true;
@@ -55,19 +57,22 @@
             // comboBoxUloga
             // 
             this.comboBoxUloga.FormattingEnabled = true;
-            this.comboBoxUloga.Location = new System.Drawing.Point(118, 25);
+            this.comboBoxUloga.Location = new System.Drawing.Point(157, 31);
+            this.comboBoxUloga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxUloga.Name = "comboBoxUloga";
-            this.comboBoxUloga.Size = new System.Drawing.Size(159, 21);
+            this.comboBoxUloga.Size = new System.Drawing.Size(332, 24);
             this.comboBoxUloga.TabIndex = 2;
             // 
             // FormObrisiUlogu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 147);
+            this.ClientSize = new System.Drawing.Size(517, 123);
             this.Controls.Add(this.comboBoxUloga);
             this.Controls.Add(this.btnObrisiUlogu);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormObrisiUlogu";
             this.Text = "FormObrisiUlogu";
             this.ResumeLayout(false);

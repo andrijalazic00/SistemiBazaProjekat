@@ -36,25 +36,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 36);
+            this.label1.Location = new System.Drawing.Point(53, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 13);
+            this.label1.Size = new System.Drawing.Size(162, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Naucna oblast za brisanje";
             // 
             // comboBoxNaucnaOblast
             // 
             this.comboBoxNaucnaOblast.FormattingEnabled = true;
-            this.comboBoxNaucnaOblast.Location = new System.Drawing.Point(175, 33);
+            this.comboBoxNaucnaOblast.Location = new System.Drawing.Point(233, 41);
+            this.comboBoxNaucnaOblast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxNaucnaOblast.Name = "comboBoxNaucnaOblast";
-            this.comboBoxNaucnaOblast.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNaucnaOblast.Size = new System.Drawing.Size(277, 24);
             this.comboBoxNaucnaOblast.TabIndex = 1;
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(78, 84);
+            this.btnObrisi.Location = new System.Drawing.Point(156, 73);
+            this.btnObrisi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(169, 30);
+            this.btnObrisi.Size = new System.Drawing.Size(225, 25);
             this.btnObrisi.TabIndex = 2;
             this.btnObrisi.Text = "Obrisi";
             this.btnObrisi.UseVisualStyleBackColor = true;
@@ -62,12 +65,14 @@
             // 
             // FormObrisiNaucnuOblast
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 176);
+            this.ClientSize = new System.Drawing.Size(540, 122);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.comboBoxNaucnaOblast);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormObrisiNaucnuOblast";
             this.Text = "FormObrisiNaucnuOblast";
             this.ResumeLayout(false);

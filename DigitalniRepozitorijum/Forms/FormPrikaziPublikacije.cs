@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -20,11 +21,18 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             PopuniDataGrid();
+            this.Icon = Resources.View;
+            this.BackColor = System.Drawing.Color.Lavender;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Prikaz publikacija";
         }
+
         private class PublikacijaRow
         {
             public int ID_P { get; set; }
-            public string OsnovaDataset { get; set; } // "Dataset: X", "Tehnički izveštaj: Y", "Softverski artifakt: Z", or "-"
+            public string OsnovaDataset { get; set; } 
             public string OsnovaTehnickiIzvestaj { get; set; }
             public string OsnovaSoftverskiArtifakt { get; set; }
         }
@@ -57,7 +65,7 @@ namespace DigitalniRepozitorijum.Forms
                 dgvPublikacije.Columns["OsnovaSoftverskiArtifakt"].HeaderText = "Zasnovana na softverskom artifaktu";
                 dgvPublikacije.AutoResizeColumns();
 
-                //dgvPublikacije.SelectionChanged += dgvPublikacije_SelectionChanged;
+               
             }
             catch (Exception ex)
             {
@@ -65,7 +73,7 @@ namespace DigitalniRepozitorijum.Forms
             }
         }
 
-        private void btnPrikaziSelektovanu_Click(object sender, EventArgs e)
+        private void dgvPublikacije_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvPublikacije.CurrentRow == null) return;
             var pub = _publikacije[dgvPublikacije.CurrentRow.Index];
@@ -73,8 +81,6 @@ namespace DigitalniRepozitorijum.Forms
             PrikaziRundeRecenzije(pub);
             PrikaziCitate(pub);
         }
-
-      
 
         private void PrikaziAutore(Publikacija pub)
         {
@@ -102,14 +108,14 @@ namespace DigitalniRepozitorijum.Forms
                 r.BrojRunde,
                 r.DatumOdluke,
                 r.KonacnaOdluka,
-                Urednik = r.ID_Urednika?.ID_I != null ? r.ID_Urednika.ID_I.Ime + " " + r.ID_Urednika.ID_I.Prezime : "-",
+                Urednik = r.ID_Urednika?.ID_I != null ? r.ID_Urednika.ID_I.Ime + " " + r.ID_Urednika.ID_I.Prezime : r.ID_Urednika.ID_U+" "+r.ID_Urednika.UredjivackaSekcija ,
                 Recenzenti = string.Join("; ", r.Recenzenti?.Select(rec =>
-                    (rec.ID_Recenzenta?.ID_I != null ? rec.ID_Recenzenta.ID_I.Ime + " " + rec.ID_Recenzenta.ID_I.Prezime : "-")
+                    (rec.ID_Recenzenta?.ID_I != null ? rec.ID_Recenzenta.ID_I.Ime + " " + rec.ID_Recenzenta.ID_I.Prezime : rec.ID_Recenzenta.ID_U.ToString())
                     + " (preporuka: " + rec.Preporuka
                     + ", ocene: " + string.Join(",", rec.Ocene?.Select(o => o.Ocena.ToString()) ?? Enumerable.Empty<string>())
                     + ")") ?? Enumerable.Empty<string>())
             }).OrderBy(r => r.BrojRunde).ToList();
-              //?? new List<object>();
+            
 
             dgvRundeRecenzije.AutoGenerateColumns = true;
             dgvRundeRecenzije.DataSource = runde;
@@ -123,7 +129,7 @@ namespace DigitalniRepozitorijum.Forms
         {
             var citati = new List<object>();
 
-            // ove publikacija CITIRA (izlazni citati)
+           
             if (pub.CitirajucePublikacije != null)
                 foreach (var c in pub.CitirajucePublikacije)
                     citati.Add(new
@@ -135,7 +141,7 @@ namespace DigitalniRepozitorijum.Forms
                         c.KontekstCitiranja
                     });
 
-            // ovu publikaciju CITIRAJU (dolazni citati)
+           
             if (pub.CitiranePublikacije != null)
                 foreach (var c in pub.CitiranePublikacije)
                     citati.Add(new
@@ -152,6 +158,8 @@ namespace DigitalniRepozitorijum.Forms
             dgvCitati.ReadOnly = true;
             dgvCitati.AutoResizeColumns();
         }
+
+        
     }
     
 }

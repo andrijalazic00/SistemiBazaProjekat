@@ -8,7 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class OstaliDokumenti:IstrazivackiRezultat
     {
-        //public virtual int ID_IR { get; protected set; }
         public virtual string Opcije { get; set; }
 
         public OstaliDokumenti()

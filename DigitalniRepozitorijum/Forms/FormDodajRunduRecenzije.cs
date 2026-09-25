@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -31,12 +32,15 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             PopuniComboBox();
-            _rundaRecenzije=new RundaRecenzije();
+            _rundaRecenzije =new RundaRecenzije();
             _angazovanjeRecenzent = new AngazovanjeRecenzent();
             _recenzent = new Recenzent();
             _urednik=new Urednik();
 
-            
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
         }
 
         private void PopuniComboBox()

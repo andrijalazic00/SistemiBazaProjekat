@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,11 +21,15 @@ namespace DigitalniRepozitorijum
         }
 
         public FormDodajUrednika(Urednik u)
-
         {
-
             InitializeComponent();
             _urednik = u;
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition=FormStartPosition.CenterScreen;
         }
 
         private async void btnDodajUpravljackuSekciju_Click(object sender, EventArgs e)

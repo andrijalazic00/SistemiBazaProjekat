@@ -8,7 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class SoftverskiArtifakt:IstrazivackiRezultat
     {
-        //public virtual int ID_IR { get; protected set; }
         public virtual string ProgramskiJezik { get; set; }
         public virtual string RepoLink { get; set; }
         public virtual string NacinLicenciranja { get; set; }

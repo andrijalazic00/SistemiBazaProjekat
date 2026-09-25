@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,35 +10,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 //using System.ServiceModel.Channels;
 
 
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class FormKnjigaIliPoglavlje : Form
+    public partial class FormDodajKnjiguIliPoglavlje : Form
     {
         private ISession _session;
         private KnjigaIliPoglavlja _knjiga;
         private Dictionary<string, Urednik> _uredniciDict;
         private List<Urednik> _uredniciList;
 
-        public FormKnjigaIliPoglavlje()
+        public FormDodajKnjiguIliPoglavlje()
         {
             InitializeComponent();
         }
 
-        public FormKnjigaIliPoglavlje(KnjigaIliPoglavlja k)
+        public FormDodajKnjiguIliPoglavlje(KnjigaIliPoglavlja k)
         {
             InitializeComponent();
             _session = null;
             _knjiga = k;
             PopuniComboBox();
-            
-            
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje knjige";
+
         }
 
-        public FormKnjigaIliPoglavlje(KnjigaIliPoglavlja k, ISession s) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
+        public FormDodajKnjiguIliPoglavlje(KnjigaIliPoglavlja k, ISession s) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
         {
             InitializeComponent();
             _knjiga = k;
@@ -44,8 +50,13 @@ namespace DigitalniRepozitorijum.Forms
             tbIzdavac.Text = k.Izdavac;
             tbMestoIzdavanja.Text = k.MestoIzdavanja;
             PopuniComboBox();
-            
-            
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Izmene knjige";
+
         }
 
         public void PopuniComboBox()
@@ -149,6 +160,7 @@ namespace DigitalniRepozitorijum.Forms
                 _knjiga.Urednici.Add(uredjuje);
                 urednik.Knjige.Add(uredjuje);
                 _session.SaveOrUpdate(urednik);
+                MessageBox.Show("Urednik dodat");
             }
             catch(Exception ex)
             {

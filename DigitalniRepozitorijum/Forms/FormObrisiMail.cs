@@ -1,15 +1,15 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-//using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -31,6 +31,12 @@ namespace DigitalniRepozitorijum.Forms
             _istrazivac = i;
             _institucija = null;
             PopuniComboBox();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje mejla istrazivaca";
         }
         public FormObrisiMail(NaucnoIstrazivackaInstitucija i)
         {
@@ -39,6 +45,12 @@ namespace DigitalniRepozitorijum.Forms
             _istrazivac = null;
             _institucija = i;
             PopuniComboBox2();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje mejla institucije";
         }
 
         private void PopuniComboBox()
@@ -47,7 +59,6 @@ namespace DigitalniRepozitorijum.Forms
             {
                 _session=DataLayer.GetSession();
                 List<Mail> mailovi=new List<Mail>();
-                //mailovi = _istrazivac.Mailovi;
 
                 mailovi=_session.Query<Mail>().Where(i => i.ID_I == _istrazivac).ToList();
                 if(mailovi.Count==0)
@@ -63,7 +74,6 @@ namespace DigitalniRepozitorijum.Forms
                 comboBoxMail.ValueMember = "Value";
 
                 comboBoxMail.DropDownStyle= ComboBoxStyle.DropDownList;
-                //comboBoxMail.Items.AddRange(mailovi);
             }
             catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
             
@@ -75,7 +85,6 @@ namespace DigitalniRepozitorijum.Forms
             {
                 _session = DataLayer.GetSession();
                 List<MailInstitucija> mailovi = new List<MailInstitucija>();
-                //mailovi = _istrazivac.Mailovi;
 
                 mailovi = _session.Query<MailInstitucija>().Where(i => i.ID_NII == _institucija).ToList();
                 if (mailovi.Count == 0)
@@ -91,7 +100,6 @@ namespace DigitalniRepozitorijum.Forms
                 comboBoxMail.ValueMember = "Value";
 
                 comboBoxMail.DropDownStyle = ComboBoxStyle.DropDownList;
-                //comboBoxMail.Items.AddRange(mailovi);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
 

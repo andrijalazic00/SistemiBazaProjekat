@@ -18,8 +18,6 @@ namespace DigitalniRepozitorijum.Entities
         public virtual IList<RundaRecenzije> RundeRecenzije { get; set; }
         public virtual IList<Autorstvo> Autorstva {  get; set; }
 
-        //public virtual IList <Angazovanje> CitiranePublikacije { get; set; }
-
         public Publikacija()
         {
             CitirajucePublikacije=new List<Citat>();

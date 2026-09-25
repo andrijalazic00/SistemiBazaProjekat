@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,33 +11,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class FormAngazovanje : Form
+    public partial class FormDodajAngazovanje : Form
     {
         private Angazovanje _angazovanje;
         private NaucnoIstrazivackaInstitucija _institucija;
         private Istrazivac _istrazivac;
         //private List<Istrazivac> _istrazivaciList;
-        private Dictionary<int, Istrazivac> _istrazivacDict;
+        private Dictionary<string, Istrazivac> _istrazivacDict;
         private List<NaucnoIstrazivackaInstitucija> _institucijeList;
         private bool _fromIstrazivac;
-        public FormAngazovanje()
+        public FormDodajAngazovanje()
         {
             InitializeComponent();
+           
             _angazovanje = null;
             _fromIstrazivac = false;
             comboBTip.Items.Add("STALNI");
             comboBTip.Items.Add("PRIVREMEN");
             PopuniComboBoxove();
 
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+
         }
 
-        public FormAngazovanje(Istrazivac i, NaucnoIstrazivackaInstitucija nii)
+        public FormDodajAngazovanje(Istrazivac i, NaucnoIstrazivackaInstitucija nii)
         {
             InitializeComponent();
+           
             _istrazivac = i;
             _institucija = nii;
             _angazovanje = null;
@@ -46,11 +52,15 @@ namespace DigitalniRepozitorijum.Forms
             lblInstitucija.Hide();
             comboBTip.Items.Add("STALNI");
             comboBTip.Items.Add("PRIVREMEN");
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
-        public FormAngazovanje(Angazovanje a)
+        public FormDodajAngazovanje(Angazovanje a)
         {
             InitializeComponent();
+           
             _angazovanje = a;
             _fromIstrazivac = true;
             comboBInstitucija.Hide();
@@ -61,6 +71,10 @@ namespace DigitalniRepozitorijum.Forms
             comboBTip.Items.Add("PRIVREMEN");
             comboBTip.DropDownStyle = ComboBoxStyle.DropDownList;
             PopuniPolja();
+
+            this.Icon = Properties.Resources.Edit;
+            this.Text = "Izmena angazovanja";
+            this.BackColor = System.Drawing.Color.Honeydew;
         }
 
         public void PopuniPolja()
@@ -95,18 +109,18 @@ namespace DigitalniRepozitorijum.Forms
 
 
                 List<Istrazivac> istrazivaciList= s.Query<Istrazivac>().ToList();
-                _istrazivacDict = istrazivaciList.ToDictionary(i => i.ID_I);
-                Dictionary<int, String> istrazivacDictKeyName = istrazivaciList.ToDictionary(i => i.ID_I, i=>i.Ime+" "+i.Prezime+" "+i.DatumRodjenja.ToString());
-                if(istrazivacDictKeyName.Count==0)
+                _istrazivacDict = istrazivaciList.ToDictionary(i =>i.ID_I+" "+ i.Ime + " " + i.Prezime + " "+i.Drzava);
+                //Dictionary<int, String> istrazivacDictKeyName = istrazivaciList.ToDictionary(i => i.ID_I, i=>i.Ime+" "+i.Prezime+" "+i.DatumRodjenja.ToString());
+                if(_istrazivacDict.Count==0)
                 {
                     
                     s.Close();
                     MessageBox.Show("Nema istrazivaca u bazi");
                     this.Close();
                 }
-                comboBIstrazivac.DataSource = new BindingSource(istrazivacDictKeyName, null);
-                comboBIstrazivac.DisplayMember= "Value";
-                comboBIstrazivac.ValueMember = "Key";
+                comboBIstrazivac.DataSource = new BindingSource(_istrazivacDict, null);
+                comboBIstrazivac.DisplayMember= "Key";
+                comboBIstrazivac.ValueMember = "Value";
 
                 comboBInstitucija.DropDownStyle=ComboBoxStyle.DropDownList;
                 comboBIstrazivac.DropDownStyle=ComboBoxStyle.DropDownList;
@@ -149,12 +163,12 @@ namespace DigitalniRepozitorijum.Forms
                     {
                         if (comboBInstitucija.Text.Length > 0 && comboBIstrazivac.Text.Length > 0)
                         {
-                            int id_i = (int)comboBIstrazivac.SelectedValue;
+                            //int id_i = (int)comboBIstrazivac.SelectedValue;
                             //string  id_nii= comboBInstitucija.Text;
                             
                             //_institucija= _institucijeList.First(i => i.Naziv == comboBInstitucija.Text);
                             a.ID_NII = _institucijeList.First(i => i.Naziv == comboBInstitucija.Text);
-                            a.ID_I = _istrazivacDict[id_i];
+                            a.ID_I = _istrazivacDict[comboBIstrazivac.Text];
 
                             //a.ID_NII = comboBInstitucija.Text;
                         }
@@ -181,7 +195,7 @@ namespace DigitalniRepozitorijum.Forms
                 s.SaveOrUpdate(a);
                 s.Flush();
                 s.Close();
-                if (_fromIstrazivac)
+                //if (_fromIstrazivac)
                     this.Close();
                 
                 MessageBox.Show("Angazovanje sacuvano");

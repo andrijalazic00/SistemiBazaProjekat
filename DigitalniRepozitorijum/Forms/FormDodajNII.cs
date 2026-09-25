@@ -20,7 +20,10 @@ namespace DigitalniRepozitorijum
         public FormDodajNII()
         {
             InitializeComponent();
-            _nii=new NaucnoIstrazivackaInstitucija();
+            _nii =new NaucnoIstrazivackaInstitucija();
+
+            this.Icon = Properties.Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
         private void btnDodajNII_Click(object sender, EventArgs e)
@@ -35,11 +38,12 @@ namespace DigitalniRepozitorijum
                 s.Save(_nii);
                 s.Flush();
                 s.Close();
+                MessageBox.Show("Istitucija dodata");
                 this.Close();
             }
             catch(Exception ex) 
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 
@@ -68,7 +72,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
 
         }
@@ -98,7 +102,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
 
         }
@@ -127,7 +131,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

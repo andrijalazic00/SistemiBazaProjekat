@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDodajAutora));
             this.btnDodajORCID = new System.Windows.Forms.Button();
             this.tbORCID = new System.Windows.Forms.TextBox();
             this.lblORCID = new System.Windows.Forms.Label();
@@ -36,9 +37,10 @@
             // 
             // btnDodajORCID
             // 
-            this.btnDodajORCID.Location = new System.Drawing.Point(131, 125);
+            this.btnDodajORCID.Location = new System.Drawing.Point(147, 102);
+            this.btnDodajORCID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajORCID.Name = "btnDodajORCID";
-            this.btnDodajORCID.Size = new System.Drawing.Size(163, 50);
+            this.btnDodajORCID.Size = new System.Drawing.Size(272, 37);
             this.btnDodajORCID.TabIndex = 0;
             this.btnDodajORCID.Text = "Dodaj autora i zatvori prozor";
             this.btnDodajORCID.UseVisualStyleBackColor = true;
@@ -46,40 +48,49 @@
             // 
             // tbORCID
             // 
-            this.tbORCID.Location = new System.Drawing.Point(131, 75);
+            this.tbORCID.Location = new System.Drawing.Point(147, 47);
+            this.tbORCID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbORCID.Name = "tbORCID";
-            this.tbORCID.Size = new System.Drawing.Size(205, 20);
+            this.tbORCID.Size = new System.Drawing.Size(272, 22);
             this.tbORCID.TabIndex = 1;
             // 
             // lblORCID
             // 
             this.lblORCID.AutoSize = true;
-            this.lblORCID.Location = new System.Drawing.Point(54, 82);
+            this.lblORCID.Location = new System.Drawing.Point(61, 50);
+            this.lblORCID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblORCID.Name = "lblORCID";
-            this.lblORCID.Size = new System.Drawing.Size(41, 13);
+            this.lblORCID.Size = new System.Drawing.Size(49, 16);
             this.lblORCID.TabIndex = 2;
             this.lblORCID.Text = "ORCID";
             // 
             // lblFormat
             // 
             this.lblFormat.AutoSize = true;
-            this.lblFormat.Location = new System.Drawing.Point(355, 82);
+            this.lblFormat.Location = new System.Drawing.Point(459, 50);
+            this.lblFormat.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFormat.Name = "lblFormat";
-            this.lblFormat.Size = new System.Drawing.Size(181, 13);
+            this.lblFormat.Size = new System.Drawing.Size(225, 16);
             this.lblFormat.TabIndex = 3;
             this.lblFormat.Text = "Format: NNNN-NNNN-NNNN-NNNX";
             // 
             // FormDodajAutora
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(727, 173);
             this.Controls.Add(this.lblFormat);
             this.Controls.Add(this.lblORCID);
             this.Controls.Add(this.tbORCID);
             this.Controls.Add(this.btnDodajORCID);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDodajAutora";
-            this.Text = "FormDodajAutora";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje autora";
             this.ResumeLayout(false);
             this.PerformLayout();
 

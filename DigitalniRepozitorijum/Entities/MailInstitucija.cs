@@ -8,11 +8,9 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class MailInstitucija
     {
-        
         public virtual NaucnoIstrazivackaInstitucija ID_NII { get;  set; }
         public virtual string MailAdresa { get;  set; }
         
-
         public MailInstitucija()
         {
         }

@@ -8,8 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class RukovodilacProjekta:Uloga
     {
-        //public virtual int ID_U { get; protected set; }
-
         public RukovodilacProjekta()
         {
         }

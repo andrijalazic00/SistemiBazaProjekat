@@ -13,7 +13,6 @@ namespace DigitalniRepozitorijum.Entities
 
         public TelefonInstitucija()
         {
-
         }
 
         public override bool Equals(object obj)

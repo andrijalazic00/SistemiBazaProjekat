@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,19 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class FormNaucniRad : Form
+    public partial class FormDodajNaucniRad : Form
     {
         private NaucniRad _naucniRad;
 
-        public FormNaucniRad()
+        public FormDodajNaucniRad()
         {
             InitializeComponent();
         }
 
-        public FormNaucniRad(NaucniRad n)
+        public FormDodajNaucniRad(NaucniRad n)
         {
             InitializeComponent();
             _naucniRad = n;
@@ -30,9 +31,16 @@ namespace DigitalniRepozitorijum.Forms
             nudBrojStranice.Maximum = int.MaxValue;
             nudBrojSveske.Maximum = int.MaxValue;
             comboBTipRada.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+           
         }
 
-        public FormNaucniRad(NaucniRad n, bool b)
+        public FormDodajNaucniRad(NaucniRad n, bool b)
         {
             InitializeComponent();
             _naucniRad = n;
@@ -50,6 +58,13 @@ namespace DigitalniRepozitorijum.Forms
             nudBrojIzdanja.Value=_naucniRad.BrojIzdanja;
             nudBrojStranice.Value=_naucniRad.BrojStranice;
             nudBrojSveske.Value = _naucniRad.BrojSveske;
+
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Izmene naucnog rada";
         }
 
        

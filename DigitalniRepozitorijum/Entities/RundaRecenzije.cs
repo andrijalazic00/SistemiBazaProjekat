@@ -23,9 +23,6 @@ namespace DigitalniRepozitorijum.Entities
 
         public override bool Equals(object obj)
         {
-            /*if (!(obj is RundaRecenzije other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return ID_P.ID_P == other.ID_P.ID_P && BrojRunde == other.BrojRunde;*/
             if (!(obj is RundaRecenzije other)) return false;
             if (ReferenceEquals(this, other)) return true;
             return ID_P?.ID_P == other.ID_P?.ID_P && BrojRunde == other.BrojRunde;
@@ -33,7 +30,6 @@ namespace DigitalniRepozitorijum.Entities
 
         public override int GetHashCode()
         {
-            //return base.GetHashCode();
             unchecked
             {
                 int hash = 17;

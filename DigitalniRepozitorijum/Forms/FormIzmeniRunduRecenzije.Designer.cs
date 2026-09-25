@@ -46,87 +46,101 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Location = new System.Drawing.Point(37, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 13);
+            this.label1.Size = new System.Drawing.Size(218, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Runda recenzije za izmenu/brisanje";
             // 
             // comboBRundaRecenzije
             // 
             this.comboBRundaRecenzije.FormattingEnabled = true;
-            this.comboBRundaRecenzije.Location = new System.Drawing.Point(211, 18);
+            this.comboBRundaRecenzije.Location = new System.Drawing.Point(281, 22);
+            this.comboBRundaRecenzije.Margin = new System.Windows.Forms.Padding(4);
             this.comboBRundaRecenzije.Name = "comboBRundaRecenzije";
-            this.comboBRundaRecenzije.Size = new System.Drawing.Size(398, 21);
+            this.comboBRundaRecenzije.Size = new System.Drawing.Size(352, 24);
             this.comboBRundaRecenzije.TabIndex = 1;
             // 
             // btnObrisiRundu
             // 
-            this.btnObrisiRundu.Location = new System.Drawing.Point(33, 52);
+            this.btnObrisiRundu.BackColor = System.Drawing.Color.MistyRose;
+            this.btnObrisiRundu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnObrisiRundu.Location = new System.Drawing.Point(345, 64);
+            this.btnObrisiRundu.Margin = new System.Windows.Forms.Padding(4);
             this.btnObrisiRundu.Name = "btnObrisiRundu";
-            this.btnObrisiRundu.Size = new System.Drawing.Size(220, 23);
+            this.btnObrisiRundu.Size = new System.Drawing.Size(288, 28);
             this.btnObrisiRundu.TabIndex = 2;
             this.btnObrisiRundu.Text = "Obrisi rundu recenzije";
-            this.btnObrisiRundu.UseVisualStyleBackColor = true;
+            this.btnObrisiRundu.UseVisualStyleBackColor = false;
             this.btnObrisiRundu.Click += new System.EventHandler(this.btnObrisiRundu_Click);
             // 
             // btnIzmeniRundu
             // 
-            this.btnIzmeniRundu.Location = new System.Drawing.Point(259, 52);
+            this.btnIzmeniRundu.BackColor = System.Drawing.SystemColors.Control;
+            this.btnIzmeniRundu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnIzmeniRundu.Location = new System.Drawing.Point(40, 64);
+            this.btnIzmeniRundu.Margin = new System.Windows.Forms.Padding(4);
             this.btnIzmeniRundu.Name = "btnIzmeniRundu";
-            this.btnIzmeniRundu.Size = new System.Drawing.Size(216, 23);
+            this.btnIzmeniRundu.Size = new System.Drawing.Size(288, 28);
             this.btnIzmeniRundu.TabIndex = 3;
             this.btnIzmeniRundu.Text = "Izmeni rundu recenzije";
-            this.btnIzmeniRundu.UseVisualStyleBackColor = true;
+            this.btnIzmeniRundu.UseVisualStyleBackColor = false;
             this.btnIzmeniRundu.Click += new System.EventHandler(this.btnIzmeniRundu_Click);
             // 
             // comboBKonacnaOdluka
             // 
             this.comboBKonacnaOdluka.FormattingEnabled = true;
-            this.comboBKonacnaOdluka.Location = new System.Drawing.Point(182, 60);
+            this.comboBKonacnaOdluka.Location = new System.Drawing.Point(208, 23);
+            this.comboBKonacnaOdluka.Margin = new System.Windows.Forms.Padding(4);
             this.comboBKonacnaOdluka.Name = "comboBKonacnaOdluka";
-            this.comboBKonacnaOdluka.Size = new System.Drawing.Size(206, 21);
+            this.comboBKonacnaOdluka.Size = new System.Drawing.Size(352, 24);
             this.comboBKonacnaOdluka.TabIndex = 23;
             // 
             // comboBAngazovanUrednik
             // 
             this.comboBAngazovanUrednik.FormattingEnabled = true;
-            this.comboBAngazovanUrednik.Location = new System.Drawing.Point(181, 142);
+            this.comboBAngazovanUrednik.Location = new System.Drawing.Point(208, 97);
+            this.comboBAngazovanUrednik.Margin = new System.Windows.Forms.Padding(4);
             this.comboBAngazovanUrednik.Name = "comboBAngazovanUrednik";
-            this.comboBAngazovanUrednik.Size = new System.Drawing.Size(207, 21);
+            this.comboBAngazovanUrednik.Size = new System.Drawing.Size(352, 24);
             this.comboBAngazovanUrednik.TabIndex = 22;
             // 
             // dtpDatumOdluke
             // 
-            this.dtpDatumOdluke.Location = new System.Drawing.Point(181, 105);
+            this.dtpDatumOdluke.Location = new System.Drawing.Point(208, 60);
+            this.dtpDatumOdluke.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDatumOdluke.Name = "dtpDatumOdluke";
-            this.dtpDatumOdluke.Size = new System.Drawing.Size(207, 20);
+            this.dtpDatumOdluke.Size = new System.Drawing.Size(352, 22);
             this.dtpDatumOdluke.TabIndex = 21;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(67, 63);
+            this.label8.Location = new System.Drawing.Point(78, 26);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.Size = new System.Drawing.Size(104, 16);
             this.label8.TabIndex = 20;
             this.label8.Text = "Konacna odluka";
             // 
             // lblDatumOdluke
             // 
             this.lblDatumOdluke.AutoSize = true;
-            this.lblDatumOdluke.Location = new System.Drawing.Point(79, 111);
+            this.lblDatumOdluke.Location = new System.Drawing.Point(92, 65);
+            this.lblDatumOdluke.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDatumOdluke.Name = "lblDatumOdluke";
-            this.lblDatumOdluke.Size = new System.Drawing.Size(73, 13);
+            this.lblDatumOdluke.Size = new System.Drawing.Size(90, 16);
             this.lblDatumOdluke.TabIndex = 19;
             this.lblDatumOdluke.Text = "Datum odluke";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 145);
+            this.label3.Location = new System.Drawing.Point(60, 100);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 13);
+            this.label3.Size = new System.Drawing.Size(122, 16);
             this.label3.TabIndex = 17;
             this.label3.Text = "Angazovan urednik";
             // 
@@ -139,35 +153,42 @@
             this.gbIzmene.Controls.Add(this.label8);
             this.gbIzmene.Controls.Add(this.lblDatumOdluke);
             this.gbIzmene.Controls.Add(this.label3);
-            this.gbIzmene.Location = new System.Drawing.Point(30, 81);
+            this.gbIzmene.Location = new System.Drawing.Point(40, 100);
+            this.gbIzmene.Margin = new System.Windows.Forms.Padding(4);
             this.gbIzmene.Name = "gbIzmene";
-            this.gbIzmene.Size = new System.Drawing.Size(444, 213);
+            this.gbIzmene.Padding = new System.Windows.Forms.Padding(4);
+            this.gbIzmene.Size = new System.Drawing.Size(593, 221);
             this.gbIzmene.TabIndex = 24;
             this.gbIzmene.TabStop = false;
             this.gbIzmene.Visible = false;
             // 
             // btnSacuvajIzmene
             // 
-            this.btnSacuvajIzmene.Location = new System.Drawing.Point(87, 175);
+            this.btnSacuvajIzmene.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSacuvajIzmene.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSacuvajIzmene.Location = new System.Drawing.Point(121, 152);
+            this.btnSacuvajIzmene.Margin = new System.Windows.Forms.Padding(4);
             this.btnSacuvajIzmene.Name = "btnSacuvajIzmene";
-            this.btnSacuvajIzmene.Size = new System.Drawing.Size(282, 23);
+            this.btnSacuvajIzmene.Size = new System.Drawing.Size(352, 28);
             this.btnSacuvajIzmene.TabIndex = 24;
             this.btnSacuvajIzmene.Text = "Sacuvaj izmene";
-            this.btnSacuvajIzmene.UseVisualStyleBackColor = true;
+            this.btnSacuvajIzmene.UseVisualStyleBackColor = false;
             this.btnSacuvajIzmene.Click += new System.EventHandler(this.btnSacuvajIzmene_Click);
             // 
             // FormIzmeniRunduRecenzije
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 402);
-            this.Controls.Add(this.gbIzmene);
+            this.ClientSize = new System.Drawing.Size(682, 344);
             this.Controls.Add(this.btnIzmeniRundu);
+            this.Controls.Add(this.gbIzmene);
             this.Controls.Add(this.btnObrisiRundu);
             this.Controls.Add(this.comboBRundaRecenzije);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormIzmeniRunduRecenzije";
-            this.Text = "FormIzmeniRunduRecenzije";
+            this.Text = "Izmene runde recenzije";
             this.gbIzmene.ResumeLayout(false);
             this.gbIzmene.PerformLayout();
             this.ResumeLayout(false);

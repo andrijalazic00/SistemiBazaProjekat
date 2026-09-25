@@ -27,15 +27,24 @@ namespace DigitalniRepozitorijum.Forms
         public FormDodajPublikaciju()
         {
             InitializeComponent();
+
             nudRedniBrojAutora.Minimum = 1;
+            gbSacuvajPublikaciju.Enabled = false;
             _publikacija=new Publikacija();
             _session = null;
             _izmena = false;
             PopuniComboBox();
+
+            this.Icon = Properties.Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
         public FormDodajPublikaciju(Publikacija p, ISession s)
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.Text = "Izmena publikacije";
+            
             nudRedniBrojAutora.Minimum = 1;
             _publikacija = p; 
             _session = s;
@@ -159,13 +168,19 @@ namespace DigitalniRepozitorijum.Forms
 
             try 
             {
-       
-                if (comboBZasnivaSeNa.SelectedValue != null)
+
+                //if (comboBZasnivaSeNa.SelectedValue != null)
                     _publikacija.DatasetID = (Dataset)comboBZasnivaSeNa.SelectedValue;
-                if (comboBKoriscen.SelectedValue != null)
+                //else
+                    //_publikacija.DatasetID = null;
+                //if (comboBKoriscen.SelectedValue != null)
                     _publikacija.SoftverskiArtifaktID = (SoftverskiArtifakt)comboBKoriscen.SelectedValue;
-                if (comboBNastalaIz.SelectedValue != null)
+                //else
+                   // _publikacija.SoftverskiArtifaktID = null;
+                //if (comboBNastalaIz.SelectedValue != null)
                     _publikacija.TehnickiIzvestajID = (TehnickiIzvestaj)comboBNastalaIz.SelectedValue;
+                //else
+                    //_publikacija.TehnickiIzvestajID = null;
 
                 _session.SaveOrUpdate(_publikacija);
                 _session.Flush();
@@ -177,7 +192,12 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch (GenericADOException ex) when (ex.InnerException is OracleException oraEx && oraEx.Number == 1)
             {
-                 MessageBox.Show("Vec postoji publikacija bazirana na izabranim istrazivackim rezultatima");
+                MessageBox.Show("Vec postoji publikacija bazirana na izabranim istrazivackim rezultatima");
+                comboBZasnivaSeNa.SelectedIndex= -1;
+                comboBNastalaIz.SelectedIndex= -1;
+                comboBKoriscen.SelectedIndex= -1;
+                _session.Close();
+                this.Close();
             }
 
             catch (Exception ex)
@@ -206,11 +226,13 @@ namespace DigitalniRepozitorijum.Forms
                     tbTipDoprinosa.Clear();
                     tbUlogaUPublikaciji.Clear();
                     nudRedniBrojAutora.Value += 1;
+                    gbSacuvajPublikaciju.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Popunite prazna polja");
                 }
+
             }
             catch(Exception ex)
             {

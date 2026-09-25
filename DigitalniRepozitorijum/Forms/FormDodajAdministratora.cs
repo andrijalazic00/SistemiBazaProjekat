@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +23,10 @@ namespace DigitalniRepozitorijum
         public FormDodajAdministratora(AdministratorRepozitorijuma u)
         {
             InitializeComponent();
-            //_administrator= new AdministratorRepozitorijuma();
             _administrator = u;
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
         private async void btnDodajOvlascenje_Click(object sender, EventArgs e)

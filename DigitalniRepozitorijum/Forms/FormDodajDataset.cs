@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,29 +11,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
-    public partial class FormDataset : Form
+    public partial class FormDodajDataset : Form
     {
         private Dataset _dataset;
 
-        public FormDataset()
+        public FormDodajDataset()
         {
             InitializeComponent();
         }
 
-        public FormDataset(Dataset set)
+        public FormDodajDataset(Dataset set)
         {
             InitializeComponent();
             _dataset = set;
             nudBrojZapisa.Maximum=int.MaxValue;
             nudVelicina.Maximum=int.MaxValue;
-            
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+
         }
 
-        public FormDataset(Dataset set, bool b) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
+        public FormDodajDataset(Dataset set, bool b) //b postoji samo da bi se konstruktor razlikovao od prethodnog 
         {
             InitializeComponent();
             _dataset = set;
@@ -45,6 +49,9 @@ namespace DigitalniRepozitorijum.Forms
             nudBrojZapisa.Value= _dataset.BrojZapisa;
             nudVelicina.Value= _dataset.Velicina;
 
+            this.Text = "Izmena dataset-a";
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
         }
 
         private void btnSacuvajDataset_Click(object sender, EventArgs e)

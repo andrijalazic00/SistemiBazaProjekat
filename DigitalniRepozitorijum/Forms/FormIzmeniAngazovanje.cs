@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,22 +10,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
-//using System.ServiceModel.Channels;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormIzmeniAngazovanje : Form
     {
-        private List<NaucnoIstrazivackaInstitucija> _institucijeList;
         private List<Angazovanje> _angazovanjeList;
         private Dictionary<string, Angazovanje> _angazovanjeDict;
-        private Dictionary<string, Istrazivac> _istrazivacDict;
+   
         public FormIzmeniAngazovanje()
         {
             InitializeComponent();
             PopuniComboBox();
+
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void PopuniComboBox()
         {
@@ -31,14 +35,8 @@ namespace DigitalniRepozitorijum.Forms
             {
                 ISession s = DataLayer.GetSession();
 
-                
                 _angazovanjeList = s.Query<Angazovanje>().ToList();
                 _angazovanjeDict = _angazovanjeList.ToDictionary(a => a.NazivPozicije + "; " + a.OrganizacionaJedinica + "; " + a.ID_I.Ime + " " + a.ID_I.Prezime +"; "+ a.ID_NII.Naziv);
-
-                
-
-
-              
 
                 if (_angazovanjeDict.Count == 0)
                 {
@@ -50,9 +48,7 @@ namespace DigitalniRepozitorijum.Forms
                 comboBAngazovanje.DataSource = new BindingSource(_angazovanjeDict, null);
                 comboBAngazovanje.DisplayMember = "Key";
                 comboBAngazovanje.ValueMember = "Value";
-
                 comboBAngazovanje.DropDownStyle = ComboBoxStyle.DropDownList;
-                
             }
             
             catch(Exception ex) 
@@ -68,7 +64,7 @@ namespace DigitalniRepozitorijum.Forms
             {
                 Angazovanje angazovanje = (Angazovanje)comboBAngazovanje.SelectedValue;
                 
-                Form f = new FormAngazovanje(angazovanje);
+                Form f = new FormDodajAngazovanje(angazovanje);
                 f.ShowDialog();
             }
             catch (Exception ex)

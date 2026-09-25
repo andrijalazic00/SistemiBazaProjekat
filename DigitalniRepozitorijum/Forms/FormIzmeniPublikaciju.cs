@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -20,8 +21,13 @@ namespace DigitalniRepozitorijum.Forms
         public FormIzmeniPublikaciju()
         {
             InitializeComponent();
-            
             PopuniComboBox();
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
         }
         public void PopuniComboBox()
         {

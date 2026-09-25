@@ -40,9 +40,10 @@
             // 
             // btnIzmeniPublikaciju
             // 
-            this.btnIzmeniPublikaciju.Location = new System.Drawing.Point(624, 29);
+            this.btnIzmeniPublikaciju.Location = new System.Drawing.Point(795, 40);
+            this.btnIzmeniPublikaciju.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniPublikaciju.Name = "btnIzmeniPublikaciju";
-            this.btnIzmeniPublikaciju.Size = new System.Drawing.Size(144, 37);
+            this.btnIzmeniPublikaciju.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniPublikaciju.TabIndex = 4;
             this.btnIzmeniPublikaciju.Text = "Izmeni/obrisi publikaciju";
             this.btnIzmeniPublikaciju.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             // btnObrisiUlogu
             // 
-            this.btnObrisiUlogu.Location = new System.Drawing.Point(624, 97);
+            this.btnObrisiUlogu.Location = new System.Drawing.Point(795, 123);
+            this.btnObrisiUlogu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnObrisiUlogu.Name = "btnObrisiUlogu";
-            this.btnObrisiUlogu.Size = new System.Drawing.Size(144, 42);
+            this.btnObrisiUlogu.Size = new System.Drawing.Size(192, 52);
             this.btnObrisiUlogu.TabIndex = 5;
             this.btnObrisiUlogu.Text = "Obrisi ulogu";
             this.btnObrisiUlogu.UseVisualStyleBackColor = true;
@@ -60,9 +62,10 @@
             // 
             // btnIzmeniIstrazivaca
             // 
-            this.btnIzmeniIstrazivaca.Location = new System.Drawing.Point(57, 29);
+            this.btnIzmeniIstrazivaca.Location = new System.Drawing.Point(39, 40);
+            this.btnIzmeniIstrazivaca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniIstrazivaca.Name = "btnIzmeniIstrazivaca";
-            this.btnIzmeniIstrazivaca.Size = new System.Drawing.Size(144, 37);
+            this.btnIzmeniIstrazivaca.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniIstrazivaca.TabIndex = 6;
             this.btnIzmeniIstrazivaca.Text = "Izmeni/obrisi istrazivaca";
             this.btnIzmeniIstrazivaca.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // 
             // btnIzmeniNII
             // 
-            this.btnIzmeniNII.Location = new System.Drawing.Point(257, 29);
+            this.btnIzmeniNII.Location = new System.Drawing.Point(306, 40);
+            this.btnIzmeniNII.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniNII.Name = "btnIzmeniNII";
-            this.btnIzmeniNII.Size = new System.Drawing.Size(144, 37);
+            this.btnIzmeniNII.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniNII.TabIndex = 7;
             this.btnIzmeniNII.Text = "Izmeni/obrisi NII";
             this.btnIzmeniNII.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@
             // 
             // btnIzmeniIstrazivackiRezultat
             // 
-            this.btnIzmeniIstrazivackiRezultat.Location = new System.Drawing.Point(447, 29);
+            this.btnIzmeniIstrazivackiRezultat.Location = new System.Drawing.Point(559, 40);
+            this.btnIzmeniIstrazivackiRezultat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniIstrazivackiRezultat.Name = "btnIzmeniIstrazivackiRezultat";
-            this.btnIzmeniIstrazivackiRezultat.Size = new System.Drawing.Size(144, 37);
+            this.btnIzmeniIstrazivackiRezultat.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniIstrazivackiRezultat.TabIndex = 8;
             this.btnIzmeniIstrazivackiRezultat.Text = "Izmeni/obrisi istrazivacki rezultat";
             this.btnIzmeniIstrazivackiRezultat.UseVisualStyleBackColor = true;
@@ -90,19 +95,21 @@
             // 
             // btnIzmeniAngazovanje
             // 
-            this.btnIzmeniAngazovanje.Location = new System.Drawing.Point(57, 97);
+            this.btnIzmeniAngazovanje.Location = new System.Drawing.Point(39, 123);
+            this.btnIzmeniAngazovanje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniAngazovanje.Name = "btnIzmeniAngazovanje";
-            this.btnIzmeniAngazovanje.Size = new System.Drawing.Size(144, 42);
+            this.btnIzmeniAngazovanje.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniAngazovanje.TabIndex = 9;
-            this.btnIzmeniAngazovanje.Text = "Izmeni/Obrisi angazovanje";
+            this.btnIzmeniAngazovanje.Text = "Izmeni/obrisi angazovanje";
             this.btnIzmeniAngazovanje.UseVisualStyleBackColor = true;
             this.btnIzmeniAngazovanje.Click += new System.EventHandler(this.btnIzmeniAngazovanje_Click);
             // 
             // btnIzmeniCitat
             // 
-            this.btnIzmeniCitat.Location = new System.Drawing.Point(257, 97);
+            this.btnIzmeniCitat.Location = new System.Drawing.Point(306, 123);
+            this.btnIzmeniCitat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniCitat.Name = "btnIzmeniCitat";
-            this.btnIzmeniCitat.Size = new System.Drawing.Size(144, 42);
+            this.btnIzmeniCitat.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniCitat.TabIndex = 10;
             this.btnIzmeniCitat.Text = "Izmeni/obrisi citat";
             this.btnIzmeniCitat.UseVisualStyleBackColor = true;
@@ -110,9 +117,10 @@
             // 
             // btnIzmeniRunduRecenzije
             // 
-            this.btnIzmeniRunduRecenzije.Location = new System.Drawing.Point(447, 97);
+            this.btnIzmeniRunduRecenzije.Location = new System.Drawing.Point(559, 123);
+            this.btnIzmeniRunduRecenzije.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIzmeniRunduRecenzije.Name = "btnIzmeniRunduRecenzije";
-            this.btnIzmeniRunduRecenzije.Size = new System.Drawing.Size(144, 42);
+            this.btnIzmeniRunduRecenzije.Size = new System.Drawing.Size(192, 52);
             this.btnIzmeniRunduRecenzije.TabIndex = 11;
             this.btnIzmeniRunduRecenzije.Text = "Izmeni/obrisi rundu recenzije";
             this.btnIzmeniRunduRecenzije.UseVisualStyleBackColor = true;
@@ -120,9 +128,9 @@
             // 
             // FormBrisanjeIAzuriranje
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 183);
+            this.ClientSize = new System.Drawing.Size(1025, 225);
             this.Controls.Add(this.btnIzmeniRunduRecenzije);
             this.Controls.Add(this.btnIzmeniCitat);
             this.Controls.Add(this.btnIzmeniAngazovanje);
@@ -131,8 +139,13 @@
             this.Controls.Add(this.btnIzmeniIstrazivaca);
             this.Controls.Add(this.btnObrisiUlogu);
             this.Controls.Add(this.btnIzmeniPublikaciju);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormBrisanjeIAzuriranje";
-            this.Text = "FormBrisanjeIAzuriranje";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Brisanje i azuriranje";
             this.ResumeLayout(false);
 
         }

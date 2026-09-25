@@ -23,10 +23,6 @@ namespace DigitalniRepozitorijum.Entities
 
             public override bool Equals(object obj)
             {
-            /*
-                if (!(obj is AngazovanjeRecenzent other)) return false;
-                if (ReferenceEquals(this, other)) return true;
-                return ID_P.ID_P == other.ID_P.ID_P && ID_Recenzenta.ID_U == other.ID_Recenzenta.ID_U;*/
                 if (!(obj is AngazovanjeRecenzent other)) return false;
                 if (ReferenceEquals(this, other)) return true;
                 return ID_P?.ID_P == other.ID_P?.ID_P
@@ -44,8 +40,8 @@ namespace DigitalniRepozitorijum.Entities
                     hash = hash * 23 + BrojRunde.GetHashCode();
                     return hash;
                 }
-            //return base.GetHashCode();
-        }
+            
+            }
         }
     
 }

@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,9 @@ namespace DigitalniRepozitorijum
         {
             InitializeComponent();
             _recenzent = r;
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
         private async void btnOblastEkspertize_Click(object sender, EventArgs e)

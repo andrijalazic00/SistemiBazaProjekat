@@ -8,7 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class Verzija
     {
-
         public virtual IstrazivackiRezultat ID_IR { get; set; }
         public virtual int BrojVerzije { get;  set; }
         public virtual DateTime DatumPostavljanja { get; set; }
@@ -18,6 +17,7 @@ namespace DigitalniRepozitorijum.Entities
         public Verzija()
         {
         }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Verzija other)) return false;

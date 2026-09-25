@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDodajCitat));
             this.lblCitirajucaPublikacija = new System.Windows.Forms.Label();
             this.lblCitiranaPublikacija = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,93 +45,104 @@
             // lblCitirajucaPublikacija
             // 
             this.lblCitirajucaPublikacija.AutoSize = true;
-            this.lblCitirajucaPublikacija.Location = new System.Drawing.Point(12, 22);
+            this.lblCitirajucaPublikacija.Location = new System.Drawing.Point(31, 26);
+            this.lblCitirajucaPublikacija.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCitirajucaPublikacija.Name = "lblCitirajucaPublikacija";
-            this.lblCitirajucaPublikacija.Size = new System.Drawing.Size(103, 13);
+            this.lblCitirajucaPublikacija.Size = new System.Drawing.Size(130, 16);
             this.lblCitirajucaPublikacija.TabIndex = 0;
             this.lblCitirajucaPublikacija.Text = "Citirajuca publikacija";
             // 
             // lblCitiranaPublikacija
             // 
             this.lblCitiranaPublikacija.AutoSize = true;
-            this.lblCitiranaPublikacija.Location = new System.Drawing.Point(20, 61);
+            this.lblCitiranaPublikacija.Location = new System.Drawing.Point(41, 74);
+            this.lblCitiranaPublikacija.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCitiranaPublikacija.Name = "lblCitiranaPublikacija";
-            this.lblCitiranaPublikacija.Size = new System.Drawing.Size(95, 13);
+            this.lblCitiranaPublikacija.Size = new System.Drawing.Size(120, 16);
             this.lblCitiranaPublikacija.TabIndex = 1;
             this.lblCitiranaPublikacija.Text = "Citirana publikacija";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 98);
+            this.label3.Location = new System.Drawing.Point(54, 120);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.Size = new System.Drawing.Size(107, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Kontekst citiranja";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 136);
+            this.label4.Location = new System.Drawing.Point(68, 167);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(93, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mesto citiranja";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(57, 175);
+            this.label5.Location = new System.Drawing.Point(99, 211);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.Size = new System.Drawing.Size(62, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "Tip citata";
             // 
             // comboBCitirajucaPublikacija
             // 
             this.comboBCitirajucaPublikacija.FormattingEnabled = true;
-            this.comboBCitirajucaPublikacija.Location = new System.Drawing.Point(139, 19);
+            this.comboBCitirajucaPublikacija.Location = new System.Drawing.Point(185, 23);
+            this.comboBCitirajucaPublikacija.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBCitirajucaPublikacija.Name = "comboBCitirajucaPublikacija";
-            this.comboBCitirajucaPublikacija.Size = new System.Drawing.Size(174, 21);
+            this.comboBCitirajucaPublikacija.Size = new System.Drawing.Size(360, 24);
             this.comboBCitirajucaPublikacija.TabIndex = 7;
             // 
             // comboBCitiranaPublikacija
             // 
             this.comboBCitiranaPublikacija.FormattingEnabled = true;
-            this.comboBCitiranaPublikacija.Location = new System.Drawing.Point(139, 58);
+            this.comboBCitiranaPublikacija.Location = new System.Drawing.Point(185, 71);
+            this.comboBCitiranaPublikacija.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBCitiranaPublikacija.Name = "comboBCitiranaPublikacija";
-            this.comboBCitiranaPublikacija.Size = new System.Drawing.Size(174, 21);
+            this.comboBCitiranaPublikacija.Size = new System.Drawing.Size(360, 24);
             this.comboBCitiranaPublikacija.TabIndex = 8;
             // 
             // tbKontekstCitiranja
             // 
-            this.tbKontekstCitiranja.Location = new System.Drawing.Point(139, 95);
+            this.tbKontekstCitiranja.Location = new System.Drawing.Point(185, 117);
+            this.tbKontekstCitiranja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbKontekstCitiranja.Name = "tbKontekstCitiranja";
-            this.tbKontekstCitiranja.Size = new System.Drawing.Size(174, 20);
+            this.tbKontekstCitiranja.Size = new System.Drawing.Size(360, 22);
             this.tbKontekstCitiranja.TabIndex = 9;
             // 
             // tbMestoCitiranja
             // 
-            this.tbMestoCitiranja.Location = new System.Drawing.Point(139, 133);
+            this.tbMestoCitiranja.Location = new System.Drawing.Point(185, 164);
+            this.tbMestoCitiranja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMestoCitiranja.Name = "tbMestoCitiranja";
-            this.tbMestoCitiranja.Size = new System.Drawing.Size(174, 20);
+            this.tbMestoCitiranja.Size = new System.Drawing.Size(360, 22);
             this.tbMestoCitiranja.TabIndex = 10;
             // 
             // cbTipCitata
             // 
             this.cbTipCitata.AutoSize = true;
-            this.cbTipCitata.Location = new System.Drawing.Point(139, 171);
+            this.cbTipCitata.Location = new System.Drawing.Point(185, 210);
+            this.cbTipCitata.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbTipCitata.Name = "cbTipCitata";
-            this.cbTipCitata.Size = new System.Drawing.Size(81, 17);
+            this.cbTipCitata.Size = new System.Drawing.Size(94, 20);
             this.cbTipCitata.TabIndex = 11;
             this.cbTipCitata.Text = "DIREKTAN";
             this.cbTipCitata.UseVisualStyleBackColor = true;
             // 
             // btnSacuvajCitat
             // 
-            this.btnSacuvajCitat.Location = new System.Drawing.Point(35, 214);
+            this.btnSacuvajCitat.Location = new System.Drawing.Point(185, 254);
+            this.btnSacuvajCitat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSacuvajCitat.Name = "btnSacuvajCitat";
-            this.btnSacuvajCitat.Size = new System.Drawing.Size(251, 28);
+            this.btnSacuvajCitat.Size = new System.Drawing.Size(257, 34);
             this.btnSacuvajCitat.TabIndex = 12;
             this.btnSacuvajCitat.Text = "Sacuvaj citat";
             this.btnSacuvajCitat.UseVisualStyleBackColor = true;
@@ -138,9 +150,9 @@
             // 
             // FormDodajCitat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(602, 332);
             this.Controls.Add(this.btnSacuvajCitat);
             this.Controls.Add(this.cbTipCitata);
             this.Controls.Add(this.tbMestoCitiranja);
@@ -152,8 +164,14 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblCitiranaPublikacija);
             this.Controls.Add(this.lblCitirajucaPublikacija);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDodajCitat";
-            this.Text = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje citata";
             this.ResumeLayout(false);
             this.PerformLayout();
 

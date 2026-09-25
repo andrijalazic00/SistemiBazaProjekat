@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormObrisiVerziju : Form
@@ -28,6 +29,12 @@ namespace DigitalniRepozitorijum.Forms
             _rezultat = i;
             _verzija = new Verzija();
             PopuniComboBox();
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Izmene/brisanje verzije";
         }
 
         private void PopuniComboBox()

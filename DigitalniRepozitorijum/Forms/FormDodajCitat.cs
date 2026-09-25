@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,24 @@ namespace DigitalniRepozitorijum.Forms
         public FormDodajCitat()
         {
             InitializeComponent();
+            
             _citat = null;
             PopuniComboBox();
+
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
         public FormDodajCitat(Citat c)
         {
             InitializeComponent();
-            _citat= c;
+           
+            _citat = c;
             PopuniPolja();
-            //PopuniComboBox();
+          
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.Icon = Resources.Edit;
+            this.Text = "Izmena citata";
         }
         private void PopuniPolja()
         {

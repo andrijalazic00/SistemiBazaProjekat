@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,6 +29,12 @@ namespace DigitalniRepozitorijum.Forms
             dtpDatumPostavljanja.Value = _verzija.DatumPostavljanja;
             tbOdgovornaOsoba.Text=_verzija.OdgovornaOsoba;
             tbOpisIzmena.Text = _verzija.OpisIzmena;
+
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
 
         }
 

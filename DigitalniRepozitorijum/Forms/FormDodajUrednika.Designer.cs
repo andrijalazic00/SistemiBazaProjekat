@@ -36,24 +36,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 77);
+            this.label1.Location = new System.Drawing.Point(48, 35);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 13);
+            this.label1.Size = new System.Drawing.Size(129, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Upravljacka sekcija:";
             // 
             // tbUredjivackaSekcija
             // 
-            this.tbUredjivackaSekcija.Location = new System.Drawing.Point(201, 69);
+            this.tbUredjivackaSekcija.Location = new System.Drawing.Point(203, 32);
+            this.tbUredjivackaSekcija.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbUredjivackaSekcija.Name = "tbUredjivackaSekcija";
-            this.tbUredjivackaSekcija.Size = new System.Drawing.Size(146, 20);
+            this.tbUredjivackaSekcija.Size = new System.Drawing.Size(263, 22);
             this.tbUredjivackaSekcija.TabIndex = 1;
             // 
             // btnDodajUpravljackuSekciju
             // 
-            this.btnDodajUpravljackuSekciju.Location = new System.Drawing.Point(57, 127);
+            this.btnDodajUpravljackuSekciju.Location = new System.Drawing.Point(51, 74);
+            this.btnDodajUpravljackuSekciju.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajUpravljackuSekciju.Name = "btnDodajUpravljackuSekciju";
-            this.btnDodajUpravljackuSekciju.Size = new System.Drawing.Size(256, 89);
+            this.btnDodajUpravljackuSekciju.Size = new System.Drawing.Size(415, 35);
             this.btnDodajUpravljackuSekciju.TabIndex = 2;
             this.btnDodajUpravljackuSekciju.Text = "Dodaj upravljacku sekiciju i zatvori prozor";
             this.btnDodajUpravljackuSekciju.UseVisualStyleBackColor = true;
@@ -61,14 +64,17 @@
             // 
             // FormDodajUrednika
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(504, 137);
             this.Controls.Add(this.btnDodajUpravljackuSekciju);
             this.Controls.Add(this.tbUredjivackaSekcija);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormDodajUrednika";
-            this.Text = "FormDodajUrednika";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje urednika";
             this.ResumeLayout(false);
             this.PerformLayout();
 

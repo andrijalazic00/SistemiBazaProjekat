@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace DigitalniRepozitorijum
         {
             InitializeComponent();
             _autor = a;
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
         }
 
         private async void btnDodajORCID_Click(object sender, EventArgs e)

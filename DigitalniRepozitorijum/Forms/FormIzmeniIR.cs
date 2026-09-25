@@ -1,26 +1,24 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
-using System.Linq.Expressions;
 
 namespace DigitalniRepozitorijum.Forms
 {
     public partial class FormIzmeniIR : Form
     {
         private IstrazivackiRezultat _rezultat;
-
         private Dictionary<string, IstrazivackiRezultat> _rezultatDict;
-
         private ISession _session;
-
         private static readonly string[] _opcijeStatus = { "U_PRIPREMI", "POSLAT_NA_RECENZIJU", "U_REVIZIJI", "PRIHVACEN", "ODBIJEN", "OBJAVLJEN", "ARHIVIRAN" };
 
         public FormIzmeniIR()
@@ -29,6 +27,12 @@ namespace DigitalniRepozitorijum.Forms
             comboBStatus.Items.AddRange(_opcijeStatus);
             comboBStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             PopuniComboBox();
+
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void PopuniComboBox()
@@ -159,7 +163,7 @@ namespace DigitalniRepozitorijum.Forms
             }
             catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message.ToString());
             }
             
         }
@@ -170,7 +174,10 @@ namespace DigitalniRepozitorijum.Forms
                 Form f = new FormObrisiVerziju(_rezultat);
                 f.ShowDialog();
             }
-            catch(Exception ex) { }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
             
         }
 
@@ -206,25 +213,25 @@ namespace DigitalniRepozitorijum.Forms
                             break;
                         case SoftverskiArtifakt sa:
                             //_session.Close();
-                            f = new FormSoftverskiArtifakt(sa,_session);
+                            f = new FormDodajSoftverskiArtifakt(sa,_session);
                             f.ShowDialog();
                             this.Close();
                             break;
                         case Dataset ds:
                             _session.Close();
-                            f = new FormDataset(ds,true);
+                            f = new FormDodajDataset(ds,true);
                             f.ShowDialog();
                             this.Close();
                             break;
                         case KnjigaIliPoglavlja knjiga:
                             //_session.Close();
-                            f = new FormKnjigaIliPoglavlje(knjiga,_session);
+                            f = new FormDodajKnjiguIliPoglavlje(knjiga,_session);
                             f.ShowDialog();
                             this.Close();
                             break;
                         case NaucniRad nr:
                             _session.Close();
-                            f = new FormNaucniRad(nr,true);
+                            f = new FormDodajNaucniRad(nr,true);
                             f.ShowDialog();
                             this.Close();
                             break;

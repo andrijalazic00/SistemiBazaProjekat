@@ -34,8 +34,11 @@ namespace DigitalniRepozitorijum
             cBoxUloga.DropDownStyle = ComboBoxStyle.DropDownList;
             
             PopuniComboBox();
-            
-          
+
+            this.Icon = Properties.Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+
+
         }
 
         private void PopuniComboBox()
@@ -85,13 +88,14 @@ namespace DigitalniRepozitorijum
 
                 PoveziAngazovanje();
 
+                MessageBox.Show("Istrazivac dodat");
                 this.Close();
             }
             
         
             catch(Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
         private void PoveziAngazovanje()
@@ -101,7 +105,7 @@ namespace DigitalniRepozitorijum
             {
                 NaucnoIstrazivackaInstitucija nii = _institucije.First(i => i.Naziv == cBoxInstitucija.Text);
 
-                f = new FormAngazovanje(_istrazivac, nii);
+                f = new FormDodajAngazovanje(_istrazivac, nii);
                 f.ShowDialog();
             }
         }
@@ -131,7 +135,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex) 
             { 
-                Console.WriteLine(ex.ToString()); 
+                MessageBox.Show(ex.ToString()); 
             }
         }
 
@@ -160,7 +164,7 @@ namespace DigitalniRepozitorijum
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
 
         }
@@ -222,6 +226,5 @@ namespace DigitalniRepozitorijum
                 MessageBox.Show("Izaberite ulogu");
             }
         }
-
     }
 }

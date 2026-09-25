@@ -8,7 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class Urednik:Uloga
     {
-        //public virtual int ID_U { get; protected set; }
         public virtual string UredjivackaSekcija { get; set; }
         public virtual IList<RundaRecenzije> RundeRecenzije {  get; set; }
         public virtual IList<Uredjuje> Knjige {  get; set; }

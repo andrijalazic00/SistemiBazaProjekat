@@ -12,7 +12,6 @@ namespace DigitalniRepozitorijum.Entities
         public virtual Istrazivac ID_I { get; set; }
         public virtual string MailAdresa { get; set; }
 
-
         public Mail()
         {
         }

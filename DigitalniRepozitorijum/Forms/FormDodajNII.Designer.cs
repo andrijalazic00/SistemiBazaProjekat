@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDodajNII));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,88 +48,99 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 26);
+            this.label1.Location = new System.Drawing.Point(88, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Naziv";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(74, 77);
+            this.label2.Location = new System.Drawing.Point(78, 76);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(51, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Adresa";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 135);
+            this.label3.Location = new System.Drawing.Point(76, 118);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Telefon";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 199);
+            this.label4.Location = new System.Drawing.Point(97, 163);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.Size = new System.Drawing.Size(32, 16);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mail";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(60, 254);
+            this.label5.Location = new System.Drawing.Point(35, 209);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 13);
+            this.label5.Size = new System.Drawing.Size(94, 16);
             this.label5.TabIndex = 4;
             this.label5.Text = "Naucna oblast";
             // 
             // tbNaziv
             // 
-            this.tbNaziv.Location = new System.Drawing.Point(179, 23);
+            this.tbNaziv.Location = new System.Drawing.Point(166, 28);
+            this.tbNaziv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbNaziv.Name = "tbNaziv";
-            this.tbNaziv.Size = new System.Drawing.Size(102, 20);
+            this.tbNaziv.Size = new System.Drawing.Size(355, 22);
             this.tbNaziv.TabIndex = 5;
             // 
             // tbAdresa
             // 
-            this.tbAdresa.Location = new System.Drawing.Point(178, 74);
+            this.tbAdresa.Location = new System.Drawing.Point(166, 70);
+            this.tbAdresa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbAdresa.Name = "tbAdresa";
-            this.tbAdresa.Size = new System.Drawing.Size(103, 20);
+            this.tbAdresa.Size = new System.Drawing.Size(355, 22);
             this.tbAdresa.TabIndex = 6;
             // 
             // tbTelefon
             // 
-            this.tbTelefon.Location = new System.Drawing.Point(179, 132);
+            this.tbTelefon.Location = new System.Drawing.Point(166, 115);
+            this.tbTelefon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbTelefon.Name = "tbTelefon";
-            this.tbTelefon.Size = new System.Drawing.Size(105, 20);
+            this.tbTelefon.Size = new System.Drawing.Size(184, 22);
             this.tbTelefon.TabIndex = 7;
             // 
             // tbMail
             // 
-            this.tbMail.Location = new System.Drawing.Point(178, 192);
+            this.tbMail.Location = new System.Drawing.Point(166, 160);
+            this.tbMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbMail.Name = "tbMail";
-            this.tbMail.Size = new System.Drawing.Size(114, 20);
+            this.tbMail.Size = new System.Drawing.Size(184, 22);
             this.tbMail.TabIndex = 8;
             // 
             // tbNaucnaOblast
             // 
-            this.tbNaucnaOblast.Location = new System.Drawing.Point(178, 251);
+            this.tbNaucnaOblast.Location = new System.Drawing.Point(166, 206);
+            this.tbNaucnaOblast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbNaucnaOblast.Name = "tbNaucnaOblast";
-            this.tbNaucnaOblast.Size = new System.Drawing.Size(118, 20);
+            this.tbNaucnaOblast.Size = new System.Drawing.Size(184, 22);
             this.tbNaucnaOblast.TabIndex = 9;
             // 
             // btnDodajTelefon
             // 
-            this.btnDodajTelefon.Location = new System.Drawing.Point(335, 135);
+            this.btnDodajTelefon.Location = new System.Drawing.Point(374, 115);
+            this.btnDodajTelefon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajTelefon.Name = "btnDodajTelefon";
-            this.btnDodajTelefon.Size = new System.Drawing.Size(110, 23);
+            this.btnDodajTelefon.Size = new System.Drawing.Size(147, 28);
             this.btnDodajTelefon.TabIndex = 10;
             this.btnDodajTelefon.Text = "Dodaj telefon";
             this.btnDodajTelefon.UseVisualStyleBackColor = true;
@@ -136,9 +148,10 @@
             // 
             // btnDodajMail
             // 
-            this.btnDodajMail.Location = new System.Drawing.Point(335, 192);
+            this.btnDodajMail.Location = new System.Drawing.Point(374, 157);
+            this.btnDodajMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajMail.Name = "btnDodajMail";
-            this.btnDodajMail.Size = new System.Drawing.Size(91, 29);
+            this.btnDodajMail.Size = new System.Drawing.Size(147, 28);
             this.btnDodajMail.TabIndex = 11;
             this.btnDodajMail.Text = "Dodaj mail";
             this.btnDodajMail.UseVisualStyleBackColor = true;
@@ -146,9 +159,10 @@
             // 
             // btnDodajNaucnuOblast
             // 
-            this.btnDodajNaucnuOblast.Location = new System.Drawing.Point(335, 251);
+            this.btnDodajNaucnuOblast.Location = new System.Drawing.Point(374, 203);
+            this.btnDodajNaucnuOblast.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajNaucnuOblast.Name = "btnDodajNaucnuOblast";
-            this.btnDodajNaucnuOblast.Size = new System.Drawing.Size(127, 30);
+            this.btnDodajNaucnuOblast.Size = new System.Drawing.Size(147, 28);
             this.btnDodajNaucnuOblast.TabIndex = 12;
             this.btnDodajNaucnuOblast.Text = "Dodaj naucnu oblast";
             this.btnDodajNaucnuOblast.UseVisualStyleBackColor = true;
@@ -156,9 +170,10 @@
             // 
             // btnDodajNII
             // 
-            this.btnDodajNII.Location = new System.Drawing.Point(130, 334);
+            this.btnDodajNII.Location = new System.Drawing.Point(166, 276);
+            this.btnDodajNII.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajNII.Name = "btnDodajNII";
-            this.btnDodajNII.Size = new System.Drawing.Size(225, 33);
+            this.btnDodajNII.Size = new System.Drawing.Size(355, 34);
             this.btnDodajNII.TabIndex = 13;
             this.btnDodajNII.Text = "Dodaj naucno istrazivacku instituciju";
             this.btnDodajNII.UseVisualStyleBackColor = true;
@@ -166,9 +181,9 @@
             // 
             // FormDodajNII
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(585, 365);
             this.Controls.Add(this.btnDodajNII);
             this.Controls.Add(this.btnDodajNaucnuOblast);
             this.Controls.Add(this.btnDodajMail);
@@ -183,7 +198,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormDodajNII";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();

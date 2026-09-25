@@ -26,7 +26,7 @@ namespace DigitalniRepozitorijum.Forms
         public FormDodajIstrazivackiRezultat()
         {
             InitializeComponent();
-            _istrazivackiRezultat=new IstrazivackiRezultat();
+            _istrazivackiRezultat =new IstrazivackiRezultat();
             
             comboBStatus.Items.AddRange(_opcijeStatus);
             comboBTipIstrazivackogRezultata.Items.AddRange(_opcijeTip);
@@ -34,6 +34,9 @@ namespace DigitalniRepozitorijum.Forms
             comboBTipIstrazivackogRezultata.SelectedIndex = 0;
             comboBTipIstrazivackogRezultata.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBStatus.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.Icon = Properties.Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
 
         }
 
@@ -120,14 +123,14 @@ namespace DigitalniRepozitorijum.Forms
                         case "Softverski artifakt":
                             SoftverskiArtifakt sa=new SoftverskiArtifakt();
                             PreuzmiAtribute(sa, _istrazivackiRezultat);
-                            f= new FormSoftverskiArtifakt(sa);
+                            f= new FormDodajSoftverskiArtifakt(sa);
                             f.ShowDialog();
                             break;
 
                         case "Dataset":
                             Dataset set=new Dataset();
                             PreuzmiAtribute(set, _istrazivackiRezultat);
-                            f = new FormDataset(set);
+                            f = new FormDodajDataset(set);
                             f.ShowDialog();
                             break;
 
@@ -144,17 +147,18 @@ namespace DigitalniRepozitorijum.Forms
                         case "Knjiga ili poglavlje":
                             KnjigaIliPoglavlja k = new KnjigaIliPoglavlja();
                             PreuzmiAtribute(k, _istrazivackiRezultat);
-                            f = new FormKnjigaIliPoglavlje(k);
+                            f = new FormDodajKnjiguIliPoglavlje(k);
                             f.ShowDialog();
                             break;
 
                         case "Naucni rad":
                             NaucniRad n = new NaucniRad();
                             PreuzmiAtribute(n, _istrazivackiRezultat);
-                            f = new FormNaucniRad(n);
+                            f = new FormDodajNaucniRad(n);
                             f.ShowDialog();
                             break;
                     }
+                    
                     //Verzija v=new Verzija();
                     this.Close();
                     

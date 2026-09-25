@@ -1,4 +1,6 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -30,6 +31,12 @@ namespace DigitalniRepozitorijum.Forms
             _verzija = v;
             _rezultat = i;
             PopuniComboBox();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje fajla";
         }
 
         private void PopuniComboBox()
@@ -38,7 +45,6 @@ namespace DigitalniRepozitorijum.Forms
             {
                 _session = DataLayer.GetSession();
                 List<PripadajuciFajl> fajlovi = new List<PripadajuciFajl>();
-                //mailovi = _istrazivac.Mailovi;
                 fajlovi = _session.Query<PripadajuciFajl>().Where(i => i.ID_IR == _rezultat && i.BrojVerzije==_verzija.BrojVerzije).ToList();
                 if (fajlovi.Count == 0)
                 {
@@ -53,7 +59,7 @@ namespace DigitalniRepozitorijum.Forms
                 comboBoxFajl.ValueMember = "Value";
 
                 comboBoxFajl.DropDownStyle = ComboBoxStyle.DropDownList;
-                //comboBoxMail.Items.AddRange(mailovi);
+               
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }

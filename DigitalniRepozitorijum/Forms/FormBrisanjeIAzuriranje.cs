@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalniRepozitorijum.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,8 @@ namespace DigitalniRepozitorijum.Forms
         public FormBrisanjeIAzuriranje()
         {
             InitializeComponent();
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
         }
 
         private void btnIzmeniIstrazivaca_Click(object sender, EventArgs e)

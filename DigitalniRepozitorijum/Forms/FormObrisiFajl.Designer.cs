@@ -36,25 +36,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 28);
+            this.label1.Location = new System.Drawing.Point(36, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.Size = new System.Drawing.Size(97, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Fajl za brisanje";
             // 
             // comboBoxFajl
             // 
             this.comboBoxFajl.FormattingEnabled = true;
-            this.comboBoxFajl.Location = new System.Drawing.Point(109, 25);
+            this.comboBoxFajl.Location = new System.Drawing.Point(145, 31);
+            this.comboBoxFajl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxFajl.Name = "comboBoxFajl";
-            this.comboBoxFajl.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxFajl.Size = new System.Drawing.Size(306, 24);
             this.comboBoxFajl.TabIndex = 1;
             // 
             // btnObrisiFajl
             // 
-            this.btnObrisiFajl.Location = new System.Drawing.Point(27, 70);
+            this.btnObrisiFajl.Location = new System.Drawing.Point(117, 63);
+            this.btnObrisiFajl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnObrisiFajl.Name = "btnObrisiFajl";
-            this.btnObrisiFajl.Size = new System.Drawing.Size(190, 28);
+            this.btnObrisiFajl.Size = new System.Drawing.Size(269, 24);
             this.btnObrisiFajl.TabIndex = 2;
             this.btnObrisiFajl.Text = "Obrisi fajl";
             this.btnObrisiFajl.UseVisualStyleBackColor = true;
@@ -62,12 +65,15 @@
             // 
             // FormObrisiFajl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.ClientSize = new System.Drawing.Size(507, 107);
             this.Controls.Add(this.btnObrisiFajl);
             this.Controls.Add(this.comboBoxFajl);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormObrisiFajl";
             this.Text = "FormObrisiFajl";
             this.ResumeLayout(false);

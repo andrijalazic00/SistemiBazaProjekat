@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +26,12 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             _istrazivackiRezultat = istrazivackiRezultat;
-           
-            //_istrazivackiRezultat.PripadajuciFajlovi.Add(new PripadajuciFajl());
 
+            this.Icon = Resources.Plus;
+            this.BackColor = System.Drawing.Color.Azure;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private async void btnDodajFajl_Click(object sender, EventArgs e)
@@ -96,56 +100,6 @@ namespace DigitalniRepozitorijum.Forms
             {  
                 MessageBox.Show(ex.Message.ToString()); 
             }
-        }
-
-        private void tbNazivFajla_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbOdgovornaOsoba_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbOpisIzmena_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDatumPostavljanja_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nudBrojVerzije_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

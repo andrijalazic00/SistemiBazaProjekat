@@ -8,7 +8,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class Dataset:IstrazivackiRezultat
     {
-        //public virtual int ID_IR { get; protected set; }
         public virtual string Format { get; set; }
         public virtual int Velicina { get; set; }
         public virtual int BrojZapisa { get; set; }

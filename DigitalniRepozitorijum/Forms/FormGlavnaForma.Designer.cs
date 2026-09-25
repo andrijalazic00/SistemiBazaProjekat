@@ -35,9 +35,10 @@
             // 
             // btnUnos
             // 
-            this.btnUnos.Location = new System.Drawing.Point(43, 36);
+            this.btnUnos.Location = new System.Drawing.Point(57, 44);
+            this.btnUnos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUnos.Name = "btnUnos";
-            this.btnUnos.Size = new System.Drawing.Size(144, 32);
+            this.btnUnos.Size = new System.Drawing.Size(192, 39);
             this.btnUnos.TabIndex = 0;
             this.btnUnos.Text = "Unos";
             this.btnUnos.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnBrisanjeAzuriranje
             // 
-            this.btnBrisanjeAzuriranje.Location = new System.Drawing.Point(43, 94);
+            this.btnBrisanjeAzuriranje.Location = new System.Drawing.Point(57, 116);
+            this.btnBrisanjeAzuriranje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBrisanjeAzuriranje.Name = "btnBrisanjeAzuriranje";
-            this.btnBrisanjeAzuriranje.Size = new System.Drawing.Size(144, 32);
+            this.btnBrisanjeAzuriranje.Size = new System.Drawing.Size(192, 39);
             this.btnBrisanjeAzuriranje.TabIndex = 1;
             this.btnBrisanjeAzuriranje.Text = "Brisanje i azuriranje";
             this.btnBrisanjeAzuriranje.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // btnPrikaz
             // 
-            this.btnPrikaz.Location = new System.Drawing.Point(43, 159);
+            this.btnPrikaz.Location = new System.Drawing.Point(57, 196);
+            this.btnPrikaz.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrikaz.Name = "btnPrikaz";
-            this.btnPrikaz.Size = new System.Drawing.Size(144, 32);
+            this.btnPrikaz.Size = new System.Drawing.Size(192, 39);
             this.btnPrikaz.TabIndex = 2;
             this.btnPrikaz.Text = "Prikaz";
             this.btnPrikaz.UseVisualStyleBackColor = true;
@@ -65,14 +68,17 @@
             // 
             // FormGlavnaForma
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(247, 258);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(298, 283);
             this.Controls.Add(this.btnPrikaz);
             this.Controls.Add(this.btnBrisanjeAzuriranje);
             this.Controls.Add(this.btnUnos);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormGlavnaForma";
-            this.Text = "FormGlavnaForma";
+            this.Text = "Selektor akcije";
             this.ResumeLayout(false);
 
         }

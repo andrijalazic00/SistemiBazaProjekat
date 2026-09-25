@@ -36,25 +36,28 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 65);
+            this.label1.Location = new System.Drawing.Point(81, 32);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Uloga";
             // 
             // cBoxUloga
             // 
             this.cBoxUloga.FormattingEnabled = true;
-            this.cBoxUloga.Location = new System.Drawing.Point(116, 60);
+            this.cBoxUloga.Location = new System.Drawing.Point(151, 29);
+            this.cBoxUloga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cBoxUloga.Name = "cBoxUloga";
-            this.cBoxUloga.Size = new System.Drawing.Size(164, 21);
+            this.cBoxUloga.Size = new System.Drawing.Size(294, 24);
             this.cBoxUloga.TabIndex = 1;
             // 
             // btnDodajUlogu
             // 
-            this.btnDodajUlogu.Location = new System.Drawing.Point(50, 103);
+            this.btnDodajUlogu.Location = new System.Drawing.Point(83, 79);
+            this.btnDodajUlogu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDodajUlogu.Name = "btnDodajUlogu";
-            this.btnDodajUlogu.Size = new System.Drawing.Size(229, 33);
+            this.btnDodajUlogu.Size = new System.Drawing.Size(362, 27);
             this.btnDodajUlogu.TabIndex = 2;
             this.btnDodajUlogu.Text = "Dodaj ulogu";
             this.btnDodajUlogu.UseVisualStyleBackColor = true;
@@ -62,14 +65,17 @@
             // 
             // FormDodajUlogu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 208);
+            this.ClientSize = new System.Drawing.Size(527, 137);
             this.Controls.Add(this.btnDodajUlogu);
             this.Controls.Add(this.cBoxUloga);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormDodajUlogu";
-            this.Text = "FormDodajUlogu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodavanje uloge";
             this.ResumeLayout(false);
             this.PerformLayout();
 

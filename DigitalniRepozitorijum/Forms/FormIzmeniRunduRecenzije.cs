@@ -1,4 +1,5 @@
 ﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
 using NHibernate;
 using System;
 using System.Collections.Generic;
@@ -6,9 +7,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-//using System.ServiceModel.Channels;
-
-//using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,14 +24,17 @@ namespace DigitalniRepozitorijum.Forms
         {
             InitializeComponent();
             PopuniComboBox();
+            this.Icon = Resources.Edit;
+            this.BackColor = System.Drawing.Color.Honeydew;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
         private void PopuniComboBox()
         {
             try
             {
                 _session = DataLayer.GetSession();
-
-
                 _rundaList = _session.Query<RundaRecenzije>().ToList();
                 _rundaDict = _rundaList.ToDictionary(r=>"Broj runde: "+r.BrojRunde + " Publikacija: " + r.ID_P.ID_P + " Odluka: " + r.KonacnaOdluka);
 
@@ -62,7 +63,7 @@ namespace DigitalniRepozitorijum.Forms
         {
             try 
             {
-                //_session = DataLayer.GetSession();
+               
                 RundaRecenzije r=(RundaRecenzije)comboBRundaRecenzije.SelectedValue;
                 r.ID_P.RundeRecenzije.Remove(r);
                 r.ID_Urednika.RundeRecenzije.Remove(r);
@@ -85,7 +86,6 @@ namespace DigitalniRepozitorijum.Forms
                 gbIzmene.Visible = true;
                 comboBRundaRecenzije.Enabled = false;
 
-                //_session = DataLayer.GetSession();
                 RundaRecenzije runda = (RundaRecenzije)comboBRundaRecenzije.SelectedValue;
 
                 comboBKonacnaOdluka.Items.AddRange(_opcijeOdluka);
@@ -110,12 +110,6 @@ namespace DigitalniRepozitorijum.Forms
                 comboBAngazovanUrednik.SelectedItem = runda.ID_Urednika;
 
                 dtpDatumOdluke.Value = runda.DatumOdluke;
-                //nudBrojRunde.Value = runda.BrojRunde;
-
-                //session.Close();
-
-
-
             }
             catch(Exception ex)
             {
@@ -127,7 +121,6 @@ namespace DigitalniRepozitorijum.Forms
         {
             try 
             {
-                //ISession session = DataLayer.GetSession();
                 RundaRecenzije runda = (RundaRecenzije)comboBRundaRecenzije.SelectedValue;
                 runda.ID_Urednika.RundeRecenzije.Remove(runda);
                 runda.ID_Urednika = (Urednik)comboBAngazovanUrednik.SelectedValue;
@@ -135,7 +128,6 @@ namespace DigitalniRepozitorijum.Forms
 
                 runda.KonacnaOdluka = comboBKonacnaOdluka.Text;
                 runda.DatumOdluke = dtpDatumOdluke.Value;
-                //runda.BrojRunde = (int)nudBrojRunde.Value;
 
                 _session.SaveOrUpdate(runda);
                 _session.Flush();

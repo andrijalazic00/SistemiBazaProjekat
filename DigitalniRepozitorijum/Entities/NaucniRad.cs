@@ -9,7 +9,6 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class NaucniRad:IstrazivackiRezultat
     {
-        //public virtual int ID_IR { get; protected set; }
         public virtual string TipRada { get; set; }
         public virtual string NazivCasKon { get; set; }
         public virtual string Doi { get; set; }

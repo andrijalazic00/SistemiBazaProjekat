@@ -36,14 +36,14 @@
             this.btnDodajPublikaciju = new System.Windows.Forms.Button();
             this.btnDodajCitat = new System.Windows.Forms.Button();
             this.btnDodajRundu = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDodajNII
             // 
-            this.btnDodajNII.Location = new System.Drawing.Point(66, 47);
+            this.btnDodajNII.Location = new System.Drawing.Point(88, 49);
+            this.btnDodajNII.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajNII.Name = "btnDodajNII";
-            this.btnDodajNII.Size = new System.Drawing.Size(210, 25);
+            this.btnDodajNII.Size = new System.Drawing.Size(280, 31);
             this.btnDodajNII.TabIndex = 0;
             this.btnDodajNII.Text = "DodajNII";
             this.btnDodajNII.UseVisualStyleBackColor = true;
@@ -51,9 +51,10 @@
             // 
             // btnDodajIstrazivaca
             // 
-            this.btnDodajIstrazivaca.Location = new System.Drawing.Point(66, 103);
+            this.btnDodajIstrazivaca.Location = new System.Drawing.Point(88, 88);
+            this.btnDodajIstrazivaca.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajIstrazivaca.Name = "btnDodajIstrazivaca";
-            this.btnDodajIstrazivaca.Size = new System.Drawing.Size(209, 22);
+            this.btnDodajIstrazivaca.Size = new System.Drawing.Size(280, 31);
             this.btnDodajIstrazivaca.TabIndex = 1;
             this.btnDodajIstrazivaca.Text = "Dodaj istrazivaca";
             this.btnDodajIstrazivaca.UseVisualStyleBackColor = true;
@@ -61,9 +62,10 @@
             // 
             // btnDodajUlogu
             // 
-            this.btnDodajUlogu.Location = new System.Drawing.Point(66, 155);
+            this.btnDodajUlogu.Location = new System.Drawing.Point(88, 127);
+            this.btnDodajUlogu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajUlogu.Name = "btnDodajUlogu";
-            this.btnDodajUlogu.Size = new System.Drawing.Size(209, 22);
+            this.btnDodajUlogu.Size = new System.Drawing.Size(280, 31);
             this.btnDodajUlogu.TabIndex = 2;
             this.btnDodajUlogu.Text = "Dodaj ulogu";
             this.btnDodajUlogu.UseVisualStyleBackColor = true;
@@ -71,9 +73,10 @@
             // 
             // btnDodajIR
             // 
-            this.btnDodajIR.Location = new System.Drawing.Point(66, 197);
+            this.btnDodajIR.Location = new System.Drawing.Point(88, 166);
+            this.btnDodajIR.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajIR.Name = "btnDodajIR";
-            this.btnDodajIR.Size = new System.Drawing.Size(208, 24);
+            this.btnDodajIR.Size = new System.Drawing.Size(280, 31);
             this.btnDodajIR.TabIndex = 3;
             this.btnDodajIR.Text = "Dodaj istrazivacki rezultat";
             this.btnDodajIR.UseVisualStyleBackColor = true;
@@ -81,19 +84,21 @@
             // 
             // btnPoveziIstrazivacNII
             // 
-            this.btnPoveziIstrazivacNII.Location = new System.Drawing.Point(66, 242);
+            this.btnPoveziIstrazivacNII.Location = new System.Drawing.Point(88, 205);
+            this.btnPoveziIstrazivacNII.Margin = new System.Windows.Forms.Padding(4);
             this.btnPoveziIstrazivacNII.Name = "btnPoveziIstrazivacNII";
-            this.btnPoveziIstrazivacNII.Size = new System.Drawing.Size(207, 28);
+            this.btnPoveziIstrazivacNII.Size = new System.Drawing.Size(280, 31);
             this.btnPoveziIstrazivacNII.TabIndex = 4;
-            this.btnPoveziIstrazivacNII.Text = "Povezi NII i istrazivaca";
+            this.btnPoveziIstrazivacNII.Text = "Dodaj angazovanje istrazivaca";
             this.btnPoveziIstrazivacNII.UseVisualStyleBackColor = true;
             this.btnPoveziIstrazivacNII.Click += new System.EventHandler(this.btnPoveziIstrazivacNII_Click);
             // 
             // btnDodajPublikaciju
             // 
-            this.btnDodajPublikaciju.Location = new System.Drawing.Point(69, 290);
+            this.btnDodajPublikaciju.Location = new System.Drawing.Point(88, 244);
+            this.btnDodajPublikaciju.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajPublikaciju.Name = "btnDodajPublikaciju";
-            this.btnDodajPublikaciju.Size = new System.Drawing.Size(203, 29);
+            this.btnDodajPublikaciju.Size = new System.Drawing.Size(280, 31);
             this.btnDodajPublikaciju.TabIndex = 5;
             this.btnDodajPublikaciju.Text = "Dodaj Publikaciju";
             this.btnDodajPublikaciju.UseVisualStyleBackColor = true;
@@ -101,9 +106,10 @@
             // 
             // btnDodajCitat
             // 
-            this.btnDodajCitat.Location = new System.Drawing.Point(66, 344);
+            this.btnDodajCitat.Location = new System.Drawing.Point(88, 283);
+            this.btnDodajCitat.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajCitat.Name = "btnDodajCitat";
-            this.btnDodajCitat.Size = new System.Drawing.Size(205, 26);
+            this.btnDodajCitat.Size = new System.Drawing.Size(280, 31);
             this.btnDodajCitat.TabIndex = 6;
             this.btnDodajCitat.Text = "Dodaj citat";
             this.btnDodajCitat.UseVisualStyleBackColor = true;
@@ -111,30 +117,20 @@
             // 
             // btnDodajRundu
             // 
-            this.btnDodajRundu.Location = new System.Drawing.Point(69, 392);
+            this.btnDodajRundu.Location = new System.Drawing.Point(88, 322);
+            this.btnDodajRundu.Margin = new System.Windows.Forms.Padding(4);
             this.btnDodajRundu.Name = "btnDodajRundu";
-            this.btnDodajRundu.Size = new System.Drawing.Size(202, 26);
+            this.btnDodajRundu.Size = new System.Drawing.Size(280, 31);
             this.btnDodajRundu.TabIndex = 7;
             this.btnDodajRundu.Text = "Dodaj rundu recenzije";
             this.btnDodajRundu.UseVisualStyleBackColor = true;
             this.btnDodajRundu.Click += new System.EventHandler(this.btnDodajRundu_Click);
             // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(496, 115);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(96, 82);
-            this.btnTest.TabIndex = 8;
-            this.btnTest.Text = "Test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
             // FormUnos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnTest);
+            this.ClientSize = new System.Drawing.Size(435, 393);
             this.Controls.Add(this.btnDodajRundu);
             this.Controls.Add(this.btnDodajCitat);
             this.Controls.Add(this.btnDodajPublikaciju);
@@ -143,6 +139,8 @@
             this.Controls.Add(this.btnDodajUlogu);
             this.Controls.Add(this.btnDodajIstrazivaca);
             this.Controls.Add(this.btnDodajNII);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormUnos";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -159,7 +157,6 @@
         private System.Windows.Forms.Button btnDodajPublikaciju;
         private System.Windows.Forms.Button btnDodajCitat;
         private System.Windows.Forms.Button btnDodajRundu;
-        private System.Windows.Forms.Button btnTest;
     }
 }
 

@@ -36,17 +36,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 33);
+            this.label1.Location = new System.Drawing.Point(36, 41);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(100, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mail za brisanje";
             // 
             // btnObrisiMail
             // 
-            this.btnObrisiMail.Location = new System.Drawing.Point(111, 74);
+            this.btnObrisiMail.Location = new System.Drawing.Point(110, 69);
+            this.btnObrisiMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnObrisiMail.Name = "btnObrisiMail";
-            this.btnObrisiMail.Size = new System.Drawing.Size(152, 30);
+            this.btnObrisiMail.Size = new System.Drawing.Size(240, 23);
             this.btnObrisiMail.TabIndex = 1;
             this.btnObrisiMail.Text = "Obrisi";
             this.btnObrisiMail.UseVisualStyleBackColor = true;
@@ -55,19 +57,22 @@
             // comboBoxMail
             // 
             this.comboBoxMail.FormattingEnabled = true;
-            this.comboBoxMail.Location = new System.Drawing.Point(112, 30);
+            this.comboBoxMail.Location = new System.Drawing.Point(149, 37);
+            this.comboBoxMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxMail.Name = "comboBoxMail";
-            this.comboBoxMail.Size = new System.Drawing.Size(150, 21);
+            this.comboBoxMail.Size = new System.Drawing.Size(288, 24);
             this.comboBoxMail.TabIndex = 2;
             // 
             // FormObrisiMail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 154);
+            this.ClientSize = new System.Drawing.Size(488, 117);
             this.Controls.Add(this.comboBoxMail);
             this.Controls.Add(this.btnObrisiMail);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormObrisiMail";
             this.Text = "FormObrisiMail";
             this.ResumeLayout(false);

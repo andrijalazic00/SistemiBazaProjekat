@@ -276,6 +276,12 @@
     <Compile Include="Forms\FormPrikaz.Designer.cs">
       <DependentUpon>FormPrikaz.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormPrikaziIR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormPrikaziIR.Designer.cs">
+      <DependentUpon>FormPrikaziIR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormPrikaziPublikacije.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,17 +294,17 @@
     <Compile Include="Forms\FormUnos.Designer.cs">
       <DependentUpon>FormUnos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAngazovanje.cs">
+    <Compile Include="Forms\FormDodajAngazovanje.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAngazovanje.Designer.cs">
-      <DependentUpon>FormAngazovanje.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajAngazovanje.Designer.cs">
+      <DependentUpon>FormDodajAngazovanje.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDataset.cs">
+    <Compile Include="Forms\FormDodajDataset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormDataset.Designer.cs">
-      <DependentUpon>FormDataset.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajDataset.Designer.cs">
+      <DependentUpon>FormDodajDataset.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormDodajAutora.cs">
       <SubType>Form</SubType>
@@ -348,23 +354,23 @@
     <Compile Include="Forms\FormGlavnaForma.Designer.cs">
       <DependentUpon>FormGlavnaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormKnjigaIliPoglavlje.cs">
+    <Compile Include="Forms\FormDodajKnjiguIliPoglavlje.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormKnjigaIliPoglavlje.Designer.cs">
-      <DependentUpon>FormKnjigaIliPoglavlje.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajKnjiguIliPoglavlje.Designer.cs">
+      <DependentUpon>FormDodajKnjiguIliPoglavlje.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormNaucniRad.cs">
+    <Compile Include="Forms\FormDodajNaucniRad.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormNaucniRad.Designer.cs">
-      <DependentUpon>FormNaucniRad.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajNaucniRad.Designer.cs">
+      <DependentUpon>FormDodajNaucniRad.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSoftverskiArtifakt.cs">
+    <Compile Include="Forms\FormDodajSoftverskiArtifakt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSoftverskiArtifakt.Designer.cs">
-      <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
+    <Compile Include="Forms\FormDodajSoftverskiArtifakt.Designer.cs">
+      <DependentUpon>FormDodajSoftverskiArtifakt.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormDodajVerziju.cs">
       <SubType>Form</SubType>
@@ -474,17 +480,20 @@
     <EmbeddedResource Include="Forms\FormPrikaz.resx">
       <DependentUpon>FormPrikaz.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPrikaziIR.resx">
+      <DependentUpon>FormPrikaziIR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormPrikaziPublikacije.resx">
       <DependentUpon>FormPrikaziPublikacije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUnos.resx">
       <DependentUpon>FormUnos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAngazovanje.resx">
-      <DependentUpon>FormAngazovanje.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajAngazovanje.resx">
+      <DependentUpon>FormDodajAngazovanje.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDataset.resx">
-      <DependentUpon>FormDataset.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajDataset.resx">
+      <DependentUpon>FormDodajDataset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajAdministratora.resx">
       <DependentUpon>FormDodajAdministratora.cs</DependentUpon>
@@ -507,14 +516,14 @@
     <EmbeddedResource Include="Forms\FormDodajUrednika.resx">
       <DependentUpon>FormDodajUrednika.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormKnjigaIliPoglavlje.resx">
-      <DependentUpon>FormKnjigaIliPoglavlje.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajKnjiguIliPoglavlje.resx">
+      <DependentUpon>FormDodajKnjiguIliPoglavlje.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormNaucniRad.resx">
-      <DependentUpon>FormNaucniRad.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajNaucniRad.resx">
+      <DependentUpon>FormDodajNaucniRad.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSoftverskiArtifakt.resx">
-      <DependentUpon>FormSoftverskiArtifakt.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDodajSoftverskiArtifakt.resx">
+      <DependentUpon>FormDodajSoftverskiArtifakt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDodajVerziju.resx">
       <DependentUpon>FormDodajVerziju.cs</DependentUpon>
@@ -527,6 +536,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>

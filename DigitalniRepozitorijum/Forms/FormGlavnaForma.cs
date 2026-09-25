@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalniRepozitorijum.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -15,6 +17,24 @@ namespace DigitalniRepozitorijum.Forms
         public FormGlavnaForma()
         {
             InitializeComponent();
+            PoveziMapiranja();
+            this.Icon = Resources.Home;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition=FormStartPosition.CenterScreen;
+        }
+
+        private void PoveziMapiranja()
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+                s.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Neuspesno povezivanje mapiranja\n" + ex.Message.ToString() + ex.InnerException.ToString());
+            }
         }
 
         private void btnUnos_Click(object sender, EventArgs e)

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DigitalniRepozitorijum.Entities;
+using DigitalniRepozitorijum.Properties;
+using NHibernate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DigitalniRepozitorijum.Entities;
-using NHibernate;
 
 namespace DigitalniRepozitorijum.Forms
 {
@@ -31,6 +32,12 @@ namespace DigitalniRepozitorijum.Forms
             _istrazivac = i;
             _institucija = null;
             PopuniComboBox();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje telefona istrazivaca";
         }
 
         public FormObrisiTelefon(NaucnoIstrazivackaInstitucija i)
@@ -40,6 +47,12 @@ namespace DigitalniRepozitorijum.Forms
             _istrazivac = null;
             _institucija = i;
             PopuniComboBox2();
+            this.Icon = Resources.Delete;
+            this.BackColor = System.Drawing.Color.MistyRose;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Brisanje telefona naucno istrazivacke institucije";
         }
         private void PopuniComboBox()
         {
@@ -74,7 +87,6 @@ namespace DigitalniRepozitorijum.Forms
             {
                 _session = DataLayer.GetSession();
                 List<TelefonInstitucija> telefoniInstitucija = new List<TelefonInstitucija>();
-                //mailovi = _istrazivac.Mailovi;
                 telefoniInstitucija = _session.Query<TelefonInstitucija>().Where(i => i.ID_NII == _institucija).ToList();
                 if (telefoniInstitucija.Count == 0)
                 {
@@ -89,7 +101,6 @@ namespace DigitalniRepozitorijum.Forms
                 comboBoxTelefon.ValueMember = "Value";
 
                 comboBoxTelefon.DropDownStyle = ComboBoxStyle.DropDownList;
-                //comboBoxMail.Items.AddRange(mailovi);
             }
             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
 

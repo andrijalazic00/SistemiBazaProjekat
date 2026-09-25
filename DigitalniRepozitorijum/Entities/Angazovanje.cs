@@ -8,7 +8,7 @@ namespace DigitalniRepozitorijum.Entities
 {
     public class Angazovanje
     {
-        //public virtual AngazovanjeId Id { get; set; }
+        
         public virtual Istrazivac ID_I { get;  set; }
         public virtual NaucnoIstrazivackaInstitucija ID_NII { get;  set; }
         public virtual DateTime DatumAngazovanja { get; set; }
@@ -19,7 +19,7 @@ namespace DigitalniRepozitorijum.Entities
 
         public Angazovanje()
         {
-            //Id= new AngazovanjeId();
+            
         }
 
         public override bool Equals(object obj)

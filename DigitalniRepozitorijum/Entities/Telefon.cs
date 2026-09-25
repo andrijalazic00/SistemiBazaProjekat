@@ -14,7 +14,6 @@ namespace DigitalniRepozitorijum.Entities
 
         public Telefon()
         {
-
         }
 
         public override bool Equals(object obj)
