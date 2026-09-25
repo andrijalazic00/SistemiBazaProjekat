@@ -40,6 +40,41 @@ namespace WebApp2.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("DodajIstrazivaca")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddIstrazivac(IstrazivacView istrazivacView)
+            {
+                try
+                {
+                    DataProvider.DodajIstrazivaca(istrazivacView);
+                    return Ok($"Dodat je istrazivac {istrazivacView.Ime} {istrazivacView.Prezime}");
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
+        [HttpPut]
+        [Route("AzurirajIstrazivaca")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateIstrazivac(IstrazivacView istrazivacView)
+            {
+                try
+                {
+                    DataProvider.AzurirajIstrazivaca(istrazivacView);
+                    return Ok($"Azuriran je istrazivac {istrazivacView.Ime} {istrazivacView.Prezime}");
+                }
+                catch(Exception ex)
+                {
+                    return BadRequest(ex.ToString());
+                }
+            }
+
+
 
         [HttpPost]
         [Route("DodajMailIstrazivacu/{ID_I}/{mail}")]
@@ -116,7 +151,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajMailIstrazivacu(ID_I, oldmail,newmail);
+                DataProvider.AzurirajMailIstrazivacu(ID_I, oldmail,newmail);
                 return Ok();
             }
             catch(Exception ex)
@@ -166,7 +201,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajTelefonIstrazivacu(ID_I, oldphone,newphone);
+                DataProvider.AzurirajTelefonIstrazivacu(ID_I, oldphone,newphone);
                 return Ok();
             }
             catch(Exception ex)

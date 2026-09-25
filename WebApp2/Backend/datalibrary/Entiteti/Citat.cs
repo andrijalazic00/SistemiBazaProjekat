@@ -20,12 +20,15 @@ namespace datalibrary.Entiteti
         {
         }
 
-        public Citat(Publikacija p1, Publikacija p2)
+        public Citat(Publikacija p1, Publikacija p2,string tipCitata, string mestoCitiranja, string kontekstCitiranja)
         {
             ID_P1= p1;
             ID_P2= p2;
             CitirajucaPublikacija = p1.ID_P.ToString();
             CitiranaPublikacija =p2.ID_P.ToString();
+            TipCitata = tipCitata;
+            MestoCitiranja = mestoCitiranja;
+            KontekstCitiranja = kontekstCitiranja;
         }
         public override bool Equals(object obj)
         {

@@ -51,7 +51,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajNaucnoIstrazivackuInstituciju(n);
+                DataProvider.AzurirajNaucnoIstrazivackuInstituciju(n);
                 return Ok();
             }
             catch(Exception ex)
@@ -152,7 +152,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajMailInstituciji(ID_NII, oldmail,newmail);
+                DataProvider.AzurirajMailInstituciji(ID_NII, oldmail,newmail);
                 return Ok();
             }
             catch(Exception ex)
@@ -202,7 +202,7 @@ namespace WebApp2.Controllers
         {
             try
             {
-                DataProvider.AnzurirajTelefonInstituciji(ID_NII, oldphone,newphone);
+                DataProvider.AzurirajTelefonInstituciji(ID_NII, oldphone,newphone);
                 return Ok();
             }
             catch(Exception ex)
@@ -210,6 +210,24 @@ namespace WebApp2.Controllers
                 return BadRequest(ex.ToString());
             }
         }
+
+        [HttpPost]
+        [Route("DodajNaucnuOblastNaucnojInstituciji/{ID_NII}/{oblast}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult AddNaucnuOblast(int ID_NII, string oblast)
+        {
+            try
+            {
+                DataProvider.DodajNaucnuOblast(ID_NII, oblast);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
     }
 
 }

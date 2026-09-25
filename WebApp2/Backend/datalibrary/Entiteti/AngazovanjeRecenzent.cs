@@ -11,6 +11,7 @@ namespace datalibrary.Entiteti
         {
             public virtual Publikacija ID_P { get;  set; }
             public virtual Recenzent ID_Recenzenta { get;  set; }
+            public virtual RundaRecenzije ID_RR {get; set;}
             public virtual int BrojRunde { get;  set; }
             public virtual string Preporuka { get; set; }
             

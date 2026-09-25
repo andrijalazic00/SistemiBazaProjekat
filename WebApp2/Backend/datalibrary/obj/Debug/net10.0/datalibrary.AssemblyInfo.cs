@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("datalibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a133cfeca8e25bc9fd44c228cbce21f27eb41bd8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5c16cc46995f6c66fb7e6cb130ffbe99c1ce7490")]
 [assembly: System.Reflection.AssemblyProductAttribute("datalibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("datalibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

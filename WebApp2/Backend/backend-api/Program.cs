@@ -13,6 +13,7 @@ builder.Services.AddCors( option =>
     builder.Services.AddMvc().AddJsonOptions( p =>
     {
         p.JsonSerializerOptions.WriteIndented = true;
+        p.JsonSerializerOptions.PropertyNamingPolicy = null;
     });
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

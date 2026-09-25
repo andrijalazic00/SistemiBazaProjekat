@@ -1,0 +1,8 @@
+Odradjeno:
+> Dodate su i odradjene sve funkcije za Istrazivacke Radove
+> Dodate su Funkcije za Istrazivace i njihove uloge
+> Dodate su Funkcije za Naucno Istrazivacke Institucije
+
+Treba:
+> Doraditi Relacije izmedju Istrazivackih Rezultata i Uloga Istrazivaka kao sto je publikacija i Runda Recenzija (Trebalo bi da je sredjeno)
+> Dodati Funkcije izmene Informacija o Ulogama istrazivaca (Mozda i nema potrebe posto je malo informacija)

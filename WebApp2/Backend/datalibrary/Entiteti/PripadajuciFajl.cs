@@ -12,8 +12,18 @@ namespace datalibrary.Entiteti
         public virtual int BrojVerzije { get; protected set; }
         public virtual string NazivFajla { get; protected set; }
 
+        public virtual Verzija Verzija { get; set; }
+
         public PripadajuciFajl()
         {
+        }
+
+        public PripadajuciFajl(IstrazivackiRezultat ID, int BrVerzije, string Naziv, Verzija verzija)
+        {
+            ID_IR = ID;
+            BrojVerzije = BrVerzije;
+            NazivFajla = Naziv;
+            Verzija = verzija;
         }
 
         public override bool Equals(object obj)
