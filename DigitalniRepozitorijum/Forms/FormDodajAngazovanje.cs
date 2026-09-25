@@ -158,6 +158,7 @@ namespace DigitalniRepozitorijum.Forms
                     else
                     {
                         MessageBox.Show("Datum angazovanje kasniji od datuma zavrsetka");
+                        return;
                     }
                     if(!_fromIstrazivac)
                     {

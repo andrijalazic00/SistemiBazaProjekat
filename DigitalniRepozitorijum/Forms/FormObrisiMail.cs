@@ -66,6 +66,7 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Ne postoji ni jedan mail izabranog istrazivaca");
                     _session.Close();
                     this.Close();
+                    return;
                 }
                 _mailDict = mailovi.ToDictionary(i=>i.MailAdresa);
 
@@ -75,7 +76,10 @@ namespace DigitalniRepozitorijum.Forms
 
                 comboBoxMail.DropDownStyle= ComboBoxStyle.DropDownList;
             }
-            catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            catch(Exception ex) 
+            { 
+                MessageBox.Show(ex.Message.ToString()); 
+            }
             
         }
 
@@ -92,6 +96,7 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Ne postoji ni jedan mail izabrane institucije");
                     _session.Close();
                     this.Close();
+                    return;
                 }
                 _mailInstitucijaDict = mailovi.ToDictionary(i => i.MailAdresa);
 
@@ -101,7 +106,10 @@ namespace DigitalniRepozitorijum.Forms
 
                 comboBoxMail.DropDownStyle = ComboBoxStyle.DropDownList;
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message.ToString()); 
+            }
 
         }
 

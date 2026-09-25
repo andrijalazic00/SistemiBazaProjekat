@@ -143,20 +143,44 @@ namespace DigitalniRepozitorijum.Forms
 
         private void btnObrisiMail_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiMail(_institucija);
-            form.ShowDialog();
+            try 
+            {
+                Form form = new FormObrisiMail(_institucija);
+                form.ShowDialog();
+            }
+            catch(Exception ex) 
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            
         }
 
         private void btnObrisiTelefon_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiTelefon(_institucija);
-            form.ShowDialog();
+            try
+            {
+                Form form = new FormObrisiTelefon(_institucija);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            
         }
 
         private void btnObrisiNaucnuOblast_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiNaucnuOblast(_institucija);
-            form.ShowDialog();
+            try
+            {
+                Form form = new FormObrisiNaucnuOblast(_institucija);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
@@ -170,6 +194,7 @@ namespace DigitalniRepozitorijum.Forms
                     _session.Delete(_institucija);
                     _session.Flush();
                     _session.Close();
+                    MessageBox.Show("Naucno istrazivacka institucija obrisana");
                     this.Close();
                 }
                 else

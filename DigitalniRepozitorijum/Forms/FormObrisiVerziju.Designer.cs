@@ -68,6 +68,7 @@
             // 
             // btnIzmeniVerziju
             // 
+            this.btnIzmeniVerziju.BackColor = System.Drawing.SystemColors.Control;
             this.btnIzmeniVerziju.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIzmeniVerziju.Location = new System.Drawing.Point(60, 75);
             this.btnIzmeniVerziju.Margin = new System.Windows.Forms.Padding(4);

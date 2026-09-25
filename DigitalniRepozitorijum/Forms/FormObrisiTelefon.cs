@@ -67,6 +67,7 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Ne postoji ni jedan telefon izabranog istrazivaca");
                     _session.Close();
                     this.Close();
+                    return;
                 }
                 _telefonDict = telefoni.ToDictionary(i => i.Broj);
 
@@ -93,6 +94,7 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Ne postoji ni jedan telefon izabrane institucije");
                     _session.Close();
                     this.Close();
+                    return;
                 }
                 _telefonInstitucijaDict = telefoniInstitucija.ToDictionary(i => i.Broj);
 

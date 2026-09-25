@@ -51,6 +51,7 @@ namespace DigitalniRepozitorijum.Forms
                     MessageBox.Show("Ne postoji ni jedan fajl izabranog istrazivackog rezultata");
                     _session.Close();
                     this.Close();
+                    return;
                 }
                 _fajlDict = fajlovi.ToDictionary(i => i.NazivFajla);
 

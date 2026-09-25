@@ -72,6 +72,7 @@ namespace DigitalniRepozitorijum.Forms
                     _session.Delete(_rezultat);
                     _session.Flush();
                     _session.Close();
+                    MessageBox.Show("Istrazivacki rezultat obrisan");
                     this.Close();
                     //a.ID_NII = comboBInstitucija.Text;
                 }

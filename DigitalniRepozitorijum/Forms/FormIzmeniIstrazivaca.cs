@@ -70,7 +70,9 @@ namespace DigitalniRepozitorijum.Forms
                     _session.Delete(_istrazivac);
                     _session.Flush();
                     _session.Close();
+                    MessageBox.Show("Istrazivac obrisan");
                     this.Close();
+                    
                     //a.ID_NII = comboBInstitucija.Text;
                 }
                 else
@@ -237,8 +239,6 @@ namespace DigitalniRepozitorijum.Forms
         {
             try
             {
-                
-
                 _istrazivac.DatumRodjenja = dtpDatumRodjenja.Value;
                 _istrazivac.Ime = tbIme.Text;
                 _istrazivac.Prezime = tbPrezime.Text;
@@ -247,18 +247,10 @@ namespace DigitalniRepozitorijum.Forms
                 _istrazivac.NaucnoZvanje = tbNaucnoZvanje.Text;
                 _istrazivac.StatusNaucnika = cbAktivan.Checked ? "AKTIVAN" : "NEAKTIVAN";
 
-
-
-
                 _session.SaveOrUpdate(_istrazivac);
-
-
                 _session.Flush();
                 _session.Close();
                 MessageBox.Show("Promene sacuvane");
-
-               
-
                 this.Close();
             }
 
@@ -271,20 +263,44 @@ namespace DigitalniRepozitorijum.Forms
 
         private void btnObrisiMail_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiMail(_istrazivac);
-            form.ShowDialog();
+            try
+            {
+                Form form = new FormObrisiMail(_istrazivac);
+                form.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+           
         }
 
         private void btnObrisiTelefon_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiTelefon(_istrazivac);
-            form.ShowDialog();
+            try
+            {
+                Form form = new FormObrisiTelefon(_istrazivac);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+           
         }
 
         private void btnObrisiUlogu_Click(object sender, EventArgs e)
         {
-            Form form = new FormObrisiUlogu(_istrazivac);
-            form.ShowDialog();
+            try
+            {
+                Form form = new FormObrisiUlogu(_istrazivac);
+                form.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
+            
         }
     }
 }

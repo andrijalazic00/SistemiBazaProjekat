@@ -368,15 +368,12 @@ CREATE TABLE autorstvo(
 CREATE TABLE runda_recenzije(
     ID_P NUMBER(10) NOT NULL,
     ID_UREDNIKA NUMBER(10)  NOT NULL,--UNIQUE obisan
-    --ID_RECENZENTA NUMBER(10) NOT NULL,
     BROJ_RUNDE NUMBER(10) NOT NULL,
     DATUM_ODLUKE DATE NOT NULL,
     KONACNA_ODLUKA VARCHAR2(20) DEFAULT 'POTREBNA_REVIZIJA' NOT NULL,
 
     CONSTRAINT PK_RR PRIMARY KEY (ID_P,BROJ_RUNDE),
-    --Angazovanje urednika i runde recenzije (1:N)
     CONSTRAINT FK_RR_ID_UREDNIKA FOREIGN KEY (ID_UREDNIKA) REFERENCES urednik(ID_U) ON DELETE CASCADE,
-    --CONSTRAINT FK_RR_ID_RECENZENTA FOREIGN KEY (ID_RECENZENTA) REFERENCES recenzent(ID_U) ON DELETE CASCADE,
     CONSTRAINT FK_RR_ID_P FOREIGN KEY (ID_P) REFERENCES publikacija(ID_P) ON DELETE CASCADE,
     CONSTRAINT CHK_KONACNA_ODLUKA CHECK (KONACNA_ODLUKA IN ('POTREBNA_REVIZIJA','PRIHVACENA','ODBIJENA'))
 );
@@ -485,10 +482,6 @@ BEGIN
     INSERT INTO kljucne_reci (ID_IR,KLJUCNA_REC)
     VALUES (new_ID_IR, 'Ekologija');
 
-    /*INSERT INTO publikacija (ID_P, ID_IR)
-    VALUES (SEQ_PUBLIKACIJA.NEXTVAL, new_ID_IR)
-    RETURNING ID_P INTO new_ID_P;*/
-
     INSERT INTO uloga(ID_U, ID_I)
     VALUES(SEQ_ULOGA.NEXTVAL, new_ID_I) 
     RETURNING ID_U INTO new_ID_U;
@@ -496,8 +489,6 @@ BEGIN
     INSERT INTO autor(ID_U, ORCID)
     VALUES(new_ID_U, '1234-0002-1825-009X');
 
-    --INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA,TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
-    --VALUES(new_ID_U,new_ID_P, 1,'Istrazivao uticaj emisija stetnih gasova iz automobila na efekat staklene baste', '23-50 strana');
     -----------------------------------------------------------------------------------------------------------------------------------------------------
     Insert into istrazivacki_rezultat(ID_IR, NASLOV,APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
     values (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Negativni efekti duvanskig dima','Treci istrazivacki rezultat u bazi',TO_DATE('2016-02-01', 'YYYY-MM-DD'),TO_DATE('2021-07-14', 'YYYY-MM-DD'),'ARHIVIRAN','0')
@@ -571,6 +562,304 @@ BEGIN
 
     COMMIT;
 END;
+
+-------------------------------------------------------------------------------------------
+-- Jos test podataka
+-------------------------------------------------------------------------------------------
+
+DECLARE
+    new_ID_IR   istrazivacki_rezultat.ID_IR%TYPE;
+    new_ID_P    publikacija.ID_P%TYPE;
+    new_ID_U    uloga.ID_U%TYPE;
+    new_ID_I    istrazivac.ID_I%TYPE;
+    new_ID_NII  ni_institucija.ID_NII%TYPE;
+    new_ID_O    ocena_recenzenta.ID_O%TYPE;
+
+    -- istrazivaci
+    id_i_marija   istrazivac.ID_I%TYPE;
+    id_i_nikola   istrazivac.ID_I%TYPE;
+    id_i_ana      istrazivac.ID_I%TYPE;
+    id_i_stefan   istrazivac.ID_I%TYPE;
+    id_i_jovan    istrazivac.ID_I%TYPE;
+    id_i_milica   istrazivac.ID_I%TYPE;
+
+    -- uloge
+    id_u_autor_marija   uloga.ID_U%TYPE;
+    id_u_autor_nikola   uloga.ID_U%TYPE;
+    id_u_urednik_nikola uloga.ID_U%TYPE;
+    id_u_recenzent_ana  uloga.ID_U%TYPE;
+    id_u_recenzent_stefan uloga.ID_U%TYPE;
+    id_u_rukovodilac_jovan uloga.ID_U%TYPE;
+    id_u_admin_milica   uloga.ID_U%TYPE;
+
+    -- istrazivacki rezultati (podklase)
+    ir_dataset   istrazivacki_rezultat.ID_IR%TYPE;
+    ir_softver   istrazivacki_rezultat.ID_IR%TYPE;
+    ir_tehizv    istrazivacki_rezultat.ID_IR%TYPE;
+    ir_naucnirad istrazivacki_rezultat.ID_IR%TYPE;
+    ir_knjiga    istrazivacki_rezultat.ID_IR%TYPE;
+    ir_ostalo    istrazivacki_rezultat.ID_IR%TYPE;
+
+    -- publikacije
+    p_dataset  publikacija.ID_P%TYPE;
+    p_softver  publikacija.ID_P%TYPE;
+    p_tehizv   publikacija.ID_P%TYPE;
+
+    -- institucije
+    nii_pmf    ni_institucija.ID_NII%TYPE;
+    nii_irn    ni_institucija.ID_NII%TYPE;
+
+BEGIN
+    -----------------------------------------------------------------------------------
+    -- 1) ISTRAZIVACI 
+    -----------------------------------------------------------------------------------
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Marija', TO_DATE('1990-05-14','YYYY-MM-DD'), 'Srbija', 'Jovanovic', 'Ekologija', 'Doktor bioloskih nauka', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_marija;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_marija, 'marija.jovanovic@pmf.rs');
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_marija, 'mjovanovic@gmail.com');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_marija, '+381641112233');
+
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Nikola', TO_DATE('1985-11-02','YYYY-MM-DD'), 'Srbija', 'Simic', 'Racunarske nauke', 'Docent', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_nikola;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_nikola, 'nikola.simic@irn.rs');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_nikola, '+381621234567');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_nikola, '+38162555111');
+
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Ana', TO_DATE('1978-03-21','YYYY-MM-DD'), 'Srbija', 'Petrovic', 'Klimatologija', 'Redovni profesor', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_ana;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_ana, 'ana.petrovic@pmf.rs');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_ana, '+381601112233');
+
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Stefan', TO_DATE('1982-07-09','YYYY-MM-DD'), 'Srbija', 'Ilic', 'Racunarske nauke', 'Vanredni profesor', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_stefan;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_stefan, 'stefan.ilic@irn.rs');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_stefan, '+381691112233');
+
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Jovan', TO_DATE('1975-01-30','YYYY-MM-DD'), 'Srbija', 'Kovac', 'Biologija', 'Redovni profesor', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_jovan;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_jovan, 'jovan.kovac@pmf.rs');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_jovan, '+381631112233');
+
+    INSERT INTO istrazivac(ID_I, IME, DATUM_RODJENJA, DRZAVA, PREZIME, NAUCNA_OBLAST, NAUCNO_ZVANJE, STATUS_NAUCNIKA)
+    VALUES (SEQ_ISTRAZIVAC.NEXTVAL, 'Milica', TO_DATE('1993-09-18','YYYY-MM-DD'), 'Srbija', 'Stanic', 'Informacione tehnologije', 'Master informatike', 'AKTIVAN')
+    RETURNING ID_I INTO id_i_milica;
+    INSERT INTO mail(ID_I, MAIL) VALUES (id_i_milica, 'milica.stanic@irn.rs');
+    INSERT INTO telefon(ID_I, TELEFON) VALUES (id_i_milica, '+381651112233');
+
+    -----------------------------------------------------------------------------------
+    -- 2) ULOGE 
+    -----------------------------------------------------------------------------------
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_marija) RETURNING ID_U INTO id_u_autor_marija;
+    INSERT INTO autor(ID_U, ORCID) VALUES (id_u_autor_marija, '0000-0001-2345-678X');
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_nikola) RETURNING ID_U INTO id_u_autor_nikola;
+    INSERT INTO autor(ID_U, ORCID) VALUES (id_u_autor_nikola, '0000-0002-3456-789X');
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_nikola) RETURNING ID_U INTO id_u_urednik_nikola;
+    INSERT INTO urednik(ID_U, UREDJIVACKA_SEKCIJA) VALUES (id_u_urednik_nikola, 'Racunarske nauke');
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_ana) RETURNING ID_U INTO id_u_recenzent_ana;
+    INSERT INTO recenzent(ID_U) VALUES (id_u_recenzent_ana);
+    INSERT INTO oblasti_ekspertize(ID_U, OBLAST_EKSPERTIZE) VALUES (id_u_recenzent_ana, 'Klimatologija');
+    INSERT INTO oblasti_ekspertize(ID_U, OBLAST_EKSPERTIZE) VALUES (id_u_recenzent_ana, 'Ekologija');
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_stefan) RETURNING ID_U INTO id_u_recenzent_stefan;
+    INSERT INTO recenzent(ID_U) VALUES (id_u_recenzent_stefan);
+    INSERT INTO oblasti_ekspertize(ID_U, OBLAST_EKSPERTIZE) VALUES (id_u_recenzent_stefan, 'Softversko inzenjerstvo');
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_jovan) RETURNING ID_U INTO id_u_rukovodilac_jovan;
+    INSERT INTO rukovodilac_projekta(ID_U) VALUES (id_u_rukovodilac_jovan);
+
+    INSERT INTO uloga(ID_U, ID_I) VALUES (SEQ_ULOGA.NEXTVAL, id_i_milica) RETURNING ID_U INTO id_u_admin_milica;
+    INSERT INTO administrator_repozitorijuma(ID_U) VALUES (id_u_admin_milica);
+    INSERT INTO administrator_ovlascenja(ID_U, OVLASCENJE) VALUES (id_u_admin_milica, 'UPRAVLJANJE_KORISNICIMA');
+    INSERT INTO administrator_ovlascenja(ID_U, OVLASCENJE) VALUES (id_u_admin_milica, 'BRISANJE_SADRZAJA');
+
+    -----------------------------------------------------------------------------------
+    -- 3) NAUCNOISTRAZIVACKE INSTITUCIJE 
+    -----------------------------------------------------------------------------------
+    INSERT INTO ni_institucija(ID_NII, NAZIV, ADRESA)
+    VALUES (SEQ_NI_INSTITUCIJA.NEXTVAL, 'Prirodno-matematicki fakultet Nis', 'Visegradska 33, Nis')
+    RETURNING ID_NII INTO nii_pmf;
+    INSERT INTO naucna_oblast(ID_NII, NAUCNA_OBLAST) VALUES (nii_pmf, 'Ekologija');
+    INSERT INTO naucna_oblast(ID_NII, NAUCNA_OBLAST) VALUES (nii_pmf, 'Klimatologija');
+    INSERT INTO mail_institucija(ID_NII, MAIL) VALUES (nii_pmf, 'kontakt@pmf.rs');
+    INSERT INTO mail_institucija(ID_NII, MAIL) VALUES (nii_pmf, 'dekanat@pmf.rs');
+    INSERT INTO telefon_institucija(ID_NII, TELEFON) VALUES (nii_pmf, '+381181234567');
+
+    INSERT INTO ni_institucija(ID_NII, NAZIV, ADRESA)
+    VALUES (SEQ_NI_INSTITUCIJA.NEXTVAL, 'Institut za racunarske nauke', 'Bulevar oslobodjenja 12, Beograd')
+    RETURNING ID_NII INTO nii_irn;
+    INSERT INTO naucna_oblast(ID_NII, NAUCNA_OBLAST) VALUES (nii_irn, 'Racunarske nauke');
+    INSERT INTO mail_institucija(ID_NII, MAIL) VALUES (nii_irn, 'info@irn.rs');
+    INSERT INTO telefon_institucija(ID_NII, TELEFON) VALUES (nii_irn, '+381112223344');
+    INSERT INTO telefon_institucija(ID_NII, TELEFON) VALUES (nii_irn, '+381113334455');
+
+    INSERT INTO angazovanje(ID_I, ID_NII, DATUM_ANGAZOVANJA, DATUM_ZAVRSETKA, ORGANIZACIONA_JEDINICA, NAZIV_POZICIJE, TIP_ANGAZOVANJA)
+    VALUES (id_i_marija, nii_pmf, TO_DATE('2018-09-01','YYYY-MM-DD'), NULL, 'Departman za biologiju', 'Docent', 'STALNI');
+    INSERT INTO angazovanje(ID_I, ID_NII, DATUM_ANGAZOVANJA, DATUM_ZAVRSETKA, ORGANIZACIONA_JEDINICA, NAZIV_POZICIJE, TIP_ANGAZOVANJA)
+    VALUES (id_i_ana, nii_pmf, TO_DATE('2005-10-01','YYYY-MM-DD'), NULL, 'Departman za geografiju', 'Redovni profesor', 'STALNI');
+    INSERT INTO angazovanje(ID_I, ID_NII, DATUM_ANGAZOVANJA, DATUM_ZAVRSETKA, ORGANIZACIONA_JEDINICA, NAZIV_POZICIJE, TIP_ANGAZOVANJA)
+    VALUES (id_i_nikola, nii_irn, TO_DATE('2015-03-15','YYYY-MM-DD'), NULL, 'Katedra za softversko inzenjerstvo', 'Docent', 'STALNI');
+    INSERT INTO angazovanje(ID_I, ID_NII, DATUM_ANGAZOVANJA, DATUM_ZAVRSETKA, ORGANIZACIONA_JEDINICA, NAZIV_POZICIJE, TIP_ANGAZOVANJA)
+    VALUES (id_i_stefan, nii_irn, TO_DATE('2012-01-10','YYYY-MM-DD'), NULL, 'Katedra za softversko inzenjerstvo', 'Vanredni profesor', 'STALNI');
+
+    -----------------------------------------------------------------------------------
+    -- 4) ISTRAZIVACKI REZULTATI
+    -----------------------------------------------------------------------------------
+
+    -- 4.1 DATASET
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Klimatski podaci Balkana 2000-2024', 'Skup meteoroloskih merenja za region Balkana', TO_DATE('2024-03-01','YYYY-MM-DD'), TO_DATE('2024-06-15','YYYY-MM-DD'), 'OBJAVLJEN', 1)
+    RETURNING ID_IR INTO ir_dataset;
+    INSERT INTO dataset(ID_IR, FORMAT, VELICINA, BROJ_ZAPISA, OPIS_STRUKTURE, PERIOD_OBUHVATA_PODATAKA, LICENCA_KORISCENJA, OGRANICENJA_PRISTUPA)
+    VALUES (ir_dataset, 'CSV', 512, 150000, 'Kolone: datum, lokacija, temperatura, padavine', '2000-01-01 do 2024-12-31', 'CC BY 4.0', 'Slobodan pristup');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_dataset, 'Klima');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_dataset, 'Balkan');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_dataset, 'Meteorologija');
+    INSERT INTO verzija(ID_IR, BROJ_VERZIJE, DATUM_POSTAVLJANJA, OPIS_IZMENA, ODGOVORNA_OSOBA)
+    VALUES (ir_dataset, 1, TO_DATE('2024-03-01','YYYY-MM-DD'), 'Inicijalna verzija', 'Marija Jovanovic');
+    INSERT INTO pripadajuci_fajlovi(ID_IR, BROJ_VERZIJE, NAZIV_FAJLA) VALUES (ir_dataset, 1, 'klima_2000_2024.csv');
+    INSERT INTO pripadajuci_fajlovi(ID_IR, BROJ_VERZIJE, NAZIV_FAJLA) VALUES (ir_dataset, 1, 'metapodaci.pdf');
+
+    -- 4.2 SOFTVERSKI ARTIFAKT
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'AnalizaPodatakaLib', 'Biblioteka za statisticku analizu klimatskih podataka', TO_DATE('2023-11-01','YYYY-MM-DD'), TO_DATE('2024-01-20','YYYY-MM-DD'), 'OBJAVLJEN', 1)
+    RETURNING ID_IR INTO ir_softver;
+    INSERT INTO softverski_artifakt(ID_IR, PROGRAMSKI_JEZIK, REPO_LINK, NACIN_LICENCIRANJA, DOKUMENTACIJA)
+    VALUES (ir_softver, 'Python', 'https://github.com/irn/analiza-podataka-lib', 'MIT', 'https://irn.rs/docs/analiza-podataka-lib');
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA) VALUES (ir_softver, 'WINDOWS');
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA) VALUES (ir_softver, 'LINUX');
+    INSERT INTO podrzane_platforme(ID_IR, PLATFORMA) VALUES (ir_softver, 'MACOS');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_softver, 'Python');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_softver, 'Statistika');
+    INSERT INTO verzija(ID_IR, BROJ_VERZIJE, DATUM_POSTAVLJANJA, OPIS_IZMENA, ODGOVORNA_OSOBA)
+    VALUES (ir_softver, 1, TO_DATE('2023-11-01','YYYY-MM-DD'), 'Prva javna verzija', 'Nikola Simic');
+    INSERT INTO verzija(ID_IR, BROJ_VERZIJE, DATUM_POSTAVLJANJA, OPIS_IZMENA, ODGOVORNA_OSOBA)
+    VALUES (ir_softver, 2, TO_DATE('2024-01-20','YYYY-MM-DD'), 'Ispravke gresaka, dodata podrska za MacOS', 'Nikola Simic');
+    INSERT INTO pripadajuci_fajlovi(ID_IR, BROJ_VERZIJE, NAZIV_FAJLA) VALUES (ir_softver, 2, 'analiza_podataka_lib-1.1.0.whl');
+
+    -- 4.3 TEHNICKI IZVESTAJ
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Izvestaj o kvalitetu vazduha u Nisu 2024', 'Godisnji tehnicki izvestaj o merenjima kvaliteta vazduha', TO_DATE('2024-12-01','YYYY-MM-DD'), TO_DATE('2025-01-15','YYYY-MM-DD'), 'POSLAT_NA_RECENZIJU', 1)
+    RETURNING ID_IR INTO ir_tehizv;
+    INSERT INTO tehnicki_izvestaj(ID_IR) VALUES (ir_tehizv);
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_tehizv, 'Kvalitet vazduha');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_tehizv, 'Nis');
+    INSERT INTO verzija(ID_IR, BROJ_VERZIJE, DATUM_POSTAVLJANJA, OPIS_IZMENA, ODGOVORNA_OSOBA)
+    VALUES (ir_tehizv, 1, TO_DATE('2024-12-01','YYYY-MM-DD'), 'Inicijalna verzija', 'Ana Petrovic');
+    INSERT INTO pripadajuci_fajlovi(ID_IR, BROJ_VERZIJE, NAZIV_FAJLA) VALUES (ir_tehizv, 1, 'izvestaj_kvalitet_vazduha_2024.pdf');
+
+    -- 4.4 NAUCNI RAD 
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Uticaj klimatskih promena na bioraznolikost', 'Pregledni rad o efektima klimatskih promena na ekosisteme', TO_DATE('2022-04-10','YYYY-MM-DD'), TO_DATE('2022-09-05','YYYY-MM-DD'), 'OBJAVLJEN', 1)
+    RETURNING ID_IR INTO ir_naucnirad;
+    INSERT INTO naucni_rad(ID_IR, TIP_RADA, NAZIV_CAS_KON, DOI, ISSN_ILI_ISBN, BROJ_SVESKE, BROJ_IZDANJA, BROJ_STRANICE)
+    VALUES (ir_naucnirad, 'CASOPIS', 'Ekoloski glasnik', '10.1234/eko.2022.09', '1234-5678', 14, 3, 25);
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_naucnirad, 'Bioraznolikost');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_naucnirad, 'Klimatske promene');
+
+    -- 4.5 KNJIGA ILI POGLAVLJE 
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Osnove ekologije', 'Udzbenik iz osnova ekologije za studente osnovnih studija', TO_DATE('2019-08-01','YYYY-MM-DD'), TO_DATE('2020-01-15','YYYY-MM-DD'), 'ARHIVIRAN', 1)
+    RETURNING ID_IR INTO ir_knjiga;
+    INSERT INTO knjiga_ili_poglavlja(ID_IR, IZDAVAC, MESTO_IZDAVANJA)
+    VALUES (ir_knjiga, 'Prirodno-matematicki fakultet', 'Nis');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_knjiga, 'Ekologija');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_knjiga, 'Udzbenik');
+
+    -- 4.6 OSTALI DOKUMENTI
+    INSERT INTO istrazivacki_rezultat(ID_IR, NASLOV, APSTRAKT, DATUM_KREIRANJA, DATUM_OBJAVLJIVANJA, STATUS_IR, VIDLJIVOST)
+    VALUES (SEQ_ISTRAZIVACKI_REZULTAT.NEXTVAL, 'Prezentacija projektnih rezultata', 'Prezentacija sa zavrsne konferencije projekta', TO_DATE('2024-10-01','YYYY-MM-DD'), TO_DATE('2024-10-10','YYYY-MM-DD'), 'OBJAVLJEN', 0)
+    RETURNING ID_IR INTO ir_ostalo;
+    INSERT INTO ostali_dokumenti(ID_IR, OPCIJE) VALUES (ir_ostalo, 'PREZENTACIJA');
+    INSERT INTO kljucne_reci(ID_IR, KLJUCNA_REC) VALUES (ir_ostalo, 'Konferencija');
+
+    -----------------------------------------------------------------------------------
+    -- 5) UREDJUJE
+    -----------------------------------------------------------------------------------
+    INSERT INTO uredjuje(ID_IR, ID_UREDNIKA) VALUES (ir_dataset, id_u_urednik_nikola);
+    INSERT INTO uredjuje(ID_IR, ID_UREDNIKA) VALUES (ir_softver, id_u_urednik_nikola);
+
+    -----------------------------------------------------------------------------------
+    -- 6) PUBLIKACIJE
+    -----------------------------------------------------------------------------------
+    INSERT INTO publikacija(ID_P, ID_D, ID_TI, ID_SA)
+    VALUES (SEQ_PUBLIKACIJA.NEXTVAL, ir_dataset, NULL, NULL)
+    RETURNING ID_P INTO p_dataset;
+
+    INSERT INTO publikacija(ID_P, ID_D, ID_TI, ID_SA)
+    VALUES (SEQ_PUBLIKACIJA.NEXTVAL, NULL, NULL, ir_softver)
+    RETURNING ID_P INTO p_softver;
+
+    INSERT INTO publikacija(ID_P, ID_D, ID_TI, ID_SA)
+    VALUES (SEQ_PUBLIKACIJA.NEXTVAL, NULL, ir_tehizv, NULL)
+    RETURNING ID_P INTO p_tehizv;
+
+    -----------------------------------------------------------------------------------
+    -- 7) AUTORSTVO
+    -----------------------------------------------------------------------------------
+    INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA, TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
+    VALUES (id_u_autor_marija, p_dataset, 1, 'Prikupljanje i obrada podataka', 'Prvi autor');
+    INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA, TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
+    VALUES (id_u_autor_nikola, p_dataset, 2, 'Statisticka analiza', 'Koautor');
+
+    INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA, TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
+    VALUES (id_u_autor_nikola, p_softver, 1, 'Razvoj softvera', 'Prvi autor');
+
+    INSERT INTO autorstvo(ID_U, ID_P, REDNI_BROJ_AUTORA, TIP_DOPRINOSA, ULOGA_U_PUBLIKACIJI)
+    VALUES (id_u_autor_marija, p_tehizv, 1, 'Terenska merenja', 'Prvi autor');
+
+    -----------------------------------------------------------------------------------
+    -- 8) RUNDE RECENZIJE + ANGAZOVANJE RECENZENATA + OCENE
+    -----------------------------------------------------------------------------------
+
+    INSERT INTO runda_recenzije(ID_P, ID_UREDNIKA, BROJ_RUNDE, DATUM_ODLUKE, KONACNA_ODLUKA)
+    VALUES (p_dataset, id_u_urednik_nikola, 1, TO_DATE('2024-05-20','YYYY-MM-DD'), 'PRIHVACENA');
+
+    INSERT INTO angazovanje_recenzent(ID_P, ID_RECENZENTA, BROJ_RUNDE, PREPORUKA)
+    VALUES (p_dataset, id_u_recenzent_ana, 1, 'DA');
+    INSERT INTO ocena_recenzenta(ID_O, ID_P, ID_RECENZENTA, BROJ_RUNDE, OCENA)
+    VALUES (SEQ_OCENA_RECENZENTA.NEXTVAL, p_dataset, id_u_recenzent_ana, 1, 5);
+    INSERT INTO ocena_recenzenta(ID_O, ID_P, ID_RECENZENTA, BROJ_RUNDE, OCENA)
+    VALUES (SEQ_OCENA_RECENZENTA.NEXTVAL, p_dataset, id_u_recenzent_ana, 1, 4);
+
+    INSERT INTO angazovanje_recenzent(ID_P, ID_RECENZENTA, BROJ_RUNDE, PREPORUKA)
+    VALUES (p_dataset, id_u_recenzent_stefan, 1, 'DA');
+    INSERT INTO ocena_recenzenta(ID_O, ID_P, ID_RECENZENTA, BROJ_RUNDE, OCENA)
+    VALUES (SEQ_OCENA_RECENZENTA.NEXTVAL, p_dataset, id_u_recenzent_stefan, 1, 4);
+
+    INSERT INTO runda_recenzije(ID_P, ID_UREDNIKA, BROJ_RUNDE, DATUM_ODLUKE, KONACNA_ODLUKA)
+    VALUES (p_softver, id_u_urednik_nikola, 1, TO_DATE('2023-12-10','YYYY-MM-DD'), 'POTREBNA_REVIZIJA');
+
+    INSERT INTO angazovanje_recenzent(ID_P, ID_RECENZENTA, BROJ_RUNDE, PREPORUKA)
+    VALUES (p_softver, id_u_recenzent_stefan, 1, 'NE');
+    INSERT INTO ocena_recenzenta(ID_O, ID_P, ID_RECENZENTA, BROJ_RUNDE, OCENA)
+    VALUES (SEQ_OCENA_RECENZENTA.NEXTVAL, p_softver, id_u_recenzent_stefan, 1, 2);
+
+    INSERT INTO runda_recenzije(ID_P, ID_UREDNIKA, BROJ_RUNDE, DATUM_ODLUKE, KONACNA_ODLUKA)
+    VALUES (p_softver, id_u_urednik_nikola, 2, TO_DATE('2024-01-18','YYYY-MM-DD'), 'PRIHVACENA');
+
+    INSERT INTO angazovanje_recenzent(ID_P, ID_RECENZENTA, BROJ_RUNDE, PREPORUKA)
+    VALUES (p_softver, id_u_recenzent_stefan, 2, 'DA');
+    INSERT INTO ocena_recenzenta(ID_O, ID_P, ID_RECENZENTA, BROJ_RUNDE, OCENA)
+    VALUES (SEQ_OCENA_RECENZENTA.NEXTVAL, p_softver, id_u_recenzent_stefan, 2, 5);
+
+    -----------------------------------------------------------------------------------
+    -- 9) CITAT 
+    -----------------------------------------------------------------------------------
+    INSERT INTO citat(ID_P1, ID_P2, CITIRAJUCA_PUBLIKACIJA, CITIRANA_PUBLIKACIJA, TIP_CITATA, MESTO_CITIRANJA, KONTEKST_CITIRANJA)
+    VALUES (p_softver, p_dataset, 'AnalizaPodatakaLib', 'Klimatski podaci Balkana 2000-2024', 'DIREKTAN', 'Uvod', 'Biblioteka je razvijena i testirana nad ovim skupom podataka');
+
+    COMMIT;
+END;
+/
+
 
 
 

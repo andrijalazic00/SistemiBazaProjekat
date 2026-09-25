@@ -86,9 +86,16 @@ namespace DigitalniRepozitorijum.Forms
 
         private void btnIzmeniVerziju_Click(object sender, EventArgs e)
         {
-            _verzija = (Verzija)comboBoxVerzija.SelectedValue;
-            Form f = new FormIzmeniVerziju(_verzija, _rezultat);
-            f.ShowDialog();
+            try
+            {
+                _verzija = (Verzija)comboBoxVerzija.SelectedValue;
+                Form f = new FormIzmeniVerziju(_verzija, _rezultat);
+                f.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+            }
         }
     }
 }

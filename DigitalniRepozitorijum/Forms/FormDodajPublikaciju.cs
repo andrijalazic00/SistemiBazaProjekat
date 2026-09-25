@@ -196,6 +196,7 @@ namespace DigitalniRepozitorijum.Forms
                 comboBZasnivaSeNa.SelectedIndex= -1;
                 comboBNastalaIz.SelectedIndex= -1;
                 comboBKoriscen.SelectedIndex= -1;
+                //this.Refresh();
                 _session.Close();
                 this.Close();
             }

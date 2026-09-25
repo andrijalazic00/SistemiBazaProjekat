@@ -1,6 +1,8 @@
 ﻿using DigitalniRepozitorijum.Entities;
 using DigitalniRepozitorijum.Properties;
 using NHibernate;
+using NHibernate.Exceptions;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +60,7 @@ namespace DigitalniRepozitorijum.Forms
                         MessageBox.Show("Ne postoji ni jedna uloga u bazi");
                         _session.Close();
                         this.Close();
+                        return;
                     }
                 }
                 else 
@@ -68,6 +71,7 @@ namespace DigitalniRepozitorijum.Forms
                         MessageBox.Show("Ne postoji ni jedna uloga izabranog istrazivaca");
                         _session.Close();
                         this.Close();
+                        return;
                     }                   
                 }
                
@@ -96,6 +100,11 @@ namespace DigitalniRepozitorijum.Forms
                 _session.Close();
                 MessageBox.Show("Uloga obrisana");
                 this.Close();
+            }
+            catch (GenericADOException ex) when (ex.InnerException is OracleException oraEx && oraEx.Number == 1407)
+            {
+                MessageBox.Show("Izabrana uloga je kljucna za neku od veza, brisanje nije moguce");
+                
             }
             catch (Exception ex)
             {

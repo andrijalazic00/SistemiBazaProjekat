@@ -107,8 +107,16 @@ namespace DigitalniRepozitorijum.Forms
 
         private void btnObrisiFajl_Click(object sender, EventArgs e)
         {
-            Form f = new FormObrisiFajl(_verzija,_istrazivackiRezultat);
-            f.ShowDialog();
+            try 
+            {
+                Form f = new FormObrisiFajl(_verzija, _istrazivackiRezultat);
+                f.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message.ToString()); 
+            }
+            
         }
     }
 }
