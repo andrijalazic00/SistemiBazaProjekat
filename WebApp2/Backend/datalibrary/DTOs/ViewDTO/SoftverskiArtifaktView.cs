@@ -17,7 +17,10 @@ namespace datalibrary.DTOs
             RepoLink = s.RepoLink;
             NacinLicenciranja = s.NacinLicenciranja;
             Dokumentacija = s.Dokumentacija;
-            Publikacija = s.Publikacija == null ? null : new PublikacijaView(s.Publikacija);
+            Publikacija = s.Publikacija == null ? null : new PublikacijaView(s.Publikacija, false);
+            PodrzanePlatforme = s.PodrzanePlatforme
+                .Select(platforma => new PodrzanaPlatformaView(platforma))
+                .ToList();
         }
 
         public SoftverskiArtifaktView():base()

@@ -6,10 +6,10 @@ namespace datalibrary.DTOs
 {
     public class PripadajuciFajlView
     {
-        public virtual IstrazivackiRezultatView ID_IR { get; protected set; }
-        public virtual int BrojVerzije { get; protected set; }
-        public virtual string NazivFajla { get; protected set; }
-        public virtual VerzijaView Verzija { get; set; }
+        public virtual IstrazivackiRezultatView ID_IR { get; set; }
+        public virtual int BrojVerzije { get; set; }
+        public virtual string NazivFajla { get; set; }
+        public virtual VerzijaView? Verzija { get; set; }
 
         public PripadajuciFajlView()
         {

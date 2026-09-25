@@ -11,7 +11,7 @@ namespace datalibrary.DTOs
         public AdministratorOvlascenjaView( AdministratorOvlascenja a)
         {
             Ovlascenje = a.Ovlascenje;
-            ID_U = new AdministratorRepozitorijumaView(a.ID_U);
+            ID_U = new AdministratorRepozitorijumaView(a.ID_U, false);
         }
 
 

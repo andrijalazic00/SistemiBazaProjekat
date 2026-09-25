@@ -16,7 +16,7 @@ namespace WebApp2.Controllers
         [Route("DodajNaucniRad")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostNaucniRad(NaucniRadView naucniRadView)
+        public IActionResult PostNaucniRad(DodavanjeNaucniRadDTO naucniRadView)
         {
             try
             {

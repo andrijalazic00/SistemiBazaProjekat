@@ -8,7 +8,7 @@ namespace datalibrary.DTOs
 
         public TehnickiIzvestajView(TehnickiIzvestaj t) : base(t)
         {
-            Publikacija = new PublikacijaView( t.Publikacija);
+            Publikacija = t.Publikacija == null ? null : new PublikacijaView(t.Publikacija, false);
         }
     }
 }

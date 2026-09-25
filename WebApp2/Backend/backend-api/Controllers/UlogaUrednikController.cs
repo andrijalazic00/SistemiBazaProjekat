@@ -15,13 +15,13 @@ namespace WebApp2.Controllers
  
         #region  Urednik
         [HttpPost]
-        [Route("DodajUrednika/{ID_I}/{uredivackaSekcija}")]
+        [Route("DodajUrednika/{ID_I}/{uredjivackaSekcija}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostUlogaUrednika(int ID_I,string uredjivacaSekcija)
+        public IActionResult PostUlogaUrednika(int ID_I, string uredjivackaSekcija)
         {
             try
             {
-                DataProvider.DodajUrednika(ID_I,uredjivacaSekcija);
+            DataProvider.DodajUrednika(ID_I, uredjivackaSekcija);
                 return Ok($"Dodata je uloga Urednika, Istrazivacu sa ID: {ID_I}");
             }
             catch(Exception ex)

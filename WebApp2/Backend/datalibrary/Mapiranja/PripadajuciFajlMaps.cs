@@ -14,7 +14,7 @@ namespace datalibrary.Mapiranja
         {
             Table("PRIPADAJUCI_FAJLOVI");
             CompositeId()
-                .KeyReference(x => x.ID_IR, "ID_R")
+                .KeyReference(x => x.ID_IR, "ID_IR")
                 .KeyProperty(x => x.BrojVerzije, "BROJ_VERZIJE")
                 .KeyProperty(x => x.NazivFajla, "NAZIV_FAJLA");
         }

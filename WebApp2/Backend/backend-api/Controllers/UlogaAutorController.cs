@@ -32,15 +32,15 @@ namespace WebApp2.Controllers
         }
 
         [HttpDelete]
-        [Route("ObrisiAutora/{ID_I}")]
+        [Route("ObrisiAutora/{ID_U}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult DeleteAutora(int ID_I)
+        public IActionResult DeleteAutora(int ID_U)
         {
             try
             {
-                DataProvider.ObrisiAutora(ID_I);
-                return Ok($"Obrisana je uloga Autora, Istrazivacu sa ID: {ID_I}");
+                DataProvider.ObrisiAutora(ID_U);
+                return Ok($"Obrisana je uloga Autora, Istrazivacu sa ID: {ID_U}");
             }
             catch(Exception ex)
             {

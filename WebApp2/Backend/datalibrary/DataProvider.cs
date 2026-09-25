@@ -2,6 +2,7 @@ using NHibernate;
 using datalibrary.Entiteti;
 using datalibrary.DTOs;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace datalibrary
 {
@@ -508,6 +509,7 @@ namespace datalibrary
         {
             try
             {
+                string status = ValidirajStatusNaucnika(istrazivac.StatusNaucnika);
                 ISession s = DataLayer.GetSession();
 
                 Istrazivac i = new ()
@@ -518,7 +520,7 @@ namespace datalibrary
                     Drzava = istrazivac.Drzava,
                     NaucnaOblast = istrazivac.NaucnaOblast,
                     NaucnoZvanje = istrazivac.NaucnoZvanje,
-                    StatusNaucnika = istrazivac.StatusNaucnika,
+                    StatusNaucnika = status,
                 };
 
                 s.SaveOrUpdate(i);
@@ -530,6 +532,38 @@ namespace datalibrary
                 Console.WriteLine("Error at DataProvider DodajIstrazivaca:"+ ex);
                 throw;
             }
+        }
+
+        private static string ValidirajStatusNaucnika(string status)
+        {
+            if (string.IsNullOrWhiteSpace(status))
+                return "AKTIVAN";
+
+            string normalizedStatus = status.Trim().ToUpperInvariant();
+            if (normalizedStatus is "AKTIVAN" or "NEAKTIVAN")
+                return normalizedStatus;
+
+            throw new ArgumentException("Status naučnika mora biti Aktivan ili Neaktivan.");
+        }
+
+        private static string ValidirajStatusIR(string status)
+        {
+            if (string.IsNullOrWhiteSpace(status))
+                return "POSLAT_NA_RECENZIJU";
+
+            string normalizedStatus = status.Trim().ToUpperInvariant();
+            if (normalizedStatus is "ARHIVIRAN" or "OBJAVLJEN" or "POSLAT_NA_RECENZIJU" or "PRIHVACEN")
+                return normalizedStatus;
+
+            throw new ArgumentException("Status istraživačkog rezultata nije dozvoljen.");
+        }
+
+        private static int ValidirajVidljivost(int vidljivost)
+        {
+            if (vidljivost is 0 or 1)
+                return vidljivost;
+
+            throw new ArgumentException("Vidljivost mora biti Privatno ili Interno.");
         }
 
 
@@ -565,7 +599,8 @@ namespace datalibrary
                 if(istrazivacView.DatumRodjenja != i.DatumRodjenja) i.DatumRodjenja = istrazivacView.DatumRodjenja;
                 if(istrazivacView.NaucnaOblast != "") i.NaucnaOblast= istrazivacView.NaucnaOblast;
                 if(istrazivacView.NaucnoZvanje != "") i.NaucnaOblast = istrazivacView.NaucnoZvanje;
-                if(istrazivacView.StatusNaucnika != i.StatusNaucnika ) i.StatusNaucnika = istrazivacView.StatusNaucnika;
+                string status = ValidirajStatusNaucnika(istrazivacView.StatusNaucnika);
+                if(status != i.StatusNaucnika ) i.StatusNaucnika = status;
 
                 s.Update(i);
                 s.Flush();
@@ -1363,6 +1398,7 @@ namespace datalibrary
         {
             try
             {
+                string normalizedOrcid = ValidirajOrcid(ORCID);
                 ISession s = DataLayer.GetSession();
                 
                 Istrazivac i = s.Load<Istrazivac>(ID_I);
@@ -1370,7 +1406,7 @@ namespace datalibrary
                 Autor autor = new Autor
                 {
                     ID_I = i,
-                    Orcid = ORCID
+                    Orcid = normalizedOrcid
                 };
                 s.SaveOrUpdate(autor);
                 s.Flush();
@@ -1381,6 +1417,15 @@ namespace datalibrary
                 Console.WriteLine("Error at DataProvider DodajAutora: "+ ex);    
                 throw;
             }        
+        }
+
+        private static string ValidirajOrcid(string orcid)
+        {
+            string normalizedOrcid = (orcid ?? string.Empty).Trim();
+            if (!Regex.IsMatch(normalizedOrcid, @"^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$"))
+                throw new ArgumentException("ORCID mora biti u formatu 0000-0000-0000-000X.");
+
+            return normalizedOrcid[..^1] + normalizedOrcid[^1].ToString().ToUpperInvariant();
         }
 
         public static void ObrisiAutora(int ID_U)
@@ -1483,11 +1528,20 @@ namespace datalibrary
                 foreach( Verzija v in vLista)
                                 verzije.Add( new VerzijaView(v));
 
+                IEnumerable<PripadajuciFajl> fLista = from f in s.Query<PripadajuciFajl>()
+                                                        where f.ID_IR.ID_IR == ID_IR select f;
+
+                List<PripadajuciFajlView> pripadajuciFajlovi = [];
+
+                foreach( PripadajuciFajl f in fLista)
+                                pripadajuciFajlovi.Add( new PripadajuciFajlView(f));
+
 
                 istrazivackiRezultat = new IstrazivackiRezultatView(i)
                 {
                     KljucneReci = kljucnereci,
-                    Verzije = verzije
+                    Verzije = verzije,
+                    PripadajuciFajlovi = pripadajuciFajlovi
                 };
 
                 s.Close();
@@ -1628,7 +1682,7 @@ namespace datalibrary
         }
 
         #region  IR- Ostali Dokumenti
-        public static void DodajOstaliDokument(OstaliDokumentiView ostaliDokument)
+        public static void DodajOstaliDokument(DodavanjeOstaliDokumentiDTO dodavanjeOstaliDokumentiDTO)
         {
             try
             {
@@ -1636,13 +1690,13 @@ namespace datalibrary
                 
                 OstaliDokumenti o = new ()
                 {
-                    Naslov = ostaliDokument.Naslov,
-                    Apstrakt = ostaliDokument.Apstrakt,
-                    DatumKreiranja = ostaliDokument.DatumKreiranja,
-                    DatumObjavljivanja = ostaliDokument.DatumObjavljivanja,
-                    StatusIR = ostaliDokument.StatusIR,
-                    Vidljivost = ostaliDokument.Vidljivost,
-                    Opcije = ostaliDokument.Opcije
+                    Naslov = dodavanjeOstaliDokumentiDTO.Naslov,
+                    Apstrakt = dodavanjeOstaliDokumentiDTO.Apstrakt,
+                    DatumKreiranja = dodavanjeOstaliDokumentiDTO.DatumKreiranja,
+                    DatumObjavljivanja = dodavanjeOstaliDokumentiDTO.DatumObjavljivanja,
+                    StatusIR = ValidirajStatusIR(dodavanjeOstaliDokumentiDTO.StatusIR),
+                    Vidljivost = ValidirajVidljivost(dodavanjeOstaliDokumentiDTO.Vidljivost),
+                    Opcije = dodavanjeOstaliDokumentiDTO.Opcije
                 };
 
                 s.SaveOrUpdate(o);
@@ -1687,7 +1741,8 @@ namespace datalibrary
                 ostaliDokumentiView = new (s.Load<OstaliDokumenti>(ID_IR))
                 {
                     KljucneReci = i.KljucneReci,
-                    Verzije = i.Verzije
+                    Verzije = i.Verzije,
+                    PripadajuciFajlovi = i.PripadajuciFajlovi
                 };
                 s.Close();
             }
@@ -1733,8 +1788,8 @@ namespace datalibrary
                 if(ostaliDokumentiView.Apstrakt != "") o.Apstrakt = ostaliDokumentiView.Apstrakt;
                 if(o.DatumKreiranja != ostaliDokumentiView.DatumKreiranja) o.DatumKreiranja = ostaliDokumentiView.DatumKreiranja;
                 if(o.DatumObjavljivanja != ostaliDokumentiView.DatumObjavljivanja) o.DatumObjavljivanja = ostaliDokumentiView.DatumObjavljivanja;
-                if(o.StatusIR != ostaliDokumentiView.StatusIR) o.StatusIR = ostaliDokumentiView.StatusIR;
-                if(o.Vidljivost != ostaliDokumentiView.Vidljivost) o.Vidljivost = ostaliDokumentiView.Vidljivost;
+                if(o.StatusIR != ValidirajStatusIR(ostaliDokumentiView.StatusIR)) o.StatusIR = ValidirajStatusIR(ostaliDokumentiView.StatusIR);
+                if(o.Vidljivost != ValidirajVidljivost(ostaliDokumentiView.Vidljivost)) o.Vidljivost = ValidirajVidljivost(ostaliDokumentiView.Vidljivost);
                 
                 s.Update(o);
                 s.Flush();
@@ -1750,7 +1805,7 @@ namespace datalibrary
         #endregion
         
         #region  IR- So ftverski Artifakt
-        public static void DodajSoftverskiArtifakt(SoftverskiArtifaktView softverskiArtifakt)
+        public static void DodajSoftverskiArtifakt(DodavanjeSoftverskiArtifaktDTO softverskiArtifakt)
         {
             try
             {
@@ -1762,8 +1817,8 @@ namespace datalibrary
                     Apstrakt = softverskiArtifakt.Apstrakt,
                     DatumKreiranja = softverskiArtifakt.DatumKreiranja,
                     DatumObjavljivanja = softverskiArtifakt.DatumObjavljivanja,
-                    StatusIR = softverskiArtifakt.StatusIR,
-                    Vidljivost = softverskiArtifakt.Vidljivost,
+                    StatusIR = ValidirajStatusIR(softverskiArtifakt.StatusIR),
+                    Vidljivost = ValidirajVidljivost(softverskiArtifakt.Vidljivost),
                     ProgramskiJezik = softverskiArtifakt.ProgramskiJezik,
                     RepoLink = softverskiArtifakt.RepoLink,
                     NacinLicenciranja = softverskiArtifakt.NacinLicenciranja,
@@ -1812,7 +1867,8 @@ namespace datalibrary
                 softverskiArtifaktView = new (s.Load<SoftverskiArtifakt>(ID_IR))
                 {
                     KljucneReci = i.KljucneReci,
-                    Verzije = i.Verzije
+                    Verzije = i.Verzije,
+                    PripadajuciFajlovi = i.PripadajuciFajlovi
                 };
                 s.Close();
             }
@@ -1858,8 +1914,8 @@ namespace datalibrary
                 if(softverskiArtifakt.Apstrakt != "") sa.Apstrakt = softverskiArtifakt.Apstrakt;
                 if(sa.DatumKreiranja != softverskiArtifakt.DatumKreiranja) sa.DatumKreiranja = softverskiArtifakt.DatumKreiranja;
                 if(sa.DatumObjavljivanja != softverskiArtifakt.DatumObjavljivanja) sa.DatumObjavljivanja = softverskiArtifakt.DatumObjavljivanja;
-                if(sa.StatusIR != softverskiArtifakt.StatusIR) sa.StatusIR = softverskiArtifakt.StatusIR;
-                if(sa.Vidljivost != softverskiArtifakt.Vidljivost) sa.Vidljivost = softverskiArtifakt.Vidljivost;
+                if(sa.StatusIR != ValidirajStatusIR(softverskiArtifakt.StatusIR)) sa.StatusIR = ValidirajStatusIR(softverskiArtifakt.StatusIR);
+                if(sa.Vidljivost != ValidirajVidljivost(softverskiArtifakt.Vidljivost)) sa.Vidljivost = ValidirajVidljivost(softverskiArtifakt.Vidljivost);
                 if(softverskiArtifakt.ProgramskiJezik != "") sa.ProgramskiJezik = softverskiArtifakt.ProgramskiJezik;
                 if(softverskiArtifakt.RepoLink != "") sa.RepoLink = softverskiArtifakt.RepoLink;
                 if(softverskiArtifakt.NacinLicenciranja != "") sa.NacinLicenciranja = softverskiArtifakt.NacinLicenciranja;
@@ -1877,7 +1933,7 @@ namespace datalibrary
 
         }
 
-        public static void DodajPodrzanuPlatformu(int ID_IR, string platfoma)
+        public static void DodajPodrzanuPlatformu(int ID_IR, string platforma)
         {
             try
             {
@@ -1887,11 +1943,11 @@ namespace datalibrary
 
                 PodrzanaPlatforma p = new ()
                 {
-                    Platforma = platfoma,
+                    Platforma = platforma,
                     ID_IR = sa,
                 };
 
-                s.SaveOrUpdate(sa);
+                s.SaveOrUpdate(p);
                 s.Flush();
                 s.Close();
             }
@@ -1924,7 +1980,7 @@ namespace datalibrary
         #endregion
 
         #region  IR- Dataset
-        public static void DodajDataset(DatasetView dataSet)
+        public static void DodajDataset(DodavanjeDatasetDTO dataSet)
         {
             try
             {
@@ -1936,8 +1992,8 @@ namespace datalibrary
                     Apstrakt = dataSet.Apstrakt,
                     DatumKreiranja = dataSet.DatumKreiranja,
                     DatumObjavljivanja = dataSet.DatumObjavljivanja,
-                    StatusIR = dataSet.StatusIR,
-                    Vidljivost = dataSet.Vidljivost, 
+                    StatusIR = ValidirajStatusIR(dataSet.StatusIR),
+                    Vidljivost = ValidirajVidljivost(dataSet.Vidljivost),
                     Format = dataSet.Format,
                     Velicina = dataSet.Velicina,
                     BrojZapisa = dataSet.BrojZapisa,
@@ -2036,8 +2092,8 @@ namespace datalibrary
                 if(datasetView.Apstrakt != "") d.Apstrakt = datasetView.Apstrakt;
                 if(d.DatumKreiranja != datasetView.DatumKreiranja) d.DatumKreiranja = datasetView.DatumKreiranja;
                 if(d.DatumObjavljivanja != datasetView.DatumObjavljivanja) d.DatumObjavljivanja = datasetView.DatumObjavljivanja;
-                if(d.StatusIR != datasetView.StatusIR) d.StatusIR = datasetView.StatusIR;
-                if(d.Vidljivost != datasetView.Vidljivost) d.Vidljivost = datasetView.Vidljivost;
+                if(d.StatusIR != ValidirajStatusIR(datasetView.StatusIR)) d.StatusIR = ValidirajStatusIR(datasetView.StatusIR);
+                if(d.Vidljivost != ValidirajVidljivost(datasetView.Vidljivost)) d.Vidljivost = ValidirajVidljivost(datasetView.Vidljivost);
                 if(datasetView.Format != "") d.Format = datasetView.Format;
                 if(datasetView.Velicina != 0) d.Velicina = datasetView.Velicina;
                 if(datasetView.BrojZapisa != 0) d.BrojZapisa = datasetView.BrojZapisa;
@@ -2058,7 +2114,7 @@ namespace datalibrary
         }
         #endregion
         #region  IR- TehnickiIzvestaj
-        public static void DodajTehnickiIzvestaj(TehnickiIzvestajView tehnickiIzvestaj)
+        public static void DodajTehnickiIzvestaj(DodavanjeIstrazivackiRezultatiDTO tehnickiIzvestaj)
         {
             try
             {
@@ -2070,8 +2126,8 @@ namespace datalibrary
                     Apstrakt = tehnickiIzvestaj.Apstrakt,
                     DatumKreiranja = tehnickiIzvestaj.DatumKreiranja,
                     DatumObjavljivanja = tehnickiIzvestaj.DatumObjavljivanja,
-                    StatusIR = tehnickiIzvestaj.StatusIR,
-                    Vidljivost = tehnickiIzvestaj.Vidljivost,
+                    StatusIR = ValidirajStatusIR(tehnickiIzvestaj.StatusIR),
+                    Vidljivost = ValidirajVidljivost(tehnickiIzvestaj.Vidljivost),
                 };
 
                 s.SaveOrUpdate(t);
@@ -2115,6 +2171,7 @@ namespace datalibrary
                 {
                     KljucneReci = i.KljucneReci,
                     Verzije = i.Verzije,
+                    PripadajuciFajlovi = i.PripadajuciFajlovi,
                 };
 
                 s.Close();
@@ -2159,8 +2216,8 @@ namespace datalibrary
                 if(tehnickiIzvestajView.Apstrakt != "") t.Apstrakt = tehnickiIzvestajView.Apstrakt;
                 if(t.DatumKreiranja != tehnickiIzvestajView.DatumKreiranja) t.DatumKreiranja = tehnickiIzvestajView.DatumKreiranja;
                 if(t.DatumObjavljivanja != tehnickiIzvestajView.DatumObjavljivanja) t.DatumObjavljivanja = tehnickiIzvestajView.DatumObjavljivanja;
-                if(t.StatusIR != tehnickiIzvestajView.StatusIR) t.StatusIR = tehnickiIzvestajView.StatusIR;
-                if(t.Vidljivost != tehnickiIzvestajView.Vidljivost) t.Vidljivost = tehnickiIzvestajView.Vidljivost;
+                if(t.StatusIR != ValidirajStatusIR(tehnickiIzvestajView.StatusIR)) t.StatusIR = ValidirajStatusIR(tehnickiIzvestajView.StatusIR);
+                if(t.Vidljivost != ValidirajVidljivost(tehnickiIzvestajView.Vidljivost)) t.Vidljivost = ValidirajVidljivost(tehnickiIzvestajView.Vidljivost);
                 
                 s.Update(t);
                 s.Flush();
@@ -2176,7 +2233,7 @@ namespace datalibrary
         #endregion
         
         #region  IR- Knjige ili Poglavlja
-        public static void DodajKnjigeIliPoglavlja(KnjigaIliPoglavljaView knjigaIliPoglavljaView)
+        public static void DodajKnjigeIliPoglavlja(DodavanjeKnjigeIliPoglavnjaDTO knjigaIliPoglavljaView)
         {
             try
             {
@@ -2188,8 +2245,8 @@ namespace datalibrary
                     Apstrakt = knjigaIliPoglavljaView.Apstrakt,
                     DatumKreiranja = knjigaIliPoglavljaView.DatumKreiranja,
                     DatumObjavljivanja = knjigaIliPoglavljaView.DatumObjavljivanja,
-                    StatusIR = knjigaIliPoglavljaView.StatusIR,
-                    Vidljivost = knjigaIliPoglavljaView.Vidljivost,
+                    StatusIR = ValidirajStatusIR(knjigaIliPoglavljaView.StatusIR),
+                    Vidljivost = ValidirajVidljivost(knjigaIliPoglavljaView.Vidljivost),
                     Izdavac = knjigaIliPoglavljaView.Izdavac,
                     MestoIzdavanja = knjigaIliPoglavljaView.MestoIzdavanja
                 };
@@ -2279,6 +2336,13 @@ namespace datalibrary
                 foreach(Verzija v in sveVerzije )
                                 verzije.Add( new (v));
                 knjigaIliPoglavljaView.Verzije = verzije;
+
+                IEnumerable<PripadajuciFajl> svePripadajuceFajlove = from f in s.Query<PripadajuciFajl>()
+                                                                        where f.ID_IR.ID_IR == ID_IR select f;
+                List<PripadajuciFajlView> pripadajuciFajlovi = [];
+                foreach(PripadajuciFajl f in svePripadajuceFajlove)
+                                pripadajuciFajlovi.Add(new PripadajuciFajlView(f));
+                knjigaIliPoglavljaView.PripadajuciFajlovi = pripadajuciFajlovi;
                 s.Close();
             }
             catch(Exception ex)
@@ -2326,8 +2390,8 @@ namespace datalibrary
                 if(knjigaIliPoglavlja.Apstrakt != "") k.Apstrakt = knjigaIliPoglavlja.Apstrakt;
                 if(k.DatumKreiranja != knjigaIliPoglavlja.DatumKreiranja) k.DatumKreiranja = knjigaIliPoglavlja.DatumKreiranja;
                 if(k.DatumObjavljivanja != knjigaIliPoglavlja.DatumObjavljivanja) k.DatumObjavljivanja = knjigaIliPoglavlja.DatumObjavljivanja;
-                if(k.StatusIR != knjigaIliPoglavlja.StatusIR) k.StatusIR = knjigaIliPoglavlja.StatusIR;
-                if(k.Vidljivost != knjigaIliPoglavlja.Vidljivost) k.Vidljivost = knjigaIliPoglavlja.Vidljivost;
+                if(k.StatusIR != ValidirajStatusIR(knjigaIliPoglavlja.StatusIR)) k.StatusIR = ValidirajStatusIR(knjigaIliPoglavlja.StatusIR);
+                if(k.Vidljivost != ValidirajVidljivost(knjigaIliPoglavlja.Vidljivost)) k.Vidljivost = ValidirajVidljivost(knjigaIliPoglavlja.Vidljivost);
                 if(knjigaIliPoglavlja.Izdavac != "") k.Izdavac = knjigaIliPoglavlja.Izdavac;
                 if(knjigaIliPoglavlja.MestoIzdavanja != "") k.MestoIzdavanja = knjigaIliPoglavlja.MestoIzdavanja;
                 
@@ -2345,7 +2409,7 @@ namespace datalibrary
         #endregion
 
         #region  IR- Naucni Rad
-        public static void DodajNaucniRad(NaucniRadView naucniRadView)
+        public static void DodajNaucniRad(DodavanjeNaucniRadDTO naucniRadView)
         {
             try
             {
@@ -2357,8 +2421,8 @@ namespace datalibrary
                     Apstrakt = naucniRadView.Apstrakt,
                     DatumKreiranja = naucniRadView.DatumKreiranja,
                     DatumObjavljivanja = naucniRadView.DatumObjavljivanja,
-                    StatusIR = naucniRadView.StatusIR,
-                    Vidljivost = naucniRadView.Vidljivost,
+                    StatusIR = ValidirajStatusIR(naucniRadView.StatusIR),
+                    Vidljivost = ValidirajVidljivost(naucniRadView.Vidljivost),
                     TipRada = naucniRadView.TipRada,
                     NazivCasKon = naucniRadView.NazivCasKon,
                     Doi = naucniRadView.Doi,
@@ -2410,7 +2474,8 @@ namespace datalibrary
                 naucniRadView = new (s.Load<NaucniRad>(ID_IR))
                 {
                     KljucneReci = i.KljucneReci,
-                    Verzije = i.Verzije
+                    Verzije = i.Verzije,
+                    PripadajuciFajlovi = i.PripadajuciFajlovi
                 };
                 s.Close();
             }
@@ -2454,8 +2519,8 @@ namespace datalibrary
                 if(naucniRadView.Apstrakt != "") n.Apstrakt = naucniRadView.Apstrakt;
                 if(n.DatumKreiranja != naucniRadView.DatumKreiranja) n.DatumKreiranja = naucniRadView.DatumKreiranja;
                 if(n.DatumObjavljivanja != naucniRadView.DatumObjavljivanja) n.DatumObjavljivanja = naucniRadView.DatumObjavljivanja;
-                if(n.StatusIR != naucniRadView.StatusIR) n.StatusIR = naucniRadView.StatusIR;
-                if(n.Vidljivost != naucniRadView.Vidljivost) n.Vidljivost = naucniRadView.Vidljivost;
+                if(n.StatusIR != ValidirajStatusIR(naucniRadView.StatusIR)) n.StatusIR = ValidirajStatusIR(naucniRadView.StatusIR);
+                if(n.Vidljivost != ValidirajVidljivost(naucniRadView.Vidljivost)) n.Vidljivost = ValidirajVidljivost(naucniRadView.Vidljivost);
                 if(naucniRadView.TipRada != "") n.TipRada = naucniRadView.TipRada;
                 if(naucniRadView.NazivCasKon != "") n.NazivCasKon = naucniRadView.NazivCasKon;
                 if(naucniRadView.Doi != "") n.Doi = naucniRadView.Doi;
@@ -2485,9 +2550,9 @@ namespace datalibrary
                 ISession s = DataLayer.GetSession();
                 Autor autor = s.Load<Autor>(ID_U);
                 AutorView a = new (autor);
-                AutorstvoView autorstvoView = new ()
+                DodavanjeAutorstvaDTO autorstvoView = new ()
                 {
-                    ID_U = a,
+                    ID_U = a.ID_U,
                     RedniBrojAutora = redni_broj,
                     TipDoprinosa = doprinos,
                     UlogaUPublikaciji = uloga
@@ -2498,7 +2563,7 @@ namespace datalibrary
                 s.Flush();
                 PublikacijaView publikacijaView = new (p);
                 s.Close();
-                autorstvoView.ID_P = publikacijaView;
+                autorstvoView.ID_P = publikacijaView.ID_P;
                 DodajAutorstvo(autorstvoView);
             }
             catch(Exception ex)
@@ -2508,14 +2573,14 @@ namespace datalibrary
             }
         }
 
-        public static void DodajAutorstvo(AutorstvoView autorstvoView)
+        public static void DodajAutorstvo(DodavanjeAutorstvaDTO autorstvoView)
         {
             try
             {
                 ISession s = DataLayer.GetSession();
 
-                Autor autor = s.Load<Autor>(autorstvoView.ID_U.ID_U);
-                Publikacija publikacija = s.Load<Publikacija>(autorstvoView.ID_P.ID_P);
+                Autor autor = s.Load<Autor>(autorstvoView.ID_U);
+                Publikacija publikacija = s.Load<Publikacija>(autorstvoView.ID_P);
 
                 Autorstvo a = new(
                     autor,
@@ -2671,7 +2736,88 @@ namespace datalibrary
             }
 
             return publikacije;
-        }  
+        }
+
+        public static void DodajTehnickiIzvestajPublikaciji(int ID_TI, int ID_P)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                TehnickiIzvestaj tehnickiIzvestaj = s.Load<TehnickiIzvestaj>(ID_TI);
+                Publikacija publikacija = s.Load<Publikacija>(ID_P);
+
+                bool alreadyLinked = s.Query<Publikacija>()
+                    .Any(p => p.ID_TI != null && p.ID_TI.ID_IR == ID_TI && p.ID_P != ID_P);
+                if (alreadyLinked)
+                    throw new InvalidOperationException($"Tehnički izveštaj {ID_TI} je već povezan sa drugom publikacijom.");
+
+                publikacija.ID_TI = tehnickiIzvestaj;
+
+                s.Update(publikacija);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajTehnickiIzvestajPublikaciji: "+ ex);
+                throw; 
+            }
+        }
+
+        public static void DodajDatasetPublikaciji(int ID_D, int ID_P)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Dataset dataset = s.Load<Dataset>(ID_D);
+                Publikacija publikacija = s.Load<Publikacija>(ID_P);
+
+                bool alreadyLinked = s.Query<Publikacija>()
+                    .Any(p => p.ID_D != null && p.ID_D.ID_IR == ID_D && p.ID_P != ID_P);
+                if (alreadyLinked)
+                    throw new InvalidOperationException($"Dataset {ID_D} je već povezan sa drugom publikacijom.");
+
+                publikacija.ID_D = dataset;
+
+                s.Update(publikacija);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajDatasetPublikaciji: "+ ex);
+                throw; 
+            }
+        }
+
+        public static void DodajSoftverskiArtifaktPublikaciji(int ID_SA, int ID_P)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                SoftverskiArtifakt softverskiArtifakt = s.Load<SoftverskiArtifakt>(ID_SA);
+                Publikacija publikacija = s.Load<Publikacija>(ID_P);
+
+                bool alreadyLinked = s.Query<Publikacija>()
+                    .Any(p => p.ID_SA != null && p.ID_SA.ID_IR == ID_SA && p.ID_P != ID_P);
+                if (alreadyLinked)
+                    throw new InvalidOperationException($"Softverski artifakt {ID_SA} je već povezan sa drugom publikacijom.");
+
+                publikacija.ID_SA = softverskiArtifakt;
+
+                s.Update(publikacija);
+                s.Flush();
+                s.Close();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error at DataProvider DodajSoftverskiArtifaktPublikaciji: "+ ex);
+                throw; 
+            }
+        }
         #endregion
         #region  Runda Recenzije
 

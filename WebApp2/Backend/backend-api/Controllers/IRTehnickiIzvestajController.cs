@@ -17,7 +17,7 @@ namespace WebApp2.Controllers
         [Route("DodajTehnickiIzvestaj")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostTehnickiIzvestaj(TehnickiIzvestajView tehnickiIzvestajView)
+        public IActionResult PostTehnickiIzvestaj(DodavanjeIstrazivackiRezultatiDTO tehnickiIzvestajView)
         {
             try
             {

@@ -15,7 +15,7 @@ namespace WebApp2.Controllers
         [Route("DodajSoftverskiArtifakt")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostSoftverskiArtifakt(SoftverskiArtifaktView softverskiArtifaktView)
+        public IActionResult PostSoftverskiArtifakt(DodavanjeSoftverskiArtifaktDTO softverskiArtifaktView)
         {
             try
             {
@@ -98,12 +98,12 @@ namespace WebApp2.Controllers
         [Route("DodajPodrzanuPlatformu/{ID_IR}/{platforma}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostPodrzanaPlaforma(int ID_IR, string platfoma)
+        public IActionResult PostPodrzanaPlaforma(int ID_IR, string platforma)
         {
             try
             {
-                DataProvider.DodajPodrzanuPlatformu(ID_IR, platfoma);
-                return Ok($"Dodat je Podrzana plaforma {platfoma} za Softver ID: {ID_IR}");
+            DataProvider.DodajPodrzanuPlatformu(ID_IR, platforma);
+            return Ok($"Dodat je Podrzana plaforma {platforma} za Softver ID: {ID_IR}");
             }
             catch(Exception ex)
             {
@@ -115,12 +115,12 @@ namespace WebApp2.Controllers
         [Route("ObrisiPodrzanuPlatformu/{ID_IR}/{platforma}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult DeletePodrzanaPlaforma(int ID_IR, string platfoma)
+        public IActionResult DeletePodrzanaPlaforma(int ID_IR, string platforma)
         {
             try
             {
-                DataProvider.ObrisiPodrzanuPlatformu(ID_IR,platfoma);
-                return Ok($"Obrisan je Podrzana plaforma {platfoma} za Softver ID: {ID_IR}");
+            DataProvider.ObrisiPodrzanuPlatformu(ID_IR, platforma);
+            return Ok($"Obrisan je Podrzana plaforma {platforma} za Softver ID: {ID_IR}");
             }
             catch(Exception ex)
             {

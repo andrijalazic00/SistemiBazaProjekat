@@ -15,7 +15,7 @@ namespace WebApp2.Controllers
         [Route("DodajDataset")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostDataset(DatasetView datasetView)
+        public IActionResult PostDataset(DodavanjeDatasetDTO datasetView)
         {
             try
             {

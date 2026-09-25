@@ -16,7 +16,7 @@ namespace WebApp2.Controllers
         [Route("DodajKnjigeIliPoglavlje")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult PostKnjigeIliPoglavlje(KnjigaIliPoglavljaView knjigaIliPoglavljaView)
+        public IActionResult PostKnjigeIliPoglavlje(DodavanjeKnjigeIliPoglavnjaDTO knjigaIliPoglavljaView)
         {
             try
             {
