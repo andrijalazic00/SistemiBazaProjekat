@@ -1,0 +1,28 @@
+﻿using DigitalniRepozitorijum.Entities;
+using FluentNHibernate.Mapping;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DigitalniRepozitorijum.Maps
+{
+    class PublikacijaMaps : ClassMap<Publikacija>
+    {
+        public PublikacijaMaps()
+        {
+            Table("PUBLIKACIJA");
+            Id(x => x.ID_P, "ID_P").GeneratedBy.Sequence("SEQ_PUBLIKACIJA");
+            References(x => x.TehnickiIzvestajID, "ID_TI").Nullable().Unique();
+            References(x => x.DatasetID, "ID_D").Nullable().Unique();
+            References(x => x.SoftverskiArtifaktID, "ID_SA").Nullable().Unique();
+
+            HasMany(x => x.CitiranePublikacije).KeyColumn("ID_P2").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.CitirajucePublikacije).KeyColumn("ID_P1").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.RundeRecenzije).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
+            HasMany(x => x.Autorstva).KeyColumn("ID_P").LazyLoad().Cascade.All().Inverse();
+           
+        }
+    }
+}

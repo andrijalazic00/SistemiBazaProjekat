@@ -1,0 +1,13 @@
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/bin/Debug/net10.0/datalibrary.deps.json
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/bin/Debug/net10.0/datalibrary.dll
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/bin/Debug/net10.0/datalibrary.pdb
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.csproj.AssemblyReference.cache
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.GeneratedMSBuildEditorConfig.editorconfig
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.AssemblyInfoInputs.cache
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.AssemblyInfo.cs
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.csproj.CoreCompileInputs.cache
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.sourcelink.json
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.dll
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/refint/datalibrary.dll
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/datalibrary.pdb
+/home/andrija/Desktop/Projekti/SistemiBazaProjekat/WebApp2/Backend/datalibrary/obj/Debug/net10.0/ref/datalibrary.dll

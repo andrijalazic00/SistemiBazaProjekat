@@ -1,0 +1,495 @@
+@import "tailwindcss";
+
+
+
+.main-button-design
+{
+    /* border-width: 2px;
+    border-color: black;
+    font-size: 30px;
+    border-style: solid;
+    border-radius: 2rem; */
+    margin: 1px;
+    background-color:oklch(62.3% 0.214 259.815);
+    padding: 4px;
+    width: 100vw;
+    height: 8rem;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+.main-button-design:hover
+{
+    border-width: 2px;
+    border-color: black;
+    font-size: 30px;
+    border-style: solid;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    margin: 1px;
+    background-color: oklch(48.001% 0.1958 260.347);
+    width: 100vw;
+    padding: 4px;
+    height: 8rem;
+    text-align: left;
+    font-family: sans-serif;
+}
+
+.table-header
+{
+    background-color: rgb(38, 38, 203);
+    width: 80vw;
+    text-align: center;
+    font-size: 40px;
+}
+
+.change-page-button
+{
+    background-color: rgb(38, 38, 203);
+    text-align: center;
+    width: 10vw;
+    font-size: 50px;
+}
+
+.change-page-button:hover
+{
+    background-color: rgb(4, 4, 96);
+    text-align: center;
+    width: 10vw;
+    font-size: 50px;
+}
+
+.control-panel-button
+{
+    border-width: 2px;
+    border-color: black;
+    font-size: 20px;
+    border-style: solid;
+    margin: 5px;
+    background-color: rgb(22, 0, 192);
+    padding: 4px;
+    width: 9rem;
+    height: 3rem;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.control-panel-button:hover
+{
+    border-width: 2px;
+    border-color: black;
+    font-size: 20px;
+    border-style: solid;
+    margin: 5px;
+    background-color: rgb(17, 2, 129);
+    padding: 4px;
+    width: 9rem;
+    height: 3rem;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.h-space
+{
+    height: 75vh;
+}
+
+
+/* ---------------- Subclass dropdown ---------------- */
+.subclass-select
+{
+    margin: 8px 0 4px 0;
+    padding: 8px 14px;
+    font-size: 18px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(22, 0, 192);
+    color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    min-width: 20rem;
+}
+
+.subclass-select:hover
+{
+    background-color: rgb(45, 19, 241);
+    cursor: pointer;
+}
+
+/* ---------------- Data table ---------------- */
+.data-table-wrap
+{
+    overflow-y: auto;
+    /* border: 3px solid black; */
+}
+
+.data-table
+{
+    width: 100%;
+    border-collapse: collapse;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.92);
+}
+
+.data-table thead th
+{
+    position: sticky;
+    top: 0;
+    background-color: rgb(22, 0, 192);
+    color: white;
+    padding: 8px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: normal;
+    text-align: left;
+    font-size: 18px;
+}
+
+.data-table tbody td
+{
+    padding: 8px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    font-size: 16px;
+}
+
+.data-table tbody tr
+{
+    cursor: pointer;
+}
+
+.data-table tbody tr:hover
+{
+    background-color: rgb(200, 210, 255);
+}
+
+.data-table-row-selected
+{
+    background-color: rgb(150, 170, 255) !important;
+}
+
+.data-table-status
+{
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.data-table-error
+{
+    color: rgb(255, 120, 120);
+}
+
+/* ---------------- Modal ---------------- */
+.modal-overlay
+{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+}
+
+.modal-box
+{
+    background-color: white;
+    color: black;
+    border-radius: 6px;
+    border: 3px solid black;
+    width: min(30rem, 92vw);
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.modal-box-wide
+{
+    width: min(48rem, 94vw);
+}
+
+.modal-header
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(22, 0, 192);
+    color: white;
+    padding: 12px 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: sticky;
+    top: 0;
+}
+
+.modal-header h2
+{
+    font-size: 24px;
+    margin: 0;
+}
+
+.modal-close
+{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-body
+{
+    padding: 16px;
+}
+
+/* ---------------- Forms ---------------- */
+.entity-form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.entity-form-field
+{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 15px;
+}
+
+.entity-form-field input,
+.entity-form-field textarea,
+.entity-form-field select
+{
+    padding: 8px;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 4px;
+    font-size: 15px;
+    font-family: inherit;
+}
+
+.entity-form-field textarea
+{
+    min-height: 4rem;
+    resize: vertical;
+}
+
+.entity-form-actions
+{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.entity-form-actions .control-panel-button,
+.confirm-message + .entity-form-actions .control-panel-button
+{
+    width: auto;
+    height: auto;
+    padding: 8px 18px;
+    font-size: 18px;
+}
+
+.confirm-danger
+{
+    background-color: rgb(150, 20, 20) !important;
+}
+
+.confirm-danger:hover
+{
+    background-color: rgb(190, 30, 30) !important;
+}
+
+.form-error
+{
+    color: rgb(160, 0, 0);
+    background-color: rgb(255, 230, 230);
+    border: 1px solid rgb(160, 0, 0);
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.page-level-error
+{
+    margin-top: 8px;
+    max-width: 40rem;
+}
+
+.confirm-message
+{
+    font-size: 17px;
+}
+
+/* ---------------- Detail modal ---------------- */
+.detail-fields
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+}
+
+.detail-field
+{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgb(220, 220, 220);
+    padding-bottom: 4px;
+}
+
+.detail-field-label
+{
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgb(90, 90, 90);
+}
+
+.detail-field-value
+{
+    font-size: 16px;
+    word-break: break-word;
+}
+
+.detail-actions
+{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.detail-actions .control-panel-button
+{
+    width: auto;
+    height: auto;
+    padding: 8px 18px;
+    font-size: 18px;
+}
+
+.relations-section h3
+{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    border-top: 2px solid black;
+    padding-top: 10px;
+    margin-top: 6px;
+}
+
+.relation-block
+{
+    margin-bottom: 14px;
+    padding: 10px;
+    background-color: rgb(240, 240, 250);
+    border-radius: 4px;
+}
+
+.relation-header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.relation-header h4
+{
+    margin: 0;
+    font-size: 16px;
+}
+
+.relation-add-btn
+{
+    background-color: rgb(22, 0, 192);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.relation-add-btn:hover
+{
+    background-color: rgb(45, 19, 241);
+}
+
+.relation-empty
+{
+    font-size: 13px;
+    color: rgb(100, 100, 100);
+    margin: 4px 0 0 0;
+}
+
+.relation-list
+{
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.relation-list li
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.relation-delete-btn
+{
+    background: none;
+    border: none;
+    color: rgb(160, 0, 0);
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: underline;
+}
+
+.relation-add-form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed rgb(180, 180, 180);
+}
+
+.relation-add-form label
+{
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 2px;
+}
+
+.relation-add-form input,
+.relation-add-form textarea
+{
+    padding: 6px;
+    border: 1px solid rgb(150, 150, 150);
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.relation-submit-btn
+{
+    width: auto !important;
+    height: auto !important;
+    padding: 6px 16px !important;
+    font-size: 14px !important;
+    align-self: flex-start;
+}
+
+select
+{
+    border: 2px solid rgb(211, 210, 210);
+    height: 2rem;
+    border-radius: 5px;
+    background-color: aliceblue;
+}

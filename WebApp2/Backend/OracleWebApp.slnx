@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="backend-api/backend-api.csproj" />
+  <Project Path="datalibrary/datalibrary.csproj" />
+</Solution>
